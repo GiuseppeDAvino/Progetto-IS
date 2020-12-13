@@ -1,4 +1,4 @@
-package it.unisa.model.connessione;
+package model.connessione;
 
 
 import java.sql.Connection;
@@ -12,7 +12,6 @@ public class DriverManagerConnectionPool  {
 
 	static {
 		freeDbConnections = new LinkedList<Connection>();
-		System.out.println("faccio cose");
 			try {
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			} catch (ClassNotFoundException e) {
