@@ -12,7 +12,6 @@ public class DriverManagerConnectionPool  {
 
 	static {
 		freeDbConnections = new LinkedList<Connection>();
-		System.out.println("faccio cose");
 			try {
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			} catch (ClassNotFoundException e) {
