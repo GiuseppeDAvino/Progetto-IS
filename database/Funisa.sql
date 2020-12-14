@@ -92,10 +92,3 @@ CREATE TABLE prenotazione_periferica(
     FOREIGN KEY(prenotazioneId) REFERENCES prenotazione(id),
     FOREIGN KEY(perifericaNome) REFERENCES periferica(nome) 
 )
-
-
-create table test(
-    nome VARCHAR(10)
-)
-
-insert into test VALUES("prova")
