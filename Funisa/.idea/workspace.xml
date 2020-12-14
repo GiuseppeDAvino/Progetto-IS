@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Funisa" />
+      <artifact name="Funisa:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -10,18 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="add913c5-4f09-432a-9f43-d28894214a20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Funisa_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Funisa_war.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Funisa_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Funisa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Funisa.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funisa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Funisa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Funisa-1.0-SNAPSHOT/Hello.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Funisa-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Funisa-1.0-SNAPSHOT/WEB-INF/classes/model/connessione/DriverManagerConnectionPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Funisa-1.0-SNAPSHOT/WEB-INF/lib/javax.mvc-api-1.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Funisa-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/connessione/DriverManagerConnectionPool.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +59,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.31" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.31" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="Funisa:war exploded">
@@ -168,7 +169,7 @@
       <workItem from="1607898015899" duration="724000" />
       <workItem from="1607898775867" duration="143000" />
       <workItem from="1607909702306" duration="421000" />
-      <workItem from="1607942263493" duration="1482000" />
+      <workItem from="1607942263493" duration="3269000" />
     </task>
     <servers />
   </component>
