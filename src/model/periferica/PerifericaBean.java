@@ -4,7 +4,7 @@ public class PerifericaBean {
 	private String tipo;
 	private String nome;
 	private int quantita;
-	private double prezzo;
+	private float prezzo;
 	
 	public PerifericaBean() {
 		this.tipo = "";
@@ -31,10 +31,10 @@ public class PerifericaBean {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
-	public double getPrezzo() {
+	public float getPrezzo() {
 		return prezzo;
 	}
-	public void setPrezzo(double prezzo) {
+	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
 	

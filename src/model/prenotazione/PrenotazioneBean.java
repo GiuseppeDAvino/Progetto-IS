@@ -1,38 +1,60 @@
 package model.prenotazione;
 
+import java.sql.Date;
+
 public class PrenotazioneBean {
-	private int prenotazione;
-	private String data;
+	private int id;
+	private Date data;
 	private String fasciaOraria;
-	private String img;
-
+	private String qr;
+	private String utenteEmail;
+	private int postazioneId;
+	
 	public PrenotazioneBean() {
-		this.prenotazione = 0;
-		this.data = "";
+		this.id = 0;
+		this.data = null;
 		this.fasciaOraria = "";
-		this.img = "";
+		this.qr = "";
 	}
 	
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
-	}
-
-	public int getPrenotazione() {
-		return prenotazione;
-	}
 	
-	public void setPrenotazione(int prenotazione) {
-		this.prenotazione = prenotazione;
+	public int getId() {
+		return id;
 	}
-	public String getData() {
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getQr() {
+		return qr;
+	}
+
+	public void setQr(String qr) {
+		this.qr = qr;
+	}
+
+	public String getUtenteEmail() {
+		return utenteEmail;
+	}
+
+	public void setUtenteEmail(String utenteEmail) {
+		this.utenteEmail = utenteEmail;
+	}
+
+	public int getPostazioneId() {
+		return postazioneId;
+	}
+
+	public void setPostazioneId(int postazioneId) {
+		this.postazioneId = postazioneId;
+	}
+
+	public Date getData() {
 		return data;
 	}
-	public void setData(String data) {
-		this.data = data;
+	public void setData(Date date) {
+		this.data = date;
 	}
 	public String getFasciaOraria() {
 		return fasciaOraria;
@@ -43,8 +65,8 @@ public class PrenotazioneBean {
 
 	@Override
 	public String toString() {
-		return "PrenotazioneBean [prenotazione=" + prenotazione + ", data=" + data + ", fasciaOraria=" + fasciaOraria
-				+ ", img=" + img + "]";
+		return "PrenotazioneBean [prenotazione=" + id + ", data=" + data + ", fasciaOraria=" + fasciaOraria
+				+ ", img=" + qr + "]";
 	}
 
 }

@@ -29,6 +29,22 @@ public class UtenteBean {
 	
 	
 	
+	public UtenteBean(String email, String nome, String cognome, String username, Ruolo ruolo, boolean stato,
+			String codiceVerifica, byte[] password, String img) {
+		super();
+		this.email = email;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.ruolo = ruolo;
+		this.stato = stato;
+		this.codiceVerifica = codiceVerifica;
+		this.password = password;
+		this.img = img;
+	}
+
+
+
 	public String getEmail() {
 		return email;
 	}

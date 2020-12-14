@@ -14,9 +14,13 @@ drop table categoria
 CREATE TABLE notifica(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
     descrizione VARCHAR(50) NOT NULL,
-    isRead BIT NOT NULL,
     tipo VARCHAR(20)
 )
+INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','1');
+INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','2');
+INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
+
+SELECT * from notifica
 
 CREATE TABLE utente(
     email VARCHAR(30) PRIMARY KEY NOT NULL,
@@ -28,6 +32,9 @@ CREATE TABLE utente(
     stato BIT NOT NULL DEFAULT 'FALSE',
     codiceVerifica char(7),
 )
+
+INSERT INTO utente VALUES('email@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
+
 
 CREATE TABLE segnalazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
@@ -79,11 +86,14 @@ CREATE TABLE prenotazione(
 
 CREATE TABLE notifica_utente(
     notificaId INT NOT NULL,
-    UtenteEmail VARCHAR(30) NOT NULL,
+    utenteEmail VARCHAR(30) NOT NULL,
+    isRead BIT NOT NULL DEFAULT 'FALSE',
     PRIMARY KEY(notificaId,UtenteEmail),
     FOREIGN KEY (UtenteEmail) REFERENCES utente(email),
     FOREIGN KEY (notificaId) REFERENCES notifica(id)
 )
+
+SELECT * from notifica_utente
 
 CREATE TABLE prenotazione_periferica(
     prenotazioneId INT NOT NULL,
