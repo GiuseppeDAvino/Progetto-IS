@@ -9,15 +9,14 @@ public class PrenotazioneBean {
 	private String qr;
 	private String utenteEmail;
 	private int postazioneId;
-	
+
 	public PrenotazioneBean() {
 		this.id = 0;
 		this.data = null;
 		this.fasciaOraria = "";
 		this.qr = "";
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -53,20 +52,23 @@ public class PrenotazioneBean {
 	public Date getData() {
 		return data;
 	}
+
 	public void setData(Date date) {
 		this.data = date;
 	}
+
 	public String getFasciaOraria() {
 		return fasciaOraria;
 	}
+
 	public void setFasciaOraria(String fasciaOraria) {
 		this.fasciaOraria = fasciaOraria;
 	}
 
 	@Override
 	public String toString() {
-		return "PrenotazioneBean [prenotazione=" + id + ", data=" + data + ", fasciaOraria=" + fasciaOraria
-				+ ", img=" + qr + "]";
+		return "PrenotazioneBean [prenotazione=" + id + ", data=" + data + ", fasciaOraria=" + fasciaOraria + ", img="
+				+ qr + "]";
 	}
 
 }

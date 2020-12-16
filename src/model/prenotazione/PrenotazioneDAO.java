@@ -9,24 +9,27 @@ import java.util.Collection;
 
 import model.ModelInterface;
 import model.connessione.DriverManagerConnectionPool;
+import model.periferica.PerifericaBean;
 import model.postazione.PostazioneBean;
 
 public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer> {
 	/**
-	 * @category ritorna, se presente nel database, una prenotazione con l'id inserito
+	 * @category ritorna, se presente nel database, una prenotazione con l'id
+	 *           inserito
 	 * 
 	 * @param id l'id della prenotazione da ricercare
-	 * */
+	 */
 	@Override
 	public PrenotazioneBean doRetrieveByKey(Integer id) throws SQLException {
-		PrenotazioneBean bean=new PrenotazioneBean();
-		String sql="Select * FROM prenotazione WHERE id=?";
-		try(Connection con=DriverManagerConnectionPool.getConnection();PreparedStatement statement=con.prepareStatement(sql);){
+		PrenotazioneBean bean = new PrenotazioneBean();
+		String sql = "Select * FROM prenotazione WHERE id=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setInt(1, id);
-			System.out.println("DoRetrieveByKey"+statement);
-			ResultSet rs=statement.executeQuery();
-			
-			while(rs.next()) {
+			System.out.println("DoRetrieveByKey" + statement);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
 				bean.setData(rs.getDate("dataPrenotazione"));
 				bean.setFasciaOraria(rs.getString("fasciaOraria"));
 				bean.setId(rs.getInt("id"));
@@ -41,18 +44,19 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	/**
 	 * @category ritorna tutte le prenotazioni presenti nel database
 	 * 
-	 * */
+	 */
 	@Override
 	public Collection<PrenotazioneBean> doRetrieveAll() throws SQLException {
-		String sql="SELECT * FROM prenotazione";
-		ArrayList<PrenotazioneBean> collection=new ArrayList<PrenotazioneBean>();
-		
-		try(Connection con=DriverManagerConnectionPool.getConnection();PreparedStatement statement=con.prepareStatement(sql);){
-			System.out.println("DoRetriveAll"+statement);
-			ResultSet rs=statement.executeQuery();
-			
-			while(rs.next()) {
-				PrenotazioneBean bean=new PrenotazioneBean();
+		String sql = "SELECT * FROM prenotazione";
+		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetriveAll" + statement);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				PrenotazioneBean bean = new PrenotazioneBean();
 				bean.setData(rs.getDate("dataPrenotazione"));
 				bean.setFasciaOraria(rs.getString("fasciaOraria"));
 				bean.setId(rs.getInt("id"));
@@ -65,18 +69,19 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 		return collection;
 
 	}
-	
+
 	/**
 	 * @category Termina la prenotazione disattivando il qr
 	 * 
 	 * @param bean Prenotazione da terminare
-	 * */
-	
-	public void terminaPrenotazione(PrenotazioneBean bean)throws SQLException{
-		String sql="UPDATE prenotazione SET qr='' WHERE id=?";
-		try(Connection con=DriverManagerConnectionPool.getConnection();PreparedStatement statement=con.prepareStatement(sql);){
-			System.out.println("terminaPrenotazione"+statement);
-			statement.setInt(1,bean.getId());
+	 */
+
+	public void terminaPrenotazione(PrenotazioneBean bean) throws SQLException {
+		String sql = "UPDATE prenotazione SET qr='' WHERE id=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("terminaPrenotazione" + statement);
+			statement.setInt(1, bean.getId());
 			statement.executeUpdate();
 			con.commit();
 		}
@@ -86,46 +91,69 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * @category Inserisce una prenotazione nel database
 	 * 
 	 * @param bean Prenotazione da inserire
-	 * */
+	 */
 	@Override
 	public void doSave(PrenotazioneBean bean) throws SQLException {
-		String sql="INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId) VALUES(?,?,?,?,?)";
-		try(Connection con=DriverManagerConnectionPool.getConnection();PreparedStatement statement=con.prepareStatement(sql);){
-			System.out.println("doSave"+statement);
+		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId) VALUES(?,?,?,?,?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("doSave" + statement);
 			statement.setDate(1, bean.getData());
 			statement.setString(2, bean.getFasciaOraria());
 			statement.setString(3, bean.getQr());
 			statement.setString(4, bean.getUtenteEmail());
-			statement.setInt(5,bean.getPostazioneId());
+			statement.setInt(5, bean.getPostazioneId());
 			statement.executeUpdate();
 			con.commit();
 		}
-		
+
 	}
 
 	@Override
 	public void doUpdate(PrenotazioneBean bean, Integer chiave) throws SQLException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
 	 * @category Elimina una prenotazione dal database
 	 * 
 	 * @param id id della prenotazione da cancellare
-	 * */
+	 */
 	@Override
 	public void doDelete(Integer id) throws SQLException {
-		String sql="DELETE FROM prenotazione WHERE id=?";
-		try(Connection con=DriverManagerConnectionPool.getConnection();PreparedStatement statement=con.prepareStatement(sql);){
-			System.out.println("doDelete"+statement);
+		String sql = "DELETE FROM prenotazione WHERE id=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("doDelete " + statement);
 			statement.setInt(1, id);
 			statement.executeUpdate();
 			con.commit();
 		}
 
-		
 	}
-	
+
+	/**
+	 * @category Aggiunge delle periferiche ad una prenotazione
+	 * 
+	 * @param prenotazione la prenotazione alla quale si aggiungono le periferiche
+	 * 
+	 * @param periferiche  le periferiche che vengono aggiunte alla prenotazione
+	 */
+	public void addPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
+			throws SQLException {
+		String sql = "INSERT INTO prenotazione_periferica VALUES(?,?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			for (PerifericaBean perifericaBean : periferiche) {
+				System.out.println("addPeriferiche " + statement);
+				statement.setInt(1, prenotazione.getId());
+				statement.setString(2, perifericaBean.getNome());
+				statement.executeUpdate();
+				con.commit();
+			}
+
+		}
+	}
 
 }

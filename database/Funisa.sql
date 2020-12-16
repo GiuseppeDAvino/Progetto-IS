@@ -30,11 +30,12 @@ CREATE TABLE utente(
     passw BINARY(32) NOT NULL,
     ruolo VARCHAR(10) NOT NULL,
     stato BIT NOT NULL DEFAULT 'FALSE',
+    CHECK (ruolo in ('cliente','titolare','gestore')),
     codiceVerifica char(7),
 )
 
-INSERT INTO utente VALUES('email@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
-
+/*INSERT INTO utente VALUES('email@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
+*/
 
 CREATE TABLE segnalazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
@@ -48,7 +49,7 @@ CREATE TABLE recensione(
     descrizione VARCHAR(200) NOT NULL,
     valutazione INT NOT NULL,
     verificata bit NOT NULL DEFAULT 'FALSE',
-    utenteEmail VARCHAR(30) NOT NULL,
+    utenteEmail VARCHAR(30) NOT NULL PRIMARY KEY,
     FOREIGN KEY (UtenteEmail) REFERENCES utente(email)
 )
 
@@ -68,7 +69,7 @@ CREATE TABLE categoria(
 CREATE TABLE postazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
     nomeCategoria VARCHAR(15) NOT NULL,
-    disponibile BIT NOT NULL,
+    isDisponibile BIT NOT NULL,
     FOREIGN KEY (nomeCategoria) REFERENCES categoria(nome)
 )
 

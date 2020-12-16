@@ -2,43 +2,52 @@ package model.segnalazione;
 
 public class SegnalazioneBean {
 	private int id;
+	private String tipo;
 	private String descrizione;
-	private int valutazione;
-	private boolean verificato;
-	
+	private String utenteEmail;
+
 	public SegnalazioneBean() {
-		this.id = 0;
-		this.descrizione = "";
-		this.valutazione = 0;
-		this.verificato = false;
+		super();
 	}
-	
+
+	public SegnalazioneBean(int id, String tipo, String descrizione, String utenteEmail) {
+		super();
+		this.id = id;
+		this.tipo = tipo;
+		this.descrizione = descrizione;
+		this.utenteEmail = utenteEmail;
+	}
+
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getDescrizione() {
 		return descrizione;
 	}
+
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public int getValutazione() {
-		return valutazione;
+
+	public String getUtenteEmail() {
+		return utenteEmail;
 	}
-	public void setValutazione(int valutazione) {
-		this.valutazione = valutazione;
+
+	public void setUtenteEmail(String utenteEmail) {
+		this.utenteEmail = utenteEmail;
 	}
-	public boolean isVerificato() {
-		return verificato;
-	}
-	public void setVerificato(boolean verificato) {
-		this.verificato = verificato;
-	}
-	
-	@Override
-	public String toString() {
-		return "Segnalazione [id=" + id + ", descrizione=" + descrizione + ", valutazione=" + valutazione
-				+ ", verificato=" + verificato + "]";
-	}
+
 }

@@ -4,7 +4,7 @@ public class PostazioneBean {
 	private int id;
 	private boolean disponibile;
 	private String categoria;
-	
+
 	public String getCategoria() {
 		return categoria;
 	}
@@ -21,14 +21,15 @@ public class PostazioneBean {
 		this.id = 0;
 		this.disponibile = true;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
-	
+
 	public boolean isDisponibile() {
 		return disponibile;
 	}
+
 	public void setDisponibile(boolean disponibile) {
 		this.disponibile = disponibile;
 	}
@@ -37,6 +38,5 @@ public class PostazioneBean {
 	public String toString() {
 		return "Postazione [id=" + id + ", disponibile=" + disponibile + "]";
 	}
-	
-	
+
 }

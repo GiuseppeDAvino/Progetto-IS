@@ -1,38 +1,37 @@
 package model.connessione;
 
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
-public class DriverManagerConnectionPool  {
 
-	private static List<Connection> freeDbConnections= new LinkedList<Connection>();
+public class DriverManagerConnectionPool {
+
+	private static List<Connection> freeDbConnections = new LinkedList<Connection>();
 
 	static {
 		freeDbConnections = new LinkedList<Connection>();
-			try {
-				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
+
 	public DriverManagerConnectionPool() {
 		freeDbConnections = new LinkedList<Connection>();
 	}
 
 	private static synchronized Connection createDBConnection() throws SQLException {
-		
-		String url="jdbc:sqlserver://funisa.database.windows.net:1433;database=funisa;user=ndtefu@funisa;password=PasswordSicura1!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+
+		String url = "jdbc:sqlserver://funisa.database.windows.net:1433;database=funisa;user=ndtefu@funisa;password=PasswordSicura1!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 		Connection newConnection = DriverManager.getConnection(url);
 		newConnection.setAutoCommit(false);
 		return newConnection;
 	}
-
 
 	public static synchronized Connection getConnection() throws SQLException {
 		Connection connection;
@@ -56,6 +55,7 @@ public class DriverManagerConnectionPool  {
 	}
 
 	public static synchronized void releaseConnection(Connection connection) throws SQLException {
-		if(connection != null) freeDbConnections.add(connection);
+		if (connection != null)
+			freeDbConnections.add(connection);
 	}
 }
