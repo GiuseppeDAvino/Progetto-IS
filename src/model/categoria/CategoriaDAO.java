@@ -99,11 +99,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 		}
 	}
 
-	/**
-	 * @category permette di aggiornare una categoria
-	 * 
-	 * @param chiave è la chiave per selezionare la riga da aggiornare
-	 */
+
 	@Override
 	public void doUpdate(CategoriaBean bean, String chiave) throws SQLException {
 

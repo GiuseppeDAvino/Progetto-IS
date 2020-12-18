@@ -9,6 +9,9 @@ import java.util.Collection;
 
 import model.ModelInterface;
 import model.connessione.DriverManagerConnectionPool;
+import model.notifica.NotificaBean;
+import model.notifica.NotificaDAO;
+import model.utente.UtenteBean;
 
 public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer> {
 
@@ -136,6 +139,22 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 			statement.executeUpdate();
 			con.commit();
 		}
+	}
+	/**
+	 * @category Salva una notifica per l'utente a cui è stata risolta la segnalazione
+	 * 
+	 * @param segnalazione segnalazione da risolvere
+	 * @param notificaBean	notifica da inviare
+	 */
+	public void risolvi(SegnalazioneBean segnalazione,NotificaBean notificaBean) throws SQLException{
+		doDelete(segnalazione.getId());
+		NotificaDAO notifica=new NotificaDAO();
+		UtenteBean utente=new UtenteBean();
+		utente.setEmail(segnalazione.getUtenteEmail());
+		ArrayList<UtenteBean> array=new ArrayList<UtenteBean>();
+		array.add(utente);
+		
+		notifica.doSaveNotificaUtente(notificaBean,array);
 	}
 
 }

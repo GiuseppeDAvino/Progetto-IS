@@ -20,8 +20,14 @@ INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','1');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','2');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
 
-SELECT * from notifica
+/*SELECT * from utente
+*/
 
+
+/*SELECT PER LA LISTA DI UTENTI IN ORDINE DI NUMERO DI PRENOTAZIONI
+select u.email,u.nome,u.cognome,u.username from utente u,prenotazione p where u.email=p.utenteEmail order by(
+	Select count(*) from utente u,prenotazione p where u.email=p.utenteEmail group by u.email)
+*/
 CREATE TABLE utente(
     email VARCHAR(30) PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
@@ -35,6 +41,8 @@ CREATE TABLE utente(
 )
 
 /*INSERT INTO utente VALUES('email@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
+    INSERT INTO utente VALUES('email1@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
+    INSERT INTO utente VALUES('email2@email.com','Prova','Provino','Provola',0111000001110010011000100001010,'prova','true','1548763')
 */
 
 CREATE TABLE segnalazione(
@@ -42,7 +50,7 @@ CREATE TABLE segnalazione(
     tipo VARCHAR(10) NOT NULL,
     descrizione VARCHAR(100) NOT NULL,
     utenteEmail VARCHAR(30) NOT NULL,
-    FOREIGN KEY (UtenteEmail) REFERENCES utente(email)
+    FOREIGN KEY (UtenteEmail) REFERENCES utente(email) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
 CREATE TABLE recensione(
@@ -50,7 +58,7 @@ CREATE TABLE recensione(
     valutazione INT NOT NULL,
     verificata bit NOT NULL DEFAULT 'FALSE',
     utenteEmail VARCHAR(30) NOT NULL PRIMARY KEY,
-    FOREIGN KEY (UtenteEmail) REFERENCES utente(email)
+    FOREIGN KEY (UtenteEmail) REFERENCES utente(email) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
 CREATE TABLE periferica(
@@ -70,7 +78,7 @@ CREATE TABLE postazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
     nomeCategoria VARCHAR(15) NOT NULL,
     isDisponibile BIT NOT NULL,
-    FOREIGN KEY (nomeCategoria) REFERENCES categoria(nome)
+    FOREIGN KEY (nomeCategoria) REFERENCES categoria(nome) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
 
@@ -81,8 +89,8 @@ CREATE TABLE prenotazione(
     qR VARCHAR(MAX),/*è un'immagine*/
     utenteEmail VARCHAR(30) NOT NULL,
     postazioneId INT NOT NULL,
-    FOREIGN KEY (postazioneid) REFERENCES postazione(id),
-    FOREIGN KEY (UtenteEmail) REFERENCES utente(email)
+    FOREIGN KEY (postazioneid) REFERENCES postazione(id) ON DELETE CASCADE ON UPDATE CASCADE, 
+    FOREIGN KEY (UtenteEmail) REFERENCES utente(email) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
 CREATE TABLE notifica_utente(
@@ -90,8 +98,8 @@ CREATE TABLE notifica_utente(
     utenteEmail VARCHAR(30) NOT NULL,
     isRead BIT NOT NULL DEFAULT 'FALSE',
     PRIMARY KEY(notificaId,UtenteEmail),
-    FOREIGN KEY (UtenteEmail) REFERENCES utente(email),
-    FOREIGN KEY (notificaId) REFERENCES notifica(id)
+    FOREIGN KEY (UtenteEmail) REFERENCES utente(email) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (notificaId) REFERENCES notifica(id) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
 SELECT * from notifica_utente
@@ -100,6 +108,6 @@ CREATE TABLE prenotazione_periferica(
     prenotazioneId INT NOT NULL,
     perifericaNome VARCHAR(20) NOT NULL,
     PRIMARY KEY(prenotazioneId,perifericaNome),
-    FOREIGN KEY(prenotazioneId) REFERENCES prenotazione(id),
-    FOREIGN KEY(perifericaNome) REFERENCES periferica(nome) 
+    FOREIGN KEY(prenotazioneId) REFERENCES prenotazione(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY(perifericaNome) REFERENCES periferica(nome) ON DELETE CASCADE ON UPDATE CASCADE
 )

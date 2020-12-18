@@ -1,6 +1,7 @@
 package model.postazione;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -52,6 +53,34 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoRetriveAll" + statement);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				PostazioneBean bean = new PostazioneBean();
+				bean.setId(rs.getInt("id"));
+				bean.setCategoria(rs.getString("nomeCategoria"));
+				bean.setDisponibile(rs.getBoolean("isDisponibile"));
+			}
+		}
+		return collection;
+
+	}
+	
+	/**
+	 * @category ritorna tutte le postazioni libere presenti nel database
+	 * 
+	 */
+	
+	public Collection<PostazioneBean> doRetrieveAllLibere(Date data, String fasciaOraria) throws SQLException {
+		String sql = "select*from postazione p where p.isDisponibile=TRUE AND p.id NOT IN(select postazione.id from postazione p,prenotazione pr where\r\n" + 
+				"	p.id=pr.postazioneId AND pr.data=? AND pr.fasciaOraria=?)";
+		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetriveAll" + statement);
+			statement.setDate(1, data);
+			statement.setString(2, fasciaOraria);
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
@@ -121,10 +150,23 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 
 	}
 
+	/**
+	 * @category permette di cancellare la postazione
+	 * 
+	 * @param chiave l'id della postazione da cancellare
+	 */
 	@Override
 	public void doDelete(Integer chiave) throws SQLException {
-		// TODO Auto-generated method stub
 
+		String sql = "DELETE FROM postazione WHERE id=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoDelete" + statement);
+			statement.setInt(1, chiave);
+			statement.executeUpdate();
+			con.commit();
+		}
 	}
+
 
 }

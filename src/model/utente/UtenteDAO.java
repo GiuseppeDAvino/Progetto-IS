@@ -106,6 +106,54 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String>{
 		return collection;
 
 	}
+	
+	/**
+	 * @category ritorna tutti gli utenti in ordine di numero di prenotazioni
+	 * 
+	 */
+	public Collection<UtenteBean> doRetrieveAllPerPrenotazioni() throws SQLException {
+		String sql="select u.email,u.nome,u.cognome,u.username from utente u,prenotazione p where u.email=p.utenteEmail order by(\r\n" + 
+				"	Select count(*) from utente u,prenotazione p where u.email=p.utenteEmail group by u.email)";
+		
+		ArrayList<UtenteBean> collection=new ArrayList<UtenteBean>();
+		
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetrieveAll");
+			ResultSet rs=statement.executeQuery();
+			while(rs.next()) {
+				UtenteBean bean=new UtenteBean();
+				bean.setEmail(rs.getString("email"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setUsername(rs.getString("username"));
+				bean.setPassword(rs.getString("passw"));
+				bean.setStato(rs.getBoolean("stato"));
+				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
+				switch(rs.getString("ruolo")) {
+				
+				case "cliente":
+					bean.setRuolo(Ruolo.cliente);
+				break;
+				
+				case "titolare":
+					bean.setRuolo(Ruolo.titolare);
+				break;
+				
+				case "gestore":
+					bean.setRuolo(Ruolo.gestore);
+				break;
+				}
+				collection.add(bean);	
+			}
+			
+		}
+		return collection;
+
+	}
+	
+	
 	/**
 	 * @category permette di salvare l'utente all'interno del database <br>
 	 *          

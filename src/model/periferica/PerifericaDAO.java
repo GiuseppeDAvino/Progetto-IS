@@ -1,6 +1,7 @@
 package model.periferica;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -71,6 +72,30 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 		}
 		return collection;
 
+	}
+	/**
+	 * @category ritorna il numero di periferiche prenotate per una data e una fascia oraria
+	 * 
+	 * @param data La data delle prenotazioni
+	 * 
+	 * @param fasciaOraria la fascia oraria delle prenotazioni
+	 * 
+	 * @param nome Il nome della periferica
+	 * */
+	public int prenotate(Date data,String fasciaOraria,String nome)throws SQLException{
+		String sql="select Count(*) as numero from periferica p, prenotazione pr, prenotazione_periferica pp\r\n" + 
+				" 	where p.nome=? AND p.nome=pp.perifericaNome AND p.id=pp.prenotazioneId\r\n" + 
+				"	AND p.dataPrenotazione=? AND p.fasciaOraria=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			statement.setString(1, nome);
+			statement.setDate(2, data);
+			statement.setString(3, fasciaOraria);
+			System.out.println("prenotate"+statement);
+			ResultSet rs=statement.executeQuery();
+			rs.next();
+			return rs.getInt("numero");
+		}
 	}
 
 	/**
