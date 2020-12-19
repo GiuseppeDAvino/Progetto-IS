@@ -16,35 +16,33 @@ import model.postazione.PostazioneDAO;
 /**
  * Servlet implementation class AggiungiPostazione
  */
-@WebServlet(urlPatterns = {"/AggiungiPostazione","/titolare/AggiungiPostazione"})
+@WebServlet(urlPatterns = { "/AggiungiPostazione", "/titolare/AggiungiPostazione" })
 public class AggiungiPostazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-    private PostazioneDAO postazioneDAO = new PostazioneDAO();   
 
-    public AggiungiPostazione() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private PostazioneDAO postazioneDAO = new PostazioneDAO();
 
+	public AggiungiPostazione() {
+		super();
+	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		PostazioneBean postazione = new PostazioneBean();
 		postazione.setCategoria(request.getParameter("categoria"));
 		try {
-		postazioneDAO.doSave(postazione);
-		}
-		catch (SQLException e) {
+			postazioneDAO.doSave(postazione);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+		// TODO add redirect
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 
