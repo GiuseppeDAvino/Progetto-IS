@@ -150,6 +150,10 @@ public class UtenteBean {
 		}
 
 	}
+	
+	public void setPassword(byte[] password) {
+		this.password = password;
+	}
 
 	@Override
 	public String toString() {

@@ -7,9 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form action="Test">
-		<input type="submit" value="prova">
-	</form>
+ ciao <%= request.getSession().getAttribute("utente").toString() %>
 </body>
 </html>
