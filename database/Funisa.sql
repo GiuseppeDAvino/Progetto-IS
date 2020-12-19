@@ -77,7 +77,7 @@ CREATE TABLE categoria(
 CREATE TABLE postazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
     nomeCategoria VARCHAR(15) NOT NULL,
-    isDisponibile BIT NOT NULL,
+    isDisponibile BIT NOT NULL DEFAULT 'TRUE',
     FOREIGN KEY (nomeCategoria) REFERENCES categoria(nome) ON DELETE CASCADE ON UPDATE CASCADE
 )
 
