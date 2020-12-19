@@ -9,12 +9,22 @@ public class PrenotazioneBean {
 	private String qr;
 	private String utenteEmail;
 	private int postazioneId;
+	private float prezzo;
 
 	public PrenotazioneBean() {
-		this.id = 0;
-		this.data = null;
-		this.fasciaOraria = "";
-		this.qr = "";
+		super();
+	}
+
+	public PrenotazioneBean(int id, Date data, String fasciaOraria, String qr, String utenteEmail, int postazioneId,
+			float prezzo) {
+		super();
+		this.id = id;
+		this.data = data;
+		this.fasciaOraria = fasciaOraria;
+		this.qr = qr;
+		this.utenteEmail = utenteEmail;
+		this.postazioneId = postazioneId;
+		this.prezzo = prezzo;
 	}
 
 	public int getId() {
@@ -23,6 +33,22 @@ public class PrenotazioneBean {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public String getFasciaOraria() {
+		return fasciaOraria;
+	}
+
+	public void setFasciaOraria(String fasciaOraria) {
+		this.fasciaOraria = fasciaOraria;
 	}
 
 	public String getQr() {
@@ -49,26 +75,18 @@ public class PrenotazioneBean {
 		this.postazioneId = postazioneId;
 	}
 
-	public Date getData() {
-		return data;
+	public float getPrezzo() {
+		return prezzo;
 	}
 
-	public void setData(Date date) {
-		this.data = date;
-	}
-
-	public String getFasciaOraria() {
-		return fasciaOraria;
-	}
-
-	public void setFasciaOraria(String fasciaOraria) {
-		this.fasciaOraria = fasciaOraria;
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
 	}
 
 	@Override
 	public String toString() {
-		return "PrenotazioneBean [prenotazione=" + id + ", data=" + data + ", fasciaOraria=" + fasciaOraria + ", img="
-				+ qr + "]";
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 
 }

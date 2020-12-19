@@ -89,6 +89,7 @@ CREATE TABLE prenotazione(
     qR VARCHAR(MAX),/*è un'immagine*/
     utenteEmail VARCHAR(30) NOT NULL,
     postazioneId INT NOT NULL,
+    prezzo FLOAT NOT NULL,
     FOREIGN KEY (postazioneid) REFERENCES postazione(id) ON DELETE CASCADE ON UPDATE CASCADE, 
     FOREIGN KEY (UtenteEmail) REFERENCES utente(email) ON DELETE CASCADE ON UPDATE CASCADE
 )

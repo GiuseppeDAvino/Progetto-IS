@@ -36,6 +36,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 				bean.setQr(rs.getString("qr"));
 				bean.setPostazioneId(rs.getInt("postazioneId"));
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 			}
 		}
 		return bean;
@@ -63,6 +64,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 				bean.setQr(rs.getString("qr"));
 				bean.setPostazioneId(rs.getInt("postazioneId"));
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
 				collection.add(bean);
 			}
 		}
@@ -88,13 +90,16 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
+	 * <br>
+	 * NON UTILIZZARE QUESTO METODO</br>
+	 * 
 	 * @category Inserisce una prenotazione nel database
 	 * 
 	 * @param bean Prenotazione da inserire
 	 */
 	@Override
 	public void doSave(PrenotazioneBean bean) throws SQLException {
-		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId) VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId,prezzo) VALUES(?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("doSave" + statement);
@@ -103,6 +108,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			statement.setString(3, bean.getQr());
 			statement.setString(4, bean.getUtenteEmail());
 			statement.setInt(5, bean.getPostazioneId());
+			statement.setFloat(6, bean.getPrezzo());
 			statement.executeUpdate();
 			con.commit();
 		}
@@ -134,14 +140,15 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
-	 * @category Aggiunge delle periferiche ad una prenotazione
+	 * @category Salva una prenotazione con le annesse periferiche
 	 * 
-	 * @param prenotazione la prenotazione alla quale si aggiungono le periferiche
+	 * @param prenotazione la prenotazione da salvare
 	 * 
 	 * @param periferiche  le periferiche che vengono aggiunte alla prenotazione
 	 */
-	public void addPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
+	public void prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
 			throws SQLException {
+		doSave(prenotazione);
 		String sql = "INSERT INTO prenotazione_periferica VALUES(?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
