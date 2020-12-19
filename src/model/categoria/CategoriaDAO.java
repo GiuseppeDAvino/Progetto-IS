@@ -102,7 +102,22 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 
 	@Override
 	public void doUpdate(CategoriaBean bean, String chiave) throws SQLException {
+		String sql="UPDATE categoria SET nome=?,tipoGenerico=?,prezzo=?,descrizione=?,immagine=? WHERE nome=?";
+		
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql)) {
 
+			statement.setString(1, bean.getNome());
+			statement.setString(2, bean.getTipoGenerico());
+			statement.setDouble(3, bean.getPrezzo());
+			statement.setString(4, bean.getDescrizione());
+			statement.setString(5, bean.getImmagine());
+			statement.setString(6,chiave);
+			
+			System.out.println("doUpdate=" + statement);
+			statement.executeUpdate();
+			con.commit();
+		}
 	}
 
 	/**

@@ -73,7 +73,7 @@ public class CategoriaBean {
 	@Override
 	public String toString() {
 		return "Categoria [nome=" + nome + ", tipoGenirico=" + tipoGenerico + ", descrizione=" + descrizione
-				+ ", prezzo=" + prezzo + "]";
+				+ ", prezzo=" + prezzo +", img="+immagine+ "]";
 	}
 
 }

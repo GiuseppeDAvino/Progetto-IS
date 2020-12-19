@@ -159,7 +159,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 */
 	@Override
 	public void doSave(UtenteBean bean) throws SQLException {
-		String sql = "INSERT INTO utente VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO utente VALUES(?,?,?,?,?,?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -171,6 +171,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			statement.setString(6, bean.getRuolo().name());
 			statement.setBoolean(7, false);
 			statement.setString(8, bean.getCodiceVerifica());
+			statement.setString(9, bean.getImg());
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
@@ -186,7 +187,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 */
 	@Override
 	public void doUpdate(UtenteBean bean, String email) throws SQLException {
-		String sql = "UPDATE utente SET nome=?,cognome=?,username=?,passw=?,ruolo=?,stato=?codiceVerifica=? WHERE email=?";
+		String sql = "UPDATE utente SET nome=?,cognome=?,username=?,passw=?,ruolo=?,stato=?,codiceVerifica=?,immagine=? WHERE email=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -197,7 +198,8 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			statement.setString(5, bean.getRuolo().name());
 			statement.setBoolean(6, bean.isStato());
 			statement.setString(7, bean.getCodiceVerifica());
-			statement.setString(8, email);
+			statement.setString(8, bean.getImg());
+			statement.setString(9, email);
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
