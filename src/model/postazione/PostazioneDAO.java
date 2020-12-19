@@ -167,6 +167,26 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			con.commit();
 		}
 	}
+	
+	
+	/**
+	 * @category Indica se una postazione Ë stata prenotata almeno una volta
+	 * 
+	 * @param postazione postazione da controllare
+	 * */
+	public boolean ËStataUtilizzata(PostazioneBean postazione) throws SQLException {
+		String sql="SELECT * FROM postazione p where ? NOT IN(\r\n" + 
+				"	SELECT pr.postazioneId FROM prenotazione pr)";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("ËStataUtilizzata" + statement);
+			statement.setInt(1, postazione.getId());
+			ResultSet rs=statement.executeQuery();
+			if(rs.next())
+				return true;
+		}
+		return false;
+	}
 
 
 }
