@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
 				session.setAttribute("errorLocation", null);
-				response.sendRedirect(response.encodeRedirectURL("Index.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/titolare/provaJson.jsp"));
 
 			} else {
 				session.setAttribute("errorType", "wrongCred");
