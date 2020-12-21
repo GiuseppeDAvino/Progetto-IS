@@ -10,7 +10,7 @@ import java.util.Collection;
  *@category L'interfaccia per la creazione di tutti i model
  *
  * @param <T> Il tipo di bean a cui il model fa riferimento
- * @param <U> La chiave da utilizzare poer identificare unovacemnte un bean all'inetrno del database
+ * @param <U> La chiave da utilizzare per identificare unovacemnte un bean all'inetrno del database
  */
 public interface ModelInterface <T,U>{
 	/**
