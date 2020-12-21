@@ -30,7 +30,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				bean.setData(rs.getDate("dataPrenotazione"));
+				bean.setData(rs.getString("dataPrenotazione"));
 				bean.setFasciaOraria(rs.getString("fasciaOraria"));
 				bean.setId(rs.getInt("id"));
 				bean.setQr(rs.getString("qr"));
@@ -58,7 +58,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 
 			while (rs.next()) {
 				PrenotazioneBean bean = new PrenotazioneBean();
-				bean.setData(rs.getDate("dataPrenotazione"));
+				bean.setData(rs.getString("dataPrenotazione"));
 				bean.setFasciaOraria(rs.getString("fasciaOraria"));
 				bean.setId(rs.getInt("id"));
 				bean.setQr(rs.getString("qr"));
@@ -103,7 +103,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("doSave" + statement);
-			statement.setDate(1, bean.getData());
+			statement.setString(1, bean.getData());
 			statement.setString(2, bean.getFasciaOraria());
 			statement.setString(3, bean.getQr());
 			statement.setString(4, bean.getUtenteEmail());

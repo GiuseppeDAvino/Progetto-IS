@@ -123,9 +123,5 @@ SELECT * FROM postazione p where 2 NOT IN(
 
 select *from categoria
 
-SELECT p.nome, (p.quantita-(
-SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
-	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId 
-		AND pr.dataPrenotazione='12/02/2020' AND pr.fasciaOraria='16/18')) as quantitaDisponibile
-    FROM periferica p
-    
+INSERT INTO periferica VALUES ('tastiera','k65','2','2')
+INSERT INTO periferica VALUES ('mouse','g05','2','2')

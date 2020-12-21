@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class PrenotazioneBean {
 	private int id;
-	private Date data;
+	private String data;
 	private String fasciaOraria;
 	private String qr;
 	private String utenteEmail;
@@ -15,7 +15,7 @@ public class PrenotazioneBean {
 		super();
 	}
 
-	public PrenotazioneBean(int id, Date data, String fasciaOraria, String qr, String utenteEmail, int postazioneId,
+	public PrenotazioneBean(int id, String data, String fasciaOraria, String qr, String utenteEmail, int postazioneId,
 			float prezzo) {
 		super();
 		this.id = id;
@@ -35,11 +35,11 @@ public class PrenotazioneBean {
 		this.id = id;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

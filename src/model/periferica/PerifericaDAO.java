@@ -167,7 +167,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * 
 	 * @return ArrayList contenente {@link PerifericaBean} con quantità disponibile in quel momento >0 
 	 * */
-	public Collection<PerifericaBean> perifericheDisponibili(Date data,String fasciaOraria) throws SQLException {
+	public Collection<PerifericaBean> perifericheDisponibili(String data,String fasciaOraria) throws SQLException {
 		String sql="SELECT p.nome, (p.quantita-(\r\n" + 
 				"SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp\r\n" + 
 				"	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId \r\n" + 
@@ -176,7 +176,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 		ArrayList<PerifericaBean> collection=new ArrayList<PerifericaBean>();
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
-			statement.setDate(1, data);
+			statement.setString(1, data);
 			statement.setString(2, fasciaOraria);
 			System.out.println("perifericheDisponibili"+statement);
 			ResultSet rs=statement.executeQuery();
