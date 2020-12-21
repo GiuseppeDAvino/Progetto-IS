@@ -26,6 +26,11 @@ public class EliminaPostazione extends HttpServlet {
     }
 
 
+    /**
+	 * Permette di eliminare una postazione prendendo la chiave dal bottone corrispettivo alla postazione
+	 * Se la postazione è stata prenotata almeno una volta viene disattivata 
+	 * Se la postazione non è stata mai prenotata viene eliminata
+	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostazioneBean postazione = new PostazioneBean();
 		postazione.setId(Integer.parseInt(request.getParameter("id")));

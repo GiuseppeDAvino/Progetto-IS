@@ -29,6 +29,10 @@ public class ModificaCategoria extends HttpServlet {
         super();
     }
 
+    
+    /**
+	 * Permette di modificare una categoria esistente prendendo dati dal form
+	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategoriaBean categoria = new CategoriaBean();
 		categoria.setNome(request.getParameter("nome"));

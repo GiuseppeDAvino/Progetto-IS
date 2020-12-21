@@ -24,10 +24,7 @@ INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
 */
 
 
-/*SELECT PER LA LISTA DI UTENTI IN ORDINE DI NUMERO DI PRENOTAZIONI
-select u.email,u.nome,u.cognome,u.username from utente u,prenotazione p where u.email=p.utenteEmail order by(
-	Select count(*) from utente u,prenotazione p where u.email=p.utenteEmail group by u.email)
-*/
+
 CREATE TABLE utente(
     email VARCHAR(30) PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
@@ -40,11 +37,8 @@ CREATE TABLE utente(
     codiceVerifica char(7),
     immagine VARCHAR(MAX)
 )
-0111000001110010011000100001010
-0111010001101001011101000110111101101100011000010111001001100101 
-/*
-    INSERT INTO utente VALUES('titolare1@titolare.com','Titolare','Provino','Provola',0111000001110010011000100001010,'titolare','true','1548763')
-*/
+
+
 SELECT*FROM utente
 
 Delete from utente where email='titolare1@titolare.com'
@@ -128,3 +122,10 @@ SELECT * FROM postazione p where 2 NOT IN(
 
 
 select *from categoria
+
+SELECT p.nome, (p.quantita-(
+SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
+	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId 
+		AND pr.dataPrenotazione='12/02/2020' AND pr.fasciaOraria='16/18')) as quantitaDisponibile
+    FROM periferica p
+    

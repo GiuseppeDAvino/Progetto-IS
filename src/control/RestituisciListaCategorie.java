@@ -30,6 +30,9 @@ public class RestituisciListaCategorie extends HttpServlet {
        
     }
 
+    /**
+     * Restituisce una lista di categorie all'interno di un file json
+     * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

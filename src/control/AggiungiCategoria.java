@@ -27,7 +27,11 @@ public class AggiungiCategoria extends HttpServlet {
 	public AggiungiCategoria() {
 		super();
 	}
+	
 
+	/**
+	 * Permette di aggiungere una categoria prendendo i dati dal form per l'inserimento di una categoria
+	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CategoriaBean categoria = new CategoriaBean();

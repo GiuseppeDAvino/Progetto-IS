@@ -26,6 +26,10 @@ public class AggiungiPostazione extends HttpServlet {
 		super();
 	}
 
+	
+	/**
+	 * Permette di aggiungere una postazione prendendo i dati dal form per l'inserimento di una postazione
+	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

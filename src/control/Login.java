@@ -27,6 +27,10 @@ public class Login extends HttpServlet {
 
 	}
 
+	/**
+	 * Permette di effettuare il login prendendo i dati dal form di login controllando i campi e restituendo errori nel caso siano errati
+	 * Nel caso di dati corretti inserisce i dati nella sessione
+	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);

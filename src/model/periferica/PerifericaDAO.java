@@ -154,9 +154,40 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			statement.setString(1, chiave);
 			System.out.println("doDelete=" + statement);
-			statement.executeQuery();
+			statement.executeUpdate();
 			con.commit();
 		}
 	}
 
+	/**
+	 * @category Restituisce le periferiche disponibili in una certa data ad una certa ora
+	 * 
+	 * @param data data della prenotazione
+	 * @param fasciaOraria fascia oraria della prenotazione
+	 * 
+	 * @return ArrayList contenente {@link PerifericaBean} con quantità disponibile in quel momento >0 
+	 * */
+	public Collection<PerifericaBean> perifericheDisponibili(Date data,String fasciaOraria) throws SQLException {
+		String sql="SELECT p.nome, (p.quantita-(\r\n" + 
+				"SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp\r\n" + 
+				"	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId \r\n" + 
+				"		AND pr.dataPrenotazione='?' AND pr.fasciaOraria='?')) as quantitaDisponibile\r\n" + 
+				"    FROM periferica p";
+		ArrayList<PerifericaBean> collection=new ArrayList<PerifericaBean>();
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql)) {
+			statement.setDate(1, data);
+			statement.setString(2, fasciaOraria);
+			System.out.println("perifericheDisponibili"+statement);
+			ResultSet rs=statement.executeQuery();
+			while(rs.next()) {
+				PerifericaBean bean=new PerifericaBean();
+				bean.setNome(rs.getString("nome"));
+				bean.setQuantita(rs.getInt("quantitaDisponibile"));
+				if(bean.getQuantita()>0)
+					collection.add(bean);
+			}
+		} 
+		return collection;
+	}
 }
