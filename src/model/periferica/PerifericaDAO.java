@@ -121,7 +121,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
 	 * @category permette di aggiornare una periferica
 	 * 
-	 * @param chiave è la chiave per selezionare la riga da aggiornare
+	 * @param chiave ï¿½ la chiave per selezionare la riga da aggiornare
 	 */
 	@Override
 	public void doUpdate(PerifericaBean bean, String nome) throws SQLException {
@@ -144,7 +144,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
 	 * @category permette di eliminare una periferica dal database
 	 * 
-	 * @param chiave è la chiave per selezionare la riga da eliminare
+	 * @param chiave ï¿½ la chiave per selezionare la riga da eliminare
 	 */
 	@Override
 	public void doDelete(String chiave) throws SQLException {
@@ -165,13 +165,13 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param data data della prenotazione
 	 * @param fasciaOraria fascia oraria della prenotazione
 	 * 
-	 * @return ArrayList contenente {@link PerifericaBean} con quantità disponibile in quel momento >0 
+	 * @return ArrayList contenente {@link PerifericaBean} con quantitï¿½ disponibile in quel momento >0 
 	 * */
 	public Collection<PerifericaBean> perifericheDisponibili(String data,String fasciaOraria) throws SQLException {
 		String sql="SELECT p.nome, (p.quantita-(\r\n" + 
 				"SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp\r\n" + 
 				"	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId \r\n" + 
-				"		AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)) as quantitaDisponibile\r\n" + 
+				"		AND pr.dataPrenotazione='?' AND pr.fasciaOraria='?')) as quantitaDisponibile, p.tipo,p.prezzo\r\n" + 
 				"    FROM periferica p";
 		ArrayList<PerifericaBean> collection=new ArrayList<PerifericaBean>();
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -184,6 +184,8 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				PerifericaBean bean=new PerifericaBean();
 				bean.setNome(rs.getString("nome"));
 				bean.setQuantita(rs.getInt("quantitaDisponibile"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				bean.setTipo(rs.getString("tipo"));
 				if(bean.getQuantita()>0)
 					collection.add(bean);
 			}

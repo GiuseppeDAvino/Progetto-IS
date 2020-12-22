@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import model.ModelInterface;
+import model.categoria.CategoriaBean;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
@@ -72,8 +73,8 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 */
 	
 	public Collection<PostazioneBean> doRetrieveAllLibere(Date data, String fasciaOraria) throws SQLException {
-		String sql = "select*from postazione p where p.isDisponibile=TRUE AND p.id NOT IN(select postazione.id from postazione p,prenotazione pr where\r\n" + 
-				"	p.id=pr.postazioneId AND pr.data=? AND pr.fasciaOraria=?)";
+		String sql = "SELECT*FROM postazione p WHERE p.isDisponibile=1 AND p.id NOT IN(SELECT postazione.id FROM postazione p,prenotazione pr WHERE\r\n" + 
+				"p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
 		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -186,6 +187,38 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				return true;
 		}
 		return false;
+	}
+	/**
+	 * @category Ritorna una postazione libera che ha un certo nome di categoria
+	 * 
+	 * @param categoria categoria da cui prendere il nome
+	 * 
+	 * @param data data da prenotare
+	 * @param fasciaOraria fascia oraria da prenotare
+	 * */
+	 
+	public PostazioneBean postazioneLiberaCategoria(CategoriaBean categoria,String data,String fasciaOraria)  throws SQLException{
+		PostazioneBean postazione=new PostazioneBean();
+		String sql="SELECT * FROM postazione p,categoria c \r\n" + 
+				"            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND p.id NOT IN(\r\n" + 
+				"                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n" + 
+				"				    p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
+		
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("postazioneLiberaCategoria" + statement);
+			statement.setString(1, categoria.getNome());
+			statement.setString(2, data);
+			statement.setString(3, fasciaOraria);
+			ResultSet rs=statement.executeQuery();
+			
+			while(rs.next()) {
+				postazione.setId(rs.getInt("id"));
+				postazione.setCategoria(rs.getString("categoria"));
+				postazione.setDisponibile(rs.getBoolean("isDisponibile"));
+			}
+		}
+		return postazione;
 	}
 
 

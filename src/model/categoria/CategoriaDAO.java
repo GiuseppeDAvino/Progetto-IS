@@ -138,5 +138,44 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 		}
 
 	}
+	
+	/**
+	 * @category Permette di recuperare le categorie aventi almeno una postazione libera in una certa 
+	 * 
+	 * @param data data della prenotazione
+	 * 
+	 * @param fasciaOraria fascia oraria della prenotazione
+	 * 
+	 * @param tipoGenerico tipo della categoria
+	 * */
+	public Collection<CategoriaBean> categorieConPostazioniLibere(String data,String fasciaOraria,String tipoGenerico) throws SQLException {
+		String sql=" SELECT * FROM postazione p, categoria c \r\n" + 
+				"            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico=? AND p.id NOT IN(\r\n" + 
+				"                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n" + 
+				"				    p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
+		ArrayList<CategoriaBean> collection = new ArrayList<CategoriaBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+				statement.setString(1, tipoGenerico);
+				statement.setString(2, data);
+				statement.setString(3,fasciaOraria);
+			System.out.println("categorieConPostazioniLibere"+statement);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				CategoriaBean bean = new CategoriaBean();
+
+				bean.setNome(rs.getString("nome"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				bean.setTipoGenerico(rs.getString("tipoGenerico"));
+				bean.setImmagine(rs.getString("immagine"));
+				collection.add(bean);
+			}
+		}
+		return collection;
+		
+	}
 
 }
