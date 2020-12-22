@@ -5,13 +5,13 @@
 var session;
 
 $(document).ready(function() {
-	getTipiGenerici();
+	getDettagliCategoria();
 	session=$('#session').val();
 
 });
 
 // Questa funzione restituisce al titolare la lista delle periferiche presenti
-function getTipiGenerici(){
+function getDettagliCategoria(){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.status == 200 && xhr.readyState == 4) {
@@ -19,11 +19,11 @@ function getTipiGenerici(){
 			console.log(data);
 			
 			for(var i = 0; i <data.length; i++){
-				//Giuseppe qui devi aggiungere il front end
-				$('#tipoGenerico').append("<option value='"+data[i].tipoGenerico+"'>" + data[i].tipoGenerico +"</option>");
+				$('body').append("Nome:" + data[i].nome + ", Tipo generico:" + data[i].tipo + ", descrizione:" + data[i].descrizione + "prezzo:" + data[i].prezzo);
 			}
 		}
 	}
-	xhr.open('GET','../RestituisciTipiGenerici;jsessionid='+session, true);
+	xhr.open('GET','../DettagliCategoria;jsessionid='+session, true);
 	xhr.send();
+
 }

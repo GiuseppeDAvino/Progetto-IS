@@ -18,8 +18,7 @@ import model.categoria.CategoriaDAO;
 @WebServlet(urlPatterns = {"/RestituisciCategoria","/titolare/RestituisciCategoria"})
 public class RestituisciCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CategoriaDAO categoriaDAO = new CategoriaDAO();
-	private Gson gson = new Gson();
+ 
     public RestituisciCategoria() {
         super();
 
@@ -30,18 +29,8 @@ public class RestituisciCategoria extends HttpServlet {
 	 * Restituisce una categoria in un file json
 	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		try {
-			CategoriaBean categoria = categoriaDAO.doRetrieveByKey(request.getParameter("nome"));
-			
-			String string = gson.toJson(categoria);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		System.out.println("AOOOOOOOOO" + request.getParameter("nome"));
+		String nome = (String) request.getParameter("nome");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

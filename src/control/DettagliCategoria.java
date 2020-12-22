@@ -2,7 +2,6 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,39 +15,33 @@ import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 
 
-@WebServlet(urlPatterns = {"/RestituisciListaCategorieLibere","/titolare/RestituisciListaCategorieLibere"})
-public class RestituisciListaCategorieLibere extends HttpServlet {
+@WebServlet(urlPatterns = {"/DettagliCategoria","/titolare/DettagliCategoria"})
+public class DettagliCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	private CategoriaDAO categoriaDAO = new CategoriaDAO();
-	private Gson gson = new Gson();
-	
-    public RestituisciListaCategorieLibere() {
+	private Gson gson = new Gson();   
+
+    public DettagliCategoria() {
         super();
 
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-
+	
+		String nome = (String) request.getParameter("nome");
 		try {
-			
-			ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.categorieConPostazioniLibere(request.getParameter("data"), request.getParameter("fasciaOraria"), request.getParameter("tipoGenerico"));
-			
-			String string = gson.toJson(categorie);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		}
-		catch(SQLException e) {
+			CategoriaBean categoria = categoriaDAO.doRetrieveByKey(nome);
+			request.getSession().setAttribute("categoria", categoria);
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/titolare/dettagliCategoria.jsp"));
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 
