@@ -26,6 +26,6 @@ function getPerifericheLibere(){
 		}
 	}
 	var params = "data="+d+"&fasciaOraria="+f;
-	xhr.open('POST','../RestituisciListaPerifericheLibere?'+params+';jsessionid='+session, true);
+	xhr.open('POST','../RestituisciListaPerifericheLibere;jsessionid='+session+'?'+params, true);
 	xhr.send();
 }
