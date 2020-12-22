@@ -178,4 +178,24 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 		
 	}
 
+	public Collection<CategoriaBean> doRetrieveAllTipiGenerici() throws SQLException {
+
+		String sql = "SELECT DISTINCT tipoGenerico FROM categoria";
+
+		ArrayList<CategoriaBean> collection = new ArrayList<CategoriaBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+
+			System.out.println("DoRetriveAllTipiGenerici");
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				CategoriaBean bean = new CategoriaBean();
+				bean.setTipoGenerico(rs.getString("tipoGenerico"));
+				collection.add(bean);
+			}
+		}
+		return collection;
+	}
 }

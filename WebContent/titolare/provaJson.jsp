@@ -12,7 +12,8 @@
 <body>
 	<input type="hidden" value="<%=request.getSession().getId()%>" id="session">
 	<form method="post">
-		<input type="date" name="data">
+		<input id="data" type="date" name="data">
+		<input id="fasciaOraria" type="text" name="fasciaOraria">
 		<input type="button" onClick="getPerifericheLibere()" value="insert">
 	</form>
 </body>

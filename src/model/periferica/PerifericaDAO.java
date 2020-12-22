@@ -171,7 +171,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 		String sql="SELECT p.nome, (p.quantita-(\r\n" + 
 				"SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp\r\n" + 
 				"	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId \r\n" + 
-				"		AND pr.dataPrenotazione='?' AND pr.fasciaOraria='?')) as quantitaDisponibile, p.tipo,p.prezzo\r\n" + 
+				"		AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)) as quantitaDisponibile, p.tipo,p.prezzo\r\n" + 
 				"    FROM periferica p";
 		ArrayList<PerifericaBean> collection=new ArrayList<PerifericaBean>();
 		try (Connection con = DriverManagerConnectionPool.getConnection();

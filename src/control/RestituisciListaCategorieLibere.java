@@ -2,11 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,33 +12,34 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import model.periferica.PerifericaBean;
-import model.periferica.PerifericaDAO;
+import model.categoria.CategoriaBean;
+import model.categoria.CategoriaDAO;
 
 
-@WebServlet(urlPatterns = {"/RestituisciListaPerifericheLibere","/titolare/RestituisciListaPerifericheLibere"})
-public class RestituisciListaPerifericheLibere extends HttpServlet {
+@WebServlet(urlPatterns = {"/RestituisciListaCategorieLibere","/titolare/RestituisciListaCategorieLibere"})
+public class RestituisciListaCategorieLibere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PerifericaDAO perifericaDAO = new PerifericaDAO();
+	
+	private CategoriaDAO categoriaDAO = new CategoriaDAO();
 	private Gson gson = new Gson();
-       
-
-    public RestituisciListaPerifericheLibere() {
+	
+    public RestituisciListaCategorieLibere() {
         super();
-  
+
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		System.out.println(request.getParameter("data"));
-		System.out.println(request.getParameter("fasciaOraria"));
 		try {
+			System.out.println(request.getParameter("data"));
+			System.out.println(request.getParameter("fasciaOraria"));
+			System.out.println(request.getParameter("tipoGenerico"));
 			
-			ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.perifericheDisponibili(request.getParameter("data"), request.getParameter("fasciaOraria"));
+			ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.categorieConPostazioniLibere(request.getParameter("data"), request.getParameter("fasciaOraria"), request.getParameter("tipoGenerico"));
 			
-			String string = gson.toJson(periferiche);
+			String string = gson.toJson(categorie);
 			response.getWriter().print(string);
 			response.getWriter().flush();
 			response.setStatus(200);
