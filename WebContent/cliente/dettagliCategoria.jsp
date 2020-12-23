@@ -27,17 +27,21 @@
 	<br>
 	------------------------------------------------------<br>
 	Aggiungere almeno una periferica per effettuare la prenotazione
-	<%=session.getAttribute("data")%>
 	
 	<div id="periferiche">
 	</div>
 	
+	<br>
+	<br>
+	<br><br>
+	<br>
+	------------------------------------------------------<br>
+	Prezzo totale prenotazione dopo aver selezionato almeno una perifericaù
 	
-	
-	
-
-
-
-	<div id="dettagli"></div>
+	<div id="prezzoTotale">
+	</div>
+	<form action="../Prenota" method="post">
+	<input type="submit" value="submit">
+	</form>
 </body>
 </html>

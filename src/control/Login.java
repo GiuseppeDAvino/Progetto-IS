@@ -34,6 +34,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		
 		try {
 			UtenteBean utente = utenteDAO.doRetrieveByKey(request.getParameter("email"));
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -50,11 +51,10 @@ public class Login extends HttpServlet {
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Login.jsp"));
 			} else if (Arrays.compare(curr, user) == 0) {
 				session.setAttribute("utente", utente);
-
 				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
 				session.setAttribute("errorLocation", null);
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/titolare/provaListaCategorieLibere.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/provaListaCategorieLibere.jsp"));
 
 			} else {
 				session.setAttribute("errorType", "wrongCred");

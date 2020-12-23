@@ -200,7 +200,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	public PostazioneBean postazioneLiberaCategoria(CategoriaBean categoria,String data,String fasciaOraria)  throws SQLException{
 		PostazioneBean postazione=new PostazioneBean();
 		String sql="SELECT * FROM postazione p,categoria c \r\n" + 
-				"            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND p.id NOT IN(\r\n" + 
+				"            WHERE p.isDisponibile=1 AND p.nomeCategoria=? AND p.id NOT IN(\r\n" + 
 				"                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n" + 
 				"				    p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
 		
@@ -214,7 +214,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			
 			while(rs.next()) {
 				postazione.setId(rs.getInt("id"));
-				postazione.setCategoria(rs.getString("categoria"));
+				postazione.setCategoria(rs.getString("nomeCategoria"));
 				postazione.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
 		}
