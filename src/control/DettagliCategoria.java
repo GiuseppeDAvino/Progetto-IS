@@ -15,7 +15,7 @@ import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 
 
-@WebServlet(urlPatterns = {"/DettagliCategoria","/titolare/DettagliCategoria"})
+@WebServlet(urlPatterns = {"/DettagliCategoria","/cliente/DettagliCategoria"})
 public class DettagliCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoriaDAO categoriaDAO = new CategoriaDAO();
@@ -34,7 +34,7 @@ public class DettagliCategoria extends HttpServlet {
 		try {
 			CategoriaBean categoria = categoriaDAO.doRetrieveByKey(nome);
 			request.getSession().setAttribute("categoria", categoria);
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/titolare/dettagliCategoria.jsp"));
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/dettagliCategoria.jsp"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

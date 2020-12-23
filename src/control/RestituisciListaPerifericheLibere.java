@@ -20,7 +20,7 @@ import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 
 
-@WebServlet(urlPatterns = {"/RestituisciListaPerifericheLibere","/titolare/RestituisciListaPerifericheLibere"})
+@WebServlet(urlPatterns = {"/RestituisciListaPerifericheLibere","/cliente/RestituisciListaPerifericheLibere"})
 public class RestituisciListaPerifericheLibere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PerifericaDAO perifericaDAO = new PerifericaDAO();
