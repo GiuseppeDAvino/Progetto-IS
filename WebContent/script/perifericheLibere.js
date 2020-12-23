@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 var session;
 
@@ -18,7 +15,6 @@ function getPerifericheLibere(){
 		if (xhr.status == 200 && xhr.readyState == 4) {
 			let data = JSON.parse(xhr.responseText);
 			console.log(data);
-			alert("KTM");
 			for(var i = 0; i <data.length; i++){
 				//Giuseppe qui devi aggiungere il front end
 				$('#periferiche').append("<h1>" + data[i].nome +" "+ data[i].tipo +" "+ data[i].quantita +" "+ data[i].prezzo + "</h1>");

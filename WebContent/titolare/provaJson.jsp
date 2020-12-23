@@ -16,5 +16,8 @@
 		<input id="fasciaOraria" type="text" name="fasciaOraria">
 		<input type="button" onClick="getPerifericheLibere()" value="insert">
 	</form>
+	 <table id="periferiche">
+	
+	</table>
 </body>
 </html>

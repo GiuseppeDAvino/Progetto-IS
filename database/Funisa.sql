@@ -95,7 +95,6 @@ CREATE TABLE postazione(
 INSERT INTO postazione(nomeCategoria) VALUES('Oculus')
 INSERT INTO postazione(nomeCategoria) VALUES('PC fascia alta')
 
-
 CREATE TABLE prenotazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
     dataPrenotazione DATE NOT NULL,
@@ -128,29 +127,28 @@ CREATE TABLE prenotazione_periferica(
     FOREIGN KEY(prenotazioneId) REFERENCES prenotazione(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY(perifericaNome) REFERENCES periferica(nome) ON DELETE CASCADE ON UPDATE CASCADE
 )
-
+INSERT INTO prenotazione_periferica VALUES(2,'g05')
 
 SELECT * FROM postazione p where 2 NOT IN(
 	SELECT pr.postazioneId FROM prenotazione pr)
 
 
-select *from categoria
-/*
+select *from prenotazione_periferica
+/* PERIFERICE CON LA QUANTITA DISPONIBILE
 SELECT p.nome, (p.quantita-(
 SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
 	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId 
-		AND pr.dataPrenotazione='12/02/2020' AND pr.fasciaOraria='16/18')) as quantitaDisponibile,p.tipo
+		AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')) as quantitaDisponibile,p.tipo
     FROM periferica p
  */
- INSERT INTO periferica VALUES ('tastiera','k65','2','2')
-INSERT INTO periferica VALUES ('mouse','g05','2','2')
+
 
 
 /*
 
 
  SELECT * FROM postazione p, categoria c 
-            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico='VR' AND p.id NOT IN(
+            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico='PC' AND p.id NOT IN(
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')
 */
@@ -163,3 +161,6 @@ select * from categoria
             WHERE p.isDisponibile=1 AND p.id NOT IN(
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')*/
+
+SELECT * FROM postazione p WHERE p.isDisponibile=1 AND p.nomeCategoria='PC' AND p.id NOT IN(
+SELECT p.id FROM postazione p,prenotazione pr WHERE  p.id=pr.postazioneId AND pr.dataPrenotazione='2021-02-12' AND pr.fasciaOraria='12/14')
