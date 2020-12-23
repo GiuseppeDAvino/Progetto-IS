@@ -52,9 +52,9 @@ public class Filtro implements Filter {
 			if (user != null && user.getRuolo().name().equals(tipoUtente))
 				chain.doFilter(sRequest, sResponse);
 			else if (user == null)
-				hResponse.sendRedirect(hResponse.encodeRedirectURL(hRequest.getContextPath() + "/Login.jsp"));
+				hResponse.sendRedirect(hResponse.encodeRedirectURL(hRequest.getContextPath() + "/login.jsp"));
 			else
-				hResponse.sendRedirect(hResponse.encodeRedirectURL(hRequest.getContextPath() + "/Index.jsp"));
+				hResponse.sendRedirect(hResponse.encodeRedirectURL(hRequest.getContextPath() + "/index.jsp"));
 		}
 	}
 

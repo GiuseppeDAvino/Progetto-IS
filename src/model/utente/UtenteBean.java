@@ -12,7 +12,7 @@ public class UtenteBean {
 	private Ruolo ruolo;
 
 	public enum Ruolo {
-		cliente, titolare, gestore
+		cliente, titolare, gestore,
 	};
 
 	private boolean stato;
