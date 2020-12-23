@@ -8,7 +8,7 @@ $(document).ready(function() {
 	session=$('#session').val();
 });
 
-// Questa funzione restituisce al titolare la lista delle periferiche presenti
+// Questa funzione restituisce all'utente la lista delle categorie di postazioni libere per la data, la fascia oraria e il tipo generico inserito.
 function getCategorieLibere(){
 	var d = $('#data').val().toString();
 	var f = $('#fasciaOraria').val();

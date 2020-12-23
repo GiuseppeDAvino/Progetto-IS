@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 });
 
-// Questa funzione restituisce al titolare la lista delle periferiche presenti
+// Questa funzione restituisce al titolare la lista delle categorie delle postazioni
 function getPostazioni(){
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {

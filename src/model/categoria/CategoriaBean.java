@@ -7,7 +7,7 @@ package model.categoria;
  * @param tipoGenerico il tipo generico della categoria, ad esempio "PC"
  * @param descrizione  una descrizione della categoria
  * @param prezzo       il prezzo della postazione con questa categoria
- * 
+ * @param immagine      l'immagine della postazione con questa categoria
  */
 public class CategoriaBean {
 	private String nome;

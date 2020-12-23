@@ -15,7 +15,7 @@
 	<form method="post">
 		<input id="data" type="date" name="data">
 		<input id="fasciaOraria" type="text" name="fasciaOraria">
-  		<select id="tipoGenerico" name="Selezione un Tipo Generico">
+  		<select id="tipoGenerico" name="tipoGenerico">
  		</select>
 		<input type="button" onClick="getCategorieLibere()" value="insert">
 	</form>
