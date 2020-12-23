@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="../script/perifericheLibere.js"></script>
@@ -16,5 +16,8 @@
 		<input id="fasciaOraria" type="text" name="fasciaOraria">
 		<input type="button" onClick="getPerifericheLibere()" value="insert">
 	</form>
+	 <table id="periferiche">
+	
+	</table>
 </body>
 </html>
