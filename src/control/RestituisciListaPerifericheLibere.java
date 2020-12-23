@@ -41,8 +41,12 @@ public class RestituisciListaPerifericheLibere extends HttpServlet {
 			String data = (String) request.getSession().getAttribute("data");
 			String fasciaOraria = (String) request.getSession().getAttribute("fasciaOraria");
 			ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.perifericheDisponibili(data, fasciaOraria);
+			ArrayList<String> tipi=(ArrayList<String>)perifericaDAO.doRetrieveAllTipi();
 			
-			String string = gson.toJson(periferiche);
+			ArrayList<ArrayList<?>> array= new ArrayList<ArrayList<?>>();
+			array.add(periferiche);
+			array.add(tipi);
+			String string = gson.toJson(array);
 			response.getWriter().print(string);
 			response.getWriter().flush();
 			response.setStatus(200);

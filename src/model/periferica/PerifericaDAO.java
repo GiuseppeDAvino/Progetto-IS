@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import model.ModelInterface;
+import model.categoria.CategoriaBean;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
@@ -191,6 +192,27 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 					collection.add(bean);
 			}
 		} 
+		return collection;
+	}
+	
+	public Collection<String> doRetrieveAllTipi() throws SQLException {
+
+		String sql = "SELECT DISTINCT tipo FROM periferica";
+
+		ArrayList<String> collection = new ArrayList<String>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+
+			System.out.println("DoRetriveAllTipiGenerici");
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				PerifericaBean bean = new PerifericaBean();
+				bean.setTipo(rs.getString("tipo"));
+				collection.add(bean.getTipo());
+			}
+		}
 		return collection;
 	}
 }

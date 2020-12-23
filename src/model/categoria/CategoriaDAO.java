@@ -199,3 +199,5 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 		return collection;
 	}
 }
+
+

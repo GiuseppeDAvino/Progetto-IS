@@ -1,13 +1,13 @@
 /**
  * 
  */
-
+/*
 var session;
 
 $(document).ready(function() {
 	session=$('#session').val();
 });
-
+*/
 // Questa funzione restituisce all'utente la lista delle categorie di postazioni libere per la data, la fascia oraria e il tipo generico inserito.
 function getCategorieLibere(){
 	var d = $('#data').val().toString();
