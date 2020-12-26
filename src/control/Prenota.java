@@ -34,10 +34,11 @@ public class Prenota extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
-		if (!isInSessionUtente(utente))
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Login.jsp"));
-		else if (!isCliente(utente))
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Index.jsp"));
+
+		if(!isInSessionUtente(utente)) 
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
+		else if(!isCliente(utente)) 
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
 
 		else {
 			CategoriaBean categoria = (CategoriaBean) request.getSession().getAttribute("categoria");
@@ -54,10 +55,13 @@ public class Prenota extends HttpServlet {
 				prenotazione.setPostazioneId(
 						postazioneDAO.postazioneLiberaCategoria(categoria, data, fasciaOraria).getId());
 				prenotazione.setPrezzo(calcolaPrezzo(categoria, periferiche));
+				System.out.println(prenotazione.getPrezzo());
 				prenotazione.setQr(""); // TODO gestire il QRcode
-				System.out.println("PROVA PRENOTAZIONE" + prenotazione.getUtenteEmail());
 				// prenotazione con l'aggiunta di almeno di una periferica
-				// prenotazioneDAO.prenotaConPeriferiche(prenotazione, periferiche);
+				prenotazioneDAO.prenotaConPeriferiche(prenotazione, periferiche);
+				ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) prenotazioneDAO.doRetrieveAll();
+				PrenotazioneBean bean = prenotazioni.get(prenotazioni.size() - 1);
+				request.getSession().setAttribute("prenotazione",bean);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -84,7 +88,11 @@ public class Prenota extends HttpServlet {
 
 			for (String s : tipi) {
 				periferiche.add(perifericaDAO.doRetrieveByKey(request.getParameter(s)));
+				System.out.println("request " + request.getParameter(s));
 			}
+			
+			for(PerifericaBean p: periferiche)
+				System.out.println("periferica " + p);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

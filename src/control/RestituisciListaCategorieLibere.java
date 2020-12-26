@@ -16,7 +16,7 @@ import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 
 
-@WebServlet(urlPatterns = {"/RestituisciListaCategorieLibere","/cliente/RestituisciListaCategorieLibere"})
+@WebServlet("/RestituisciListaCategorieLibere")
 public class RestituisciListaCategorieLibere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

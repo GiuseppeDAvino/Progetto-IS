@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="../script/perifericheLibere.js"></script>
+<script src="script/perifericheLibere.js"></script>
 
 <%
 	CategoriaBean categoria = (CategoriaBean) session.getAttribute("categoria");
@@ -27,7 +27,7 @@
 	<div id="prezzoTotale">
 		<h1 id="prezzo"></h1>
 	</div>
-	<form action="../Prenota" method="post" id="form">
+	<form action="Prenota" method="post" id="form">
 		<input type="submit" value="submit">
 	</form>
 </body>

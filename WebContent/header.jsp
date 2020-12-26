@@ -76,7 +76,7 @@ if (utente != null)
 								if (utente == null || ruolo.equals("cliente")) {
 							%>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=response.encodeURL("/Funisa/prenota.jsp")%>">Prenota</a>
+								href="<%=response.encodeURL("/Funisa/provaListaCategorieLibere.jsp")%>">Prenota</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=response.encodeURL("/Funisa/recensione.jsp")%>">Recensisci</a>

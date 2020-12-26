@@ -48,19 +48,19 @@ public class Login extends HttpServlet {
 				session.setAttribute("error", "Email non presente nel database");
 				session.setAttribute("errorLocation", "login");
 
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Login.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			} else if (Arrays.compare(curr, user) == 0) {
 				session.setAttribute("utente", utente);
 				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
 				session.setAttribute("errorLocation", null);
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/provaListaCategorieLibere.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
 
 			} else {
 				session.setAttribute("errorType", "wrongCred");
 				session.setAttribute("error", "Password errata");
 				session.setAttribute("errorLocation", "login");
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/Login.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

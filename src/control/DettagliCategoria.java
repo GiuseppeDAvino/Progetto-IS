@@ -9,17 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 
 import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 
 
-@WebServlet(urlPatterns = {"/DettagliCategoria","/cliente/DettagliCategoria"})
+@WebServlet("/DettagliCategoria")
 public class DettagliCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CategoriaDAO categoriaDAO = new CategoriaDAO();
-	private Gson gson = new Gson();   
+	private CategoriaDAO categoriaDAO = new CategoriaDAO();  
 
     public DettagliCategoria() {
         super();
@@ -34,7 +32,7 @@ public class DettagliCategoria extends HttpServlet {
 		try {
 			CategoriaBean categoria = categoriaDAO.doRetrieveByKey(nome);
 			request.getSession().setAttribute("categoria", categoria);
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/dettagliCategoria.jsp"));
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

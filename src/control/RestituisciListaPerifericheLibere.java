@@ -2,9 +2,6 @@ package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -20,7 +17,7 @@ import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 
 
-@WebServlet(urlPatterns = {"/RestituisciListaPerifericheLibere","/cliente/RestituisciListaPerifericheLibere"})
+@WebServlet("/RestituisciListaPerifericheLibere")
 public class RestituisciListaPerifericheLibere extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PerifericaDAO perifericaDAO = new PerifericaDAO();

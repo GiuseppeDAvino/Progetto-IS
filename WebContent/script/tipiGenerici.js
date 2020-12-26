@@ -24,6 +24,6 @@ function getTipiGenerici(){
 			}
 		}
 	}
-	xhr.open('GET','../RestituisciTipiGenerici;jsessionid='+session, true);
+	xhr.open('GET','RestituisciTipiGenerici;jsessionid='+session, true);
 	xhr.send();
 }

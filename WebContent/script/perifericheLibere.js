@@ -21,7 +21,7 @@ function getPerifericheLibere(){
 			}
 			for (var i = 0; i < data[0].length; i++) {
 				var tipo=data[0][i].tipo;
-				$('#'+tipo).append("<option value="+data[0][i].prezzo+">"+data[0][i].nome+"</option>");
+				$('#'+tipo).append("<option value=\'"+data[0][i].nome+"\'>"+data[0][i].nome+"</option>");
 			}
 			
 			/*
@@ -37,6 +37,6 @@ function getPerifericheLibere(){
 			*/
 		}
 	}
-	xhr.open('GET','../RestituisciListaPerifericheLibere;jsessionid='+session, true);
+	xhr.open('GET','RestituisciListaPerifericheLibere;jsessionid='+session, true);
 	xhr.send();
 }

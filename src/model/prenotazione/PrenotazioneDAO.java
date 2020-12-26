@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import model.ModelInterface;
 import model.connessione.DriverManagerConnectionPool;
+import model.notifica.NotificaBean;
 import model.periferica.PerifericaBean;
 import model.postazione.PostazioneBean;
 
@@ -149,12 +150,14 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	public void prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
 			throws SQLException {
 		doSave(prenotazione);
+		ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) doRetrieveAll();
+		PrenotazioneBean prenotazioneId = prenotazioni.get(prenotazioni.size() - 1);
 		String sql = "INSERT INTO prenotazione_periferica VALUES(?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			for (PerifericaBean perifericaBean : periferiche) {
 				System.out.println("addPeriferiche " + statement);
-				statement.setInt(1, prenotazione.getId());
+				statement.setInt(1, prenotazioneId.getId());
 				statement.setString(2, perifericaBean.getNome());
 				statement.executeUpdate();
 				con.commit();
