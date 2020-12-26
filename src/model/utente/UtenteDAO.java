@@ -270,6 +270,64 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 		}
 		return false;
 	}
+	
+	
+	
+	/**
+	 * @category Controlla se l'email e il codice corrispondono ad un utente nel
+	 *           db
+	 * 
+	 * @param email    email dell'utente
+	 * 
+	 * @param codiceVerifica codice dell'utente per la verifica
+	 * 
+	 * @return ritorna true se i parametri corrispondono ad un utente nel db, false
+	 *         altrimenti
+	 */
+	public boolean controllaEmailCodice(String email, String codiceVerifica) {
+		String sql = "SELECT * FROM utente WHERE email=? AND codiceVerifica=?";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			statement.setString(1, email);
+			statement.setString(2, codiceVerifica);
+			System.out.println("ControllaEmailPassword" + statement);
+			ResultSet rs = statement.executeQuery();
+			if (rs.next())
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	/**
+	 * @category permette di aggiornare l'utente all'interno del database <br>
+	 * 
+	 * @param bean  l'utente da cambiare
+	 * @param email l'email dell'utente da modificare
+	 * 
+	 */
+
+	public void changeState(String email) throws SQLException {
+		String sql = "UPDATE utente SET stato=?, codiceVerifica=? WHERE email=?";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+			PreparedStatement statement = con.prepareStatement(sql);) {
+
+			statement.setBoolean(1, true);
+			statement.setString(2, "");
+			statement.setString(3, email);
+			System.out.println("doUpdate=" + statement);
+			statement.executeUpdate();
+			con.commit();
+		}
+
+	}
+
+	
+	
 
 	/**
 	 * @category Controlla se l'email inserita esiste già nel db
