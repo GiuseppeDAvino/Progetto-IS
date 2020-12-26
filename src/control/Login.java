@@ -54,14 +54,20 @@ public class Login extends HttpServlet {
 				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
 				session.setAttribute("errorLocation", null);
+				
+					if((Integer)request.getSession().getAttribute("control")==1) {
+						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
+					} else 
+						
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
-
+					
 			} else {
 				session.setAttribute("errorType", "wrongCred");
 				session.setAttribute("error", "Password errata");
 				session.setAttribute("errorLocation", "login");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {

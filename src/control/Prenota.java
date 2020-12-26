@@ -35,11 +35,13 @@ public class Prenota extends HttpServlet {
 			throws ServletException, IOException {
 		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
 
-		if(!isInSessionUtente(utente)) 
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
+		if(!isInSessionUtente(utente)) {
+			int control=1;
+			request.getSession().setAttribute("control", control);
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp")); }
 		else if(!isCliente(utente)) 
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
-
+		
 		else {
 			CategoriaBean categoria = (CategoriaBean) request.getSession().getAttribute("categoria");
 			ArrayList<PerifericaBean> periferiche = getPerifericheFromForm(request);
