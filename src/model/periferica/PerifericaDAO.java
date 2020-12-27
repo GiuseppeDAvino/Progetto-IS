@@ -43,7 +43,6 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			}
 		}
 		return bean;
-
 	}
 
 	/**

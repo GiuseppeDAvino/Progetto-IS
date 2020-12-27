@@ -5,7 +5,13 @@ public class PerifericaBean {
 	private String nome;
 	private int quantita;
 	private float prezzo;
-
+	
+	public PerifericaBean(String tipo, String nome, int quantità, float prezzo) {
+		this.nome = nome;
+		this.tipo = tipo;
+		this.quantita = quantità;
+		this.prezzo = prezzo;
+	}
 	public PerifericaBean() {
 		this.tipo = "";
 		this.nome = "";
