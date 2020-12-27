@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
@@ -27,13 +28,18 @@ public class VerificaUtente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
 		String codiceVerifica = request.getParameter("codiceVerifica");
+		HttpSession session = request.getSession(false);
 		if(utenteDAO.controllaEmailCodice(utente.getEmail(), codiceVerifica)) {
 			try {
 				utenteDAO.changeState(utente.getEmail());
 				utente.setStato(true);
 				utente.setCodiceVerifica("");
 				request.getSession().setAttribute("utente", utente);
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
+				if((Integer) session.getAttribute("isPressedPrenota")==1) {
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
+				} 
+				else
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

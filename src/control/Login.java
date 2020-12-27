@@ -31,7 +31,7 @@ public class Login extends HttpServlet {
 	 * Permette di effettuare il login prendendo i dati dal form di login controllando i campi e restituendo errori nel caso siano errati
 	 * Nel caso di dati corretti inserisce i dati nella sessione
 	 * */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		
@@ -43,28 +43,27 @@ public class Login extends HttpServlet {
 			byte curr[] = md.digest(str.getBytes());
 			byte user[] = utente.getPassword();
 
-			if (utente.getEmail().equals("")) {
+			if (utenteDAO.doRetrieveByKey(request.getParameter("email")).getEmail().equals("")) {
 				session.setAttribute("errorType", "emailDB");
 				session.setAttribute("error", "Email non presente nel database");
-				session.setAttribute("errorLocation", "login");
 
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			} else if (Arrays.compare(curr, user) == 0) {
 				session.setAttribute("utente", utente);
 				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
-				session.setAttribute("errorLocation", null);
-				
-					if((Integer)request.getSession().getAttribute("control")==1) {
+				if(utente.isStato() == false) {
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
+				}
+				else if((Integer)session.getAttribute("isPressedPrenota")==1) {
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
-					} else 
-						
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
+					} 
+					else 
+						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
 					
 			} else {
 				session.setAttribute("errorType", "wrongCred");
 				session.setAttribute("error", "Password errata");
-				session.setAttribute("errorLocation", "login");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			}
 			
