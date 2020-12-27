@@ -1,4 +1,4 @@
-package Test;
+package inserimentiUtente;
 import java.sql.SQLException;
 
 import model.utente.UtenteBean;
@@ -13,14 +13,9 @@ public class ProvaInserimentoTitolare {
 		UtenteBean titolare=new UtenteBean("titolare@titolare.com", "Titolare", "cognome", "user", Ruolo.titolare, true,"12364","titolare");
 		UtenteBean cliente=new UtenteBean("cliente@cliente.com", "Cliente", "cognome", "user", Ruolo.cliente, true,"12364","cliente");
 		UtenteBean gestore=new UtenteBean("gestore@gestore.com", "Gestore", "cognome", "user", Ruolo.gestore, true,"12364","gestore");
-		try {
-			utenteDAO.doSave(titolare);
-			utenteDAO.doSave(cliente);
-			utenteDAO.doSave(gestore);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		utenteDAO.doSave(titolare);
+		utenteDAO.doSave(cliente);
+		utenteDAO.doSave(gestore);
 	}
 	
 }

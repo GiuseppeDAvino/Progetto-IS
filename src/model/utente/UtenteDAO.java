@@ -24,7 +24,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @param email l'e-mail dell'utente da ricercare
 	 */
 	@Override
-	public UtenteBean doRetrieveByKey(String email) throws SQLException {
+	public UtenteBean doRetrieveByKey(String email){
 		UtenteBean bean = new UtenteBean();
 		String sql = "SELECT * FROM utente WHERE email=?";
 
@@ -60,6 +60,10 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 
 			}
 			return bean;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
 
 	}
@@ -69,7 +73,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * 
 	 */
 	@Override
-	public Collection<UtenteBean> doRetrieveAll() throws SQLException {
+	public Collection<UtenteBean> doRetrieveAll(){
 		String sql = "SELECT * FROM utente";
 
 		ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>();
@@ -103,9 +107,14 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				}
 				collection.add(bean);
 			}
+			return collection;
 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return collection;
+		
 
 	}
 
@@ -113,7 +122,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @category ritorna tutti gli utenti in ordine di numero di prenotazioni
 	 * 
 	 */
-	public Collection<UtenteBean> doRetrieveAllPerPrenotazioni() throws SQLException {
+	public Collection<UtenteBean> doRetrieveAllPerPrenotazioni(){
 		String sql = "select u.email,u.nome,u.cognome,u.username from utente u,prenotazione p where u.email=p.utenteEmail order by(\r\n"
 				+ "	Select count(*) from utente u,prenotazione p where u.email=p.utenteEmail group by u.email)";
 
@@ -148,9 +157,13 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				}
 				collection.add(bean);
 			}
-
+			return collection;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return collection;
+		
 
 	}
 
@@ -159,7 +172,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * 
 	 */
 	@Override
-	public void doSave(UtenteBean bean) throws SQLException {
+	public boolean doSave(UtenteBean bean) {
 		String sql = "INSERT INTO utente VALUES(?,?,?,?,?,?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -176,6 +189,11 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -187,7 +205,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * 
 	 */
 	@Override
-	public void doUpdate(UtenteBean bean, String email) throws SQLException {
+	public boolean doUpdate(UtenteBean bean, String email){
 		String sql = "UPDATE utente SET nome=?,cognome=?,username=?,passw=?,ruolo=?,stato=?,codiceVerifica=?,immagine=? WHERE email=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -204,6 +222,11 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -214,7 +237,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @param email l'email dell'utente da cambiare
 	 */
 	@Override
-	public void doDelete(String email) throws SQLException {
+	public boolean doDelete(String email) {
 		String sql = "DELETE FROM utente WHERE email=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -223,6 +246,11 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -233,13 +261,20 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @param password la password da codificare
 	 */
 
-	private byte[] codificaPassword(String password) throws NoSuchAlgorithmException {
+	private byte[] codificaPassword(String password){
 
 		MessageDigest md;
-		md = MessageDigest.getInstance("SHA-256");
+		try {
+			md = MessageDigest.getInstance("SHA-256");
+		
 		byte arr[] = md.digest(password.getBytes());
 		return arr;
-
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	/**
@@ -264,9 +299,10 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			ResultSet rs = statement.executeQuery();
 			if (rs.next())
 				return true;
-		} catch (SQLException | NoSuchAlgorithmException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 		return false;
 	}

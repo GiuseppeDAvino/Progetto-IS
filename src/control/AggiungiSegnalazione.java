@@ -38,18 +38,13 @@ public class AggiungiSegnalazione extends HttpServlet {
 		segnalazione.setDescrizione(request.getParameter("descrizione"));
 		segnalazione.setTipo(request.getParameter("tipo"));
 		
-		try {
-			segnalazioneDAO.doSave(segnalazione);
-			
-			NotificaBean notifica = new NotificaBean();
-			notifica.setDescrizione("Nuova Segnalazione");
-			notifica.setTipo("Segnalazione");
-			
-			notificaDAO.doSave(notifica);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		segnalazioneDAO.doSave(segnalazione);
+		
+		NotificaBean notifica = new NotificaBean();
+		notifica.setDescrizione("Nuova Segnalazione");
+		notifica.setTipo("Segnalazione");
+		
+		notificaDAO.doSave(notifica);
 		
 		
 	}

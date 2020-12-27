@@ -29,13 +29,9 @@ public class DettagliCategoria extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 	
 		String nome = (String) request.getParameter("nome");
-		try {
-			CategoriaBean categoria = categoriaDAO.doRetrieveByKey(nome);
-			request.getSession().setAttribute("categoria", categoria);
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		CategoriaBean categoria = categoriaDAO.doRetrieveByKey(nome);
+		request.getSession().setAttribute("categoria", categoria);
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

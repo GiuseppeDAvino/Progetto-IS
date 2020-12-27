@@ -99,7 +99,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * @param bean Prenotazione da inserire
 	 */
 	@Override
-	public void doSave(PrenotazioneBean bean) throws SQLException {
+	public boolean doSave(PrenotazioneBean bean) throws SQLException {
 		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId,prezzo) VALUES(?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -112,14 +112,18 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			statement.setFloat(6, bean.getPrezzo());
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
 
 	@Override
-	public void doUpdate(PrenotazioneBean bean, Integer chiave) throws SQLException {
+	public boolean doUpdate(PrenotazioneBean bean, Integer chiave) throws SQLException {
 		// TODO Auto-generated method stub
-
+		return true;
 	}
 
 	/**
@@ -128,7 +132,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * @param id id della prenotazione da cancellare
 	 */
 	@Override
-	public void doDelete(Integer id) throws SQLException {
+	public boolean doDelete(Integer id) throws SQLException {
 		String sql = "DELETE FROM prenotazione WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -136,6 +140,10 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			statement.setInt(1, id);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -147,7 +155,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * 
 	 * @param periferiche  le periferiche che vengono aggiunte alla prenotazione
 	 */
-	public void prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
+	public boolean prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche)
 			throws SQLException {
 		doSave(prenotazione);
 		ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) doRetrieveAll();
@@ -162,7 +170,10 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 				statement.executeUpdate();
 				con.commit();
 			}
-
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 

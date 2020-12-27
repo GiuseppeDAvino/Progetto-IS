@@ -103,7 +103,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @category permette di salvare la periferica all'interno del database
 	 */
 	@Override
-	public void doSave(PerifericaBean bean) throws SQLException {
+	public boolean doSave(PerifericaBean bean) throws SQLException {
 
 		String sql = "INSERT INTO periferica values(?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -115,6 +115,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -125,7 +130,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param chiave � la chiave per selezionare la riga da aggiornare
 	 */
 	@Override
-	public void doUpdate(PerifericaBean bean, String nome) throws SQLException {
+	public boolean doUpdate(PerifericaBean bean, String nome) throws SQLException {
 		String sql = "UPDATE periferica SET tipo=?,nome=?,quantita=?,prezzo=? WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -138,6 +143,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -148,7 +158,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param chiave � la chiave per selezionare la riga da eliminare
 	 */
 	@Override
-	public void doDelete(String chiave) throws SQLException {
+	public boolean doDelete(String chiave) throws SQLException {
 		String sql = "DELETE FROM periferica WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -157,6 +167,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 

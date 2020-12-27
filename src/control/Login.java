@@ -39,13 +39,12 @@ public class Login extends HttpServlet {
 			UtenteBean utente = utenteDAO.doRetrieveByKey(request.getParameter("email"));
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
 			String str = request.getParameter("password");
-
 			byte curr[] = md.digest(str.getBytes());
 			byte user[] = utente.getPassword();
 
 			if (utente.getEmail().equals("")) {
-				session.setAttribute("errorType", "emailDB");
-				session.setAttribute("error", "Email non presente nel database");
+				session.setAttribute("errorType", "email");
+				session.setAttribute("error", "Email non presente");
 				session.setAttribute("errorLocation", "login");
 
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
@@ -68,8 +67,6 @@ public class Login extends HttpServlet {
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			}
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}

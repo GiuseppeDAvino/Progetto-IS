@@ -21,7 +21,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * @param id id della segnalazione
 	 */
 	@Override
-	public SegnalazioneBean doRetrieveByKey(Integer id) throws SQLException {
+	public SegnalazioneBean doRetrieveByKey(Integer id) {
 		SegnalazioneBean bean = new SegnalazioneBean();
 		String sql = "SELECT * FROM segnalazione WHERE id=?";
 
@@ -38,8 +38,13 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 				bean.setTipo(rs.getString("tipo"));
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
 			}
+			return bean;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return bean;
+
 	}
 
 	/**
@@ -47,7 +52,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * 
 	 * @param email email dell'utente
 	 */
-	public SegnalazioneBean doRetrieveByUser(String email) throws SQLException {
+	public SegnalazioneBean doRetrieveByUser(String email) {
 		SegnalazioneBean bean = new SegnalazioneBean();
 		String sql = "SELECT * FROM segnalazione WHERE utenteEmail=?";
 
@@ -64,8 +69,13 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 				bean.setTipo(rs.getString("tipo"));
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
 			}
+			return bean;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return bean;
+
 	}
 
 	/**
@@ -73,7 +83,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * 
 	 */
 	@Override
-	public Collection<SegnalazioneBean> doRetrieveAll() throws SQLException {
+	public Collection<SegnalazioneBean> doRetrieveAll() {
 		String sql = "SELECT * FROM segnalazione";
 		ArrayList<SegnalazioneBean> collection = new ArrayList<SegnalazioneBean>();
 
@@ -91,8 +101,13 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
 				collection.add(bean);
 			}
+			return collection;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return collection;
+
 	}
 
 	/**
@@ -101,7 +116,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * @param bean Segnalazione da inserire
 	 */
 	@Override
-	public void doSave(SegnalazioneBean bean) throws SQLException {
+	public boolean doSave(SegnalazioneBean bean) {
 		String sql = "INSERT INTO segnalazione(tipo,descrizione,utenteEmail) VALUES(?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -112,15 +127,18 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
 
 	@Override
-	public void doUpdate(SegnalazioneBean bean, Integer chiave) throws SQLException {
+	public boolean doUpdate(SegnalazioneBean bean, Integer chiave) {
 		// TODO Auto-generated method stub
-
+		return true;
 	}
 
 	/**
@@ -129,7 +147,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * @param id id della postazione da eliminare
 	 */
 	@Override
-	public void doDelete(Integer id) throws SQLException {
+	public boolean doDelete(Integer id) {
 		String sql = "DELETE FROM segnalazione WHERE id=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -138,23 +156,29 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
+
 	/**
-	 * @category Salva una notifica per l'utente a cui è stata risolta la segnalazione
+	 * @category Salva una notifica per l'utente a cui è stata risolta la
+	 *           segnalazione
 	 * 
 	 * @param segnalazione segnalazione da risolvere
-	 * @param notificaBean	notifica da inviare
+	 * @param notificaBean notifica da inviare
 	 */
-	public void risolvi(SegnalazioneBean segnalazione,NotificaBean notificaBean) throws SQLException{
+	public void risolvi(SegnalazioneBean segnalazione, NotificaBean notificaBean) throws SQLException {
 		doDelete(segnalazione.getId());
-		NotificaDAO notifica=new NotificaDAO();
-		UtenteBean utente=new UtenteBean();
+		NotificaDAO notifica = new NotificaDAO();
+		UtenteBean utente = new UtenteBean();
 		utente.setEmail(segnalazione.getUtenteEmail());
-		ArrayList<UtenteBean> array=new ArrayList<UtenteBean>();
+		ArrayList<UtenteBean> array = new ArrayList<UtenteBean>();
 		array.add(utente);
-		
-		notifica.doSaveNotificaUtente(notificaBean,array);
+
+		notifica.doSaveNotificaUtente(notificaBean, array);
 	}
 
 }

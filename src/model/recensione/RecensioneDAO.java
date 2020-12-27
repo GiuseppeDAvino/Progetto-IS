@@ -68,7 +68,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param bean Recensione da salvare
 	 */
 	@Override
-	public void doSave(RecensioneBean bean) throws SQLException {
+	public boolean doSave(RecensioneBean bean) throws SQLException {
 		String sql = "INSER INTO recensione VALUES (?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -81,6 +81,11 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -92,7 +97,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email Utente proprietario della recensione da modificare
 	 */
 	@Override
-	public void doUpdate(RecensioneBean bean, String email) throws SQLException {
+	public boolean doUpdate(RecensioneBean bean, String email) throws SQLException {
 		String sql = "UPDATE recensione SET descrizione=? WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -102,6 +107,11 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -111,7 +121,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email Indica il proprietario della recensione
 	 */
 	@Override
-	public void doDelete(String email) throws SQLException {
+	public boolean doDelete(String email) throws SQLException {
 		String sql = "DELETE FROM recensione WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -119,6 +129,11 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -127,7 +142,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * 
 	 * @param email proprietario della recensione
 	 */
-	public void approva(String email) throws SQLException {
+	public boolean approva(String email) throws SQLException {
 		String sql = "UPDATE recensione SET verificata='true' WHERE email=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -136,6 +151,11 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

@@ -41,11 +41,7 @@ public class AggiungiCategoria extends HttpServlet {
 		categoria.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 		categoria.setImmagine(ConvertitoreImmagine.converti(request.getPart("immagine")));
 
-		try {
-			categoriaDAO.doSave(categoria);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		categoriaDAO.doSave(categoria);
 
 		// TODO add redirect
 	}

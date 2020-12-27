@@ -41,12 +41,7 @@ public class ModificaCategoria extends HttpServlet {
 		categoria.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 		categoria.setImmagine(ConvertitoreImmagine.converti(request.getPart("immagine")));
 		
-		try {
-			categoriaDAO.doUpdate(categoria, categoria.getNome());
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
+		categoriaDAO.doUpdate(categoria, categoria.getNome());
 	}
 
 

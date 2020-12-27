@@ -34,21 +34,21 @@ public interface ModelInterface <T,U>{
 	 * @param bean il bean da salvare nel database
 	 * @throws SQLException
 	 */
-	public void doSave(T bean) throws SQLException;
+	public boolean doSave(T bean) throws SQLException;
 	
 	/**
 	 * Metodo utilizzato per aggiornare i valori di un bean all'interno del database
 	 * @param bean il bean da aggiornare
 	 * @throws SQLException
 	 */
-	public void doUpdate(T bean,U chiave) throws SQLException;
+	public boolean doUpdate(T bean,U chiave) throws SQLException;
 	
 	/**
 	 * Metodo utilizzato per eliminare una riga identificata da un bean all'interno del databse
 	 * @param bean il bean contenente i valori utilizzati per eliminare la riga dal database
 	 * @throws SQLException
 	 */
-	public void doDelete(U chiave) throws SQLException;
+	public boolean doDelete(U chiave) throws SQLException;
 	
 	
 }

@@ -24,7 +24,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param id l'id della notifica da ricercare
 	 */
 	@Override
-	public NotificaBean doRetrieveByKey(Integer id) throws SQLException {
+	public NotificaBean doRetrieveByKey(Integer id) {
 		NotificaBean bean = new NotificaBean();
 		String sql = "SELECT * FROM notifica WHERE id=?";
 
@@ -40,8 +40,13 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 				bean.setDescrizione(rs.getString("descrizione"));
 				bean.setTipo(rs.getString("tipo"));
 			}
+			return bean;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return bean;
+
 	}
 
 	/**
@@ -49,7 +54,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * 
 	 */
 	@Override
-	public Collection<NotificaBean> doRetrieveAll() throws SQLException {
+	public Collection<NotificaBean> doRetrieveAll() {
 		String sql = "SELECT * FROM notifica";
 
 		ArrayList<NotificaBean> collection = new ArrayList<NotificaBean>();
@@ -67,8 +72,12 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 				bean.setTipo(rs.getString("tipo"));
 				collection.add(bean);
 			}
+			return collection;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
 		}
-		return collection;
 	}
 
 	/**
@@ -76,7 +85,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 *           Non utilizzare questo metodo per salvare le notifiche</br>
 	 */
 	@Override
-	public void doSave(NotificaBean bean) throws SQLException {
+	public boolean doSave(NotificaBean bean) {
 		String sql = "INSERT INTO notifica(descrizione,tipo) VALUES(?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -86,9 +95,10 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-
+			return true;
+		} catch (SQLException e) {
+			return false;
 		}
-
 	}
 
 	/**
@@ -98,7 +108,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param notifica è la notifica da inserire dal database
 	 * @param utenti   è la lista di utenti a cui verrà collegata la notifica
 	 */
-	public void doSaveNotificaUtente(NotificaBean notifica, ArrayList<UtenteBean> utenti) throws SQLException {
+	public boolean doSaveNotificaUtente(NotificaBean notifica, ArrayList<UtenteBean> utenti) {
 		doSave(notifica);
 		ArrayList<NotificaBean> notifiche = (ArrayList<NotificaBean>) doRetrieveAll();
 		NotificaBean notificaId = notifiche.get(notifiche.size() - 1);
@@ -112,12 +122,18 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 				statement.setBoolean(3, false);
 				statement.executeUpdate();
 				con.commit();
+
 			}
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
 	@Override
-	public void doUpdate(NotificaBean bean, Integer chiave) throws SQLException {
+	public boolean doUpdate(NotificaBean bean, Integer chiave) {
+		return true;
 	}
 
 	/**
@@ -126,7 +142,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
-	public void doDelete(Integer chiave) throws SQLException {
+	public boolean doDelete(Integer chiave) throws SQLException {
 		String sql = "DELETE FROM notifica WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -135,6 +151,10 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -146,7 +166,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param id     id della notifica
 	 * @param utente utente su cui deve essere modificato lo stato della notifica
 	 */
-	public void isLetta(int id, UtenteBean utente) throws SQLException {
+	public boolean letta(int id, UtenteBean utente) {
 		String sql = "UPDATE notifica_utente SET isRead='TRUE' WHERE notificaId=? AND utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
@@ -154,6 +174,10 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			statement.setString(2, utente.getEmail());
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -163,7 +187,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param id     id della notifica
 	 * @param utente utente su cui deve essere eliminata la notifica
 	 */
-	public void doDeleteNotificaUtente(int id, UtenteBean utente) throws SQLException {
+	public boolean doDeleteNotificaUtente(int id, UtenteBean utente) {
 		String sql = "DELETE FROM notifica_utente WHERE notificaId=? AND utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
@@ -171,6 +195,10 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			statement.setString(2, utente.getEmail());
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 

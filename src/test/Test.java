@@ -1,4 +1,4 @@
-package Test;
+package test;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,16 +29,12 @@ public class Test extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		NotificaDAO notificaDAO=new NotificaDAO();
-		try {ArrayList<UtenteBean> utenti=new ArrayList<UtenteBean>();
+		ArrayList<UtenteBean> utenti=new ArrayList<UtenteBean>();
 			UtenteBean u=new UtenteBean();
 			u.setEmail("email@email.com");
 			utenti.add(u);
 			notificaDAO.doSaveNotificaUtente(new NotificaBean("PROVA","PROVATIPOletture"), utenti);
 			notificaDAO.doDeleteNotificaUtente(4,u);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	

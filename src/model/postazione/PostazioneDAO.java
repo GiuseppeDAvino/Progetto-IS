@@ -118,7 +118,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param bean bisogna passare un bean contenente la categoria
 	 */
 	@Override
-	public void doSave(PostazioneBean bean) throws SQLException {
+	public boolean doSave(PostazioneBean bean) throws SQLException {
 		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -126,6 +126,11 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			statement.setString(1, bean.getCategoria());
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -138,7 +143,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da modificare
 	 */
 	@Override
-	public void doUpdate(PostazioneBean bean, Integer chiave) throws SQLException {
+	public boolean doUpdate(PostazioneBean bean, Integer chiave) throws SQLException {
 		String sql = "UPDATE postazione SET nomeCategoria=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -147,6 +152,11 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			statement.setInt(2, chiave);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -157,7 +167,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da cancellare
 	 */
 	@Override
-	public void doDelete(Integer chiave) throws SQLException {
+	public boolean doDelete(Integer chiave) throws SQLException {
 
 		String sql = "DELETE FROM postazione WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -166,6 +176,11 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			statement.setInt(1, chiave);
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	

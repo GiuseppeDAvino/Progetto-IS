@@ -69,28 +69,19 @@ public class Registrazione extends HttpServlet {
 	}
 	
 	private boolean emailIsValid(String email) {
-		try {
-			if(utenteDAO.doRetrieveByKey(email) == null)
-				return false;
-			else
-				return true;
-			} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return true;
+		if(utenteDAO.doRetrieveByKey(email) == null)
+			return false;
+		else
+			return true;
+		
 		
 	}
 	
 	private boolean usernameIsValid(String username) {
-		try {
-			if(utenteDAO.doRetrieveByKey(username) == null)
-				return false;
-			else
-				return true;
-			} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return true;
+		if(utenteDAO.doRetrieveByKey(username) == null)
+			return false;
+		else
+			return true;
 		
 	}
 	
