@@ -30,7 +30,7 @@ public class Utility {
   /**
    * Invio della mail.
    */
-  public static void sendMail(String destinatario, String contenuto) throws Exception {
+  public static void sendMail(String destinatario, String contenuto, int id) throws Exception {
     Properties properties = new Properties();
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.starttls.enable", "true");
@@ -47,17 +47,24 @@ public class Utility {
       }
     });
 
-    Message message = prepareMessage(session, myEmail, destinatario, contenuto);
+    Message message = prepareMessage(session, myEmail, destinatario, contenuto, id);
     Transport.send(message);
   }
     
   private static Message prepareMessage (
-      Session session, String myEmail, String destinatario, String contenuto) throws AddressException, MessagingException {
+      Session session, String myEmail, String destinatario, String contenuto, int id) throws AddressException, MessagingException {
       Message message = new MimeMessage(session);
       message.setFrom(new InternetAddress(myEmail));
       message.setRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
       message.setSubject("Conferma Registrazione Funisa");
-      String html = "<h3> Il codice per la conferma della registrazione è: " + contenuto + "</h3>";
+      String html = null;
+      if(id == 1) {
+    	  html = "<h3> Il codice per la conferma della registrazione è: " + contenuto + "</h3>";
+      }
+      else if(id == 2) {
+    	  html = "<h3> Il codice per il recupero della password è: " + contenuto + "</h3>";
+      }
+      
       message.setContent(html, "text/html");
       return message;
 

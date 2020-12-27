@@ -18,8 +18,11 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mssql-jdbc-8.2.2.jre13.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mail-1.4.7.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/activation.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.13.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hamcrest-2.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mockito-core-3.6.28.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/gaeta/Desktop/IS-ProjectElTanque-master/WebContent/WEB-INF/lib/spring-test-5.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-core-5.2.12.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.2-javadoc.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

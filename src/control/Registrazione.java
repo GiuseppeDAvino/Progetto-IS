@@ -56,7 +56,7 @@ public class Registrazione extends HttpServlet {
 			return;
 		}
 		else if(!emailIsValid(request.getParameter("email"))) {
-			System.out.println("Email giï¿½ esistente");
+			System.out.println("Email già esistente");
 			session.setAttribute("error-type", "email");
 			session.setAttribute("error", "Questa mail ï¿½ giï¿½ stata utilizzata, scegline un'altra");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
@@ -106,7 +106,7 @@ public class Registrazione extends HttpServlet {
 			utenteDAO.doSave(utente);
 			UtenteBean prov = utenteDAO.doRetrieveByKey(request.getParameter("email"));
 			request.getSession().setAttribute("utente", prov);
-			Utility.sendMail(request.getParameter("email"), codiceVerifica);
+			Utility.sendMail(request.getParameter("email"), codiceVerifica, 1);
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
 		}
 		catch(Exception e) {
@@ -122,12 +122,8 @@ public class Registrazione extends HttpServlet {
 	}
 	
 	private boolean emailIsValid(String email) {
-		try {
-			if(utenteDAO.doRetrieveByKey(email).getEmail().equals("")) {
-				return true;
-			}
-			} catch (SQLException e) {
-			e.printStackTrace();
+		if(utenteDAO.doRetrieveByKey(email).getEmail().equals("")) {
+			return true;
 		}
 		return false;
 		

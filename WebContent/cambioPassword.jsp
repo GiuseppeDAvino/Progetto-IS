@@ -44,14 +44,12 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
-                    <h3 class="bg-gray p-4">Login</h3>
-                    <form action="Login" method="post">
+                    <h3 class="bg-gray p-4">Nuova password</h3>
+                    <form action="NuovaPassword" method="post">
                         <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
                             <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
-                            <a class="mt-3 d-block  text-primary" href="richiestaRecuperoPassword.jsp">Password dimenticata?</a>
-                            <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
+                            <input name="confermaPassword" type="password" placeholder="Conferma Password" class="border p-3 w-100 my-2">
+                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Cambia Password</button>
                         </fieldset>
                     </form>
                 </div>

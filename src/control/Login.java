@@ -33,7 +33,7 @@ public class Login extends HttpServlet {
 	 * */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(true);
 		
 		try {
 			UtenteBean utente = utenteDAO.doRetrieveByKey(request.getParameter("email"));
@@ -43,22 +43,27 @@ public class Login extends HttpServlet {
 			byte user[] = utente.getPassword();
 
 			if (utenteDAO.doRetrieveByKey(request.getParameter("email")).getEmail().equals("")) {
+				request.setAttribute("errorTest", "Email non presente nel database");
+		
 				session.setAttribute("errorType", "emailDB");
 				session.setAttribute("error", "Email non presente nel database");
-
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 			} else if (Arrays.compare(curr, user) == 0) {
+				request.setAttribute("errorTest", "OK");
+				
 				session.setAttribute("utente", utente);
+			
 				session.setAttribute("errorType", null);
-				session.setAttribute("error", null);
+				session.setAttribute("error", null); 
 				if(utente.isStato() == false) {
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
+				}
+				else if(session.getAttribute("isPressedPrenota") == null) {
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
 				}
 				else if((Integer)session.getAttribute("isPressedPrenota")==1) {
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
 					} 
-					else 
-						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
 					
 			} else {
 				session.setAttribute("errorType", "wrongCred");
@@ -71,7 +76,7 @@ public class Login extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doGet(request, response);

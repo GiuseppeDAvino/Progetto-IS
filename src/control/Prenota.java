@@ -36,13 +36,14 @@ public class Prenota extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
-		int isPressedPrenota=1;
+		
 		if(!isInSessionUtente(utente)) {
-			session.setAttribute("isPressedPrenota", isPressedPrenota);
+			session.setAttribute("isPressedPrenota", 1);
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp")); }
 		else if(!isCliente(utente)) 
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
 		else if(utente.isStato() == false) {
+			session.setAttribute("isPressedPrenota", 1);
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
 		}
 		else {
