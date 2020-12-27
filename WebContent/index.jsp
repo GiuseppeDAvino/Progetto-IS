@@ -4,7 +4,7 @@
 <html>
 <head>
 
-  <!-- SITE TITTLE -->
+<!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/v4-shims.js"></script>
   <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Owl Carousel -->
@@ -59,22 +58,6 @@
 				<div class="content-block">
 					<h1>Buy & Sell Near You </h1>
 					<p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
-					<div class="short-popular-category-list text-center">
-					  <ul class="list-inline">
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-desktop"></i> PC</a></li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-gamepad"></i> Console</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fa fa-car"></i> Simulatori</a>
-							</li>
-							<li class="list-inline-item">
-								<a href="category.html"><i class="fas fa-vr-cardboard"></i> VR</a>
-							</li>
-						</ul>
-					</div>
-					
 				</div>
 				<!-- Advance Search -->
 				
@@ -228,63 +211,6 @@
 =            All Category Section            =
 ===========================================-->
 
-<section class=" section">
-	<!-- Container Start -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<!-- Section title -->
-				<div class="section-title">
-					<h2>All Categories</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
-				</div>
-				<div class="row">
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-desktop icon-bg-1"></i> 
-								<h4>PC DESKTOP</h4>
-							</div>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-gamepad icon-bg-2"></i> 
-								<h4>CONSOLE</h4>
-							</div>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-car icon-bg-3"></i> 
-								<h4>SIMULATORI</h4>
-							</div>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					<div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
-						<div class="category-block">
-							<div class="header">
-								<i class="fa fa-vr-cardboard icon-bg-4"></i> 
-								<h4>VR</h4>
-							</div>
-						</div>
-					</div> <!-- /Category List -->
-					<!-- Category list -->
-					 <!-- /Category List -->
-					
-					
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Container End -->
-</section>
 
 
 <!--====================================

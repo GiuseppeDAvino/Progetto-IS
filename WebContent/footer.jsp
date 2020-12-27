@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 
-  <!-- SITE TITTLE -->
+<!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/v4-shims.js"></script>
   <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Owl Carousel -->
   <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
@@ -28,6 +29,7 @@
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
+  <link href="css/notification.css" rel="stylesheet">
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -145,10 +147,7 @@
 <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
-<!-- google map -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="plugins/google-map/gmap.js"></script>
-<script src="js/script.js"></script>
+
 
 </body>
 

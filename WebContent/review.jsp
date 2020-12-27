@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="header.jsp" %>
-<!-- SITE TITTLE -->
+
+  <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +17,6 @@
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/v4-shims.js"></script>
   <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Owl Carousel -->
   <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
@@ -28,7 +26,6 @@
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/notification.css" rel="stylesheet">
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -41,33 +38,54 @@
 </head>
 
 <body class="body-wrapper">
-<section class="login py-5 border-top-1">
+<%@ include file="header.jsp" %>
+
+
+<!-- page title -->
+<!--================================
+=            Page Title            =
+=================================-->
+<section class="page-title">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
+				<!-- Title text -->
+				<h3>Cosa ne pensi di noi?</h3>
+			</div>
+		</div>
+	</div>
+	<!-- Container End -->
+</section>
+<!-- page title -->
+
+<!-- contact us start-->
+<section class="section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-8 align-item-center">
-                <div class="border">
-                    <h3 class="bg-gray p-4">Login</h3>
-                    <form action="Login" method="post">
-                        <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
-                            <a class="mt-3 d-block  text-primary" href="#">Password dimenticata?</a>
-                            <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
-                        </fieldset>
-                    </form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-us-content p-2">
+                    <h1 class="pt-3">Che ne pensi della nostra struttura?</h1>
+                    <p class="pt-3 pb-5">Scrivi come ti sei trovato da noi,ci farebbe piacere saperlo e se possibile migliorare la tua futura esperienza.</p>
                 </div>
             </div>
+            <div class="col-md-6">
+                    <form action="#">
+                        <fieldset class="p-4">
+							 <h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>
+								<div class="starrr"></div>				
+                            <textarea name="message" id=""  placeholder="Recensione *" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <div class="btn-grounp">
+                                <button type="submit" class="btn btn-main mt-2 float-right">Invia</button>
+                            </div>
+                        </fieldset>
+                    </form>
+			</div>
         </div>
     </div>
 </section>
+<!-- contact us end -->
 
-<!--============================
-
-=============================-->
-<%@ include file="footer.jsp" %>
-
-<!-- Footer Bottom -->
 <!-- JAVASCRIPTS -->
 <script src="plugins/jQuery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/popper.min.js"></script>
@@ -83,7 +101,7 @@
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="plugins/google-map/gmap.js"></script>
-<script src="js/script.js"></script>
+<script src="script/script.js"></script>
 
 </body>
 
