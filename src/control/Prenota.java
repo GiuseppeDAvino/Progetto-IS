@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.categoria.CategoriaBean;
 import model.periferica.PerifericaBean;
@@ -33,29 +34,31 @@ public class Prenota extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
-
+		HttpSession session = request.getSession(false);
+		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
+		int isPressedPrenota=1;
 		if(!isInSessionUtente(utente)) {
-			int control=1;
-			request.getSession().setAttribute("control", control);
+			session.setAttribute("isPressedPrenota", isPressedPrenota);
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp")); }
 		else if(!isCliente(utente)) 
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
-		
+		else if(utente.isStato() == false) {
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
+		}
 		else {
 			CategoriaBean categoria = (CategoriaBean) request.getSession().getAttribute("categoria");
 			ArrayList<PerifericaBean> periferiche = getPerifericheFromForm(request);
 
 			PrenotazioneBean prenotazione = new PrenotazioneBean();
-			String data = (String) request.getSession().getAttribute("data");
-			String fasciaOraria = (String) request.getSession().getAttribute("fasciaOraria");
+			String data = (String) session.getAttribute("data");
+			String fasciaOraria = (String) session.getAttribute("fasciaOraria");
 
 			try {
 				prenotazione.setData(data);
 				prenotazione.setFasciaOraria(fasciaOraria);
 				prenotazione.setUtenteEmail(utente.getEmail());
 				prenotazione.setPostazioneId(
-						postazioneDAO.postazioneLiberaCategoria(categoria, data, fasciaOraria).getId());
+				postazioneDAO.postazioneLiberaCategoria(categoria, data, fasciaOraria).getId());
 				prenotazione.setPrezzo(calcolaPrezzo(categoria, periferiche));
 				System.out.println(prenotazione.getPrezzo());
 				prenotazione.setQr(""); // TODO gestire il QRcode

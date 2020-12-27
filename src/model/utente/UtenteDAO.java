@@ -405,8 +405,10 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			statement.setString(1, username);
 			System.out.println("esisteUsername" + statement);
 			ResultSet rs = statement.executeQuery();
-			if (rs.next())
+			if (rs.next()) {
 				return true;
+			}
+				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -451,7 +453,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @param password password da controllare
 	 */
 	public Boolean validaPassword(String password) {
-		String regex = "[a-zA-Z0-9]{7,20}";
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\" + "d)(?=.*[@$!%*?&])[A-Za-z\\" + "d@$!%*?&]{8,}$";
 		return password.matches(regex);
 	}
 }
