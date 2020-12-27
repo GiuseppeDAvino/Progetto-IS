@@ -145,7 +145,7 @@ public class UtenteBean {
 			this.password = arr;
 
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 

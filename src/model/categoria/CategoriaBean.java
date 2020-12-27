@@ -16,6 +16,13 @@ public class CategoriaBean {
 	private float prezzo;
 	private String immagine;
 
+	public CategoriaBean(String nome,String tipoGenerico, float prezzo,String descrizione, String immagine) {
+		this.nome = nome;
+		this.tipoGenerico = tipoGenerico;
+		this.descrizione = descrizione;
+		this.prezzo = prezzo;
+		
+	}
 	public String getImmagine() {
 		return immagine;
 	}
