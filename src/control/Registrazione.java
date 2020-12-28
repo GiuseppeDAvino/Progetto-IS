@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.servizio.RandomString;
 import model.servizio.Utility;
+import model.servizio.Validatore;
 import model.utente.UtenteBean;
 import model.utente.UtenteBean.Ruolo;
 import model.utente.UtenteDAO;
@@ -84,56 +85,56 @@ public class Registrazione extends HttpServlet {
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 							}
 							else {
-								if(!validaNomeCognome(nome)) {
+								if(!Validatore.validaNomeCognome(nome)) {
 									request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo nome non rispetta il formato");
 									session.setAttribute("error-type", "nome");
 									session.setAttribute("error", "Campo non rispetta il formato");
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 								}
 								else {
-									if(!validaNomeCognome(cognome)) {
+									if(!Validatore.validaNomeCognome(cognome)) {
 										request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo cognome non rispetta il formato");
 										session.setAttribute("error-type", "cognome");
 										session.setAttribute("error", "Campo non rispetta il formato");
 										response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 									}
 									else {
-										if(!validaEmail(email)) {
+										if(!Validatore.validaEmail(email)) {
 											request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo email non rispetta il formato");
 											session.setAttribute("error-type", "email");
 											session.setAttribute("error", "Campo non rispetta il formato");
 											response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 										}
 										else {
-											if(!validaUsername(username)) {
+											if(!Validatore.validaUsername(username)) {
 												request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo username non rispetta il formato");
 												session.setAttribute("error-type", "username");
 												session.setAttribute("error", "Campo non rispetta il formato");
 												response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 											}
 											else {
-												if(!validaPassword(password)) {
+												if(!Validatore.validaPassword(password)) {
 													request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo password non rispetta il formato");
 													session.setAttribute("error-type", "password");
 													session.setAttribute("error", "Campo non rispetta il formato");
 													response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 												}
 												else {
-													if(!isPasswordValid(password, confPass)) {
+													if(!Validatore.isPasswordValid(password, confPass)) {
 														request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo password e il campo conferma password non corrispondono");
 														session.setAttribute("error-type", "confermaPassword");
 														session.setAttribute("error", "Campo password e conferma password non corrispondono");
 														response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 													}
 													else {
-														if(!isEmailValid(email)) {
+														if(!Validatore.isEmailValid(email)) {
 															request.setAttribute("errorTest", "La registrazione non va a buon fine poichè l'email è già presente nel database");
 															session.setAttribute("error-type", "email");
 															session.setAttribute("error", "Email già esistente nel sistema");
 															response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 														}
 														else {
-															if(!isUsernameValid(username)) {
+															if(!Validatore.isUsernameValid(username)) {
 																request.setAttribute("errorTest", "La registrazione non va a buon fine poichè l'username è già presente nel database");
 																session.setAttribute("error-type", "username");
 																session.setAttribute("error", "Username già esistente nel sistema");
@@ -180,66 +181,6 @@ public class Registrazione extends HttpServlet {
 	}
 	
 	
-	/**
-	 * @category controlla il nome/cognome inserito
-	 * 
-	 * @param stringa stringa da controllare
-	 */
-	public Boolean validaNomeCognome(String stringa) {
-		String regex = "[a-zA-Z ‘àèìòù]{3,30}";
-		return stringa.matches(regex);
-	}
-
-	/**
-	 * @category controlla l'username inserito
-	 * 
-	 * @param username username da controllare
-	 */
-	public Boolean validaUsername(String username) {
-		String regex = "[a-zA-Z  _0-9]{3,30}";
-		return username.matches(regex);
-	}
-
-	/**
-	 * @category controlla l' email inserito
-	 * 
-	 * @param email email da controllare
-	 */
-	public Boolean validaEmail(String email) {
-		String regex = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$";
-		return email.matches(regex);
-	}
-
-	/**
-	 * @category controlla la passwordinserito
-	 * 
-	 * @param password password da controllare
-	 */
-	public Boolean validaPassword(String password) {
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\" + "d)(?=.*[@$!%*?&])[A-Za-z\\" + "d@$!%*?&]{8,}$";
-		return password.matches(regex);
-	}
-	private boolean isEmailValid(String email) {
-		if(utenteDAO.doRetrieveByKey(email).getEmail().equals("")) {
-			return true;
-		}
-		return false;
-		
-	}
 	
-	private boolean isUsernameValid(String username) {
-		if(utenteDAO.esisteUsername(username))
-			return false;
-		return true;
-		
-	}
-	
-	private boolean isPasswordValid(String password, String confPassword) {
-			
-			if(password.equals(confPassword))
-				return true;
-			else
-				return false;
-	}
 
 }

@@ -25,19 +25,44 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codiceVerifica = request.getParameter("codiceVerifica");
 		HttpSession session = request.getSession(false);
-		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
-		if(utenteDAO.controllaEmailCodice(utente.getEmail(), codiceVerifica)) {
-				utente.setCodiceVerifica("");
-				session.setAttribute("utente", utente);
-					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cambioPassword.jsp"));
-		}
-		else {
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRecuperoPassword.jsp"));
-		}
+		String email=(String) session.getAttribute("emailCodice");
+		if(codiceVerifica.length()==0) {
+			request.setAttribute("errorTest",
+					"Inserimento del codice di verifica non va a buon fine poichè il campo codice è vuoto");
+			session.setAttribute("error-type", "codiceVerifica");
+			session.setAttribute("error", "Campo vuoto");
+			response.sendRedirect(
+					response.encodeRedirectURL(request.getContextPath() + "/confermaRecuperoPassword.jsp"));
+		}else {
+			if(!utenteDAO.controllaEmailCodice(email, codiceVerifica)) {
+				request.setAttribute("errorTest",
+						"Inserimento del codice di verifica non va a buon fine poichè il campo codice è vuoto");
+				session.setAttribute("error-type", "codiceVerifica");
+				session.setAttribute("error", "Campo vuoto");
+				response.sendRedirect(
+						response.encodeRedirectURL(request.getContextPath() + "/confermaRecuperoPassword.jsp"));
+			}
+			else {
+				request.setAttribute("errorTest",
+						"Inserimento del codice di verifica è avvenuto con successo e si può procedere con la creazione di una nuova password");
+				session.setAttribute("error-type", null);
+				session.setAttribute("error", null);
+				utenteDAO.cambiaCodice("", email);
+				
+				response.sendRedirect(
+						response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
+			}//chiusura else codice giusto
+		}//chiusura else codice non vuoto
+	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
+		try {
+			doGet(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -123,8 +123,8 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * 
 	 */
 	public Collection<UtenteBean> doRetrieveAllPerPrenotazioni(){
-		String sql = "select u.email,u.nome,u.cognome,u.username from utente u,prenotazione p where u.email=p.utenteEmail order by(\r\n"
-				+ "	Select count(*) from utente u,prenotazione p where u.email=p.utenteEmail group by u.email)";
+		String sql = "select u.email,u.nome,u.cognome,u.username from utente u group by u.email,u.nome,u.cognome,u.username order by(\r\n" + 
+				"	Select count(*) from prenotazione p where u.email=p.utenteEmail) DESC ";
 
 		ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>();
 
@@ -414,6 +414,31 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			e.printStackTrace();
 		}
 		return false;
+
+	}
+	
+	/**
+	 * @category Permette di cambiare codice di un utente
+	 * @param codice il codice da inserire
+	 * @param email l'email associata all'utente
+	 * */
+	public boolean cambiaCodice(String codice, String email){
+		String sql = "UPDATE utente SET codiceVerifica=? WHERE email=?";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			statement.setString(1,codice);
+			statement.setString(2, email);
+			
+			System.out.println("doUpdate=" + statement);
+			statement.executeUpdate();
+			con.commit();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 
 	}
 

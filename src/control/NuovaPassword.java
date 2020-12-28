@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.servizio.Validatore;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 
@@ -30,7 +31,7 @@ public class NuovaPassword extends HttpServlet {
 		String confermaPassword = request.getParameter("confermaPassword");
 		session.setAttribute("utente", utente);
 		
-		if(!utenteDAO.validaPassword(request.getParameter("password"))) {
+		if(!Validatore.validaPassword(request.getParameter("password"))) {
 			System.out.println("Formato password errato");
 			session.setAttribute("error-type", "password");
 			session.setAttribute("error", "Formato password errato");

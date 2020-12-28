@@ -33,7 +33,7 @@ class TC_RegistrazioneUtente extends Mockito {
 	public void TC_RegistrazioneUtente_1() throws ServletException, IOException {
 		request.addParameter("nome", "");
 		request.addParameter("cognome", "Bianchi");
-		request.addParameter("email", "robertobianchi@gmail.com");
+		request.addParameter("email", "robertobianchi@funisa.com");
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
@@ -46,7 +46,7 @@ class TC_RegistrazioneUtente extends Mockito {
 	public void TC_RegistrazioneUtente_2() throws ServletException, IOException {
 		request.addParameter("nome", "Roberto1");
 		request.addParameter("cognome", "Bianchi");
-		request.addParameter("email", "robertobianchi@gmail.com");
+		request.addParameter("email", "robertobianchi@funisa.com");
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
@@ -59,7 +59,7 @@ class TC_RegistrazioneUtente extends Mockito {
 	public void TC_RegistrazioneUtente_3() throws ServletException, IOException {
 		request.addParameter("nome", "Roberto");
 		request.addParameter("cognome", "");
-		request.addParameter("email", "robertobianchi@gmail.com");
+		request.addParameter("email", "robertobianchi@funisa.com");
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");

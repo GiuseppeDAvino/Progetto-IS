@@ -20,8 +20,7 @@ INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','1');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','2');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
 
-/*SELECT * from utente
-*/
+
 
 
 
@@ -39,7 +38,11 @@ CREATE TABLE utente(
 )
 
 
-SELECT*FROM utente
+select u.email,u.nome,u.cognome,u.username from utente u group by u.email,u.nome,u.cognome,u.username order by(
+	Select count(*) from prenotazione p where u.email=p.utenteEmail) DESC 
+
+
+SELECT*FROM prenotazione
 
 Delete from utente where email='robertobianchi@funisa.com'
 
