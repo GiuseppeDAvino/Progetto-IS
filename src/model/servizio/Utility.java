@@ -30,7 +30,7 @@ public class Utility {
   /**
    * Invio della mail.
    */
-  public static void sendMail(String destinatario, String contenuto, int id) throws Exception {
+  public static void sendMail(String destinatario, String contenuto, int id) {
     Properties properties = new Properties();
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.starttls.enable", "true");
@@ -47,8 +47,15 @@ public class Utility {
       }
     });
 
-    Message message = prepareMessage(session, myEmail, destinatario, contenuto, id);
-    Transport.send(message);
+    Message message;
+	try {
+		message = prepareMessage(session, myEmail, destinatario, contenuto, id);
+		Transport.send(message);
+	} catch (MessagingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    
   }
     
   private static Message prepareMessage (

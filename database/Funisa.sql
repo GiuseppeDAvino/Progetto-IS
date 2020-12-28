@@ -26,7 +26,7 @@ INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
 
 
 CREATE TABLE utente(
-    email VARCHAR(30) PRIMARY KEY NOT NULL,
+    email VARCHAR(50) PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
     cognome VARCHAR(30) NOT NULL,
     username VARCHAR(30) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE utente(
 
 SELECT*FROM utente
 
-Delete from utente where email='titolare1@titolare.com'
+Delete from utente where email='robertobianchi@funisa.com'
 
 CREATE TABLE segnalazione(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
@@ -69,7 +69,7 @@ INSERT INTO periferica VALUES('tastiera','k65',5,2)
 INSERT INTO periferica VALUES('mouse','g502',6,3)
 INSERT INTO periferica VALUES('tastiera','Razer chroma',5,2)
 INSERT INTO periferica VALUES('tastiera', 'prova',0,3)
-
+select * from prenotazione
 CREATE TABLE categoria(
     nome VARCHAR(15) PRIMARY KEY NOT NULL,
     tipoGenerico VARCHAR(15) NOT NULL,
@@ -149,11 +149,13 @@ SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
 
 
  SELECT * FROM postazione p, categoria c 
-            WHERE p.isDisponibile=1 AND p.nomeCategoria='PC fascia' AND c.tipoGenerico='PC' AND p.id NOT IN(
+            WHERE p.isDisponibile=1 AND p.nomeCategoria='PC fascia alta' AND c.tipoGenerico='PC' AND p.id NOT IN(
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
-				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-03-12' AND pr.fasciaOraria='12/14')
+				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='13/14')
 */
 select * from categoria
+
+delete from utente where email='nonesisto@esistenza.com'
 
 
 

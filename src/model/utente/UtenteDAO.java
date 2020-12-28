@@ -417,43 +417,5 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 
 	}
 
-	/**
-	 * @category controlla il nome/cognome inserito
-	 * 
-	 * @param stringa stringa da controllare
-	 */
-	public Boolean validaNomeCognome(String stringa) {
-		String regex = "[a-zA-Z ‘אטלעש]{3,40}";
-		return stringa.matches(regex);
-	}
-
-	/**
-	 * @category controlla l'username inserito
-	 * 
-	 * @param username username da controllare
-	 */
-	public Boolean validaUsername(String username) {
-		String regex = "[a-zA-Z ‘אטלעש0-9]{3,40}";
-		return username.matches(regex);
-	}
-
-	/**
-	 * @category controlla l' email inserito
-	 * 
-	 * @param email email da controllare
-	 */
-	public Boolean validaEmail(String email) {
-		String regex = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$";
-		return email.matches(regex);
-	}
-
-	/**
-	 * @category controlla la passwordinserito
-	 * 
-	 * @param password password da controllare
-	 */
-	public Boolean validaPassword(String password) {
-		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\" + "d)(?=.*[@$!%*?&])[A-Za-z\\" + "d@$!%*?&]{8,}$";
-		return password.matches(regex);
-	}
+	
 }

@@ -24,7 +24,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param id l'id della postazione da ricercare
 	 */
 	@Override
-	public PostazioneBean doRetrieveByKey(Integer id) throws SQLException {
+	public PostazioneBean doRetrieveByKey(Integer id){
 		PostazioneBean bean = new PostazioneBean();
 		String sql = "SELECT * FROM periferica WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -38,8 +38,11 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				bean.setCategoria(rs.getString("nomeCategoria"));
 				bean.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
+			return bean;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return bean;
 		}
-		return bean;
 	}
 
 	/**
@@ -47,7 +50,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 */
 	@Override
-	public Collection<PostazioneBean> doRetrieveAll() throws SQLException {
+	public Collection<PostazioneBean> doRetrieveAll(){
 		String sql = "SELECT * FROM postazione";
 		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
 
@@ -62,8 +65,12 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				bean.setCategoria(rs.getString("nomeCategoria"));
 				bean.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
+			return collection;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return collection;
 		}
-		return collection;
+		
 
 	}
 	
@@ -72,7 +79,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 */
 	
-	public Collection<PostazioneBean> doRetrieveAllLibere(Date data, String fasciaOraria) throws SQLException {
+	public Collection<PostazioneBean> doRetrieveAllLibere(Date data, String fasciaOraria){
 		String sql = "SELECT*FROM postazione p WHERE p.isDisponibile=1 AND p.id NOT IN(SELECT postazione.id FROM postazione p,prenotazione pr WHERE\r\n" + 
 				"p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
 		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
@@ -90,8 +97,11 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				bean.setCategoria(rs.getString("nomeCategoria"));
 				bean.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
+			return collection;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return collection;
 		}
-		return collection;
 
 	}
 
@@ -100,7 +110,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 * @param postazione la postazione da cui cambiare la disponibilità
 	 */
-	public void cambiaDisponibilità(PostazioneBean postazione) throws SQLException {
+	public boolean cambiaDisponibilità(PostazioneBean postazione){
 		String sql = "UPDATE postazione SET isDisponibile='?' WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -109,6 +119,10 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			statement.setInt(2, postazione.getId());
 			statement.executeUpdate();
 			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -118,7 +132,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param bean bisogna passare un bean contenente la categoria
 	 */
 	@Override
-	public boolean doSave(PostazioneBean bean) throws SQLException {
+	public boolean doSave(PostazioneBean bean) {
 		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {

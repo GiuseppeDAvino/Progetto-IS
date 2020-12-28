@@ -22,6 +22,11 @@ public class PostazioneBean {
 		this.disponibile = true;
 	}
 
+	public PostazioneBean(String categoria) {
+		super();
+		this.categoria = categoria;
+	}
+
 	public int getId() {
 		return id;
 	}

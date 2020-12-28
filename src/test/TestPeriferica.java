@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import junit.framework.TestCase;
 import model.periferica.PerifericaBean;
@@ -16,7 +17,7 @@ public class TestPeriferica extends TestCase {
 	private PerifericaBean perifericaEsistente;
 	private PerifericaBean perifericaNonEsistente;
 	
-	@Before
+	@BeforeEach
 	protected void setUp() throws Exception {
 		dao = new PerifericaDAO();
 		perifericaEsistente = new PerifericaBean("tastiera","Razer chroma",5,2);

@@ -35,13 +35,7 @@ public class AggiungiPostazione extends HttpServlet {
 
 		PostazioneBean postazione = new PostazioneBean();
 		postazione.setCategoria(request.getParameter("categoria"));
-		try {
-			postazioneDAO.doSave(postazione);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		// TODO add redirect
+		postazioneDAO.doSave(postazione);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
