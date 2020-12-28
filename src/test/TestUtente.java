@@ -1,5 +1,8 @@
 package test;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.junit.After;
@@ -20,7 +23,7 @@ public class TestUtente extends TestCase {
   @Before
   @Override
   protected void setUp() throws Exception {
-  
+   
     dao=new UtenteDAO();
     utenteEsistente=new UtenteBean("titolare@titolare.com","titolare","titolare","titolare",Ruolo.titolare,true,"","titolare");
     utenteNonEsistente=new UtenteBean("nonesisto@esistenza.com","nonEsisto","nonEsisto","nonEsisto",Ruolo.cliente,false,"null","nonEsisto");
@@ -36,15 +39,13 @@ public class TestUtente extends TestCase {
   }
 
   @Test
-  public void testAccessoUtenteEsistente() {
-	  
+  public void testAccessoUtenteEsistente() { 
 	  UtenteBean bean = dao.doRetrieveByKey(utenteEsistente.getEmail());
 	  
 	  assertEquals(true,Arrays.compare(bean.getPassword(), utenteEsistente.getPassword())==0); 
   }
   @Test
-  public void testAccessoUtenteNonEsistente() {
-	  
+  public void testAccessoUtenteNonEsistente() {  
 	  UtenteBean bean = dao.doRetrieveByKey(utenteNonEsistente.getEmail());
 	  
 	  assertEquals(false,Arrays.compare(bean.getPassword(), utenteNonEsistente.getPassword())==0); 
@@ -53,7 +54,32 @@ public class TestUtente extends TestCase {
   public void testModificaCredenzialiUtenteEsistente() {
     assertEquals(true, dao.doUpdate(utenteEsistente,utenteEsistente.getEmail()));
   }
-  
+  @Test
+  public void testDoRetrieveAll() {
+	  ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>(); 
+	  assertNotEquals(collection, dao.doRetrieveAll());  
+  }
+  @Test
+  public void testEsisteUsernameUtenteEsistente() {
+	  assertEquals(true, dao.esisteUsername(utenteEsistente.getUsername()));
+  }
+  @Test
+  public void testEsisteUsernameUtenteNonEsistente() {
+	  assertEquals(false, dao.esisteUsername(utenteNonEsistente.getUsername()));
+  }
+  @Test
+  public void testEsisteMailUtenteEsistente() {
+	  assertEquals(true, dao.esisteEmail(utenteEsistente.getEmail()));
+  }
+  @Test
+  public void testEsisteMailUtenteNonEsistente() {
+	  assertEquals(false, dao.esisteEmail(utenteNonEsistente.getEmail()));
+  }
+  @Test
+  public void testDoRetrieveAllPerPrenotazioni() {
+	  ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>(); 
+	  assertNotEquals(collection, dao.doRetrieveAllPerPrenotazioni());  
+  }
   //Reimposto il db allo stato originale
   @After
   @Override

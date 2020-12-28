@@ -22,7 +22,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * @category ritorna, se presente nel database, una utente con l'email inserito
 	 * 
 	 * @param email l'e-mail dell'utente da ricercare
-	 */
+	 */ 
 	@Override
 	public UtenteBean doRetrieveByKey(String email){
 		UtenteBean bean = new UtenteBean();
@@ -110,7 +110,6 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			return collection;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -130,7 +129,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("DoRetrieveAll");
+			System.out.println("DoRetrieveAllPerPrenotazioni");
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				UtenteBean bean = new UtenteBean();
@@ -138,23 +137,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				bean.setNome(rs.getString("nome"));
 				bean.setCognome(rs.getString("cognome"));
 				bean.setUsername(rs.getString("username"));
-				bean.setPassword(rs.getString("passw"));
-				bean.setStato(rs.getBoolean("stato"));
-				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
-				switch (rs.getString("ruolo")) {
-
-				case "cliente":
-					bean.setRuolo(Ruolo.cliente);
-					break;
-
-				case "titolare":
-					bean.setRuolo(Ruolo.titolare);
-					break;
-
-				case "gestore":
-					bean.setRuolo(Ruolo.gestore);
-					break;
-				}
+	
 				collection.add(bean);
 			}
 			return collection;
@@ -163,8 +146,6 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			e.printStackTrace();
 			return null;
 		}
-		
-
 	}
 
 	/**
@@ -410,7 +391,6 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			}
 				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

@@ -9,14 +9,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import model.ModelInterface;
-import model.categoria.CategoriaBean;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
  * @category Permette di effettuare gli accessi al database della tabella
  *           periferica
  * 
- */
+ */   
 public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
 	 * @category ritorna, se presente nel database, una periferica con il nome
@@ -50,7 +49,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * 
 	 */
 	@Override
-	public Collection<PerifericaBean> doRetrieveAll() throws SQLException {
+	public Collection<PerifericaBean> doRetrieveAll(){
 		String sql = "SELECT * FROM periferica";
 
 		ArrayList<PerifericaBean> collection = new ArrayList<PerifericaBean>();
@@ -69,9 +68,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				bean.setTipo(rs.getString("tipo"));
 				collection.add(bean);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return collection;
-
 	}
 	/**
 	 * @category ritorna il numero di periferiche prenotate per una data e una fascia oraria

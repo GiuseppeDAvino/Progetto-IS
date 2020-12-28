@@ -26,7 +26,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	@Override
 	public PostazioneBean doRetrieveByKey(Integer id){
 		PostazioneBean bean = new PostazioneBean();
-		String sql = "SELECT * FROM periferica WHERE id=?";
+		String sql = "SELECT * FROM postazione WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			statement.setInt(1, id);
@@ -124,7 +124,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			e.printStackTrace();
 			return false;
 		}
-	}
+	} 
 
 	/**
 	 * @category permette di salvare la postazione all'interno del database

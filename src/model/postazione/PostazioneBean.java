@@ -5,6 +5,7 @@ public class PostazioneBean {
 	private boolean disponibile;
 	private String categoria;
 
+	
 	public String getCategoria() {
 		return categoria;
 	}
