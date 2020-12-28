@@ -31,17 +31,12 @@ public class RestituisciListaPeriferiche extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		
-		try {
-			ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.doRetrieveAll();
-			
-			String string = gson.toJson(periferiche);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.doRetrieveAll();
+		
+		String string = gson.toJson(periferiche);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

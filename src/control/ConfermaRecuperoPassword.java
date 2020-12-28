@@ -24,7 +24,7 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String codiceVerifica = request.getParameter("codiceVerifica");
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(true);
 		String email=(String) session.getAttribute("emailCodice");
 		if(codiceVerifica.length()==0) {
 			request.setAttribute("errorTest",
@@ -36,7 +36,7 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 		}else {
 			if(!utenteDAO.controllaEmailCodice(email, codiceVerifica)) {
 				request.setAttribute("errorTest",
-						"Inserimento del codice di verifica non va a buon fine poichè il campo codice è vuoto");
+						"Inserimento del codice di verifica non va a buon fine poichè il codice non è associato alla sua email");
 				session.setAttribute("error-type", "codiceVerifica");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(
@@ -53,10 +53,9 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 						response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
 			}//chiusura else codice giusto
 		}//chiusura else codice non vuoto
-	
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
 		try {
 			doGet(request, response);
 		} catch (ServletException | IOException e) {

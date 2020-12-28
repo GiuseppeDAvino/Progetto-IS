@@ -56,7 +56,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("DoRetriveAll");
+			System.out.println("DoRetrieveAll");
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
@@ -219,7 +219,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 
-			System.out.println("DoRetriveAllTipiGenerici");
+			System.out.println("DoRetrieveAllTipiGenerici");
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
