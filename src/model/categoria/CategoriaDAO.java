@@ -44,7 +44,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 			return bean;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return null;
 		}
@@ -112,7 +112,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 			}
 			return collection;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 			return null;
 		}
@@ -172,7 +172,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	/**
 	 * @category permette di eliminare una categoria dal database
 	 * 
-	 * @param chiave è la chiave per selezionare la riga da eliminare
+	 * @param chiave ï¿½ la chiave per selezionare la riga da eliminare
 	 */
 	@Override
 	public boolean doDelete(String chiave) {
@@ -202,7 +202,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	 * 
 	 * @param tipoGenerico tipo della categoria
 	 */
-	public Collection<CategoriaBean> categorieConPostazioniLibere(String data, String fasciaOraria, String tipoGenerico) {
+	public Collection<CategoriaBean> categorieConPostazioniLibere(String data, String fasciaOraria, String tipoGenerico){
 		String sql = " SELECT * FROM postazione p, categoria c \r\n"
 				+ "            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico=? AND p.id NOT IN(\r\n"
 				+ "                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n"
@@ -227,14 +227,14 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 				bean.setImmagine(rs.getString("immagine"));
 				collection.add(bean);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException e) {	
 			e.printStackTrace();
 		}
 		return collection;
 
 	}
 
-	public Collection<CategoriaBean> doRetrieveAllTipiGenerici() throws SQLException {
+	public Collection<CategoriaBean> doRetrieveAllTipiGenerici() {
 
 		String sql = "SELECT DISTINCT tipoGenerico FROM categoria";
 
@@ -251,6 +251,8 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 				bean.setTipoGenerico(rs.getString("tipoGenerico"));
 				collection.add(bean);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}

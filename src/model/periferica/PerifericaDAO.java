@@ -24,7 +24,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param nome il nome della periferica da ricercare
 	 */
 	@Override
-	public PerifericaBean doRetrieveByKey(String nome) throws SQLException {
+	public PerifericaBean doRetrieveByKey(String nome) {
 		PerifericaBean bean = new PerifericaBean();
 		String sql = "SELECT * FROM periferica WHERE nome=?";
 
@@ -40,6 +40,9 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				bean.setQuantita(rs.getInt("quantita"));
 				bean.setTipo(rs.getString("tipo"));
 			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
 		return bean;
 	}
@@ -83,7 +86,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * 
 	 * @param nome Il nome della periferica
 	 * */
-	public int prenotate(Date data,String fasciaOraria,String nome)throws SQLException{
+	public int prenotate(Date data,String fasciaOraria,String nome) {
 		String sql="select Count(*) as numero from periferica p, prenotazione pr, prenotazione_periferica pp\r\n" + 
 				" 	where p.nome=? AND p.nome=pp.perifericaNome AND p.id=pp.prenotazioneId\r\n" + 
 				"	AND p.dataPrenotazione=? AND p.fasciaOraria=?";
@@ -96,7 +99,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			ResultSet rs=statement.executeQuery();
 			rs.next();
 			return rs.getInt("numero");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
+		return -1;
 	}
 
 	/**
@@ -158,7 +165,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param chiave � la chiave per selezionare la riga da eliminare
 	 */
 	@Override
-	public boolean doDelete(String chiave) throws SQLException {
+	public boolean doDelete(String chiave) {
 		String sql = "DELETE FROM periferica WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -183,7 +190,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * 
 	 * @return ArrayList contenente {@link PerifericaBean} con quantit� disponibile in quel momento >0 
 	 * */
-	public Collection<PerifericaBean> perifericheDisponibili(String data,String fasciaOraria) throws SQLException {
+	public Collection<PerifericaBean> perifericheDisponibili(String data,String fasciaOraria) {
 		String sql="SELECT p.nome, (p.quantita-(\r\n" + 
 				"SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp\r\n" + 
 				"	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId \r\n" + 
@@ -206,11 +213,14 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				if(bean.getQuantita()>0)
 					collection.add(bean);
 			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
 		} 
 		return collection;
 	}
 	
-	public Collection<String> doRetrieveAllTipi() throws SQLException {
+	public Collection<String> doRetrieveAllTipi() {
 
 		String sql = "SELECT DISTINCT tipo FROM periferica";
 
@@ -227,6 +237,8 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 				bean.setTipo(rs.getString("tipo"));
 				collection.add(bean.getTipo());
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 	}

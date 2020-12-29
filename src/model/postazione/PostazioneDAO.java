@@ -64,6 +64,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				bean.setId(rs.getInt("id"));
 				bean.setCategoria(rs.getString("nomeCategoria"));
 				bean.setDisponibile(rs.getBoolean("isDisponibile"));
+				collection.add(bean);
 			}
 			return collection;
 		} catch (SQLException e) {

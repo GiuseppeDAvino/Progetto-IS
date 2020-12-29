@@ -46,8 +46,7 @@ public class TestUtente extends TestCase {
   }
   @Test
   public void testAccessoUtenteNonEsistente() {  
-	  UtenteBean bean = dao.doRetrieveByKey(utenteNonEsistente.getEmail());
-	  
+	  UtenteBean bean = dao.doRetrieveByKey(utenteNonEsistente.getEmail());	  
 	  assertEquals(false,Arrays.compare(bean.getPassword(), utenteNonEsistente.getPassword())==0); 
   }
   @Test
@@ -55,7 +54,7 @@ public class TestUtente extends TestCase {
     assertEquals(true, dao.doUpdate(utenteEsistente,utenteEsistente.getEmail()));
   }
   @Test
-  public void testDoRetrieveAll() {
+  public void testListaCompletaUtenti() {
 	  ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>(); 
 	  assertNotEquals(collection, dao.doRetrieveAll());  
   }
@@ -76,7 +75,7 @@ public class TestUtente extends TestCase {
 	  assertEquals(false, dao.esisteEmail(utenteNonEsistente.getEmail()));
   }
   @Test
-  public void testDoRetrieveAllPerPrenotazioni() {
+  public void testListaCompletaUtentiDivisiPerPrenotazioni() {
 	  ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>(); 
 	  assertNotEquals(collection, dao.doRetrieveAllPerPrenotazioni());  
   }

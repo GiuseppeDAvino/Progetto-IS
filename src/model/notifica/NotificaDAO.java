@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import model.ModelInterface;
-import model.categoria.CategoriaBean;
 import model.connessione.DriverManagerConnectionPool;
 import model.utente.UtenteBean;
 
@@ -42,7 +41,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			}
 			return bean;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return null;
 		}
@@ -74,7 +73,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			}
 			return collection;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 			return null;
 		}
@@ -142,7 +141,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
-	public boolean doDelete(Integer chiave) throws SQLException {
+	public boolean doDelete(Integer chiave) {
 		String sql = "DELETE FROM notifica WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();

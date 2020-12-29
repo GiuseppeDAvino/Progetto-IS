@@ -34,56 +34,56 @@ public class ModificaPeriferica extends HttpServlet {
 		String prezzo = request.getParameter("prezzo");
 		
 		if(nome.length() == 0) {
-			request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo nome è vuoto");
+			request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo nome ï¿½ vuoto");
 			session.setAttribute("error-type", "nome");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		}
 		else {
 			if(nome.length() > 40) {
-				request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo nome ha una lunghezza maggiore a 40");
+				request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo nome ha una lunghezza maggiore a 40");
 				session.setAttribute("error-type", "tipoGenerico");
 				session.setAttribute("error", "Lunghezza errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			}
 			else {
 				if(tipo.length() == 0) {
-					request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo tipo è vuoto");
+					request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo tipo ï¿½ vuoto");
 					session.setAttribute("error-type", "nome");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				}
 				else {
 					if(tipo.length() > 30) {
-						request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo tipo ha una lunghezza maggiore a 30");
+						request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo tipo ha una lunghezza maggiore a 30");
 						session.setAttribute("error-type", "tipoGenerico");
 						session.setAttribute("error", "Lunghezza errata");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 					}
 					else {
 						if(quantita.length() == 0) {
-							request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo quantità è vuoto");
+							request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo quantitï¿½ ï¿½ vuoto");
 							session.setAttribute("error-type", "nome");
 							session.setAttribute("error", "Campo vuoto");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 						}
 						else {
 							if(!Validatore.validaQuantita(quantita)) {
-								request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo quantità non rispetta il formato");
+								request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo quantitï¿½ non rispetta il formato");
 								session.setAttribute("error-type", "prezzo");
 								session.setAttribute("error", "Formato errato");
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 							}
 							else {
 								if(prezzo.length() == 0) {
-									request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo prezzo è vuoto");
+									request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo prezzo ï¿½ vuoto");
 									session.setAttribute("error-type", "nome");
 									session.setAttribute("error", "Campo vuoto");
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 								}
 								else {
 									if(!Validatore.validaPrezzo(prezzo)) {
-										request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichè il campo prezzo non rispetta il formato");
+										request.setAttribute("errorTest","La modifica della periferica non va a buon fine poichï¿½ il campo prezzo non rispetta il formato");
 										session.setAttribute("error-type", "prezzo");
 										session.setAttribute("error", "Formato errato");
 										response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
