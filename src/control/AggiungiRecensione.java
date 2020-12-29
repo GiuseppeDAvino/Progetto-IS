@@ -38,18 +38,13 @@ public class AggiungiRecensione extends HttpServlet {
 		recensione.setDescrizione(request.getParameter("descrizione"));
 		recensione.setValutazione(Integer.parseInt(request.getParameter("valutazione")));
 		
-		try {
-			recensioneDAO.doSave(recensione);
-			
-			NotificaBean notifica = new NotificaBean();
-			notifica.setDescrizione("Nuova Recensione");
-			notifica.setTipo("Recensione");
-			
-			notificaDAO.doSave(notifica);
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
+		recensioneDAO.doSave(recensione);
+		
+		NotificaBean notifica = new NotificaBean();
+		notifica.setDescrizione("Nuova Recensione");
+		notifica.setTipo("Recensione");
+		
+		notificaDAO.doSave(notifica);
 		
 		
 	}

@@ -18,7 +18,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email email dell'utente da ricercare
 	 */
 	@Override
-	public RecensioneBean doRetrieveByKey(String email) throws SQLException {
+	public RecensioneBean doRetrieveByKey(String email) {
 		RecensioneBean bean = new RecensioneBean();
 		String sql = "SELECT * FROM recensione WHERE email=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -32,6 +32,8 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 				bean.setValutazione(rs.getInt("valutazione"));
 				bean.setVerificata(rs.getBoolean("verificata"));
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return bean;
 	}
@@ -41,7 +43,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * 
 	 */
 	@Override
-	public Collection<RecensioneBean> doRetrieveAll() throws SQLException {
+	public Collection<RecensioneBean> doRetrieveAll(){
 		String sql = "SELECT * FROM recensione";
 
 		ArrayList<RecensioneBean> collection = new ArrayList<RecensioneBean>();
@@ -58,6 +60,9 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 				bean.setVerificata(rs.getBoolean("verificata"));
 				collection.add(bean);
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return collection;
 	}
@@ -68,7 +73,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param bean Recensione da salvare
 	 */
 	@Override
-	public boolean doSave(RecensioneBean bean) throws SQLException {
+	public boolean doSave(RecensioneBean bean) {
 		String sql = "INSER INTO recensione VALUES (?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -97,7 +102,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email Utente proprietario della recensione da modificare
 	 */
 	@Override
-	public boolean doUpdate(RecensioneBean bean, String email) throws SQLException {
+	public boolean doUpdate(RecensioneBean bean, String email) {
 		String sql = "UPDATE recensione SET descrizione=? WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -121,7 +126,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email Indica il proprietario della recensione
 	 */
 	@Override
-	public boolean doDelete(String email) throws SQLException {
+	public boolean doDelete(String email) {
 		String sql = "DELETE FROM recensione WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -142,7 +147,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * 
 	 * @param email proprietario della recensione
 	 */
-	public boolean approva(String email) throws SQLException {
+	public boolean approva(String email) {
 		String sql = "UPDATE recensione SET verificata='true' WHERE email=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {

@@ -32,17 +32,12 @@ public class RestituisciTipiGenerici extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		try {
-			ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.doRetrieveAllTipiGenerici();
-			
-			String string = gson.toJson(categorie);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.doRetrieveAllTipiGenerici();
+		
+		String string = gson.toJson(categorie);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

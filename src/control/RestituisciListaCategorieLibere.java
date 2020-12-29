@@ -33,23 +33,18 @@ public class RestituisciListaCategorieLibere extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		try {
-			String data = request.getParameter("data");
-			String fasciaOraria = request.getParameter("fasciaOraria");
-			String tipoGenerico = request.getParameter("tipoGenerico");
-			ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.categorieConPostazioniLibere(data, fasciaOraria, tipoGenerico);
-			if(categorie.size()>0) {
-				request.getSession().setAttribute("data", data);
-				request.getSession().setAttribute("fasciaOraria", fasciaOraria);
-			}
-			String string = gson.toJson(categorie);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
+		String data = request.getParameter("data");
+		String fasciaOraria = request.getParameter("fasciaOraria");
+		String tipoGenerico = request.getParameter("tipoGenerico");
+		ArrayList<CategoriaBean> categorie = (ArrayList<CategoriaBean>) categoriaDAO.categorieConPostazioniLibere(data, fasciaOraria, tipoGenerico);
+		if(categorie.size()>0) {
+			request.getSession().setAttribute("data", data);
+			request.getSession().setAttribute("fasciaOraria", fasciaOraria);
 		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		String string = gson.toJson(categorie);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 	}
 
 

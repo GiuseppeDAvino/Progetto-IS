@@ -34,23 +34,18 @@ public class RestituisciListaPerifericheLibere extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 
-		try {
-			String data = (String) request.getSession().getAttribute("data");
-			String fasciaOraria = (String) request.getSession().getAttribute("fasciaOraria");
-			ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.perifericheDisponibili(data, fasciaOraria);
-			ArrayList<String> tipi=(ArrayList<String>)perifericaDAO.doRetrieveAllTipi();
-			
-			ArrayList<ArrayList<?>> array= new ArrayList<ArrayList<?>>();
-			array.add(periferiche);
-			array.add(tipi);
-			String string = gson.toJson(array);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		String data = (String) request.getSession().getAttribute("data");
+		String fasciaOraria = (String) request.getSession().getAttribute("fasciaOraria");
+		ArrayList<PerifericaBean> periferiche = (ArrayList<PerifericaBean>) perifericaDAO.perifericheDisponibili(data, fasciaOraria);
+		ArrayList<String> tipi=(ArrayList<String>)perifericaDAO.doRetrieveAllTipi();
+		
+		ArrayList<ArrayList<?>> array= new ArrayList<ArrayList<?>>();
+		array.add(periferiche);
+		array.add(tipi);
+		String string = gson.toJson(array);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 	}
 
 

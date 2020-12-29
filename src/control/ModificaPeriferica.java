@@ -30,12 +30,7 @@ public class ModificaPeriferica extends HttpServlet {
 		periferica.setQuantita(Integer.parseInt(request.getParameter("quantita")));
 		periferica.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 		
-		try {
-			perifericaDAO.doUpdate(periferica, periferica.getNome());
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		perifericaDAO.doUpdate(periferica, periferica.getNome());
 		
 		
 	}

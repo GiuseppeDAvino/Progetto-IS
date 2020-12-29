@@ -3,6 +3,8 @@ package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,30 +30,36 @@ class TestPostazione {
 //	}
 
 	@Test
-	void testDoSaveConCategoriaNonEsistente() throws SQLException {
+	void testInserimentoPostazioneConCategoriaNonEsistente() throws SQLException {
 		assertEquals(false, dao.doSave(postazioneConCategoriaNonEsistente));
 	}
 	@Test
-	void testDoSaveConCategoriaEsistente() throws SQLException {
+	void testInserimentoPostazioneConCategoriaEsistente() throws SQLException {
 		assertEquals(true, dao.doSave(postazioneConCategoriaEsistente));
 	} 
+	@Test
+	void testListaPostazioniPresenti() {
+		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
+		assertNotEquals(collection, dao.doRetrieveAll());
+	}
 //	@Test
-//	void testDoRetrieveByKeyConCategoriaEsistente() throws SQLException {
+//	void testRicercaPostazioneTramiteIdConCategoriaEsistente() throws SQLException {
 //		assertEquals(postazioneConCategoriaEsistente, dao.doRetrieveByKey(postazioneConCategoriaEsistente.getId()));
 //	}
 
 //	@Test
-//	void testDoUpdate() {
+//	void testAggiornaPostazione() {
 //		fail("Not yet implemented");
 //	}
 
-//	@Test
-//	void test»StataUtilizzata() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	void test»StataUtilizzata() throws SQLException {
+		assertEquals(true, dao.ËStataUtilizzata(postazioneConCategoriaEsistente));
+	}
+
 
 //	@Test
-//	void testPostazioneLiberaCategoria() {
+//	void testListaTutteLePostazioniLibere() {
 //		fail("Not yet implemented");
 //	}	
 

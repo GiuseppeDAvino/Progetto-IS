@@ -137,7 +137,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 
 	@Override
 	public boolean doUpdate(SegnalazioneBean bean, Integer chiave) {
-		// TODO Auto-generated method stub
+	
 		return true;
 	}
 
