@@ -224,7 +224,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, email);
-			System.out.println("doUpdate=" + statement);
+			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
 			return true;

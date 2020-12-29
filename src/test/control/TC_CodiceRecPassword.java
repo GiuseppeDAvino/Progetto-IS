@@ -20,7 +20,7 @@ class TC_CodiceRecPassword extends Mockito {
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 	private UtenteDAO dao;
-	private UtenteBean utente=new UtenteBean("test@funisa.com","Test","Test","Test",Ruolo.cliente,true,"ABCD123","Test1?");
+	private UtenteBean utente=new UtenteBean("test@funisa.com","Test","Test","Test",Ruolo.cliente,true,"ABCD123","Test01?");
 
 	@BeforeEach
 	void setUp() throws Exception {

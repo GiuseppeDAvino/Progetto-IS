@@ -103,7 +103,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @category permette di salvare la periferica all'interno del database
 	 */
 	@Override
-	public boolean doSave(PerifericaBean bean) throws SQLException {
+	public boolean doSave(PerifericaBean bean) {
 
 		String sql = "INSERT INTO periferica values(?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -130,7 +130,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param chiave � la chiave per selezionare la riga da aggiornare
 	 */
 	@Override
-	public boolean doUpdate(PerifericaBean bean, String nome) throws SQLException {
+	public boolean doUpdate(PerifericaBean bean, String nome) {
 		String sql = "UPDATE periferica SET tipo=?,nome=?,quantita=?,prezzo=? WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();

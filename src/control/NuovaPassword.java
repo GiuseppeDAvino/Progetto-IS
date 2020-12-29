@@ -83,10 +83,18 @@ public class NuovaPassword extends HttpServlet {
 		}//chiusura else password non vuota
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			 {
 
-		doGet(request, response);
+		try {
+			doGet(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

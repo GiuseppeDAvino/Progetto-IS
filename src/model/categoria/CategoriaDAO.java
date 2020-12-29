@@ -50,6 +50,39 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 		}
 
 	}
+	
+	/**
+	 * @category ritorna, se presente nel database, una categoria col tipoGenerico inserito
+	 * 
+	 * @param nome il tipoGenerico della categoria da ricercare
+	 */
+	public CategoriaBean doRetrieveByTipoGenerico(String tipoGenerico) {
+		CategoriaBean bean = new CategoriaBean();
+		String sql = "SELECT * FROM categoria WHERE tipoGenerico=?";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+
+			statement.setString(1, tipoGenerico);
+			System.out.println("DoRetriveByKey=" + statement.toString());
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				bean.setNome(rs.getString("nome"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				bean.setTipoGenerico(rs.getString("tipoGenerico"));
+				bean.setImmagine(rs.getString("immagine"));
+			}
+			return bean;
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 
 	/**
 	 * @category ritorna tutte le categorie presenti nel database
@@ -149,7 +182,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			statement.setString(1, chiave);
 			System.out.println("doDelete=" + statement);
-			statement.executeQuery();
+			statement.executeUpdate();
 			con.commit();
 			return true;
 		} catch (SQLException e) {
@@ -169,8 +202,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	 * 
 	 * @param tipoGenerico tipo della categoria
 	 */
-	public Collection<CategoriaBean> categorieConPostazioniLibere(String data, String fasciaOraria, String tipoGenerico)
-			throws SQLException {
+	public Collection<CategoriaBean> categorieConPostazioniLibere(String data, String fasciaOraria, String tipoGenerico) {
 		String sql = " SELECT * FROM postazione p, categoria c \r\n"
 				+ "            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico=? AND p.id NOT IN(\r\n"
 				+ "                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n"
@@ -195,6 +227,8 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 				bean.setImmagine(rs.getString("immagine"));
 				collection.add(bean);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return collection;
 

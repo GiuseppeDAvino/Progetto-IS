@@ -21,6 +21,7 @@ public class CategoriaBean {
 		this.tipoGenerico = tipoGenerico;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;
+		this.immagine = immagine;
 		
 	}
 	public String getImmagine() {
@@ -36,6 +37,7 @@ public class CategoriaBean {
 		this.tipoGenerico = "";
 		this.descrizione = "";
 		this.prezzo = 0;
+		this.immagine = "";
 	}
 
 	public String getNome() {
