@@ -30,12 +30,7 @@ public class AggiungiPeriferica extends HttpServlet {
 		periferica.setQuantita(Integer.parseInt(request.getParameter("quantita")));
 		periferica.setPrezzo(Float.parseFloat(request.getParameter("prezzo")));
 		
-		try {
-			perifericaDAO.doSave(periferica);
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		perifericaDAO.doSave(periferica);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

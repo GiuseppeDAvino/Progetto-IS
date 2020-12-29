@@ -30,17 +30,12 @@ public class RestituisciPeriferica extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		
-		try {
-			PerifericaBean periferica = perifericaDAO.doRetrieveByKey(request.getParameter("nome"));
-			
-			String string = gson.toJson(periferica);
-			response.getWriter().print(string);
-			response.getWriter().flush();
-			response.setStatus(200);
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		PerifericaBean periferica = perifericaDAO.doRetrieveByKey(request.getParameter("nome"));
+		
+		String string = gson.toJson(periferica);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 		
 	}
 

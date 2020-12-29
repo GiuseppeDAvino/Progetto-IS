@@ -46,12 +46,12 @@ public class TestPeriferica extends TestCase {
 		assertEquals(true,dao.doUpdate(perifericaEsistente, perifericaEsistente.getNome()));
 	}
 	@Test
-	public void testDoRetrieveAllTipi() throws SQLException {		
+	public void testListaPerifericheEsistentiDivisePerTipi() throws SQLException {		
 		ArrayList<PerifericaBean> collection = new ArrayList<PerifericaBean>();		
 		assertNotEquals(collection, dao.doRetrieveAllTipi()); 
 	}
 	@Test
-	public void testDoRetrieveAll() {		
+	public void testListaPerifericheEsistenti() {		
 		ArrayList<PerifericaBean> collection = new ArrayList<PerifericaBean>();		
 		assertNotEquals(collection, dao.doRetrieveAll()); 
 	}

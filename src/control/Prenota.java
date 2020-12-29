@@ -89,20 +89,15 @@ public class Prenota extends HttpServlet {
 		ArrayList<String> tipi = new ArrayList<String>();
 		ArrayList<PerifericaBean> periferiche = new ArrayList<PerifericaBean>();
 
-		try {
-			tipi = (ArrayList<String>) perifericaDAO.doRetrieveAllTipi();
+		tipi = (ArrayList<String>) perifericaDAO.doRetrieveAllTipi();
 
-			for (String s : tipi) {
-				periferiche.add(perifericaDAO.doRetrieveByKey(request.getParameter(s)));
-				System.out.println("request " + request.getParameter(s));
-			}
-			
-			for(PerifericaBean p: periferiche)
-				System.out.println("periferica " + p);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		for (String s : tipi) {
+			periferiche.add(perifericaDAO.doRetrieveByKey(request.getParameter(s)));
+			System.out.println("request " + request.getParameter(s));
 		}
+		
+		for(PerifericaBean p: periferiche)
+			System.out.println("periferica " + p);
 		return periferiche;
 	}
 
