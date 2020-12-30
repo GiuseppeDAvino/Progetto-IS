@@ -147,7 +147,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			statement.setInt(1, chiave);
-			System.out.println("doDelete=" + statement);
+			System.out.println("doDelete notifica=" + statement);
 			statement.executeUpdate();
 			con.commit();
 			return true;

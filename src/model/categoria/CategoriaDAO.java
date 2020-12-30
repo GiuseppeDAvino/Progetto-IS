@@ -172,7 +172,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	/**
 	 * @category permette di eliminare una categoria dal database
 	 * 
-	 * @param chiave ï¿½ la chiave per selezionare la riga da eliminare
+	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
 	public boolean doDelete(String chiave) {

@@ -48,7 +48,7 @@ public class AggiungiCategoria extends HttpServlet {
 
 		if (request.getPart("immagine") == null) {
 			request.setAttribute("errorTest",
-					"L'aggiunta della categoria non va a buon fine poichè il campo immagine è vuoto");
+					"L'aggiunta della categoria non va a buon fine poiché il campo immagine è vuoto");
 			session.setAttribute("error-type", "immagine");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
@@ -57,21 +57,21 @@ public class AggiungiCategoria extends HttpServlet {
 
 			if (nome.length() == 0) {
 				request.setAttribute("errorTest",
-						"L'aggiunta della categoria non va a buon fine poichè il campo nome è vuoto");
+						"L'aggiunta della categoria non va a buon fine poiché il campo nome è vuoto");
 				session.setAttribute("error-type", "nome");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			} else {
 				if (nome.length() > 40) {
 					request.setAttribute("errorTest",
-							"L'aggiunta della categoria non va a buon fine poichè il campo nome ha una lunghezza maggiore a 40");
+							"L'aggiunta della categoria non va a buon fine poiché il campo nome ha una lunghezza maggiore a 40");
 					session.setAttribute("error-type", "nome");
 					session.setAttribute("error", "Lunghezza errata");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				} else {
 					if (tipoGenerico.length() == 0) {
 						request.setAttribute("errorTest",
-								"L'aggiunta della categoria non va a buon fine poichè il campo tipoGenerico è vuoto");
+								"L'aggiunta della categoria non va a buon fine poiché il campo tipoGenerico è vuoto");
 						session.setAttribute("error-type", "tipoGenerico");
 						session.setAttribute("error", "Campo vuoto");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
@@ -80,14 +80,14 @@ public class AggiungiCategoria extends HttpServlet {
 					else {
 						if (tipoGenerico.length() > 30) {
 							request.setAttribute("errorTest",
-									"L'aggiunta della categoria non va a buon fine poichè il campo tipoGenerico ha una lunghezza maggiore a 30");
+									"L'aggiunta della categoria non va a buon fine poiché il campo tipoGenerico ha una lunghezza maggiore a 30");
 							session.setAttribute("error-type", "tipoGenerico");
 							session.setAttribute("error", "Lunghezza errata");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 						} else {
 							if (descrizione.length() == 0) {
 								request.setAttribute("errorTest",
-										"L'aggiunta della categoria non va a buon fine poichè il campo descrizione è vuoto");
+										"L'aggiunta della categoria non va a buon fine poiché il campo descrizione è vuoto");
 								session.setAttribute("error-type", "descrizione");
 								session.setAttribute("error", "Campo vuoto");
 								response.sendRedirect(
@@ -95,7 +95,7 @@ public class AggiungiCategoria extends HttpServlet {
 							} else {
 								if (descrizione.length() > 100) {
 									request.setAttribute("errorTest",
-											"L'aggiunta della categoria non va a buon fine poichè il campo descrizione ha una lunghezza maggiore di 100");
+											"L'aggiunta della categoria non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 100");
 									session.setAttribute("error-type", "descrizione");
 									session.setAttribute("error", "Lunghezza errata");
 									response.sendRedirect(
@@ -103,7 +103,7 @@ public class AggiungiCategoria extends HttpServlet {
 								} else {
 									if (prezzo.length() == 0) {
 										request.setAttribute("errorTest",
-												"L'aggiunta della categoria non va a buon fine poichè il campo prezzo è vuoto");
+												"L'aggiunta della categoria non va a buon fine poiché il campo prezzo è vuoto");
 										session.setAttribute("error-type", "prezzo");
 										session.setAttribute("error", "Campo vuoto");
 										response.sendRedirect(
@@ -113,7 +113,7 @@ public class AggiungiCategoria extends HttpServlet {
 									else {
 										if (!Validatore.validaPrezzo(prezzo)) {
 											request.setAttribute("errorTest",
-													"L'aggiunta della categoria non va a buon fine poichè il campo prezzo non rispetta il formato");
+													"L'aggiunta della categoria non va a buon fine poiché il campo prezzo non rispetta il formato");
 											session.setAttribute("error-type", "prezzo");
 											session.setAttribute("error", "Formato errato");
 											response.sendRedirect(

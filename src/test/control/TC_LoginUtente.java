@@ -35,7 +35,7 @@ public class TC_LoginUtente extends Mockito {
 	public void TC_LoginUtente_1() throws ServletException, IOException {
 		request.addParameter("email", "");
 		request.addParameter("password", "MarioRossi01?");
-		String message = "Il login non va a buon fine poichè il campo email è vuoto";
+		String message = "Il login non va a buon fine poiché il campo email è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -45,7 +45,7 @@ public class TC_LoginUtente extends Mockito {
 	public void TC_LoginUtente_2() throws ServletException, IOException {
 		request.addParameter("email", "marior@funisa.com");
 		request.addParameter("password", "MarioRossi01?");
-		String message = "Il login non va a buon fine poichè l'email non è presente nel db";
+		String message = "Il login non va a buon fine poiché l'email non è presente nel db";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -54,7 +54,7 @@ public class TC_LoginUtente extends Mockito {
 	public void TC_LoginUtente_3() throws ServletException, IOException {
 		request.addParameter("email", "mariorossi@funisa.com");
 		request.addParameter("password", "");
-		String message = "Il login non va a buon fine poichè il campo password è vuoto";
+		String message = "Il login non va a buon fine poiché il campo password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -63,7 +63,7 @@ public class TC_LoginUtente extends Mockito {
 	public void TC_LoginUtente_4() throws ServletException, IOException {
 		request.addParameter("email", "mariorossi@funisa.com");
 		request.addParameter("password", "MarioRossi0?");
-		String message = "Il login non va a buon fine poichè l'email e la password non combaciano";
+		String message = "Il login non va a buon fine poiché l'email e la password non combaciano";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

@@ -40,7 +40,7 @@ class TC_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_1() {
 		request.addParameter("password","");
 		request.addParameter("confermaPassword","Password01?");
-		String message = "La creazione della nuova password non va a buon fine poichè il campo password è vuoto";
+		String message = "La creazione della nuova password non va a buon fine poiché il campo password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -50,7 +50,7 @@ class TC_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_2() {
 		request.addParameter("password","ciao");
 		request.addParameter("confermaPassword","ciao");
-		String message = "La creazione della nuova password non va a buon fine poichè il campo password non rispetta il formato";
+		String message = "La creazione della nuova password non va a buon fine poiché il campo password non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -60,7 +60,7 @@ class TC_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_3() {
 		request.addParameter("password","Password01?");
 		request.addParameter("confermaPassword","");
-		String message = "La creazione della nuova password non va a buon fine poichè il campo conferma password è vuoto";
+		String message = "La creazione della nuova password non va a buon fine poiché il campo conferma password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -70,7 +70,7 @@ class TC_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_4() {
 		request.addParameter("password","Password01?");
 		request.addParameter("confermaPassword","Password0?");
-		String message = "La creazione della nuova password non va a buon fine  poichè il campo password e il campo conferma password non corrispondono";
+		String message = "La creazione della nuova password non va a buon fine  poiché il campo password e il campo conferma password non corrispondono";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

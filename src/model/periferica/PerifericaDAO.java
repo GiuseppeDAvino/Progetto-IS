@@ -134,7 +134,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
 	 * @category permette di aggiornare una periferica
 	 * 
-	 * @param chiave ï¿½ la chiave per selezionare la riga da aggiornare
+	 * @param chiave è la chiave per selezionare la riga da aggiornare
 	 */
 	@Override
 	public boolean doUpdate(PerifericaBean bean, String nome) {
@@ -162,7 +162,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
 	 * @category permette di eliminare una periferica dal database
 	 * 
-	 * @param chiave ï¿½ la chiave per selezionare la riga da eliminare
+	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
 	public boolean doDelete(String chiave) {
@@ -188,7 +188,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * @param data data della prenotazione
 	 * @param fasciaOraria fascia oraria della prenotazione
 	 * 
-	 * @return ArrayList contenente {@link PerifericaBean} con quantitï¿½ disponibile in quel momento >0 
+	 * @return ArrayList contenente {@link PerifericaBean} con quantità disponibile in quel momento >0 
 	 * */
 	public Collection<PerifericaBean> perifericheDisponibili(String data,String fasciaOraria) {
 		String sql="SELECT p.nome, (p.quantita-(\r\n" + 

@@ -28,7 +28,7 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 		String email=(String) session.getAttribute("emailCodice");
 		if(codiceVerifica.length()==0) {
 			request.setAttribute("errorTest",
-					"Inserimento del codice di verifica non va a buon fine poichè il campo codice è vuoto");
+					"Inserimento del codice di verifica non va a buon fine poiché il campo codice è vuoto");
 			session.setAttribute("error-type", "codiceVerifica");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
@@ -36,7 +36,7 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 		}else {
 			if(!utenteDAO.controllaEmailCodice(email, codiceVerifica)) {
 				request.setAttribute("errorTest",
-						"Inserimento del codice di verifica non va a buon fine poichè il codice non è associato alla sua email");
+						"Inserimento del codice di verifica non va a buon fine poiché il codice non è associato alla sua email");
 				session.setAttribute("error-type", "codiceVerifica");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(

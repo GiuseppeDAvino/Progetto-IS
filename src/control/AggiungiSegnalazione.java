@@ -37,28 +37,28 @@ public class AggiungiSegnalazione extends HttpServlet {
 		String tipo = request.getParameter("tipo");
 		
 		if(tipo.length() == 0) {
-			request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poichè il campo tipo è vuoto");
+			request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo tipo è vuoto");
 			session.setAttribute("error-type", "tipo");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/segnalazione.jsp"));
 		}
 		else {
 			if(tipo.length() > 30) {
-				request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poichè il campo tipo ha una lunghezza maggiore di 30");
+				request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo tipo ha una lunghezza maggiore di 30");
 				session.setAttribute("error-type", "tipo");
 				session.setAttribute("error", "Lunghezza errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/segnalazione.jsp"));
 			}
 			else {
 				if(descrizione.length() == 0) {
-					request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poichè il campo descrizione è vuoto");
+					request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo descrizione è vuoto");
 					session.setAttribute("error-type", "descrizione");
 					session.setAttribute("error", "Lunghezza errata");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/segnalazione.jsp"));
 				}
 				else {
 					if(descrizione.length() > 200) {
-						request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poichè il campo descrizione ha una lunghezza maggiore di 200");
+						request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200");
 						session.setAttribute("error-type", "descrizione");
 						session.setAttribute("error", "Lunghezza errata");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/segnalazione.jsp"));

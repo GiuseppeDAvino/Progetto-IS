@@ -28,7 +28,7 @@ class TC_RichiestaRecPassword {
 	@Test
 	void TC_RichiestaRecPassword_1() {
 		request.addParameter("email", "");
-		String message = "La richiesta per il recupero password non va a buon fine poichè il campo email è vuoto";
+		String message = "La richiesta per il recupero password non va a buon fine poiché il campo email è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -36,7 +36,7 @@ class TC_RichiestaRecPassword {
 	@Test
 	void TC_RichiestaRecPassword_2() {
 		request.addParameter("email", "@funisa.com");
-		String message = "La richiesta per il recupero password non va a buon fine poichè il campo email non rispetta il formato";
+		String message = "La richiesta per il recupero password non va a buon fine poiché il campo email non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -44,7 +44,7 @@ class TC_RichiestaRecPassword {
 	@Test
 	void TC_RichiestaRecPassword_3() {
 		request.addParameter("email", "mario@funisa.com");
-		String message = "La richiesta per il recupero password non va a buon fine poichè il campo email non esiste nel database";
+		String message = "La richiesta per il recupero password non va a buon fine poiché il campo email non esiste nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

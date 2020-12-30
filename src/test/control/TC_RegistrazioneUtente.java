@@ -14,19 +14,26 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import control.Registrazione;
+import junit.framework.TestSuite;
+import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
+import model.utente.UtenteBean.Ruolo;
 
-class TC_RegistrazioneUtente extends Mockito {
+public class TC_RegistrazioneUtente extends Mockito {
 	private Registrazione servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 	private UtenteDAO dao;
+	private UtenteBean utenteEsistente=new UtenteBean("test@funisa.com","Test","Test","Test",Ruolo.cliente,true,"ABCD123","MarioRossi01?");
+	
+	
 	@BeforeEach
 	public void setUp() {
 		servlet = new Registrazione();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
 		dao=new UtenteDAO();
+		dao.doSave(utenteEsistente);
 	}
 
 	@Test
@@ -37,7 +44,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo nome è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo nome è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -50,7 +57,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo nome non rispetta il formato";
+		String message = "La registrazione non va a buon fine poiché il campo nome non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -63,7 +70,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo cognome è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo cognome è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -76,7 +83,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo cognome non rispetta il formato";
+		String message = "La registrazione non va a buon fine poiché il campo cognome non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -89,7 +96,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo email è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo email è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -102,7 +109,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo email non rispetta il formato";
+		String message = "La registrazione non va a buon fine poiché il campo email non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -111,11 +118,11 @@ class TC_RegistrazioneUtente extends Mockito {
 	public void TC_RegistrazioneUtente_7() throws ServletException, IOException {
 		request.addParameter("nome", "Roberto");
 		request.addParameter("cognome", "Bianchi");
-		request.addParameter("email", "mariorossi@funisa.com");
+		request.addParameter("email", utenteEsistente.getEmail());
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè l'email è già presente nel database";
+		String message = "La registrazione non va a buon fine poiché l'email è già presente nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -128,7 +135,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo username è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo username è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -141,7 +148,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "R");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo username non rispetta il formato";
+		String message = "La registrazione non va a buon fine poiché il campo username non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -151,10 +158,10 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("nome", "Roberto");
 		request.addParameter("cognome", "Bianchi");
 		request.addParameter("email", "robertobianchi@funisa.com");
-		request.addParameter("username", "Mrossi01");
+		request.addParameter("username", utenteEsistente.getUsername());
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè l'username è già presente nel database";
+		String message = "La registrazione non va a buon fine poiché l'username è già presente nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -167,7 +174,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "");
 		request.addParameter("confermaPassword", "RobertoBianchi01?");
-		String message = "La registrazione non va a buon fine poichè il campo password è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -180,7 +187,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "Roberto0");
 		request.addParameter("confermaPassword", "Roberto0");
-		String message = "La registrazione non va a buon fine poichè il campo password non rispetta il formato";
+		String message = "La registrazione non va a buon fine poiché il campo password non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -194,7 +201,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "");
-		String message = "La registrazione non va a buon fine poichè il campo conferma password è vuoto";
+		String message = "La registrazione non va a buon fine poiché il campo conferma password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -207,7 +214,7 @@ class TC_RegistrazioneUtente extends Mockito {
 		request.addParameter("username", "Rbianchi01");
 		request.addParameter("password", "RobertoBianchi01?");
 		request.addParameter("confermaPassword", "RobertoBianchi0");
-		String message = "La registrazione non va a buon fine poichè il campo password e il campo conferma password non corrispondono";
+		String message = "La registrazione non va a buon fine poiché il campo password e il campo conferma password non corrispondono";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -235,5 +242,4 @@ class TC_RegistrazioneUtente extends Mockito {
 		dao.doDelete("robertobianchi@funisa.com");
 		dao=null;
 	}
-
 }

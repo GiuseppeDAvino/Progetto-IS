@@ -43,7 +43,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo nome è vuoto";
+		String message = "La modifica della categoria non va a buon fine poiché il campo nome è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -58,7 +58,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo nome ha una lunghezza maggiore a 40";
+		String message = "La modifica della categoria non va a buon fine poiché il campo nome ha una lunghezza maggiore a 40";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -73,7 +73,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo tipoGenerico è vuoto";
+		String message = "La modifica della categoria non va a buon fine poiché il campo tipoGenerico è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -88,7 +88,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo tipoGenerico ha una lunghezza maggiore a 30";
+		String message = "La modifica della categoria non va a buon fine poiché il campo tipoGenerico ha una lunghezza maggiore a 30";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -103,7 +103,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo descrizione è vuoto";
+		String message = "La modifica della categoria non va a buon fine poiché il campo descrizione è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -118,7 +118,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo descrizione ha una lunghezza maggiore di 100";
+		String message = "La modifica della categoria non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 100";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -133,7 +133,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo prezzo è vuoto";
+		String message = "La modifica della categoria non va a buon fine poiché il campo prezzo è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -148,7 +148,7 @@ class TC_ModificaCategoria extends Mockito {
 	    byte[] b2 = new byte[1000];
 	    MockPart partImmagine = new MockPart("immagine", "immagine.jpg", b2);
 		request.addPart(partImmagine);
-		String message = "La modifica della categoria non va a buon fine poichè il campo prezzo non rispetta il formato";
+		String message = "La modifica della categoria non va a buon fine poiché il campo prezzo non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -160,7 +160,7 @@ class TC_ModificaCategoria extends Mockito {
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
 		request.addParameter("prezzo","10");
-		String message = "La modifica della categoria non va a buon fine poichè il campo immagine è vuoto";
+		String message = "La modifica della categoria non va a buon fine poiché il campo immagine è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

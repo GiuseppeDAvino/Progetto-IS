@@ -41,7 +41,7 @@ class TC_AggiuntaRecensione extends Mockito {
 		request.getSession().setAttribute("utente", utente);
 		request.addParameter("descrizione", "");
 		request.addParameter("valutazione", "4");
-		String message = "L'aggiunta della recensione non va a buon fine poichè il campo descrizione è vuoto";
+		String message = "L'aggiunta della recensione non va a buon fine poiché il campo descrizione è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -52,7 +52,7 @@ class TC_AggiuntaRecensione extends Mockito {
 		request.getSession().setAttribute("utente", utente);
 		request.addParameter("descrizione", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and");
 		request.addParameter("valutazione", "4");
-		String message = "L'aggiunta della recensione non va a buon fine poichè il campo descrizione ha una lunghezza maggiore di 200";
+		String message = "L'aggiunta della recensione non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -63,7 +63,7 @@ class TC_AggiuntaRecensione extends Mockito {
 		request.getSession().setAttribute("utente", utente);
 		request.addParameter("descrizione", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s");
 		request.addParameter("valutazione", "");
-		String message = "L'aggiunta della recensione non va a buon fine poichè il campo valutazione è vuoto";
+		String message = "L'aggiunta della recensione non va a buon fine poiché il campo valutazione è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

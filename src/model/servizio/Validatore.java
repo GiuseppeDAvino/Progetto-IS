@@ -3,9 +3,11 @@ package model.servizio;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import model.categoria.CategoriaDAO;
+import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 
 public final class Validatore {
@@ -133,8 +135,17 @@ public final class Validatore {
 	public static boolean isNomeCategoriaValid(String nomeCategoria) {
 		if(categoriaDAO.doRetrieveByKey(nomeCategoria).getNome().equals("")) 
 			return false;
-		return true;
-			
-			
+		return true;		
+	}
+	
+	public static boolean isVecchiaPasswordValid(String email,String vecchiaPassword) {
+		UtenteBean utenteTest = new UtenteBean();
+		UtenteBean utente = utenteDAO.doRetrieveByKey(email);
+		
+		utenteTest.setPassword(vecchiaPassword);
+		if(Arrays.compare(utenteTest.getPassword(), utente.getPassword()) == 0) {
+			return true;
+		}
+		return false;
 	}
 }

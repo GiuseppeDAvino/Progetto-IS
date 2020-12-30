@@ -35,7 +35,7 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 
 		if (email.length() == 0) {
 			request.setAttribute("errorTest",
-					"La richiesta per il recupero password non va a buon fine poichè il campo email è vuoto");
+					"La richiesta per il recupero password non va a buon fine poiché il campo email è vuoto");
 			session.setAttribute("error-type", "email");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
@@ -43,7 +43,7 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 		} else {
 			if (!Validatore.validaEmail(email)) {
 				request.setAttribute("errorTest",
-						"La richiesta per il recupero password non va a buon fine poichè il campo email non rispetta il formato");
+						"La richiesta per il recupero password non va a buon fine poiché il campo email non rispetta il formato");
 				session.setAttribute("error-type", "email");
 				session.setAttribute("error", "Formato non valido");
 				response.sendRedirect(
@@ -51,7 +51,7 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 			} else {
 				if (Validatore.isEmailValid(email)) {
 					request.setAttribute("errorTest",
-							"La richiesta per il recupero password non va a buon fine poichè il campo email non esiste nel database");
+							"La richiesta per il recupero password non va a buon fine poiché il campo email non esiste nel database");
 					session.setAttribute("error-type", "email");
 					session.setAttribute("error", "Email non esistente");
 					response.sendRedirect(

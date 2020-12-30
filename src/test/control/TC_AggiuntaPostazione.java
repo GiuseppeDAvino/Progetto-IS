@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.mock.web.MockPart;
 
 import control.AggiungiPostazione;
 import model.postazione.PostazioneBean;
@@ -35,7 +34,7 @@ class TC_AggiuntaPostazione extends Mockito {
 	void TC_AggiuntaCategoria_1() {
 		request.addParameter("nomeCategoria","");
 
-		String message = "L'aggiunta della postazione non va a buon fine poichè il campo nome categoria è vuoto";
+		String message = "L'aggiunta della postazione non va a buon fine poiché il campo nome categoria è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -45,7 +44,7 @@ class TC_AggiuntaPostazione extends Mockito {
 	void TC_AggiuntaCategoria_2() {
 		request.addParameter("nomeCategoria","AUTO");
 
-		String message = "L'aggiunta della postazione non va a buon fine poichè il campo nome categoria non è presente nel database";
+		String message = "L'aggiunta della postazione non va a buon fine poiché il campo nome categoria non è presente nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

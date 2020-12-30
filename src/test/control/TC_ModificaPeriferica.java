@@ -34,7 +34,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo nome è vuoto";
+		String message = "La modifica della periferica non va a buon fine poiché il campo nome è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -46,7 +46,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo nome ha una lunghezza maggiore a 40";
+		String message = "La modifica della periferica non va a buon fine poiché il campo nome ha una lunghezza maggiore a 40";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -58,7 +58,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo","");
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo tipo è vuoto";
+		String message = "La modifica della periferica non va a buon fine poiché il campo tipo è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -70,7 +70,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo","MOUSE MOUSE MOUSE MOUSE MOUSE MOUSE");
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo tipo ha una lunghezza maggiore a 30";
+		String message = "La modifica della periferica non va a buon fine poiché il campo tipo ha una lunghezza maggiore a 30";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -82,7 +82,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo quantità è vuoto";
+		String message = "La modifica della periferica non va a buon fine poiché il campo quantità è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -94,7 +94,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","5u");
 		request.addParameter("prezzo","5");
-		String message = "La modifica della periferica non va a buon fine poichè il campo quantità non rispetta il formato";
+		String message = "La modifica della periferica non va a buon fine poiché il campo quantità non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -106,7 +106,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","");
-		String message = "La modifica della periferica non va a buon fine poichè il campo prezzo è vuoto";
+		String message = "La modifica della periferica non va a buon fine poiché il campo prezzo è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -118,7 +118,7 @@ class TC_ModificaPeriferica extends Mockito{
 		request.addParameter("tipo",periferica.getTipo());
 		request.addParameter("quantita","5");
 		request.addParameter("prezzo","-10euro");
-		String message = "La modifica della periferica non va a buon fine poichè il campo prezzo non rispetta il formato";
+		String message = "La modifica della periferica non va a buon fine poiché il campo prezzo non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

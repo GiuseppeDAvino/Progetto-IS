@@ -44,98 +44,98 @@ public class Registrazione extends HttpServlet {
 		
 		
 		if(nome.length()==0) {
-			request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo nome è vuoto");
+			request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo nome è vuoto");
 			session.setAttribute("error-type", "nome");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 		}
 		else {
 			if(cognome.length()==0) {
-				request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo cognome è vuoto");
+				request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo cognome è vuoto");
 				session.setAttribute("error-type", "cognome");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 			}
 			else {
 				if(email.length()==0) {
-					request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo email è vuoto");
+					request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo email è vuoto");
 					session.setAttribute("error-type", "email");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 				}
 				else {
 					if(username.length()==0) {
-						request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo username è vuoto");
+						request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo username è vuoto");
 						session.setAttribute("error-type", "username");
 						session.setAttribute("error", "Campo vuoto");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 					}
 					else {
 						if(password.length()==0) {
-							request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo password è vuoto");
+							request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo password è vuoto");
 							session.setAttribute("error-type", "password");
 							session.setAttribute("error", "Campo vuoto");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 						}
 						else {
 							if(confPass.length()==0) {
-								request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo conferma password è vuoto");
+								request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo conferma password è vuoto");
 								session.setAttribute("error-type", "confermaPassword");
 								session.setAttribute("error", "Campo vuoto");
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 							}
 							else {
 								if(!Validatore.validaNomeCognome(nome)) {
-									request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo nome non rispetta il formato");
+									request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo nome non rispetta il formato");
 									session.setAttribute("error-type", "nome");
 									session.setAttribute("error", "Campo non rispetta il formato");
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 								}
 								else {
 									if(!Validatore.validaNomeCognome(cognome)) {
-										request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo cognome non rispetta il formato");
+										request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo cognome non rispetta il formato");
 										session.setAttribute("error-type", "cognome");
 										session.setAttribute("error", "Campo non rispetta il formato");
 										response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 									}
 									else {
 										if(!Validatore.validaEmail(email)) {
-											request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo email non rispetta il formato");
+											request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo email non rispetta il formato");
 											session.setAttribute("error-type", "email");
 											session.setAttribute("error", "Campo non rispetta il formato");
 											response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 										}
 										else {
 											if(!Validatore.validaUsername(username)) {
-												request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo username non rispetta il formato");
+												request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo username non rispetta il formato");
 												session.setAttribute("error-type", "username");
 												session.setAttribute("error", "Campo non rispetta il formato");
 												response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 											}
 											else {
 												if(!Validatore.validaPassword(password)) {
-													request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo password non rispetta il formato");
+													request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo password non rispetta il formato");
 													session.setAttribute("error-type", "password");
 													session.setAttribute("error", "Campo non rispetta il formato");
 													response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 												}
 												else {
 													if(!Validatore.isPasswordValid(password, confPass)) {
-														request.setAttribute("errorTest", "La registrazione non va a buon fine poichè il campo password e il campo conferma password non corrispondono");
+														request.setAttribute("errorTest", "La registrazione non va a buon fine poiché il campo password e il campo conferma password non corrispondono");
 														session.setAttribute("error-type", "confermaPassword");
 														session.setAttribute("error", "Campo password e conferma password non corrispondono");
 														response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 													}
 													else {
 														if(!Validatore.isEmailValid(email)) {
-															request.setAttribute("errorTest", "La registrazione non va a buon fine poichè l'email è già presente nel database");
+															request.setAttribute("errorTest", "La registrazione non va a buon fine poiché l'email è già presente nel database");
 															session.setAttribute("error-type", "email");
 															session.setAttribute("error", "Email già esistente nel sistema");
 															response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));
 														}
 														else {
 															if(!Validatore.isUsernameValid(username)) {
-																request.setAttribute("errorTest", "La registrazione non va a buon fine poichè l'username è già presente nel database");
+																request.setAttribute("errorTest", "La registrazione non va a buon fine poiché l'username è già presente nel database");
 																session.setAttribute("error-type", "username");
 																session.setAttribute("error", "Username già esistente nel sistema");
 																response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/registrazione.jsp"));

@@ -31,7 +31,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","");
 		request.addParameter("fasciaOraria","16/18");
 		request.addParameter("tipoGenerico","PC");
-		String message = "La ricerca non va a buon fine poichè il campo data è vuoto";
+		String message = "La ricerca non va a buon fine poiché il campo data è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -42,7 +42,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","21-1-6");
 		request.addParameter("fasciaOraria","16/18");
 		request.addParameter("tipoGenerico","PC");
-		String message = "La ricerca non va a buon fine poichè il campo data non rispetta il formato";
+		String message = "La ricerca non va a buon fine poiché il campo data non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -53,7 +53,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","1999-01-06");
 		request.addParameter("fasciaOraria","16/18");
 		request.addParameter("tipoGenerico","PC");
-		String message = "La ricerca non va a buon fine poichè la data inserita è antecedente alla data corrente";
+		String message = "La ricerca non va a buon fine poiché la data inserita è antecedente alla data corrente";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -64,7 +64,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","2021-01-15");
 		request.addParameter("fasciaOraria","");
 		request.addParameter("tipoGenerico","PC");
-		String message = "La ricerca non va a buon fine poichè il campo fascia oraria è vuoto";
+		String message = "La ricerca non va a buon fine poiché il campo fascia oraria è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -75,7 +75,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","2021-01-15");
 		request.addParameter("fasciaOraria","22/24");
 		request.addParameter("tipoGenerico","PC");
-		String message = "La ricerca non va a buon fine poichè la fascia oraria inserita non esiste";
+		String message = "La ricerca non va a buon fine poiché la fascia oraria inserita non esiste";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -86,7 +86,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","2021-01-15");
 		request.addParameter("fasciaOraria","16/18");
 		request.addParameter("tipoGenerico","");
-		String message = "La ricerca non va a buon fine poichè il campo tipo postazione è vuoto";
+		String message = "La ricerca non va a buon fine poiché il campo tipo postazione è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);
@@ -97,7 +97,7 @@ class TC_FiltraPostazione extends Mockito{
 		request.addParameter("data","2021-01-15");
 		request.addParameter("fasciaOraria","16/18");
 		request.addParameter("tipoGenerico","AUTO");
-		String message = "La ricerca non va a buon fine poichè il campo tipo postazione non è presente nel database";
+		String message = "La ricerca non va a buon fine poiché il campo tipo postazione non è presente nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
 		assertEquals(message, result);

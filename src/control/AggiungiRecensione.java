@@ -37,21 +37,21 @@ public class AggiungiRecensione extends HttpServlet {
 		String valutazione = request.getParameter("valutazione");
 		
 		if(descrizione.length() == 0) {
-			request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poichè il campo descrizione è vuoto");
+			request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo descrizione è vuoto");
 			session.setAttribute("error-type", "descrizione");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/recensisci.jsp"));
 		}
 		else {
 			if(descrizione.length() > 200) {
-				request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poichè il campo descrizione ha una lunghezza maggiore di 200");
+				request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200");
 				session.setAttribute("error-type", "descrizione");
 				session.setAttribute("error", "Lunghezza errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/recensisci.jsp"));
 			}
 			else {
 				if(valutazione.length() == 0) {
-					request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poichè il campo valutazione è vuoto");
+					request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo valutazione è vuoto");
 					session.setAttribute("error-type", "valutazione");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/recensisci.jsp"));

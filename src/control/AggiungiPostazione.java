@@ -37,14 +37,14 @@ public class AggiungiPostazione extends HttpServlet {
 		String nomeCategoria = request.getParameter("nomeCategoria");
 		
 		if(nomeCategoria.length() == 0) {
-			request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poichè il campo nome categoria è vuoto");
+			request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poiché il campo nome categoria è vuoto");
 			session.setAttribute("error-type", "nomeCategoria");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		}
 		else {
 			if(!Validatore.isNomeCategoriaValid(nomeCategoria)) {
-				request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poichè il campo nome categoria non è presente nel database");
+				request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poiché il campo nome categoria non è presente nel database");
 				session.setAttribute("error-type", "nomeCategoria");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));

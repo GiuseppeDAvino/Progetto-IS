@@ -39,14 +39,14 @@ public class Login extends HttpServlet {
 			String email = request.getParameter("email");
 			String pass = request.getParameter("password");
 			if (email.length() == 0) {
-				request.setAttribute("errorTest", "Il login non va a buon fine poichè il campo email è vuoto");
+				request.setAttribute("errorTest", "Il login non va a buon fine poiché il campo email è vuoto");
 				session.setAttribute("errorType", "email");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
 				
 			} else{
 					if(pass.length()==0) {
-						request.setAttribute("errorTest", "Il login non va a buon fine poichè il campo password è vuoto");
+						request.setAttribute("errorTest", "Il login non va a buon fine poiché il campo password è vuoto");
 						session.setAttribute("errorType", "password");
 						session.setAttribute("error", "Campo vuoto");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));	
@@ -54,7 +54,7 @@ public class Login extends HttpServlet {
 					else {
 						UtenteBean utente = utenteDAO.doRetrieveByKey(email);
 						if(utente.getEmail().equals("")) {//Controllo se l'email non è presente nel db
-							request.setAttribute("errorTest", "Il login non va a buon fine poichè l'email non è presente nel db");
+							request.setAttribute("errorTest", "Il login non va a buon fine poiché l'email non è presente nel db");
 							session.setAttribute("errorType", "email");
 							session.setAttribute("error", "Email non presente nel database");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));
@@ -64,7 +64,7 @@ public class Login extends HttpServlet {
 							byte curr[] = md.digest(pass.getBytes());//Password inserita hashata in SHA-256
 							byte user[] = utente.getPassword();//Password dell'utente
 							if(Arrays.compare(curr, user)!=0) {
-								request.setAttribute("errorTest", "Il login non va a buon fine poichè l'email e la password non combaciano");
+								request.setAttribute("errorTest", "Il login non va a buon fine poiché l'email e la password non combaciano");
 								session.setAttribute("errorType", "password");
 								session.setAttribute("error", "Email o password errate");
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));

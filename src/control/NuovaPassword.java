@@ -33,7 +33,7 @@ public class NuovaPassword extends HttpServlet {
 		
 		if(password.length()==0) {
 			request.setAttribute("errorTest",
-					"La creazione della nuova password non va a buon fine poichè il campo password è vuoto");
+					"La creazione della nuova password non va a buon fine poiché il campo password è vuoto");
 			session.setAttribute("error-type", "password");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
@@ -42,7 +42,7 @@ public class NuovaPassword extends HttpServlet {
 		else {
 			if(confermaPassword.length()==0) {
 				request.setAttribute("errorTest",
-						"La creazione della nuova password non va a buon fine poichè il campo conferma password è vuoto");
+						"La creazione della nuova password non va a buon fine poiché il campo conferma password è vuoto");
 				session.setAttribute("error-type", "confermaPassword");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(
@@ -51,7 +51,7 @@ public class NuovaPassword extends HttpServlet {
 			else {
 				if(!Validatore.validaPassword(password)) {
 					request.setAttribute("errorTest",
-							"La creazione della nuova password non va a buon fine poichè il campo password non rispetta il formato");
+							"La creazione della nuova password non va a buon fine poiché il campo password non rispetta il formato");
 					session.setAttribute("error-type", "password");
 					session.setAttribute("error", "Formato non valido");
 					response.sendRedirect(
@@ -60,7 +60,7 @@ public class NuovaPassword extends HttpServlet {
 				else {
 					if(!password.equals(confermaPassword)) {
 						request.setAttribute("errorTest",
-								"La creazione della nuova password non va a buon fine  poichè il campo password e il campo conferma password non corrispondono");
+								"La creazione della nuova password non va a buon fine  poiché il campo password e il campo conferma password non corrispondono");
 						session.setAttribute("error-type", "confermaPassword");
 						session.setAttribute("error", "Le due password non corrispondono");
 						response.sendRedirect(
