@@ -14,12 +14,12 @@ import model.connessione.DriverManagerConnectionPool;
 import model.utente.UtenteBean.Ruolo;
 
 /**
- * @category Permette di effettuare gli accessi al database della tabella utente
+ *  Permette di effettuare gli accessi al database della tabella utente
  * 
  */
 public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	/**
-	 * @category ritorna, se presente nel database, una utente con l'email inserito
+	 *  ritorna, se presente nel database, una utente con l'email inserito
 	 * 
 	 * @param email l'e-mail dell'utente da ricercare
 	 */ 
@@ -69,7 +69,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category ritorna tutte gli utenti presenti nel database
+	 *  ritorna tutte gli utenti presenti nel database
 	 * 
 	 */
 	@Override
@@ -118,7 +118,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category ritorna tutti gli utenti in ordine di numero di prenotazioni
+	 *  ritorna tutti gli utenti in ordine di numero di prenotazioni
 	 * 
 	 */
 	public Collection<UtenteBean> doRetrieveAllPerPrenotazioni(){
@@ -149,7 +149,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category permette di salvare l'utente all'interno del database <br>
+	 *  permette di salvare l'utente all'interno del database <br>
 	 * 
 	 */
 	@Override
@@ -164,7 +164,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			statement.setString(4, bean.getUsername());
 			statement.setBytes(5, bean.getPassword());
 			statement.setString(6, bean.getRuolo().name());
-			statement.setBoolean(7, false);
+			statement.setBoolean(7, bean.isStato());
 			statement.setString(8, bean.getCodiceVerifica());
 			statement.setString(9, bean.getImg());
 			System.out.println("doSave=" + statement);
@@ -179,7 +179,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category permette di aggiornare l'utente all'interno del database <br>
+	 *  permette di aggiornare l'utente all'interno del database <br>
 	 * 
 	 * @param bean  l'utente da cambiare
 	 * @param email l'email dell'utente da modificare
@@ -213,7 +213,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category permette di eliminare l'utente all'interno del database <br>
+	 *  permette di eliminare l'utente all'interno del database <br>
 	 * 
 	 * @param email l'email dell'utente da cambiare
 	 */
@@ -237,7 +237,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category Ritorna la password codificata
+	 *  Ritorna la password codificata
 	 * 
 	 * @param password la password da codificare
 	 */
@@ -259,7 +259,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category Controlla se l'email e la password corrispondono ad un utente nel
+	 *  Controlla se l'email e la password corrispondono ad un utente nel
 	 *           db
 	 * 
 	 * @param email    email dell'utente
@@ -291,7 +291,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	
 	
 	/**
-	 * @category Controlla se l'email e il codice corrispondono ad un utente nel
+	 *  Controlla se l'email e il codice corrispondono ad un utente nel
 	 *           db
 	 * 
 	 * @param email    email dell'utente
@@ -320,7 +320,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 	
 	/**
-	 * @category permette di aggiornare l'utente all'interno del database <br>
+	 *  permette di aggiornare l'utente all'interno del database <br>
 	 * 
 	 * @param bean  l'utente da cambiare
 	 * @param email l'email dell'utente da modificare
@@ -347,7 +347,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	
 
 	/**
-	 * @category Controlla se l'email inserita esiste già nel db
+	 *  Controlla se l'email inserita esiste già nel db
 	 * 
 	 * @param email email da controllare
 	 * 
@@ -372,7 +372,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 
 	/**
-	 * @category Controlla se l'username inserito esiste già nel db
+	 *  Controlla se l'username inserito esiste già nel db
 	 * 
 	 * @param username username da controllare
 	 * 
@@ -398,7 +398,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	}
 	
 	/**
-	 * @category Permette di cambiare codice di un utente
+	 *  Permette di cambiare codice di un utente
 	 * @param codice il codice da inserire
 	 * @param email l'email associata all'utente
 	 * */

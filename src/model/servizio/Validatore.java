@@ -13,7 +13,7 @@ public final class Validatore {
 	private static CategoriaDAO categoriaDAO = new CategoriaDAO();
 	
 	/**
-	 * @category controlla il nome/cognome inserito
+	 *  controlla il nome/cognome inserito
 	 * 
 	 * @param stringa stringa da controllare
 	 */
@@ -23,7 +23,7 @@ public final class Validatore {
 	}
 
 	/**
-	 * @category controlla l'username inserito
+	 *  controlla l'username inserito
 	 * 
 	 * @param username username da controllare
 	 */
@@ -33,7 +33,7 @@ public final class Validatore {
 	}
 
 	/**
-	 * @category controlla l' email inserito
+	 *  controlla l' email inserito
 	 * 
 	 * @param email email da controllare
 	 */
@@ -43,7 +43,7 @@ public final class Validatore {
 	}
 
 	/**
-	 * @category controlla la passwordinserito
+	 *  controlla la passwordinserito
 	 * 
 	 * @param password password da controllare
 	 */
@@ -53,7 +53,7 @@ public final class Validatore {
 	}
 
 	/**
-	 * @category Controlla se l'email è presente nel db
+	 *  Controlla se l'email è presente nel db
 	 * @param email email da controllare
 	 * @return <code>true</code> se l'email non è presente nel db<br>
 	 * 			<code>false</code> altrimenti

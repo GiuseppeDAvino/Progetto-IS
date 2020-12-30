@@ -13,7 +13,7 @@ import model.connessione.DriverManagerConnectionPool;
 public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 
 	/**
-	 * @category Ricerca la recensione in base all'email dell'utente
+	 *  Ricerca la recensione in base all'email dell'utente
 	 * 
 	 * @param email email dell'utente da ricercare
 	 */
@@ -39,7 +39,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	}
 
 	/**
-	 * @category Ritorna tutte le recensioni
+	 *  Ritorna tutte le recensioni
 	 * 
 	 */
 	@Override
@@ -68,7 +68,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	}
 
 	/**
-	 * @category Salva una recensione nel database
+	 *  Salva una recensione nel database
 	 * 
 	 * @param bean Recensione da salvare
 	 */
@@ -96,7 +96,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	}
 
 	/**
-	 * @category Aggiorna una recensione
+	 *  Aggiorna una recensione
 	 * 
 	 * @param bean  Recensione con contenuto aggiornato
 	 * @param email Utente proprietario della recensione da modificare
@@ -121,7 +121,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	}
 
 	/**
-	 * @category Cancella una recensione
+	 *  Cancella una recensione
 	 * 
 	 * @param email Indica il proprietario della recensione
 	 */
@@ -143,7 +143,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	}
 
 	/**
-	 * @category Approva una recensione
+	 *  Approva una recensione
 	 * 
 	 * @param email proprietario della recensione
 	 */

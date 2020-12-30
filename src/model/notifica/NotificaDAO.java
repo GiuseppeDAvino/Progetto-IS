@@ -12,13 +12,13 @@ import model.connessione.DriverManagerConnectionPool;
 import model.utente.UtenteBean;
 
 /**
- * @category Permette di effettuare gli accessi al database della tabella
+ *  Permette di effettuare gli accessi al database della tabella
  *           notifica
  * 
  */
 public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	/**
-	 * @category ritorna, se presente nel database, una notifica con l'id inserito
+	 *  ritorna, se presente nel database, una notifica con l'id inserito
 	 * 
 	 * @param id l'id della notifica da ricercare
 	 */
@@ -49,7 +49,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category ritorna tutte le notifiche presenti nel database
+	 *  ritorna tutte le notifiche presenti nel database
 	 * 
 	 */
 	@Override
@@ -80,7 +80,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category permette di salvare la notifica all'interno del database <br>
+	 *  permette di salvare la notifica all'interno del database <br>
 	 *           Non utilizzare questo metodo per salvare le notifiche</br>
 	 */
 	@Override
@@ -101,7 +101,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category permette di salvare la notifica all'interno del database
+	 *  permette di salvare la notifica all'interno del database
 	 *           collengandola agli utenti
 	 * 
 	 * @param notifica è la notifica da inserire dal database
@@ -136,7 +136,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category permette di eliminare una notifica dal database
+	 *  permette di eliminare una notifica dal database
 	 * 
 	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
@@ -159,7 +159,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category permette di impostare isRead di uno specifico utente su una
+	 *  permette di impostare isRead di uno specifico utente su una
 	 *           notifica
 	 * 
 	 * @param id     id della notifica
@@ -181,7 +181,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	}
 
 	/**
-	 * @category permette di eliminare una notifica da un utente
+	 *  permette di eliminare una notifica da un utente
 	 * 
 	 * @param id     id della notifica
 	 * @param utente utente su cui deve essere eliminata la notifica

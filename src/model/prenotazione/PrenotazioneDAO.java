@@ -13,7 +13,7 @@ import model.periferica.PerifericaBean;
 
 public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer> {
 	/**
-	 * @category ritorna, se presente nel database, una prenotazione con l'id
+	 *  ritorna, se presente nel database, una prenotazione con l'id
 	 *           inserito
 	 * 
 	 * @param id l'id della prenotazione da ricercare
@@ -44,7 +44,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
-	 * @category ritorna tutte le prenotazioni presenti nel database
+	 *  ritorna tutte le prenotazioni presenti nel database
 	 * 
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
-	 * @category Termina la prenotazione disattivando il qr
+	 *  Termina la prenotazione disattivando il qr
 	 * 
 	 * @param bean Prenotazione da terminare
 	 */
@@ -100,7 +100,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * <br>
 	 * NON UTILIZZARE QUESTO METODO</br>
 	 * 
-	 * @category Inserisce una prenotazione nel database
+	 *  Inserisce una prenotazione nel database
 	 * 
 	 * @param bean Prenotazione da inserire
 	 */
@@ -133,7 +133,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
-	 * @category Elimina una prenotazione dal database
+	 *  Elimina una prenotazione dal database
 	 * 
 	 * @param id id della prenotazione da cancellare
 	 */
@@ -155,7 +155,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	}
 
 	/**
-	 * @category Salva una prenotazione con le annesse periferiche
+	 *  Salva una prenotazione con le annesse periferiche
 	 * 
 	 * @param prenotazione la prenotazione da salvare
 	 * 

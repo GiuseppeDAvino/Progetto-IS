@@ -11,14 +11,14 @@ import model.ModelInterface;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
- * @category Permette di effettuare gli accessi al database della tabella
+ *  Permette di effettuare gli accessi al database della tabella
  *           categoria
  * 
  */
 public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 
 	/**
-	 * @category ritorna, se presente nel database, una categoria col nome inserito
+	 *  ritorna, se presente nel database, una categoria col nome inserito
 	 * 
 	 * @param nome il nome della categoria da ricercare
 	 */
@@ -52,7 +52,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	}
 	
 	/**
-	 * @category ritorna, se presente nel database, una categoria col tipoGenerico inserito
+	 *  ritorna, se presente nel database, una categoria col tipoGenerico inserito
 	 * 
 	 * @param nome il tipoGenerico della categoria da ricercare
 	 */
@@ -85,7 +85,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	}
 
 	/**
-	 * @category ritorna tutte le categorie presenti nel database
+	 *  ritorna tutte le categorie presenti nel database
 	 */
 	@Override
 	public Collection<CategoriaBean> doRetrieveAll() {
@@ -120,7 +120,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	}
 
 	/**
-	 * @category permette di salvare la categoria all'interno del database
+	 *  permette di salvare la categoria all'interno del database
 	 */
 	@Override
 	public boolean doSave(CategoriaBean bean) {
@@ -170,7 +170,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	}
 
 	/**
-	 * @category permette di eliminare una categoria dal database
+	 *  permette di eliminare una categoria dal database
 	 * 
 	 * @param chiave � la chiave per selezionare la riga da eliminare
 	 */
@@ -193,7 +193,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	}
 
 	/**
-	 * @category Permette di recuperare le categorie aventi almeno una postazione
+	 *  Permette di recuperare le categorie aventi almeno una postazione
 	 *           libera in una certa
 	 * 
 	 * @param data         data della prenotazione

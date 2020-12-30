@@ -32,7 +32,7 @@ public class UtenteBean {
 	}
 
 	/**
-	 * @category COSTRUTTORE SENZA IMMAGINE
+	 *  COSTRUTTORE SENZA IMMAGINE
 	 */
 	public UtenteBean(String email, String nome, String cognome, String username, Ruolo ruolo, boolean stato,
 			String codiceVerifica, String password) {

@@ -81,7 +81,7 @@ public class Prenota extends HttpServlet {
 	}
 
 	/**
-	 * @category Prende le periferiche che l'utente ha selezionato
+	 *  Prende le periferiche che l'utente ha selezionato
 	 * @return ArrayList<PerifericaBean> contiene le periferiche selezionate
 	 *         dall'utente
 	 */
@@ -115,7 +115,7 @@ public class Prenota extends HttpServlet {
 		return false;
 	}
 	/**
-	 * @category calcola il prezzo della prenotazione
+	 *  calcola il prezzo della prenotazione
 	 * @param categoria categoria della postazione da prenotare
 	 * @param periferiche periferiche da prenotare
 	 * */
