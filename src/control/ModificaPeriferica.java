@@ -33,60 +33,61 @@ public class ModificaPeriferica extends HttpServlet {
 		String quantita = request.getParameter("quantita");
 		String prezzo = request.getParameter("prezzo");
 		
+		
 		if(nome.length() == 0) {
 			request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo nome � vuoto");
 			session.setAttribute("error-type", "nome");
 			session.setAttribute("error", "Campo vuoto");
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 		}
 		else {
 			if(nome.length() > 40) {
 				request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo nome ha una lunghezza maggiore a 40");
 				session.setAttribute("error-type", "tipoGenerico");
 				session.setAttribute("error", "Lunghezza errata");
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 			}
 			else {
 				if(tipo.length() == 0) {
 					request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo tipo � vuoto");
 					session.setAttribute("error-type", "nome");
 					session.setAttribute("error", "Campo vuoto");
-					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 				}
 				else {
 					if(tipo.length() > 30) {
 						request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo tipo ha una lunghezza maggiore a 30");
 						session.setAttribute("error-type", "tipoGenerico");
 						session.setAttribute("error", "Lunghezza errata");
-						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 					}
 					else {
 						if(quantita.length() == 0) {
 							request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo quantit� � vuoto");
 							session.setAttribute("error-type", "nome");
 							session.setAttribute("error", "Campo vuoto");
-							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 						}
 						else {
 							if(!Validatore.validaQuantita(quantita)) {
 								request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo quantit� non rispetta il formato");
 								session.setAttribute("error-type", "prezzo");
 								session.setAttribute("error", "Formato errato");
-								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 							}
 							else {
 								if(prezzo.length() == 0) {
 									request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo prezzo � vuoto");
 									session.setAttribute("error-type", "nome");
 									session.setAttribute("error", "Campo vuoto");
-									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 								}
 								else {
 									if(!Validatore.validaPrezzo(prezzo)) {
 										request.setAttribute("errorTest","La modifica della periferica non va a buon fine poich� il campo prezzo non rispetta il formato");
 										session.setAttribute("error-type", "prezzo");
 										session.setAttribute("error", "Formato errato");
-										response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+										response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/modifica.jsp"));
 									}
 									else {
 										request.setAttribute("errorTest","La modifica della periferica va a buon fine");
@@ -98,7 +99,8 @@ public class ModificaPeriferica extends HttpServlet {
 										periferica.setQuantita(Integer.parseInt(quantita));
 										periferica.setPrezzo(Float.parseFloat(prezzo));
 										
-										perifericaDAO.doUpdate(periferica, periferica.getNome());
+										perifericaDAO.doUpdate(periferica, request.getParameter("nomePeriferica"));
+										response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 									}
 								}
 							}
