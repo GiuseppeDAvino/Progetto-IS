@@ -1,7 +1,7 @@
 package model.categoria;
 
 /**
- * @category Classe che rappresenta una categoria
+ *  Classe che rappresenta una categoria
  * 
  * @param nome         il nome della categoria ad esempio "PC fascia alta"
  * @param tipoGenerico il tipo generico della categoria, ad esempio "PC"

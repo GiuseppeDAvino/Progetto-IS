@@ -16,7 +16,7 @@ import model.utente.UtenteBean;
 public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer> {
 
 	/**
-	 * @category Ritorna una segnalazione in base all'id
+	 *  Ritorna una segnalazione in base all'id
 	 * 
 	 * @param id id della segnalazione
 	 */
@@ -48,7 +48,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Ritorna una segnalazione in base all'utente
+	 *  Ritorna una segnalazione in base all'utente
 	 * 
 	 * @param email email dell'utente
 	 */
@@ -79,7 +79,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Ritorna tutte le segnalazioni
+	 *  Ritorna tutte le segnalazioni
 	 * 
 	 */
 	@Override
@@ -111,7 +111,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Salva una segnalazione nel database
+	 *  Salva una segnalazione nel database
 	 * 
 	 * @param bean Segnalazione da inserire
 	 */
@@ -142,9 +142,9 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Elimina una segnalazione
+	 *  Elimina una segnalazione
 	 * 
-	 * @param id id della postazione da eliminare
+	 * @param id id della segnalazione da eliminare
 	 */
 	@Override
 	public boolean doDelete(Integer id) {
@@ -185,7 +185,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Salva una notifica per l'utente a cui è stata risolta la
+	 *  Salva una notifica per l'utente a cui ï¿½ stata risolta la
 	 *           segnalazione
 	 * 
 	 * @param segnalazione segnalazione da risolvere

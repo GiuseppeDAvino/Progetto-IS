@@ -12,13 +12,13 @@ import model.ModelInterface;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
- * @category Permette di effettuare gli accessi al database della tabella
+ *  Permette di effettuare gli accessi al database della tabella
  *           periferica
  * 
  */   
 public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	/**
-	 * @category ritorna, se presente nel database, una periferica con il nome
+	 *  ritorna, se presente nel database, una periferica con il nome
 	 *           inserito
 	 * 
 	 * @param nome il nome della periferica da ricercare
@@ -48,7 +48,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	}
 
 	/**
-	 * @category ritorna tutte le periferiche presenti nel database
+	 *  ritorna tutte le periferiche presenti nel database
 	 * 
 	 */
 	@Override
@@ -78,7 +78,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 		return collection;
 	}
 	/**
-	 * @category ritorna il numero di periferiche prenotate per una data e una fascia oraria
+	 *  ritorna il numero di periferiche prenotate per una data e una fascia oraria
 	 * 
 	 * @param data La data delle prenotazioni
 	 * 
@@ -107,7 +107,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	}
 
 	/**
-	 * @category permette di salvare la periferica all'interno del database
+	 *  permette di salvare la periferica all'interno del database
 	 */
 	@Override
 	public boolean doSave(PerifericaBean bean) {
@@ -132,7 +132,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	}
 
 	/**
-	 * @category permette di aggiornare una periferica
+	 *  permette di aggiornare una periferica
 	 * 
 	 * @param chiave � la chiave per selezionare la riga da aggiornare
 	 */
@@ -160,7 +160,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	}
 
 	/**
-	 * @category permette di eliminare una periferica dal database
+	 *  permette di eliminare una periferica dal database
 	 * 
 	 * @param chiave � la chiave per selezionare la riga da eliminare
 	 */
@@ -183,7 +183,7 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	}
 
 	/**
-	 * @category Restituisce le periferiche disponibili in una certa data ad una certa ora
+	 *  Restituisce le periferiche disponibili in una certa data ad una certa ora
 	 * 
 	 * @param data data della prenotazione
 	 * @param fasciaOraria fascia oraria della prenotazione
