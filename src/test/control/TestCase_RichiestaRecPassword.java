@@ -12,7 +12,7 @@ import control.Registrazione;
 import control.RichiestaRecuperoPassword;
 import model.utente.UtenteDAO;
 
-class TC_RichiestaRecPassword {
+class TestCase_RichiestaRecPassword {
 	private RichiestaRecuperoPassword servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;

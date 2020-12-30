@@ -14,7 +14,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
-class TC_ModificaInfAccesso extends Mockito {
+class TestCase_ModificaInfAccesso extends Mockito {
 	
 
 	private ModificaPassword servlet;

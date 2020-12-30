@@ -12,7 +12,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import control.RestituisciListaCategorieLibere;
 
-class TC_FiltraPostazione extends Mockito{
+class TestCase_FiltraPostazione extends Mockito{
 	private RestituisciListaCategorieLibere servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;

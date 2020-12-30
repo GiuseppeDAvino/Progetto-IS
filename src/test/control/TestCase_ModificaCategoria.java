@@ -17,7 +17,7 @@ import model.categoria.CategoriaDAO;
 
 
 
-class TC_ModificaCategoria extends Mockito {
+class TestCase_ModificaCategoria extends Mockito {
 	
 	private ModificaCategoria servlet;
 	private MockHttpServletRequest request;

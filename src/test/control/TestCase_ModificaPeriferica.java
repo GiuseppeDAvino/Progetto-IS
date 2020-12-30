@@ -12,7 +12,7 @@ import control.ModificaPeriferica;
 import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 
-class TC_ModificaPeriferica extends Mockito{
+class TestCase_ModificaPeriferica extends Mockito{
 	private ModificaPeriferica servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;

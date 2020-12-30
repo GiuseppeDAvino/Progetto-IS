@@ -17,7 +17,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
-class TC_InvioNotifica extends Mockito {
+class TestCase_InvioNotifica extends Mockito {
 	
 	private InviaNotifica servlet;
 	private MockHttpServletRequest request;

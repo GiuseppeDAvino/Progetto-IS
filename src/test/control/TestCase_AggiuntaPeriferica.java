@@ -12,7 +12,7 @@ import control.AggiungiPeriferica;
 import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 
-class TC_AggiuntaPeriferica extends Mockito{
+class TestCase_AggiuntaPeriferica extends Mockito{
 	private AggiungiPeriferica servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;

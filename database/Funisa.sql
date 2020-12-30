@@ -13,7 +13,7 @@ drop table categoria
 
 CREATE TABLE notifica(
     id INT PRIMARY KEY NOT NULL IDENTITY (1, 1),
-    descrizione VARCHAR(50) NOT NULL,
+    descrizione VARCHAR(200) NOT NULL,
     tipo VARCHAR(20)
 )
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','1');

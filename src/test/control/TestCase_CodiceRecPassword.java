@@ -15,7 +15,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
-class TC_CodiceRecPassword extends Mockito {
+class TestCase_CodiceRecPassword extends Mockito {
 	private ConfermaRecuperoPassword servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;

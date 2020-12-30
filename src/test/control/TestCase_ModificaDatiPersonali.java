@@ -15,7 +15,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
-class TC_ModificaDatiPersonali extends Mockito{
+class TestCase_ModificaDatiPersonali extends Mockito{
 
 	private ModificaDatiPersonali servlet;
 	private MockHttpServletRequest request;

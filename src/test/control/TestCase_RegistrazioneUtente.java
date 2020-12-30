@@ -19,7 +19,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
-public class TC_RegistrazioneUtente extends Mockito {
+public class TestCase_RegistrazioneUtente extends Mockito {
 	private Registrazione servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
@@ -239,6 +239,7 @@ public class TC_RegistrazioneUtente extends Mockito {
 		servlet = null;
 		request = null;
 		response = null;
+		dao.doDelete(utenteEsistente.getEmail());
 		dao.doDelete("robertobianchi@funisa.com");
 		dao=null;
 	}

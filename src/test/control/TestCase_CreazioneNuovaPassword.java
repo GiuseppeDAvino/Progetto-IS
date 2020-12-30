@@ -16,7 +16,7 @@ import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
 
-class TC_CreazioneNuovaPassword extends Mockito {
+class TestCase_CreazioneNuovaPassword extends Mockito {
 	
 	private NuovaPassword servlet;
 	private MockHttpServletRequest request;

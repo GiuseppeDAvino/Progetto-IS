@@ -13,7 +13,7 @@ import control.AggiungiPostazione;
 import model.postazione.PostazioneBean;
 import model.postazione.PostazioneDAO;
 
-class TC_AggiuntaPostazione extends Mockito {
+class TestCase_AggiuntaPostazione extends Mockito {
 	
 	private AggiungiPostazione servlet;
 	private MockHttpServletRequest request;
