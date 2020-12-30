@@ -1,10 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@page import="model.periferica.PerifericaBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+
+<%
+PerifericaBean periferica=(PerifericaBean)session.getAttribute("periferica");
+String nome=(String)session.getAttribute("nomeperiferica");
+%>
+
+
+<html>
 <head>
+
 <%@ include file="header.jsp" %>
-<!-- SITE TITTLE -->
+  <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +27,6 @@
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
-  <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/v4-shims.js"></script>
   <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Owl Carousel -->
   <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
@@ -28,7 +36,6 @@
   <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
-  <link href="css/notification.css" rel="stylesheet">
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -38,6 +45,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 
 <body class="body-wrapper">
@@ -46,14 +55,15 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
-                    <h3 class="bg-gray p-4">Login</h3>
-                    <form action="Login" method="post">
+                    <h3 class="bg-gray p-4">Modifica</h3>
+                    <form action="ModificaPeriferica" method="post">
                         <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
-                            <a class="mt-3 d-block  text-primary" href="richiestaRecuperoPassword.jsp">Password dimenticata?</a>
-                            <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
+                        	<input value="<%=periferica.getNome()%>" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
+                            <input value="<%=periferica.getTipo()%>" name="tipo" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
+                            <input value="<%=periferica.getQuantita()%>" name="quantita" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
+                            <input value="<%=periferica.getPrezzo()%>" name="prezzo" type="text" placeholder="Username" class="border p-3 w-100 my-2">          
+                            <input type="hidden" value=<%=nome%> name="nomePeriferica">
+                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
                         </fieldset>
                     </form>
                 </div>
@@ -86,5 +96,4 @@
 <script src="script/script.js"></script>
 
 </body>
-
 </html>

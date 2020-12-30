@@ -13,13 +13,13 @@ import model.categoria.CategoriaBean;
 import model.connessione.DriverManagerConnectionPool;
 
 /**
- * @category Permette di effettuare gli accessi al database della tabella
+ *  Permette di effettuare gli accessi al database della tabella
  *           postazione
  * 
  */
 public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	/**
-	 * @category ritorna, se presente nel database, una postazione con l'id inserito
+	 *  ritorna, se presente nel database, una postazione con l'id inserito
 	 * 
 	 * @param id l'id della postazione da ricercare
 	 */
@@ -46,7 +46,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	/**
-	 * @category ritorna tutte le postazioni presenti nel database
+	 *  ritorna tutte le postazioni presenti nel database
 	 * 
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 	
 	/**
-	 * @category ritorna tutte le postazioni libere presenti nel database
+	 *  ritorna tutte le postazioni libere presenti nel database
 	 * 
 	 */
 	
@@ -107,7 +107,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	/**
-	 * @category Permette di cambiare la disponibilità di una certa postazione
+	 *  Permette di cambiare la disponibilità di una certa postazione
 	 * 
 	 * @param postazione la postazione da cui cambiare la disponibilità
 	 */
@@ -128,7 +128,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	} 
 
 	/**
-	 * @category permette di salvare la postazione all'interno del database
+	 *  permette di salvare la postazione all'interno del database
 	 * 
 	 * @param bean bisogna passare un bean contenente la categoria
 	 */
@@ -151,7 +151,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	/**
-	 * @category permette di modificare la categoria di una postazione
+	 *  permette di modificare la categoria di una postazione
 	 * 
 	 * @param bean   bean da cui verrà presa la categoria
 	 * 
@@ -177,7 +177,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	/**
-	 * @category permette di cancellare la postazione
+	 *  permette di cancellare la postazione
 	 * 
 	 * @param chiave l'id della postazione da cancellare
 	 */
@@ -223,7 +223,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	
 	
 	/**
-	 * @category Indica se una postazione è stata prenotata almeno una volta
+	 *  Indica se una postazione è stata prenotata almeno una volta
 	 * 
 	 * @param postazione postazione da controllare
 	 * */
@@ -241,7 +241,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		return false;
 	}
 	/**
-	 * @category Ritorna una postazione libera che ha un certo nome di categoria
+	 *  Ritorna una postazione libera che ha un certo nome di categoria
 	 * 
 	 * @param categoria categoria da cui prendere il nome
 	 * 

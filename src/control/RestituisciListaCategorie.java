@@ -18,7 +18,7 @@ import model.categoria.CategoriaDAO;
 /**
  * Servlet implementation class RestituisciListaCategorie
  */
-@WebServlet(urlPatterns = {"/RestituisciListaCategoria","/titolare/RestituisciListaCategoria"})
+@WebServlet(urlPatterns = {"/RestituisciListaCategorie","/titolare/RestituisciListaCategorie"})
 public class RestituisciListaCategorie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
