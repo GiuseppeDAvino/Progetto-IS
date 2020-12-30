@@ -111,7 +111,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Salva una categoria nel database
+	 * @category Salva una segnalazione nel database
 	 * 
 	 * @param bean Segnalazione da inserire
 	 */
@@ -142,7 +142,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 * @category Elimina una postazione
+	 * @category Elimina una segnalazione
 	 * 
 	 * @param id id della postazione da eliminare
 	 */
@@ -153,6 +153,27 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			statement.setInt(1, id);
+			System.out.println("doDelete=" + statement);
+			statement.executeUpdate();
+			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	/**
+	 * Elimina una segnalazione
+	 * 
+	 * @param email email della segnalazione da eliminare
+	 */
+	public boolean doDeleteByEmail(String email) {
+		String sql = "DELETE FROM segnalazione WHERE utenteEmail=?";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql)) {
+			statement.setString(1, email);
 			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();

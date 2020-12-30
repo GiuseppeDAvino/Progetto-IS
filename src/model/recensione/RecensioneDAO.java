@@ -74,7 +74,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 */
 	@Override
 	public boolean doSave(RecensioneBean bean) {
-		String sql = "INSER INTO recensione VALUES (?,?,?,?)";
+		String sql = "INSERT INTO recensione VALUES (?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {

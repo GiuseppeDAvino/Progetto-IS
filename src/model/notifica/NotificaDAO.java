@@ -142,7 +142,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 */
 	@Override
 	public boolean doDelete(Integer chiave) {
-		String sql = "DELETE FROM notifica WHERE nome=?";
+		String sql = "DELETE FROM notifica WHERE id=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
@@ -199,6 +199,37 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	
+	/**
+	 * permette di eliminare tutte le notifiche di un utente
+	 * 
+	 * @param utente utente su cui deve essere eliminata la notifica
+	 */
+	public boolean doDeleteAllNotificheUtente(UtenteBean utente) {
+		String sql = "DELETE FROM notifica_utente WHERE utenteEmail=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+			PreparedStatement statement = con.prepareStatement(sql)) {
+			statement.setString(1, utente.getEmail());
+			statement.executeUpdate();
+			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean doDeleteUltimaNotifica() {
+		ArrayList<NotificaBean> notifiche = (ArrayList<NotificaBean>) doRetrieveAll();
+		if(notifiche.size() == 0) 
+			return false;
+		else {
+		NotificaBean notificaId = notifiche.get(notifiche.size() - 1);
+		if(doDelete(notificaId.getId()))
+			return true;
+		}
+		return false;
 	}
 
 }
