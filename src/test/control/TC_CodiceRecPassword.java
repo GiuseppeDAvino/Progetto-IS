@@ -34,7 +34,7 @@ class TC_CodiceRecPassword extends Mockito {
 	
 
 	@Test
-	void TC_RichiestaRecPassword_1() {
+	void TC_CodiceRecPassword_1() {
 		request.addParameter("codiceVerifica","");
 		String message = "Inserimento del codice di verifica non va a buon fine poichè il campo codice è vuoto";
 		servlet.doPost(request, response);
@@ -42,7 +42,7 @@ class TC_CodiceRecPassword extends Mockito {
 		assertEquals(message, result);
 	}
 	@Test
-	void TC_RichiestaRecPassword_2() {
+	void TC_CodiceRecPassword_2() {
 		request.addParameter("codiceVerifica","123");
 		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "Inserimento del codice di verifica non va a buon fine poichè il codice non è associato alla sua email";
@@ -51,7 +51,7 @@ class TC_CodiceRecPassword extends Mockito {
 		assertEquals(message, result);
 	}
 	@Test
-	void TC_RichiestaRecPassword_3() {
+	void TC_CodiceRecPassword_3() {
 		request.addParameter("codiceVerifica",utente.getCodiceVerifica());
 		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "Inserimento del codice di verifica è avvenuto con successo e si può procedere con la creazione di una nuova password";

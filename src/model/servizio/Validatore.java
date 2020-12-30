@@ -129,4 +129,12 @@ public final class Validatore {
 		} 
 		return false;
 	}
+	
+	public static boolean isNomeCategoriaValid(String nomeCategoria) {
+		if(categoriaDAO.doRetrieveByKey(nomeCategoria).getNome().equals("")) 
+			return false;
+		return true;
+			
+			
+	}
 }

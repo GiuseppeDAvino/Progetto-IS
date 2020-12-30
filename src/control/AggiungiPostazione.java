@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.postazione.PostazioneBean;
 import model.postazione.PostazioneDAO;
+import model.servizio.Validatore;
 
 /**
  * Servlet implementation class AggiungiPostazione
@@ -32,16 +33,44 @@ public class AggiungiPostazione extends HttpServlet {
 	 * */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		PostazioneBean postazione = new PostazioneBean();
-		postazione.setCategoria(request.getParameter("categoria"));
-		postazioneDAO.doSave(postazione);
+		HttpSession session = request.getSession();
+		String nomeCategoria = request.getParameter("nomeCategoria");
+		
+		if(nomeCategoria.length() == 0) {
+			request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poichè il campo nome categoria è vuoto");
+			session.setAttribute("error-type", "nomeCategoria");
+			session.setAttribute("error", "Campo vuoto");
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+		}
+		else {
+			if(!Validatore.isNomeCategoriaValid(nomeCategoria)) {
+				request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poichè il campo nome categoria non è presente nel database");
+				session.setAttribute("error-type", "nomeCategoria");
+				session.setAttribute("error", "Campo vuoto");
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+			}
+			else {
+				request.setAttribute("errorTest","L'aggiunta della postazione va a buon fine");
+				session.setAttribute("error-type", null);
+				session.setAttribute("error",  null);
+				
+				PostazioneBean postazione = new PostazioneBean();
+				postazione.setCategoria(nomeCategoria);
+				postazioneDAO.doSave(postazione);
+			}
+		}
+		
+		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-		doGet(request, response);
+		try {
+			doGet(request, response);
+		} catch (ServletException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

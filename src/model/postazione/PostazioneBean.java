@@ -5,7 +5,7 @@ public class PostazioneBean {
 	private boolean disponibile;
 	private String categoria;
 
-	
+
 	public String getCategoria() {
 		return categoria;
 	}
@@ -19,12 +19,12 @@ public class PostazioneBean {
 	}
 
 	public PostazioneBean() {
-		this.id = 0;
 		this.disponibile = true;
 	}
 
 	public PostazioneBean(String categoria) {
 		super();
+		this.disponibile = true;
 		this.categoria = categoria;
 	}
 

@@ -199,6 +199,28 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		}
 	}
 	
+	/**
+	 * permette di cancellare la postazione
+	 * 
+	 * @param chiave il nome della categoria della postazione da cancellare
+	 */
+	public boolean doDeleteByNomeCategoria(String chiave) throws SQLException {
+
+		String sql = "DELETE FROM postazione WHERE nomeCategoria=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoDelete" + statement);
+			statement.setString(1, chiave);
+			statement.executeUpdate();
+			con.commit();
+			return true;
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	
 	/**
 	 *  Indica se una postazione è stata prenotata almeno una volta
