@@ -80,15 +80,15 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 */
 	
-	public Collection<PostazioneBean> doRetrieveAllLibere(Date data, String fasciaOraria){
-		String sql = "SELECT*FROM postazione p WHERE p.isDisponibile=1 AND p.id NOT IN(SELECT postazione.id FROM postazione p,prenotazione pr WHERE\r\n" + 
+	public Collection<PostazioneBean> doRetrieveAllLibere(String data, String fasciaOraria){
+		String sql = "SELECT*FROM postazione p WHERE p.isDisponibile=1 AND p.id NOT IN(SELECT p.id FROM postazione p,prenotazione pr WHERE\r\n" + 
 				"p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";
 		ArrayList<PostazioneBean> collection = new ArrayList<PostazioneBean>();
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoRetriveAll" + statement);
-			statement.setDate(1, data);
+			statement.setString(1, data);
 			statement.setString(2, fasciaOraria);
 			ResultSet rs = statement.executeQuery();
 
@@ -98,12 +98,12 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				bean.setCategoria(rs.getString("nomeCategoria"));
 				bean.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
+			System.out.println("Lista" +collection);
 			return collection;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return collection;
 		}
-
 	}
 
 	/**
@@ -112,7 +112,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param postazione la postazione da cui cambiare la disponibilit‡
 	 */
 	public boolean cambiaDisponibilit‡(PostazioneBean postazione){
-		String sql = "UPDATE postazione SET isDisponibile='?' WHERE id=?";
+		String sql = "UPDATE postazione SET isDisponibile=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("cambiaDisponibilit‡ della postazione " + postazione.getId());
@@ -158,7 +158,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da modificare
 	 */
 	@Override
-	public boolean doUpdate(PostazioneBean bean, Integer chiave) throws SQLException {
+	public boolean doUpdate(PostazioneBean bean, Integer chiave) {
 		String sql = "UPDATE postazione SET nomeCategoria=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -182,7 +182,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da cancellare
 	 */
 	@Override
-	public boolean doDelete(Integer chiave) throws SQLException {
+	public boolean doDelete(Integer chiave) {
 
 		String sql = "DELETE FROM postazione WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -204,7 +204,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 * @param chiave il nome della categoria della postazione da cancellare
 	 */
-	public boolean doDeleteByNomeCategoria(String chiave) throws SQLException {
+	public boolean doDeleteByNomeCategoria(String chiave) {
 
 		String sql = "DELETE FROM postazione WHERE nomeCategoria=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -226,8 +226,9 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 *  Indica se una postazione Ë stata prenotata almeno una volta
 	 * 
 	 * @param postazione postazione da controllare
+	 * @throws SQLException 
 	 * */
-	public boolean ËStataUtilizzata(PostazioneBean postazione) throws SQLException {
+	public boolean ËStataUtilizzata(PostazioneBean postazione){
 		String sql="SELECT * FROM postazione p where ? NOT IN(\r\n" + 
 				"	SELECT pr.postazioneId FROM prenotazione pr)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -237,6 +238,8 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 			ResultSet rs=statement.executeQuery();
 			if(rs.next())
 				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		return false;
 	}
@@ -249,7 +252,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param fasciaOraria fascia oraria da prenotare
 	 * */
 	 
-	public PostazioneBean postazioneLiberaCategoria(CategoriaBean categoria,String data,String fasciaOraria)  throws SQLException{
+	public PostazioneBean postazioneLiberaCategoria(CategoriaBean categoria,String data,String fasciaOraria){
 		PostazioneBean postazione=new PostazioneBean();
 		String sql="SELECT * FROM postazione p,categoria c \r\n" + 
 				"            WHERE p.isDisponibile=1 AND p.nomeCategoria=? AND p.id NOT IN(\r\n" + 
@@ -269,6 +272,9 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				postazione.setCategoria(rs.getString("nomeCategoria"));
 				postazione.setDisponibile(rs.getBoolean("isDisponibile"));
 			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
 		return postazione;
 	}
