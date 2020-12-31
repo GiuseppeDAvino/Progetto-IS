@@ -19,10 +19,10 @@ function getCategorieLibere(){
 			let data = JSON.parse(xhr.responseText);
 			console.log(data);
 			
-			
+			$('#postazioneora').html("");
 			for(var i = 0; i <data.length; i++){
 				//Giuseppe qui devi aggiungere il front end
-				$('body').append("<h1><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a>"+ data[i].prezzo + "</h1>");
+				$('#postazioneora').append("<h1><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a>"+ data[i].prezzo + "</h1>");
 			}
 		}
 	}

@@ -3,8 +3,8 @@
 <%@page import="model.utente.UtenteBean"%>
 <%
 	UtenteBean utente = (UtenteBean) session.getAttribute("utente");
-String ruolo = null;
-if (utente != null)
+	String ruolo = null;
+	if (utente != null)
 	ruolo = utente.getRuolo().name();
 %>
 <!DOCTYPE html>
@@ -51,8 +51,18 @@ if (utente != null)
 							<!--if titolare-->
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
+						
+						
+						<%if(ruolo == null) {%>
 							<li class="nav-item"><a class="nav-link" href="<%=response.encodeURL("/Funisa/login.jsp")%>"><i
 									class="fa fa-user-circle" style="font-size: 20px;"></i></a></li>
+							<%} else{ %>
+							<li class="nav-item"><a class="nav-link" href="<%=response.encodeURL("/Funisa/user.jsp")%>"><i
+									class="fa fa-user-circle" style="font-size: 20px;"></i></a></li>
+							<%} %>		
+									
+									
+									
 							<%
 								if (ruolo != null)
 								if (ruolo.equals("cliente") || ruolo.equals("gestore")) {

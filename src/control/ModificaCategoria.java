@@ -48,7 +48,7 @@ public class ModificaCategoria extends HttpServlet {
 					"La modifica della categoria non va a buon fine poiché il campo immagine è vuoto");
 			session.setAttribute("error-type", "immagine");
 			session.setAttribute("error", "Campo vuoto");
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 		} else {
 			immagine = ConvertitoreImmagine.converti(request.getPart("immagine"));
 
@@ -57,21 +57,21 @@ public class ModificaCategoria extends HttpServlet {
 						"La modifica della categoria non va a buon fine poiché il campo nome è vuoto");
 				session.setAttribute("error-type", "nome");
 				session.setAttribute("error", "Campo vuoto");
-				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 			} else {
 				if (nome.length() > 40) {
 					request.setAttribute("errorTest",
 							"La modifica della categoria non va a buon fine poiché il campo nome ha una lunghezza maggiore a 40");
 					session.setAttribute("error-type", "nome");
 					session.setAttribute("error", "Lunghezza errata");
-					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 				} else {
 					if (tipoGenerico.length() == 0) {
 						request.setAttribute("errorTest",
 								"La modifica della categoria non va a buon fine poiché il campo tipoGenerico è vuoto");
 						session.setAttribute("error-type", "tipoGenerico");
 						session.setAttribute("error", "Campo vuoto");
-						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 					}
 
 					else {
@@ -80,7 +80,7 @@ public class ModificaCategoria extends HttpServlet {
 									"La modifica della categoria non va a buon fine poiché il campo tipoGenerico ha una lunghezza maggiore a 30");
 							session.setAttribute("error-type", "tipoGenerico");
 							session.setAttribute("error", "Lunghezza errata");
-							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 						} else {
 							if (descrizione.length() == 0) {
 								request.setAttribute("errorTest",
@@ -88,7 +88,7 @@ public class ModificaCategoria extends HttpServlet {
 								session.setAttribute("error-type", "descrizione");
 								session.setAttribute("error", "Campo vuoto");
 								response.sendRedirect(
-										response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+										response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 							} else {
 								if (descrizione.length() > 100) {
 									request.setAttribute("errorTest",
@@ -96,7 +96,7 @@ public class ModificaCategoria extends HttpServlet {
 									session.setAttribute("error-type", "descrizione");
 									session.setAttribute("error", "Lunghezza errata");
 									response.sendRedirect(
-											response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+											response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 								} else {
 									if (prezzo.length() == 0) {
 										request.setAttribute("errorTest",
@@ -104,7 +104,7 @@ public class ModificaCategoria extends HttpServlet {
 										session.setAttribute("error-type", "prezzo");
 										session.setAttribute("error", "Campo vuoto");
 										response.sendRedirect(
-												response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+												response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 									}
 
 									else {
@@ -114,8 +114,9 @@ public class ModificaCategoria extends HttpServlet {
 											session.setAttribute("error-type", "prezzo");
 											session.setAttribute("error", "Formato errato");
 											response.sendRedirect(
-													response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+													response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 										} else {
+											
 											request.setAttribute("errorTest",
 													"La modifica della categoria va a buon fine");
 											session.setAttribute("error-type", null);
@@ -126,8 +127,9 @@ public class ModificaCategoria extends HttpServlet {
 											categoria.setDescrizione(descrizione);
 											categoria.setPrezzo(Float.parseFloat(prezzo));
 											categoria.setImmagine(immagine);
-
-											categoriaDAO.doUpdate(categoria, categoria.getNome());
+											System.out.println(categoria);
+											categoriaDAO.doUpdate(categoria, request.getParameter("nomeCategoria"));
+											response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 										}
 									}
 								}

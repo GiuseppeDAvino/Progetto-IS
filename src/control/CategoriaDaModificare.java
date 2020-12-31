@@ -7,21 +7,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.periferica.PerifericaBean;
-import model.periferica.PerifericaDAO;
+import model.categoria.CategoriaBean;
+import model.categoria.CategoriaDAO;
 
 /**
- * Servlet implementation class PerifericaDaModificare
+ * Servlet implementation class CategoriaDaModificare
  */
-@WebServlet("/PerifericaDaModificare")
-public class PerifericaDaModificare extends HttpServlet {
+@WebServlet("/CategoriaDaModificare")
+public class CategoriaDaModificare extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private PerifericaDAO dao = new PerifericaDAO();
+	private CategoriaDAO dao = new CategoriaDAO();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerifericaDaModificare() {
+    public CategoriaDaModificare() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,10 +33,10 @@ public class PerifericaDaModificare extends HttpServlet {
 		
 		
 		
-		PerifericaBean periferica= dao.doRetrieveByKey(request.getParameter("nome"));
-		request.getSession().setAttribute("periferica",periferica);
-		request.getSession().setAttribute("nomeperiferica",request.getParameter("nome"));
-		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaPerifericaForm.jsp"));
+		CategoriaBean categoria= dao.doRetrieveByKey(request.getParameter("nome"));
+		request.getSession().setAttribute("categoria",categoria);
+		request.getSession().setAttribute("nomecategoria",request.getParameter("nome"));
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
 		
 
 

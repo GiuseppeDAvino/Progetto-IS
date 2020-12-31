@@ -1,5 +1,6 @@
 package model.utente;
 
+import java.beans.Statement;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -116,6 +117,54 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 		
 
 	}
+	
+	
+	
+	public Collection<UtenteBean> doRetrieveAllByRuolo(String ruolo){
+		String sql = "SELECT * FROM utente WHERE ruolo = ?";
+
+		ArrayList<UtenteBean> collection = new ArrayList<UtenteBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetrieveAllGestori");
+			statement.setString(1, ruolo);
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				UtenteBean bean = new UtenteBean();
+				bean.setEmail(rs.getString("email"));
+				bean.setNome(rs.getString("nome"));
+				bean.setCognome(rs.getString("cognome"));
+				bean.setUsername(rs.getString("username"));
+				bean.setPassword(rs.getString("passw"));
+				bean.setStato(rs.getBoolean("stato"));
+				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
+				switch (rs.getString("ruolo")) {
+
+				case "cliente":
+					bean.setRuolo(Ruolo.cliente);
+					break;
+
+				case "titolare":
+					bean.setRuolo(Ruolo.titolare);
+					break;
+
+				case "gestore":
+					bean.setRuolo(Ruolo.gestore);
+					break;
+				}
+				collection.add(bean);
+			}
+			return collection;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+
+	}
+	
 
 	/**
 	 *  ritorna tutti gli utenti in ordine di numero di prenotazioni

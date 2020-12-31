@@ -12,16 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import model.utente.UtenteBean;
-import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
+import model.utente.UtenteDAO;
 
-@WebServlet(urlPatterns = {"/RestituisciListaUtenti","/titolare/RestituisciListaUtenti"})
-public class RestituisciListaUtenti extends HttpServlet {
+@WebServlet(urlPatterns = {"/RestituisciListaGestori","/titolare/RestituisciListaGestori"})
+public class RestituisciListaGestori extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtenteDAO utenteDAO = new UtenteDAO();
 	private Gson gson = new Gson();
 
-    public RestituisciListaUtenti() {
+    public RestituisciListaGestori() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class RestituisciListaUtenti extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		ArrayList<UtenteBean> utenti=(ArrayList<UtenteBean>) utenteDAO.doRetrieveAllByRuolo(Ruolo.cliente.name());
+		ArrayList<UtenteBean> utenti=(ArrayList<UtenteBean>) utenteDAO.doRetrieveAllByRuolo(Ruolo.gestore.name());
 		
 		String string = gson.toJson(utenti);
 		response.getWriter().print(string);

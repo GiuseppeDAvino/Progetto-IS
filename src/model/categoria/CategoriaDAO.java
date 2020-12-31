@@ -203,7 +203,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	 * @param tipoGenerico tipo della categoria
 	 */
 	public Collection<CategoriaBean> categorieConPostazioniLibere(String data, String fasciaOraria, String tipoGenerico){
-		String sql = " SELECT * FROM postazione p, categoria c \r\n"
+		String sql = " SELECT DISTINCT c.nome,c.prezzo,c.tipoGenerico,c.descrizione,c.immagine FROM postazione p, categoria c \r\n"
 				+ "            WHERE p.isDisponibile=1 AND p.nomeCategoria=c.nome AND c.tipoGenerico=? AND p.id NOT IN(\r\n"
 				+ "                    SELECT p.id FROM postazione p,prenotazione pr WHERE \r\n"
 				+ "				    p.id=pr.postazioneId AND pr.dataPrenotazione=? AND pr.fasciaOraria=?)";

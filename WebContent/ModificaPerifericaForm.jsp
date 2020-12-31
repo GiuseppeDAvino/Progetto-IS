@@ -13,6 +13,7 @@ String nome=(String)session.getAttribute("nomeperiferica");
 <head>
 
 <%@ include file="header.jsp" %>
+
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

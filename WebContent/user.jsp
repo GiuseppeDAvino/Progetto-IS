@@ -65,8 +65,11 @@
 									class="rounded-circle">
 							</div>
 							<!-- User Name -->
+							
 							<h5 class="text-center"><%=utente.getNome() %> <%=utente.getCognome() %></h5>
 							<p><%=utente.getUsername() %></p>
+							
+							
 							<a href="user-profile.html" class="btn btn-main-sm">Modifica Profilo</a>
 						</div>
 
@@ -78,12 +81,13 @@
 									if (ruolo.equals("titolare")) {
 								%>
 								
-								<li><button onclick="" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Gestione Prenotazioni</button></li>
+								<li><button onclick="getPrenotazioni()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Gestione Prenotazioni</button></li>
 								<li><button onclick="getPeriferiche()" class="btn btn-main-sm btn-block"><i class="fa fa-keyboard-o"></i> Gestione Periferiche</button></li>
 								<li><button onclick="getPostazioni()" class="btn btn-main-sm btn-block"><i class="fa fa-desktop"></i> Gestione Postazioni</button></li>
 								<li><button onclick="getUtenti()" class="btn btn-main-sm btn-block"><i class="fa fa-user"></i> Gestione Utenti</button></li>
-								<li><button onclick="" class="btn btn-main-sm btn-block"><i class="fa fa-bell"></i> Gestione Notifiche</button></li>
-								<li><button onclick="" class="btn btn-main-sm btn-block"><i class="fa fa-sitemap"></i> Gestione Gestori</button></li>
+								<!--  <li><button onclick="getNotifiche()" class="btn btn-main-sm btn-block"><i class="fa fa-bell"></i> Gestione Notifiche</button></li>-->
+								<li><button onclick="setNotifiche()" class="btn btn-main-sm btn-block"><i class="fa fa-plus-circle"></i> Aggiungi Notifiche</button></li>
+								<li><button onclick="getGestori()" class="btn btn-main-sm btn-block"><i class="fa fa-sitemap"></i> Gestione Gestori</button></li>
 								
 
 								<%
@@ -91,11 +95,11 @@
 								if (ruolo.equals("cliente")) {
 								%>
 
-								<li><button onclick="getPostazioni()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Gestione Prenotazioni</button></li>
+								<li><button onclick="getPostazioniUtente()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Gestione Prenotazioni</button></li>
 								<%
 									}
 								%>
-								<li><button onclick="getPostazioni()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Logout</button></li>
+								<li><a href="Logout" onclick="getLogout()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -104,13 +108,20 @@
 					<!-- Recently Favorited -->
 					<div class=" dashboard-container my-adslist">
 						<table class="table table-responsive product-dashboard-table">
+							<thead id="head_tabella_prenotazioni">
+							<thead id="head_tabella_postazioni">
 							<thead id="head_tabella_periferiche">
 							<thead id="head_tabella_utenti">
-							<thead id="head_tabella_postazioni">
+							<thead id="head_tabella_gestori">
+							<thead id="head_tabella_notifiche">
+							<thead id="head_tabella_notifiche_t">
 							</thead>
+							<tbody id="gestione_prenotazioni">
 							<tbody id="gestione_periferiche">
 							<tbody id="gestione_utenti">
 							<tbody id="gestione_postazioni">
+							<tbody id="gestione_gestori">
+							<tbody id="gestione_notifiche">
 							</tbody>
 						</table>
 					</div>

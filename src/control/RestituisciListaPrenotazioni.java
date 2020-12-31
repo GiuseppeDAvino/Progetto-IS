@@ -11,17 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import model.utente.UtenteBean;
-import model.utente.UtenteDAO;
-import model.utente.UtenteBean.Ruolo;
+import model.prenotazione.PrenotazioneBean;
+import model.prenotazione.PrenotazioneDAO;
 
-@WebServlet(urlPatterns = {"/RestituisciListaUtenti","/titolare/RestituisciListaUtenti"})
-public class RestituisciListaUtenti extends HttpServlet {
+/**
+ * Servlet implementation class RestituisciListaPrenotazioni
+ */
+@WebServlet(urlPatterns = {"/RestituisciListaPrenotazioni","/titolare/RestituisciListaPrenotazioni"})
+public class RestituisciListaPrenotazioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private UtenteDAO utenteDAO = new UtenteDAO();
+	private PrenotazioneDAO prenotazioneDAO = new PrenotazioneDAO();
 	private Gson gson = new Gson();
-
-    public RestituisciListaUtenti() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RestituisciListaPrenotazioni() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,19 +34,20 @@ public class RestituisciListaUtenti extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		ArrayList<UtenteBean> utenti=(ArrayList<UtenteBean>) utenteDAO.doRetrieveAllByRuolo(Ruolo.cliente.name());
+		ArrayList<PrenotazioneBean> prenotazioni=(ArrayList<PrenotazioneBean>) prenotazioneDAO.doRetrieveAll();
 		
-		String string = gson.toJson(utenti);
+		String string = gson.toJson(prenotazioni);
 		response.getWriter().print(string);
 		response.getWriter().flush();
 		response.setStatus(200);
 	}
-	
 
-	
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
