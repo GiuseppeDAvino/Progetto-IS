@@ -1,7 +1,6 @@
 package control;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,16 +33,10 @@ public class EliminaPostazione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostazioneBean postazione = new PostazioneBean();
 		postazione.setId(Integer.parseInt(request.getParameter("id")));
-		try {
-			if(postazioneDAO.ËStataUtilizzata(postazione))
-				postazioneDAO.cambiaDisponibilit‡(postazione);
-			else
-				postazioneDAO.doDelete(postazione.getId());
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
-		//TODO add redirect
+		if(postazioneDAO.ËStataUtilizzata(postazione))
+			postazioneDAO.cambiaDisponibilit‡(postazione);
+		else
+			postazioneDAO.doDelete(postazione.getId());
 	}
 
 

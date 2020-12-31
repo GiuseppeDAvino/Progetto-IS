@@ -84,5 +84,6 @@ public class TestUtente extends TestCase {
   @Override
   protected void tearDown() throws Exception {
     dao.doDelete(utenteNonEsistente.getEmail());
+    dao.doDelete(utenteEsistente.getEmail());
   }
 }

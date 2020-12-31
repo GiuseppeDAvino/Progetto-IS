@@ -54,23 +54,19 @@ public class Prenota extends HttpServlet {
 			String data = (String) session.getAttribute("data");
 			String fasciaOraria = (String) session.getAttribute("fasciaOraria");
 
-			try {
-				prenotazione.setData(data);
-				prenotazione.setFasciaOraria(fasciaOraria);
-				prenotazione.setUtenteEmail(utente.getEmail());
-				prenotazione.setPostazioneId(
-				postazioneDAO.postazioneLiberaCategoria(categoria, data, fasciaOraria).getId());
-				prenotazione.setPrezzo(calcolaPrezzo(categoria, periferiche));
-				System.out.println(prenotazione.getPrezzo());
-				prenotazione.setQr(""); // TODO gestire il QRcode
-				// prenotazione con l'aggiunta di almeno di una periferica
-				prenotazioneDAO.prenotaConPeriferiche(prenotazione, periferiche);
-				ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) prenotazioneDAO.doRetrieveAll();
-				PrenotazioneBean bean = prenotazioni.get(prenotazioni.size() - 1);
-				request.getSession().setAttribute("prenotazione",bean);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			prenotazione.setData(data);
+			prenotazione.setFasciaOraria(fasciaOraria);
+			prenotazione.setUtenteEmail(utente.getEmail());
+			prenotazione.setPostazioneId(
+			postazioneDAO.postazioneLiberaCategoria(categoria, data, fasciaOraria).getId());
+			prenotazione.setPrezzo(calcolaPrezzo(categoria, periferiche));
+			System.out.println(prenotazione.getPrezzo());
+			prenotazione.setQr(""); // TODO gestire il QRcode
+			// prenotazione con l'aggiunta di almeno di una periferica
+			prenotazioneDAO.prenotaConPeriferiche(prenotazione, periferiche);
+			ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) prenotazioneDAO.doRetrieveAll();
+			PrenotazioneBean bean = prenotazioni.get(prenotazioni.size() - 1);
+			request.getSession().setAttribute("prenotazione",bean);
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/prova.jsp"));
 		}
 	}

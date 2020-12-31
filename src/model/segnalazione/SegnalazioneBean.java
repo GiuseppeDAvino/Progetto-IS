@@ -10,9 +10,8 @@ public class SegnalazioneBean {
 		super();
 	}
 
-	public SegnalazioneBean(int id, String tipo, String descrizione, String utenteEmail) {
+	public SegnalazioneBean(String tipo, String descrizione, String utenteEmail) {
 		super();
-		this.id = id;
 		this.tipo = tipo;
 		this.descrizione = descrizione;
 		this.utenteEmail = utenteEmail;
