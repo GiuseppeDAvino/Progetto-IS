@@ -117,7 +117,7 @@
 							<div class="form-group col-md-2 align-self-center">
 								<!-- <button type="submit" class="btn btn-primary">Search Now</button>-->
 								<input class="btn btn-primary" type="button"
-									onClick="getCategorieLibere()" value="cerca">
+									onClick="getCategorieLibere()" value="Cerca">
 							</div>
 							<div id="postazioneora"></div>
 						</div>

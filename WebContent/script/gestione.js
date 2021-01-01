@@ -447,8 +447,8 @@ function getPrenotazioni() {
 					"<h3 class='title'>" + data[i].postazioneId + "</h3>" +
 					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
 					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
-					"<span class='location'><strong>Data:</strong>€" + data[i].data + "</span>" +
-					"<span class='location'><strong>Utente:</strong>€" + data[i].utenteEmail + "</span>" +
+					"<span class='location'><strong>Data:</strong>" + data[i].data + "</span>" +
+					"<span class='location'><strong>Utente:</strong>" + data[i].utenteEmail + "</span>" +
 					"</td>" +
 					"<td class='product-category'><span class='categories'>" + data[i].fasciaOraria + "</span></td>" +
 					"<td class='action' data-title='Action'>" +

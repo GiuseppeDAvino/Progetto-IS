@@ -17,11 +17,13 @@ function getPerifericheLibere(){
 			console.log(data);
 			//METTERE IN UN FORM
 			for (var i = 0; i < data[1].length; i++) {
-				$('#form').prepend("<select id="+data[1][i]+" name="+data[1][i]+" class='dropdown'></select>");
+				$('#form').prepend("<select id="+data[1][i]+" name="+data[1][i]+" class='w-100 form-control mt-lg-1 mt-md-2' ><option value=''>"+data[1][i]+" non selezionato</option></select>");
 			}
+			
+			
 			for (var i = 0; i < data[0].length; i++) {
 				var tipo=data[0][i].tipo;
-				$('#'+tipo).append("<option value=\'"+data[0][i].nome+"\'>"+data[0][i].nome+"</option>");
+				$('#'+tipo).append("<option value=\'"+data[0][i].nome+"\'>"+data[0][i].nome+" €"+data[0][i].prezzo+"</option>");
 			}
 			
 			/*

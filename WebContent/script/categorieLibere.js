@@ -22,7 +22,32 @@ function getCategorieLibere(){
 			$('#postazioneora').html("");
 			for(var i = 0; i <data.length; i++){
 				//Giuseppe qui devi aggiungere il front end
-				$('#postazioneora').append("<h1><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a>"+ data[i].prezzo + "</h1>");
+				$('#postazioneora').append(
+					/*"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].immagine + "' alt='image description'></td>" +
+					"<h1><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a>"+"  "+ data[i].prezzo + "</h1>");*/
+					
+					
+					
+					"<tr>" +
+					"<td class='product-thumb p-2'>" +
+					"<img style='border-radius: 50%;width: auto;height: auto;' src='" + data[i].immagine + "' alt='image description'></td>" +
+					"<td class='product-details'>" +
+					"<h3 class='title'><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a></h3>" +
+					"<span class='location'><strong>Prezzo:</strong>€ "+ data[i].prezzo +"</span>" +
+					"</td>" +
+					"</tr>");
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 			}
 		}
 	}
