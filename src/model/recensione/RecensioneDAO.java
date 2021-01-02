@@ -20,7 +20,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	@Override
 	public RecensioneBean doRetrieveByKey(String email) {
 		RecensioneBean bean = new RecensioneBean();
-		String sql = "SELECT * FROM recensione WHERE email=?";
+		String sql = "SELECT * FROM recensione WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, email);
@@ -61,7 +61,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 				collection.add(bean);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		return collection;
@@ -148,7 +148,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 * @param email proprietario della recensione
 	 */
 	public boolean approva(String email) {
-		String sql = "UPDATE recensione SET verificata='true' WHERE email=?";
+		String sql = "UPDATE recensione SET verificata='true' WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, email);

@@ -149,25 +149,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		}
 
 	}
-	
-	public int doSaveTest(PostazioneBean bean) {
-		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
-		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
-			System.out.println("DoSave" + statement);
-			statement.setString(1, bean.getCategoria());
-			statement.executeUpdate();
-			con.commit();
-			ResultSet rs = statement.getGeneratedKeys();
-			rs.next();
-			con.commit();
-			return rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
 
-	}
 
 	/**
 	 *  permette di modificare la categoria di una postazione
@@ -177,13 +159,13 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da modificare
 	 */
 	@Override
-	public boolean doUpdate(PostazioneBean bean, Integer chiave) {
+	public boolean doUpdate(PostazioneBean bean, Integer id) {
 		String sql = "UPDATE postazione SET nomeCategoria=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoUpdate" + statement);
 			statement.setString(1, bean.getCategoria());
-			statement.setInt(2, chiave);
+			statement.setInt(2, id);
 			statement.executeUpdate();
 			con.commit();
 			return true;
@@ -201,13 +183,13 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param chiave l'id della postazione da cancellare
 	 */
 	@Override
-	public boolean doDelete(Integer chiave) {
+	public boolean doDelete(Integer id) {
 
 		String sql = "DELETE FROM postazione WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoDelete" + statement);
-			statement.setInt(1, chiave);
+			statement.setInt(1, id);
 			statement.executeUpdate();
 			con.commit();
 			return true;
@@ -223,13 +205,13 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 * @param chiave il nome della categoria della postazione da cancellare
 	 */
-	public boolean doDeleteByNomeCategoria(String chiave) {
+	public boolean doDeleteByNomeCategoria(String nomeCategoria) {
 
 		String sql = "DELETE FROM postazione WHERE nomeCategoria=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoDelete" + statement);
-			statement.setString(1, chiave);
+			statement.setString(1, nomeCategoria);
 			statement.executeUpdate();
 			con.commit();
 			return true;
@@ -298,5 +280,23 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		return postazione;
 	}
 
+	
+	public int doSaveTest(PostazioneBean bean) {
+		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
+			System.out.println("DoSave" + statement);
+			statement.setString(1, bean.getCategoria());
+			statement.executeUpdate();
+			con.commit();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
 
+	}
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -71,7 +72,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 			}
 			return bean;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return null;
 		}
@@ -189,8 +190,8 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 * @param segnalazione segnalazione da risolvere
 	 * @param notificaBean notifica da inviare
 	 */
-	public void risolvi(SegnalazioneBean segnalazione, NotificaBean notificaBean) throws SQLException {
-		doDelete(segnalazione.getId());
+	public boolean risolvi(SegnalazioneBean segnalazione, NotificaBean notificaBean) {
+		if(doDelete(segnalazione.getId())) {
 		NotificaDAO notifica = new NotificaDAO();
 		UtenteBean utente = new UtenteBean();
 		utente.setEmail(segnalazione.getUtenteEmail());
@@ -198,6 +199,31 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 		array.add(utente);
 
 		notifica.doSaveNotificaUtente(notificaBean, array);
+		return true; 
+		} else return false;
+		
+	
+	}
+	public int doSaveTest(SegnalazioneBean bean) {
+		String sql = "INSERT INTO segnalazione(tipo,descrizione,utenteEmail) VALUES(?,?,?)";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+			statement.setString(1, bean.getTipo());
+			statement.setString(2, bean.getDescrizione());
+			statement.setString(3, bean.getUtenteEmail());
+			System.out.println("doSave=" + statement);
+			statement.executeUpdate();
+			con.commit();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+
 	}
 
 }
