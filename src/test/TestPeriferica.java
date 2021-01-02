@@ -22,8 +22,9 @@ public class TestPeriferica extends TestCase {
 	@BeforeEach
 	protected void setUp() throws Exception {
 		dao = new PerifericaDAO();
-		perifericaEsistente = new PerifericaBean("tastiera","Razer chroma",5,2);
+		perifericaEsistente = new PerifericaBean("tastiera","TestEsistente",5,2);
 		perifericaNonEsistente = new PerifericaBean("mouse", "Trust", 5, 21);
+		dao.doSave(perifericaEsistente);
 	}
 	@Test
 	public void testRicercaPerifericaEsistente() throws SQLException {
@@ -60,5 +61,6 @@ public class TestPeriferica extends TestCase {
 	  @Override
 	  protected void tearDown() throws Exception {
 	    dao.doDelete(perifericaNonEsistente.getNome());
+	    dao.doDelete(perifericaEsistente.getNome());
 	  }
 }
