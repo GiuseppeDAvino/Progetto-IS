@@ -10,7 +10,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockPart;
 
-import control.AggiungiCategoria;
+import control.gestioneCategoria.AggiungiCategoria;
 import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 
@@ -29,7 +29,7 @@ class TestCase_AggiuntaCategoria extends Mockito {
 		servlet = new AggiungiCategoria();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		dao = new CategoriaDAO();
+		dao = mock(CategoriaDAO.class);
 	}
 	
 	@Test
@@ -166,6 +166,7 @@ class TestCase_AggiuntaCategoria extends Mockito {
 	
 	@Test
 	void TC_AggiuntaCategoria_10() {
+		servlet.setMock(dao);
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -183,7 +184,6 @@ class TestCase_AggiuntaCategoria extends Mockito {
 	
 	@AfterEach
 	void tearDown() throws Exception {
-		dao.doDelete(categoria.getNome());
 		servlet=null;
 		dao=null;
 		request=null;

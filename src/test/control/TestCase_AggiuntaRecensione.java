@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.AggiungiRecensione;
+import control.gestioneRecensione.AggiungiRecensione;
 import model.notifica.NotificaDAO;
 import model.recensione.RecensioneDAO;
 import model.utente.UtenteBean;

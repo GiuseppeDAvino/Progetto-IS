@@ -10,8 +10,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockPart;
 
-
-import control.ModificaCategoria;
+import control.gestioneCategoria.ModificaCategoria;
 import model.categoria.CategoriaBean;
 import model.categoria.CategoriaDAO;
 

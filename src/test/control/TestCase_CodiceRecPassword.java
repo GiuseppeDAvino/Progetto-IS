@@ -9,8 +9,8 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.ConfermaRecuperoPassword;
-import control.RichiestaRecuperoPassword;
+import control.gestioneUtente.ConfermaRecuperoPassword;
+import control.gestioneUtente.RichiestaRecuperoPassword;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;

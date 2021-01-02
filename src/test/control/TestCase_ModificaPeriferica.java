@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-import control.ModificaPeriferica;
+
+import control.gestionePeriferica.ModificaPeriferica;
 import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 

@@ -89,4 +89,6 @@ public class PrenotazioneBean {
 				+ ", utenteEmail=" + utenteEmail + ", postazioneId=" + postazioneId + ", prezzo=" + prezzo + "]";
 	}
 
+
+
 }
