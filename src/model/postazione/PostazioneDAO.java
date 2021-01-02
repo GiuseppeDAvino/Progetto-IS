@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -145,6 +146,25 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 		catch (SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+
+	}
+	
+	public int doSaveTest(PostazioneBean bean) {
+		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
+			System.out.println("DoSave" + statement);
+			statement.setString(1, bean.getCategoria());
+			statement.executeUpdate();
+			con.commit();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
 		}
 
 	}

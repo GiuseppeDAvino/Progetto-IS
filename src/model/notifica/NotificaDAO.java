@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -230,6 +231,26 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			return true;
 		}
 		return false;
+	}
+	
+	public int doSaveTest(NotificaBean bean) {
+		String sql = "INSERT INTO notifica(descrizione,tipo) VALUES(?,?)";
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+			statement.setString(1, bean.getDescrizione());
+			statement.setString(2, bean.getTipo());
+			System.out.println("doSave=" + statement);
+			statement.executeUpdate();
+			con.commit();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 }
