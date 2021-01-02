@@ -46,6 +46,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 
 	}
 
+
 	/**
 	 *  Ritorna una segnalazione in base all'utente
 	 * 

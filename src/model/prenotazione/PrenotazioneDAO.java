@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -76,8 +77,6 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			e.printStackTrace();
 			return null;
 		}
-		
-
 	}
 
 	/**
@@ -165,24 +164,22 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * 
 	 * @param periferiche  le periferiche che vengono aggiunte alla prenotazione
 	 */
-	public boolean prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche){
-		doSave(prenotazione);
-		ArrayList<PrenotazioneBean> prenotazioni = (ArrayList<PrenotazioneBean>) doRetrieveAll();
-		PrenotazioneBean prenotazioneId = prenotazioni.get(prenotazioni.size() - 1);
+	public int prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche){
+		int id = doSaveTest(prenotazione);
 		String sql = "INSERT INTO prenotazione_periferica VALUES(?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			for (PerifericaBean perifericaBean : periferiche) {
 				System.out.println("addPeriferiche " + statement);
-				statement.setInt(1, prenotazioneId.getId());
+				statement.setInt(1, id);
 				statement.setString(2, perifericaBean.getNome());
 				statement.executeUpdate();
 				con.commit();
 			}
-			return true;
+			return id;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 	public Collection<PrenotazioneBean> doRetrieveByEmail(String email){
@@ -213,19 +210,26 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 		
 
 	}
-	
-	public boolean deleteTest(String email) {
-		String sql = "DELETE FROM prenotazione WHERE utenteEmail=?";
+
+	public int doSaveTest(PrenotazioneBean bean) {
+		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId,prezzo) VALUES(?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("doDelete " + statement);
-			statement.setString(1, email);
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
+			System.out.println("doSave" + statement);
+			statement.setString(1, bean.getData());
+			statement.setString(2, bean.getFasciaOraria());
+			statement.setString(3, bean.getQr());
+			statement.setString(4, bean.getUtenteEmail());
+			statement.setInt(5, bean.getPostazioneId());
+			statement.setFloat(6, bean.getPrezzo());
 			statement.executeUpdate();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
 			con.commit();
-			return true;
+			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 	

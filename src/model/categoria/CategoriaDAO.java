@@ -175,12 +175,12 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	 * @param chiave è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
-	public boolean doDelete(String chiave) {
+	public boolean doDelete(String nome) {
 		String sql = "DELETE FROM categoria WHERE nome=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
-			statement.setString(1, chiave);
+			statement.setString(1, nome);
 			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
