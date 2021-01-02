@@ -10,19 +10,24 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import control.gestioneUtente.Registrazione;
 import control.gestioneUtente.RichiestaRecuperoPassword;
+import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
+import model.utente.UtenteBean.Ruolo;
 
 class TestCase_RichiestaRecPassword {
 	private RichiestaRecuperoPassword servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 	private UtenteDAO dao;
+	private UtenteBean mario=new UtenteBean("mariorossi@funisa.com","Mario","Rossi","Mrossi01",Ruolo.cliente,true,"","MarioRossi01?");
 	@BeforeEach
 	void setUp() throws Exception {
 		servlet = new RichiestaRecuperoPassword();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
 		dao=new UtenteDAO();
+		dao.doDelete(mario.getEmail());
+		dao.doSave(mario);
 	}
 
 	@Test
@@ -63,7 +68,7 @@ class TestCase_RichiestaRecPassword {
 		servlet=null;
 		request=null;
 		response=null;
-		dao.cambiaCodice("", "mariorossi@funisa.com");
+		dao.doDelete(mario.getEmail());
 		dao=null;
 	}
 

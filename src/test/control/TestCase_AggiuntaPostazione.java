@@ -5,29 +5,36 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import control.gestionePostazione.AggiungiPostazione;
 import model.postazione.PostazioneBean;
 import model.postazione.PostazioneDAO;
+import model.servizio.Validatore;
 
 class TestCase_AggiuntaPostazione extends Mockito {
 	
-	private AggiungiPostazione servlet;
+	
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
+	@Mock
 	private PostazioneDAO dao;
+	
+	@InjectMocks
+	private AggiungiPostazione servlet;
 	private PostazioneBean postazione = new PostazioneBean("PC FASCIA ALTA");
 	
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		servlet = new AggiungiPostazione();
+		MockitoAnnotations.initMocks(this);
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		dao = new PostazioneDAO();
 	}
 	
 	@Test
@@ -53,7 +60,6 @@ class TestCase_AggiuntaPostazione extends Mockito {
 	@Test
 	void TC_AggiuntaCategoria_3() {
 		request.addParameter("nomeCategoria",postazione.getCategoria());
-
 		String message = "L'aggiunta della postazione va a buon fine";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
@@ -62,7 +68,6 @@ class TestCase_AggiuntaPostazione extends Mockito {
 	
 	@AfterEach
 	void tearDown() throws Exception {
-		dao.doDeleteByNomeCategoria(postazione.getCategoria());
 		servlet=null;
 		dao=null;
 		request=null;

@@ -24,10 +24,11 @@ class TestCase_CodiceRecPassword extends Mockito {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		dao=new UtenteDAO();
+		dao.doDelete(utente.getEmail());
 		servlet = new ConfermaRecuperoPassword();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		dao=new UtenteDAO();
 		dao.doSave(utente);
 	}
 

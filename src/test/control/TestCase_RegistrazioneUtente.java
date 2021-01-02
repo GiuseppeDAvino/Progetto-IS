@@ -33,6 +33,8 @@ public class TestCase_RegistrazioneUtente extends Mockito {
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
 		dao=new UtenteDAO();
+		dao.doDelete("robertobianchi@funisa.com");
+		dao.doDelete(utenteEsistente.getEmail());
 		dao.doSave(utenteEsistente);
 	}
 

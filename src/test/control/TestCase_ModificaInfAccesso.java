@@ -30,6 +30,7 @@ class TestCase_ModificaInfAccesso extends Mockito {
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
 		dao=new UtenteDAO();
+		dao.doDelete(utente.getEmail());
 		dao.doSave(utente);
 		
 	}

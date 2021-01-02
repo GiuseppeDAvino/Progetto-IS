@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
@@ -19,22 +22,25 @@ import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
 class TestCase_AggiuntaSegnalazione extends Mockito {
-	private AggiungiSegnalazione servlet;
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
-	private SegnalazioneDAO segnalazioneDAO;
+	
 	private UtenteBean utente = new UtenteBean("test@funisa.com","Test","Test","Test01",Ruolo.cliente,true,"","Test01?");
+	@Mock
+	private SegnalazioneDAO segnalazioneDAO;
+	@Mock
 	private UtenteDAO utenteDAO;
+	@Mock
 	private NotificaDAO notificaDAO;
+	@InjectMocks
+	private AggiungiSegnalazione servlet;
+	
 	@BeforeEach
 	void setUp() throws Exception {
-		servlet = new AggiungiSegnalazione();
+		MockitoAnnotations.initMocks(this);
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		segnalazioneDAO=new SegnalazioneDAO();
-		utenteDAO=new UtenteDAO();
-		utenteDAO.doSave(utente);
-		notificaDAO = new NotificaDAO();
+
 	}
 	
 	@Test
@@ -94,12 +100,6 @@ class TestCase_AggiuntaSegnalazione extends Mockito {
 	
 	@AfterEach
 	void tearDown() throws Exception {
-		utenteDAO.doDelete(utente.getEmail());
-		segnalazioneDAO.doDeleteByEmail(utente.getEmail());
-		notificaDAO.doDeleteUltimaNotifica();
-		servlet=null;
-		utenteDAO=null;
-		segnalazioneDAO=null;
 		request=null;
 		response=null;
 	}

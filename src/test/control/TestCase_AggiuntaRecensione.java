@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
@@ -17,23 +20,27 @@ import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
 
 class TestCase_AggiuntaRecensione extends Mockito {
-	private AggiungiRecensione servlet;
+	
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
+	@Mock
 	private RecensioneDAO recensioneDAO;
-	private UtenteBean utente = new UtenteBean("test@funisa.com","Test","Test","Test01",Ruolo.cliente,true,"","Test01?");
+	@Mock
 	private UtenteDAO utenteDAO;
+	@Mock
 	private NotificaDAO notificaDAO;
+	@InjectMocks
+	private AggiungiRecensione servlet;
+	private UtenteBean utente = new UtenteBean("test@funisa.com","Test","Test","Test01",Ruolo.cliente,true,"","Test01?");
+
 
 	@BeforeEach
 	void setUp() throws Exception {
-		servlet = new AggiungiRecensione();
+		MockitoAnnotations.initMocks(this);
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		recensioneDAO=new RecensioneDAO();
-		notificaDAO=new NotificaDAO();
-		utenteDAO=new UtenteDAO();
-		utenteDAO.doSave(utente);
+
+
 	}
 	
 	@Test
@@ -82,12 +89,6 @@ class TestCase_AggiuntaRecensione extends Mockito {
 	
 	@AfterEach
 	void tearDown() throws Exception {
-		utenteDAO.doDelete(utente.getEmail());
-		recensioneDAO.doDelete(utente.getEmail());
-		notificaDAO.doDeleteUltimaNotifica();
-		servlet=null;
-		utenteDAO=null;
-		recensioneDAO=null;
 		request=null;
 		response=null;
 	}
