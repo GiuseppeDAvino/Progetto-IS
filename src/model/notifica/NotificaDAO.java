@@ -250,4 +250,6 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 		}
 	}
 
+	
+	
 }
