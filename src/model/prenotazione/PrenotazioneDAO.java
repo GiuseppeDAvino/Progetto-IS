@@ -188,13 +188,11 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	public Collection<PrenotazioneBean> doRetrieveByEmail(String email){
 		String sql = "SELECT * FROM prenotazione where utenteEmail=?";
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
- 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			System.out.println("DoRetriveAll" + statement);
 			statement.setString(1, email);
 			ResultSet rs = statement.executeQuery();
- 
 			while (rs.next()) {
 				PrenotazioneBean bean = new PrenotazioneBean();
 				bean.setData(rs.getString("dataPrenotazione"));
@@ -208,13 +206,14 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			}
 			return collection;
 		} catch (SQLException e) {
- 
+	
 			e.printStackTrace();
 			return null;
 		}
- 
- 
+		
+
 	}
+	
 	public boolean deleteTest(String email) {
 		String sql = "DELETE FROM prenotazione WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -229,4 +228,6 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			return false;
 		}
 	}
-	}
+	
+	
+}
