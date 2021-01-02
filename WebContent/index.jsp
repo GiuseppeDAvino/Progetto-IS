@@ -234,7 +234,7 @@
 			<div class="review-submit">
 				<form action="#" class="row">
 						<div class="col text-center">
-							<a class="btn btn-main" href="contact-us.html" role="button">Scrivi</a>
+							<a class="btn btn-main" href="<%=response.encodeURL("/Funisa/review.jsp")%>" role="button">Scrivi</a>
 						</div>
 				</form>
 			</div>

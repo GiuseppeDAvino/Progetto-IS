@@ -29,7 +29,7 @@
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/notification.css" rel="stylesheet">
-
+	  <!--<script src="script/validazioni.js"></script>-->
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +37,17 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+ <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+  </style>
 </head>
 
 <body class="body-wrapper">
@@ -47,15 +57,17 @@
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
                     <h3 class="bg-gray p-4">Login</h3>
-                    <form action="Login" method="post">
+                    <div id="login-form">
+                    <form action="Login" method="post" id="loginform">
                         <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2">
+                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2" required>
+                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" required>
                             <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
                             <a class="mt-3 d-block  text-primary" href="richiestaRecuperoPassword.jsp">Password dimenticata?</a>
                             <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
                         </fieldset>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

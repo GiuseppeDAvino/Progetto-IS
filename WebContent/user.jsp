@@ -65,6 +65,7 @@
 									class="rounded-circle">
 							</div>
 							<!-- User Name -->
+						
 							
 							<h5 class="text-center"><%=utente.getNome() %> <%=utente.getCognome() %></h5>
 							<p><%=utente.getUsername() %></p>
@@ -95,7 +96,7 @@
 								if (ruolo.equals("cliente")) {
 								%>
 
-								<li><button onclick="getPostazioniUtente()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Gestione Prenotazioni</button></li>
+								<li><button onclick="getPrenotazioniUtente()" class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Le Mie Prenotazioni</button></li>
 								<%
 									}
 								%>
@@ -115,6 +116,8 @@
 							<thead id="head_tabella_gestori">
 							<thead id="head_tabella_notifiche">
 							<thead id="head_tabella_notifiche_t">
+							<thead id="head_tabella_prenotazioni_utente">
+							
 							</thead>
 							<tbody id="gestione_prenotazioni">
 							<tbody id="gestione_periferiche">
@@ -122,6 +125,8 @@
 							<tbody id="gestione_postazioni">
 							<tbody id="gestione_gestori">
 							<tbody id="gestione_notifiche">
+							<tbody id="gestione_prenotazioni_utente">
+							
 							</tbody>
 						</table>
 					</div>

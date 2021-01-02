@@ -85,8 +85,8 @@ public class PrenotazioneBean {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return "PrenotazioneBean [id=" + id + ", data=" + data + ", fasciaOraria=" + fasciaOraria + ", qr=" + qr
+				+ ", utenteEmail=" + utenteEmail + ", postazioneId=" + postazioneId + ", prezzo=" + prezzo + "]";
 	}
 
 }
