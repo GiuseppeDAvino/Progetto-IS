@@ -1,6 +1,5 @@
 package model.utente;
 
-import java.beans.Statement;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
@@ -191,7 +190,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			}
 			return collection;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -254,7 +253,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			con.commit();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -278,7 +277,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			con.commit();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return false;
 		}
@@ -300,7 +299,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 		byte arr[] = md.digest(password.getBytes());
 		return arr;
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -330,7 +329,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			if (rs.next())
 				return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}
@@ -362,7 +361,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			if (rs.next())
 				return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return false;
@@ -464,7 +463,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			con.commit();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return false;
 		}

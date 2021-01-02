@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -27,27 +26,27 @@ public class TestPeriferica extends TestCase {
 		dao.doSave(perifericaEsistente);
 	}
 	@Test
-	public void testRicercaPerifericaEsistente() throws SQLException {
+	public void testRicercaPerifericaEsistente() {
 		assertEquals(perifericaEsistente.getNome(), dao.doRetrieveByKey(perifericaEsistente.getNome()).getNome());
 	} 
 	@Test
-	public void testRicercaPerifericaNonEsistente() throws SQLException {
+	public void testRicercaPerifericaNonEsistente() {
 		assertEquals("", dao.doRetrieveByKey(perifericaNonEsistente.getNome()).getNome());
 	}
 	@Test
-	public void testInserimentoPerifericaEsistente() throws SQLException {
+	public void testInserimentoPerifericaEsistente() {
 			assertEquals(false, dao.doSave(perifericaEsistente));
 	}
 	@Test
-	public void testInserimentoPerifericaNonEsistente() throws SQLException {
+	public void testInserimentoPerifericaNonEsistente() {
 		assertEquals(true, dao.doSave(perifericaNonEsistente));
 	}
 	@Test
-	public void testModificaPerifericaEsistente() throws SQLException {
+	public void testModificaPerifericaEsistente() {
 		assertEquals(true,dao.doUpdate(perifericaEsistente, perifericaEsistente.getNome()));
 	}
 	@Test
-	public void testListaPerifericheEsistentiDivisePerTipi() throws SQLException {		
+	public void testListaPerifericheEsistentiDivisePerTipi()  {		
 		ArrayList<PerifericaBean> collection = new ArrayList<PerifericaBean>();		
 		assertNotEquals(collection, dao.doRetrieveAllTipi()); 
 	}

@@ -40,8 +40,7 @@ class TestPrenotazione extends TestCase {
 
 	@Test
 	void testNuovaPrenotazione() {
-		int id1=-1;
-		assertNotEquals(id1, id);
+		assertNotEquals(-1, id);
 	}
 
 	@Test

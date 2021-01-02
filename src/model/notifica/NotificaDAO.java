@@ -108,26 +108,23 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param notifica è la notifica da inserire dal database
 	 * @param utenti   è la lista di utenti a cui verrà collegata la notifica
 	 */
-	public boolean doSaveNotificaUtente(NotificaBean notifica, ArrayList<UtenteBean> utenti) {
-		doSave(notifica);
-		ArrayList<NotificaBean> notifiche = (ArrayList<NotificaBean>) doRetrieveAll();
-		NotificaBean notificaId = notifiche.get(notifiche.size() - 1);
+	public int doSaveNotificaUtente(NotificaBean notifica, ArrayList<UtenteBean> utenti) {
+		int id = doSaveTest(notifica);
 		String sql = "INSERT INTO notifica_utente VALUES(?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql)) {
 			for (UtenteBean utenteBean : utenti) {
-				statement.setInt(1, notificaId.getId());
+				statement.setInt(1, id);
 				statement.setString(2, utenteBean.getEmail());
 				statement.setBoolean(3, false);
 				statement.executeUpdate();
 				con.commit();
-
 			}
-			return true;
+			return id;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 

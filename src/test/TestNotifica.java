@@ -1,72 +1,95 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import junit.framework.TestCase;
+import model.notifica.NotificaBean;
+import model.notifica.NotificaDAO;
+import model.postazione.PostazioneBean;
+import model.utente.UtenteBean;
+import model.utente.UtenteDAO;
+import model.utente.UtenteBean.Ruolo;
 
 class TestNotifica extends TestCase {
-
+	
+	private NotificaDAO dao;
+	private NotificaBean notifica;
+	private UtenteDAO daoTest;
+	private UtenteBean beanTest;
+	private int id;
 	
 	@BeforeEach
 	protected void setUp() throws Exception {
+		dao = new NotificaDAO();
+		notifica = new NotificaBean("PROVA", "notifica");
+		
+		daoTest = new UtenteDAO();
+		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
+		daoTest.doSave(beanTest);
+		
+		id=dao.doSaveTest(notifica);
+	}
+	@Test
+	void testCreazioneNuovaNotifica() {
+		assertNotEquals(-1, id);
 	}
 
 	@Test
-	void testDoRetrieveByKey() {
-		fail("Not yet implemented");
+	void testRicercaNotificaSpecifica() {
+		PostazioneBean bean = new PostazioneBean();
+		assertNotEquals(bean, dao.doRetrieveByKey(id));
 	}
 
 	@Test
 	void testDoRetrieveAll() {
-		fail("Not yet implemented");
+		ArrayList<NotificaBean> collection = new ArrayList<NotificaBean>();
+		assertNotEquals(collection, dao.doRetrieveAll());
+		
+	}
+	@Test
+	void testSalvataggioNotificaUtente() {
+		ArrayList <UtenteBean> utenti = new ArrayList<UtenteBean>();
+		utenti.add(beanTest);
+		int test = dao.doSaveNotificaUtente(notifica, utenti);
+		assertNotEquals(-1, test);
+		dao.doDelete(test);
+	}
+	@Test
+	void testEliminazioneNotifica() {
+		assertEquals(true, dao.doDelete(id));
 	}
 
 	@Test
-	void testDoSaveNotificaUtente() {
-		fail("Not yet implemented");
+	void testLetturaNotifica() {
+		assertEquals(true, dao.letta(id, beanTest));
 	}
 
 	@Test
-	void testDoUpdate() {
-		fail("Not yet implemented");
+	void testEliminazioneNotificaUtente() {
+		assertEquals(true, dao.doDeleteNotificaUtente(id, beanTest));
 	}
 
 	@Test
-	void testDoDelete() {
-		fail("Not yet implemented");
+	void testEliminazioneTotalelNotificheUtente() {
+		assertEquals(true, dao.doDeleteAllNotificheUtente(beanTest));
 	}
-
-	@Test
-	void testLetta() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDoDeleteNotificaUtente() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testDoDeleteAllNotificheUtente() {
-		fail("Not yet implemented");
-	}
-
+	
 	@Test
 	void testDoDeleteUltimaNotifica() {
-		fail("Not yet implemented");
+		assertEquals(true, dao.doDeleteUltimaNotifica());
 	}
 
-	@Test
-	void testDoSaveTest() {
-		fail("Not yet implemented");
-	}
 
 	@AfterEach
 	protected void tearDown() throws Exception {
+		dao.doDelete(id);
+		daoTest.doDelete(beanTest.getEmail());
 	}
 
 
