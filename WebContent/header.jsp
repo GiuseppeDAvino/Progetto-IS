@@ -3,8 +3,8 @@
 <%@page import="model.utente.UtenteBean"%>
 <%
 	UtenteBean utente = (UtenteBean) session.getAttribute("utente");
-	String ruolo = null;
-	if (utente != null)
+String ruolo = null;
+if (utente != null)
 	ruolo = utente.getRuolo().name();
 %>
 <!DOCTYPE html>
@@ -51,69 +51,29 @@
 							<!--if titolare-->
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-						
-						
-						<%if(ruolo == null) {%>
-							<li class="nav-item"><a class="nav-link" href="<%=response.encodeURL("/Funisa/login.jsp")%>"><i
+
+
+							<%
+								if (ruolo == null) {
+							%>
+							<li class="nav-item"><a class="btn btn-main-sm"
+								href="<%=response.encodeURL("/Funisa/login.jsp")%>">Login</a></li>
+							<%
+								} else {
+							%>
+							<li class="nav-item"><a class="nav-link"
+								href="<%=response.encodeURL("/Funisa/user.jsp")%>"><i
 									class="fa fa-user-circle" style="font-size: 20px;"></i></a></li>
-							<%} else{ %>
-							<li class="nav-item"><a class="nav-link" href="<%=response.encodeURL("/Funisa/user.jsp")%>"><i
-									class="fa fa-user-circle" style="font-size: 20px;"></i></a></li>
-							<%} %>		
-									
-									
-									
+							<%
+								}
+							%>
 							<%
 								if (ruolo != null)
 								if (ruolo.equals("cliente") || ruolo.equals("gestore")) {
 							%>
-							<li class="nav-item">
-								<!--<a class="nav-link" href="login.html"><i class="fas fa-bell"></i><span class="badge" style="color:red;">3</span></a>-->
-								<div class="dropdown"
-									style="float: right; padding: 13px; margin-right: 8px; bottom: 5px;">
-									<a href="#" onclick="return false;" role="button"
-										data-toggle="dropdown" id="dropdownMenu1" data-target="#"
-										style="float: left" aria-expanded="true"> <i
-										class="fa fa-bell"
-										style="font-size: 20px; float: left; color: rgba(0, 0, 0, .5);">
-									</i>
-									</a> <span class="badge badge-danger">6</span>
-									<ul class="dropdown-menu dropdown-menu-left pull-right"
-										role="menu" aria-labelledby="dropdownMenu1">
-										<li role="presentation"><a href="#"
-											class="dropdown-menu-header">Notifiche</a></li>
-										<ul class="timeline timeline-icons timeline-sm" style="margin: 10px; width: 210px">
-											<li>
-												<p>
-													Your âVolume Trendlineâ PDF is ready <a href="">here</a>
-													<span class="timeline-icon"><i
-														class="fa fa-file-pdf-o" style="color: red"></i></span> <span
-														class="timeline-date">Dec 10, 22:00</span>
-												</p>
-											</li>
-											<li>
-												<p>
-													Your âMarketplace Reportâ PDF is ready <a href="">here</a>
-													<span class="timeline-icon"><i
-														class="fa fa-file-pdf-o" style="color: red"></i></span> <span
-														class="timeline-date">Dec 6, 10:17</span>
-												</p>
-											</li>
-											<li>
-												<p>
-													Your âTop Wordsâ spreadsheet is ready <a href="">here</a>
-													<span class="timeline-icon"><i
-														class="fa fa-file-excel-o" style="color: green"></i></span> <span
-														class="timeline-date">Dec 5, 04:36</span>
-												</p>
-											</li>
-										</ul>
-										<!--<li role="presentation">
-            <a href="#" class="dropdown-menu-header"></a>
-        </li>-->
-									</ul>
-								</div>
-							</li>
+							<li class="nav-item"><a class="nav-link"
+								href="<%=response.encodeURL("/Funisa/notifiche.jsp")%>"><i
+									class="fa fa-bell" style="font-size: 20px;"></i></a></li>
 							<%
 								}
 							%>

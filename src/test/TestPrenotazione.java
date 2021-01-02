@@ -1,6 +1,6 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 
@@ -8,53 +8,57 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import junit.framework.TestCase;
 import model.prenotazione.PrenotazioneBean;
 import model.prenotazione.PrenotazioneDAO;
 
-class TestPrenotazione {
+class TestPrenotazione extends TestCase {
 
 	private PrenotazioneDAO dao;
 	private PrenotazioneBean prenotazione;
 	@BeforeEach
-	void setUp() throws Exception {
+	protected void setUp() throws Exception {
 		dao = new PrenotazioneDAO();
-		//prenotazione = new PrenotazioneBean(id, data, fasciaOraria, qr, utenteEmail, postazioneId, prezzo)
-	}
-
-
-	@Test
-	void testRicercaPrenotazioneSpecifica() {
-		PrenotazioneBean bean = new PrenotazioneBean();
-		assertNotEquals(bean, dao.doRetrieveByKey(1));
+		prenotazione = new PrenotazioneBean(1, "2021-02-02", "15-18", "das1das2d1a", "titolare@titolare.com", 1, 12);
+		dao.doSave(prenotazione);
 	}
 
 	@Test
-	void testRicercaTutteLePrentazioni() {
+	void testNuovaPrenotazione() {
+		assertEquals(true, dao.doSave(prenotazione));
+	}
+
+	@Test
+	void testRicercaTutteLePrenotazioni() {
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
-		assertNotEquals(collection, dao.doRetrieveAll());
+		assertNotEquals(collection, dao.doRetrieveAll()); 
 	}
-
-//	@Test
-//	void testTerminaPrenotazione() {
-//		fail("Not yet implemented");
-//	}
-
-//	@Test
-//	void testDoSave() {
-//		fail("Not yet implemented");
-//	}
-
-/*	@Test
+	@Test
+	void testRicercaPrenotazioniTramiteMail() {
+		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
+		assertNotEquals(collection, dao.doRetrieveByEmail(prenotazione.getUtenteEmail()));
+	}
+/*
+	@Test
 	void testDoDelete() {
-		fail("Not yet implemented");
+		assertEquals(true, dao.doDelete(prenotazione.getId()));
 	}
-*/
+
+
 	@Test
 	void testPrenotaConPeriferiche() {
-		fail("Not yet implemented");
+		
 	}
+	
+	@Test
+	void testTerminaPrenotazione() {
+		assertEquals(true, dao.terminaPrenotazione(prenotazione));
+	}
+
+*/	
 	@AfterEach
-	void tearDown() throws Exception {
+	protected void tearDown() throws Exception {
+		dao.deleteTest(prenotazione.getUtenteEmail());
 	}
 
 }

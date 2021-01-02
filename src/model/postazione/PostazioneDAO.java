@@ -1,7 +1,6 @@
 package model.postazione;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -107,15 +106,15 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	/**
-	 *  Permette di cambiare la disponibilità di una certa postazione
+	 *  Permette di cambiare la disponibilitï¿½ di una certa postazione
 	 * 
-	 * @param postazione la postazione da cui cambiare la disponibilità
+	 * @param postazione la postazione da cui cambiare la disponibilitï¿½
 	 */
-	public boolean cambiaDisponibilità(PostazioneBean postazione){
+	public boolean cambiaDisponibilita(PostazioneBean postazione){
 		String sql = "UPDATE postazione SET isDisponibile=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("cambiaDisponibilità della postazione " + postazione.getId());
+			System.out.println("cambiaDisponibilitï¿½ della postazione " + postazione.getId());
 			statement.setBoolean(1, !postazione.isDisponibile());
 			statement.setInt(2, postazione.getId());
 			statement.executeUpdate();
@@ -153,7 +152,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	/**
 	 *  permette di modificare la categoria di una postazione
 	 * 
-	 * @param bean   bean da cui verrà presa la categoria
+	 * @param bean   bean da cui verrï¿½ presa la categoria
 	 * 
 	 * @param chiave l'id della postazione da modificare
 	 */
@@ -223,17 +222,17 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	
 	
 	/**
-	 *  Indica se una postazione è stata prenotata almeno una volta
+	 *  Indica se una postazione ï¿½ stata prenotata almeno una volta
 	 * 
 	 * @param postazione postazione da controllare
 	 * @throws SQLException 
 	 * */
-	public boolean èStataUtilizzata(PostazioneBean postazione){
+	public boolean eStataUtilizzata(PostazioneBean postazione){
 		String sql="SELECT * FROM postazione p where ? NOT IN(\r\n" + 
 				"	SELECT pr.postazioneId FROM prenotazione pr)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("èStataUtilizzata" + statement);
+			System.out.println("ï¿½StataUtilizzata" + statement);
 			statement.setInt(1, postazione.getId());
 			ResultSet rs=statement.executeQuery();
 			if(rs.next())

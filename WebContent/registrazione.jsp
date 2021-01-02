@@ -47,12 +47,12 @@
                     <h3 class="bg-gray p-4">Registrazione</h3>
                     <form action="Registrazione" method="post">
                         <fieldset class="p-4">
-                        	<input name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
-                            <input name="cognome" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input name="username" type="text" placeholder="Username" class="border p-3 w-100 my-2">
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2">
-                            <input name="confermaPassword" type="password" placeholder="Conferma password" class="border p-3 w-100 my-2">
+                        	<input name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2" required pattern="[a-zA-Z]{3,30}">
+                            <input name="cognome" type="text" placeholder="Cognome" class="border p-3 w-100 my-2" required pattern="[a-zA-Z]{3,30}">
+                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2" required>
+                            <input name="username" type="text" placeholder="Username" class="border p-3 w-100 my-2" required pattern="[a-zA-Z  _0-9]{3,30}">
+                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" required>
+                            <input name="confermaPassword" type="password" placeholder="Conferma password" class="border p-3 w-100 my-2" required>
                             <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Registrati</button>
                         </fieldset>
                     </form>

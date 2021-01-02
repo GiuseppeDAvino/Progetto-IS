@@ -221,7 +221,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			con.commit();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return false;
 		}

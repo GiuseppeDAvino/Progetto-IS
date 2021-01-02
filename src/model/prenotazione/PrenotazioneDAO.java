@@ -49,7 +49,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 */
 	@Override
 	public Collection<PrenotazioneBean> doRetrieveAll(){
-		String sql = "SELECT * FROM prenotazione";
+		String sql = "Select * FROM prenotazione";
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -68,7 +68,9 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				collection.add(bean);
 			}
+
 			return collection;
+
 		} catch (SQLException e) {
 	
 			e.printStackTrace();
@@ -84,7 +86,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * @param bean Prenotazione da terminare
 	 */
 
-	public void terminaPrenotazione(PrenotazioneBean bean){
+	public boolean terminaPrenotazione(PrenotazioneBean bean){
 		String sql = "UPDATE prenotazione SET qr='' WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -92,9 +94,10 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			statement.setInt(1, bean.getId());
 			statement.executeUpdate();
 			con.commit();
+			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -125,7 +128,6 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			e.printStackTrace();
 			return false;
 		}
-
 	}
 
 	@Override
@@ -183,5 +185,48 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			return false;
 		}
 	}
-
-}
+	public Collection<PrenotazioneBean> doRetrieveByEmail(String email){
+		String sql = "SELECT * FROM prenotazione where utenteEmail=?";
+		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
+ 
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetriveAll" + statement);
+			statement.setString(1, email);
+			ResultSet rs = statement.executeQuery();
+ 
+			while (rs.next()) {
+				PrenotazioneBean bean = new PrenotazioneBean();
+				bean.setData(rs.getString("dataPrenotazione"));
+				bean.setFasciaOraria(rs.getString("fasciaOraria"));
+				bean.setId(rs.getInt("id"));
+				bean.setQr(rs.getString("qr"));
+				bean.setPostazioneId(rs.getInt("postazioneId"));
+				bean.setUtenteEmail(rs.getString("utenteEmail"));
+				bean.setPrezzo(rs.getFloat("prezzo"));
+				collection.add(bean);
+			}
+			return collection;
+		} catch (SQLException e) {
+ 
+			e.printStackTrace();
+			return null;
+		}
+ 
+ 
+	}
+	public boolean deleteTest(String email) {
+		String sql = "DELETE FROM prenotazione WHERE utenteEmail=?";
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("doDelete " + statement);
+			statement.setString(1, email);
+			statement.executeUpdate();
+			con.commit();
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	}

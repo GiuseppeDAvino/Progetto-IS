@@ -77,7 +77,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 			return bean;
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 			return null;
 		}

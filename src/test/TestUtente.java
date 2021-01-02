@@ -1,13 +1,12 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import org.junit.After;
-import org.junit.Before;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import junit.framework.TestCase;
 import model.utente.UtenteBean;
@@ -20,11 +19,10 @@ public class TestUtente extends TestCase {
   private UtenteBean utenteEsistente;
   private UtenteBean utenteNonEsistente;
   
-  @Before
-  @Override
+  @BeforeEach
   protected void setUp() throws Exception {
    
-    dao=new UtenteDAO();
+    dao= new UtenteDAO();
     utenteEsistente=new UtenteBean("titolare@titolare.com","titolare","titolare","titolare",Ruolo.titolare,true,"","titolare");
     utenteNonEsistente=new UtenteBean("nonesisto@esistenza.com","nonEsisto","nonEsisto","nonEsisto",Ruolo.cliente,false,"null","nonEsisto");
   }
@@ -41,7 +39,6 @@ public class TestUtente extends TestCase {
   @Test
   public void testAccessoUtenteEsistente() { 
 	  UtenteBean bean = dao.doRetrieveByKey(utenteEsistente.getEmail());
-	  
 	  assertEquals(true,Arrays.compare(bean.getPassword(), utenteEsistente.getPassword())==0); 
   }
   @Test
@@ -80,10 +77,8 @@ public class TestUtente extends TestCase {
 	  assertNotEquals(collection, dao.doRetrieveAllPerPrenotazioni());  
   }
   //Reimposto il db allo stato originale
-  @After
-  @Override
+  @AfterEach
   protected void tearDown() throws Exception {
     dao.doDelete(utenteNonEsistente.getEmail());
-    dao.doDelete(utenteEsistente.getEmail());
   }
 }
