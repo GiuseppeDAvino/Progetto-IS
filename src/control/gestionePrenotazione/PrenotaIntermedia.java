@@ -1,4 +1,4 @@
-package control;
+package control.gestionePrenotazione;
 
 import java.io.IOException;
 import java.util.ArrayList;
