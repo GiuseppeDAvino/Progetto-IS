@@ -33,8 +33,8 @@ public class EliminaPostazione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PostazioneBean postazione = new PostazioneBean();
 		postazione.setId(Integer.parseInt(request.getParameter("id")));
-		if(postazioneDAO.ËStataUtilizzata(postazione))
-			postazioneDAO.cambiaDisponibilit‡(postazione);
+		if(postazioneDAO.eStataUtilizzata(postazione))
+			postazioneDAO.cambiaDisponibilita(postazione);
 		else
 			postazioneDAO.doDelete(postazione.getId());
 	}

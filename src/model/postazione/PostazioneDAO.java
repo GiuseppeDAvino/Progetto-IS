@@ -1,7 +1,6 @@
 package model.postazione;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -111,7 +110,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * 
 	 * @param postazione la postazione da cui cambiare la disponibilit�
 	 */
-	public boolean cambiaDisponibilit�(PostazioneBean postazione){
+	public boolean cambiaDisponibilita(PostazioneBean postazione){
 		String sql = "UPDATE postazione SET isDisponibile=? WHERE id=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -228,7 +227,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 * @param postazione postazione da controllare
 	 * @throws SQLException 
 	 * */
-	public boolean �StataUtilizzata(PostazioneBean postazione){
+	public boolean eStataUtilizzata(PostazioneBean postazione){
 		String sql="SELECT * FROM postazione p where ? NOT IN(\r\n" + 
 				"	SELECT pr.postazioneId FROM prenotazione pr)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();

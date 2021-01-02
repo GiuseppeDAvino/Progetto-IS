@@ -40,7 +40,6 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 			}
 			return bean;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
@@ -101,13 +100,11 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 				bean.setUtenteEmail(rs.getString("utenteEmail"));
 				collection.add(bean);
 			}
-			return collection;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
+			
 		}
-
+		return collection;
 	}
 
 	/**
@@ -185,7 +182,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	}
 
 	/**
-	 *  Salva una notifica per l'utente a cui ï¿½ stata risolta la
+	 *  Salva una notifica per l'utente a cui è stata risolta la
 	 *           segnalazione
 	 * 
 	 * @param segnalazione segnalazione da risolvere

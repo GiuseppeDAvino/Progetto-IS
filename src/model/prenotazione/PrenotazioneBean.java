@@ -1,7 +1,5 @@
 package model.prenotazione;
 
-import java.sql.Date;
-
 public class PrenotazioneBean {
 	private int id;
 	private String data;
