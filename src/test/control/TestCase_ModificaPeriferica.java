@@ -5,7 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
@@ -14,19 +17,21 @@ import model.periferica.PerifericaBean;
 import model.periferica.PerifericaDAO;
 
 class TestCase_ModificaPeriferica extends Mockito{
-	private ModificaPeriferica servlet;
+	
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
+	@Mock
 	private PerifericaDAO dao;
+	@InjectMocks
+	private ModificaPeriferica servlet;
 	private PerifericaBean periferica = new PerifericaBean("GLORIOUS MODEL O","MOUSE",5,5);
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		servlet = new ModificaPeriferica();
+		MockitoAnnotations.initMocks(this);
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		dao = new PerifericaDAO();
-		dao.doSave(periferica);
+
 	}
 	
 	@Test
@@ -139,7 +144,6 @@ class TestCase_ModificaPeriferica extends Mockito{
 	
 	@AfterEach
 	void tearDown() throws Exception {
-		dao.doDelete(periferica.getNome());
 		servlet=null;
 		dao=null;
 		request=null;

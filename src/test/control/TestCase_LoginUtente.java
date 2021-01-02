@@ -18,14 +18,21 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import control.gestioneUtente.Login;
+import model.utente.UtenteBean;
+import model.utente.UtenteDAO;
+import model.utente.UtenteBean.Ruolo;
 
 public class TestCase_LoginUtente extends Mockito {
 	private Login servlet;
+	private UtenteDAO dao = new UtenteDAO();
+	private UtenteBean mario=new UtenteBean("mariorossi@funisa.com","Mario","Rossi","Mrossi01",Ruolo.cliente,true,"","MarioRossi01?");
 	private MockHttpServletRequest request;
 	private MockHttpServletResponse response;
 
 	@BeforeEach
 	public void setUp() {
+		dao.doDelete(mario.getEmail());
+		dao.doSave(mario);
 		servlet = new Login();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
@@ -82,6 +89,7 @@ public class TestCase_LoginUtente extends Mockito {
 
 	@AfterEach
 	public void tearDown() {
+		dao.doDelete(mario.getEmail());
 		servlet = null;
 		request = null;
 		response = null;

@@ -27,11 +27,12 @@ class TestCase_CreazioneNuovaPassword extends Mockito {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		dao=new UtenteDAO();
+		dao.doDelete(utente.getEmail());
+		dao.doSave(utente);
 		servlet = new NuovaPassword();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();
-		dao=new UtenteDAO();
-		dao.doSave(utente);
 		
 	}
 	
@@ -39,6 +40,7 @@ class TestCase_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_1() {
 		request.addParameter("password","");
 		request.addParameter("confermaPassword","Password01?");
+		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "La creazione della nuova password non va a buon fine poiché il campo password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
@@ -49,6 +51,7 @@ class TestCase_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_2() {
 		request.addParameter("password","ciao");
 		request.addParameter("confermaPassword","ciao");
+		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "La creazione della nuova password non va a buon fine poiché il campo password non rispetta il formato";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
@@ -59,6 +62,7 @@ class TestCase_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_3() {
 		request.addParameter("password","Password01?");
 		request.addParameter("confermaPassword","");
+		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "La creazione della nuova password non va a buon fine poiché il campo conferma password è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
@@ -69,6 +73,7 @@ class TestCase_CreazioneNuovaPassword extends Mockito {
 	void TC_CreazioneNuovaPassword_4() {
 		request.addParameter("password","Password01?");
 		request.addParameter("confermaPassword","Password0?");
+		request.getSession().setAttribute("emailCodice",utente.getEmail());
 		String message = "La creazione della nuova password non va a buon fine  poiché il campo password e il campo conferma password non corrispondono";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
