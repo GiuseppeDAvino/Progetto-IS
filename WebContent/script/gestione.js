@@ -610,7 +610,7 @@ function setNotifiche() {
 			$(document).ready(function() {
 				$("div#form_aggiungi_notifica").append(
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
-					$("<form/>", { action: 'AggiungiNotifica', method: '#' }).append(
+					$("<form/>", { action: 'InviaNotifica', method: 'POST' }).append(
 						$("<fieldset class='p-0'>"),
 						$("<h3 class=''>Aggiungi Notifica</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.

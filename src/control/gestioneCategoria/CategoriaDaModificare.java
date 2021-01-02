@@ -1,4 +1,4 @@
-package control.gestionePeriferica;
+package control.gestioneCategoria;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

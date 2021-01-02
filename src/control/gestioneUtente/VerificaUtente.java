@@ -26,20 +26,23 @@ public class VerificaUtente extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
 		String codiceVerifica = request.getParameter("codiceVerifica");
 		HttpSession session = request.getSession(false);
+		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
 		if(utenteDAO.controllaEmailCodice(utente.getEmail(), codiceVerifica)) {
 			try {
 				utenteDAO.changeState(utente.getEmail());
 				utente.setStato(true);
 				utente.setCodiceVerifica("");
 				request.getSession().setAttribute("utente", utente);
-				if((Integer) session.getAttribute("isPressedPrenota")==1) {
-					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
-				} 
-				else
+				if((Integer) session.getAttribute("isPressedPrenota")==null) {
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
+				} 
+				else {
+					if((Integer) session.getAttribute("isPressedPrenota")==1)
+						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
+				}
+					
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

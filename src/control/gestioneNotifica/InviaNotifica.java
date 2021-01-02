@@ -14,6 +14,7 @@ import model.notifica.NotificaBean;
 import model.notifica.NotificaDAO;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
+import model.utente.UtenteBean.Ruolo;
 
 
 @WebServlet("/InviaNotifica")
@@ -55,8 +56,7 @@ public class InviaNotifica extends HttpServlet {
 				
 				NotificaBean notifica = new NotificaBean();
 				notifica.setDescrizione(descrizione);
-				ArrayList<UtenteBean> utenti = (ArrayList<UtenteBean>) utenteDAO.doRetrieveAll();
-				notificaDAO.doSaveNotificaUtente(notifica, utenti);
+				notificaDAO.doSaveNotificaUtente(notifica, (ArrayList<UtenteBean>)utenteDAO.doRetrieveAllByRuolo(Ruolo.cliente.name()));
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				
 			}

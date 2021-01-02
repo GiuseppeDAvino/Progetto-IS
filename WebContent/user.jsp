@@ -61,7 +61,7 @@
 						<div class="widget user-dashboard-profile">
 							<!-- User Image -->
 							<div class="profile-thumb">
-								<img src="images/user/user-thumb.jpg" alt=""
+								<img src="<%=utente.getImg() %>" alt="PROFILO"
 									class="rounded-circle">
 							</div>
 							<!-- User Name -->
