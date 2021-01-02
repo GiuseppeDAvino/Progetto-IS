@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.AggiungiPostazione;
+import control.gestionePostazione.AggiungiPostazione;
 import model.postazione.PostazioneBean;
 import model.postazione.PostazioneDAO;
 

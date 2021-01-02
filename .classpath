@@ -26,5 +26,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-test-5.2.12.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-web-4.3.30.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mockito-all-1.10.19.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/objenesis-1.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

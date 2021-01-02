@@ -9,8 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-
-import control.RestituisciListaCategorieLibere;
+import control.gestioneCategoria.RestituisciListaCategorieLibere;
 
 class TestCase_FiltraPostazione extends Mockito{
 	private RestituisciListaCategorieLibere servlet;

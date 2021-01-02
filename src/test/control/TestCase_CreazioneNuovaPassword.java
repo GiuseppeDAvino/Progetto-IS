@@ -9,8 +9,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-
-import control.NuovaPassword;
+import control.gestioneUtente.NuovaPassword;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 import model.utente.UtenteBean.Ruolo;
