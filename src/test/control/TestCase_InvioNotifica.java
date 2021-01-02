@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.InviaNotifica;
+import control.gestioneNotifica.InviaNotifica;
 import model.notifica.NotificaDAO;
 
 import model.utente.UtenteBean;

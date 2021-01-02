@@ -13,7 +13,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.Registrazione;
+import control.gestioneUtente.Registrazione;
 import junit.framework.TestSuite;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;

@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.Registrazione;
-import control.RichiestaRecuperoPassword;
+import control.gestioneUtente.Registrazione;
+import control.gestioneUtente.RichiestaRecuperoPassword;
 import model.utente.UtenteDAO;
 
 class TestCase_RichiestaRecPassword {

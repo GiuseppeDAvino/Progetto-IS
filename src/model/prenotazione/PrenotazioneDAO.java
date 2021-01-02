@@ -68,11 +68,13 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 				bean.setPrezzo(rs.getFloat("prezzo"));
 				collection.add(bean);
 			}
+			return collection;
 		} catch (SQLException e) {
 	
 			e.printStackTrace();
+			return null;
 		}
-		return collection;
+		
 
 	}
 

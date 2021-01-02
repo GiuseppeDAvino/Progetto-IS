@@ -17,7 +17,7 @@ import org.mockito.Mockito;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-import control.Login;
+import control.gestioneUtente.Login;
 
 public class TestCase_LoginUtente extends Mockito {
 	private Login servlet;
