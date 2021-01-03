@@ -28,6 +28,8 @@
   <link href="../plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="../css/style.css" rel="stylesheet">
+  <script src="../script/validazioni.js"></script>
+  
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -91,8 +93,10 @@
                 				<option value="3">3</option>
                 				<option value="4">4</option>
                 				<option value="5">5</option>
-                			</select>			
-                            <textarea name="descrizione" id="" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                			</select>	
+                			<span id="checkValutazione"></span>		
+                            <textarea name="descrizione" id="descrizione" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
                                 <button type="submit" class="btn btn-main mt-2 float-right">Invia</button>
                             </div>
@@ -154,7 +158,7 @@
                 			</select>			
                             <textarea name="descrizione" id=""  placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"><%=recensione.getDescrizione() %></textarea>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-main mt-2 float-right">Modifica recensione</button>
+                                <button type="submit" onclick="return validaRecensione()" class="btn btn-main mt-2 float-right">Modifica recensione</button>
                             </div>
                         </fieldset>
                     </form>

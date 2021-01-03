@@ -33,7 +33,24 @@
 <!-- CUSTOM CSS -->
 <link href="css/style.css" rel="stylesheet">
 <script src="script/validazioni.js"></script>
-
+	<!-- JAVASCRIPTS -->
+					<script src="plugins/jQuery/jquery.min.js"></script>
+					<script src="plugins/bootstrap/js/popper.min.js"></script>
+					<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+					<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+					<!-- tether js -->
+					<script src="plugins/tether/js/tether.min.js"></script>
+					<script src="plugins/raty/jquery.raty-fa.js"></script>
+					<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+					<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+					<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+					<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+					<!-- google map -->
+					<script
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+					<script src="plugins/google-map/gmap.js"></script>
+					<script src="script/script.js"></script>
+					<script type="text/javascript" src="script/gestione.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -77,7 +94,6 @@
 										</p>
 
 
-										<a href="user-profile.html" class="btn btn-main-sm">Modifica Profilo</a>
 									</div>
 
 									<!-- Dashboard Links -->
@@ -267,24 +283,7 @@
 				</section>
 				<%@ include file="../footer.jsp" %>
 
-					<!-- JAVASCRIPTS -->
-					<script src="plugins/jQuery/jquery.min.js"></script>
-					<script src="plugins/bootstrap/js/popper.min.js"></script>
-					<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-					<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
-					<!-- tether js -->
-					<script src="plugins/tether/js/tether.min.js"></script>
-					<script src="plugins/raty/jquery.raty-fa.js"></script>
-					<script src="plugins/slick-carousel/slick/slick.min.js"></script>
-					<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-					<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
-					<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
-					<!-- google map -->
-					<script
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-					<script src="plugins/google-map/gmap.js"></script>
-					<script src="script/script.js"></script>
-					<script type="text/javascript" src="script/gestione.js"></script>
+				
 		</body>
 
 		</html>

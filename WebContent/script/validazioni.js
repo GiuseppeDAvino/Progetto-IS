@@ -1,8 +1,6 @@
 
 function validaFormLogin() {
 
-
-
 	var email = document.getElementById('email');
 	var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var password = document.getElementById('password');
@@ -456,6 +454,26 @@ function validaAggiungiNotifica() {
 	} else $("#checkDescrizione").text("");
 }
 
+
+function validaRecensione(){
+	var valutazione=getElementByName('valutazione');
+	var descrizione=$('#descrizione');
+	console.log(valutazione.value);
+	return false;
+	if (descrizione.value == null || descrizione.value == "") {
+		$("#checkDescrizione").text("");
+		$("#checkDescrizione").text("Campo descrizione vuoto");
+		$("#checkDescrizione").css("color", "red");
+		console.log("descrizione vuoto");
+		return false;
+	} else if (!descrizioneReg.test(descrizione.value)) {
+		$("#checkDescrizione").text("");
+		$("#checkDescrizione").text("Formato descrizione errato");
+		$("#checkDescrizione").css("color", "red");
+		console.log("Formato descrizione errato");
+		return false;
+	}
+}
 
 
 

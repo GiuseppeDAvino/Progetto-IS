@@ -88,17 +88,7 @@
           </ul>
         </div>
       </div>
-      <!-- Promotion -->
-      <div class="col-lg-4 col-md-7">
-        <!-- App promotion -->
-        <div class="block-2 app-promotion">
-          <div class="form-group">
-    <label for="exampleFormControlTextarea1">Segnala un problema</label>
-    <textarea style="resize: none;" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
-			  <a  style="margin-top: 15px;" href="" class="btn btn-main-sm">Invia</a>
-  			</div>
-        </div>
-      </div>
+    
     </div>
   </div>
   <!-- Container End -->
