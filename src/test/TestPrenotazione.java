@@ -32,10 +32,11 @@ class TestPrenotazione extends TestCase {
 		daoTest = new UtenteDAO();
 		
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
+		daoTest.doDelete(beanTest.getEmail());
 		daoTest.doSave(beanTest);
 		
 		prenotazione = new PrenotazioneBean(1, "2021-02-02", "15-18", "das1das2d1a", "test@test.com", 1, 12);
-		id=dao.doSaveTest(prenotazione);
+		id=dao.doSave(prenotazione);
 	}
 
 	@Test
@@ -44,20 +45,20 @@ class TestPrenotazione extends TestCase {
 	}
 
 	@Test
-	void testRicercaTutteLePrenotazioni() {
+	void testListaTutteLePrenotazioni() {
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
 		assertNotEquals(collection, dao.doRetrieveAll()); 
 		System.out.println(dao.doRetrieveAll());
 	}
 	
 	@Test
-	void testRicercaPrenotazioniTramiteMail() {
+	void testListaPrenotazioniTramiteMail() {
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
 		assertNotEquals(collection, dao.doRetrieveByEmail(prenotazione.getUtenteEmail()));
 	}
 
 	@Test
-	void testDoDelete() {
+	void testEliminazionePrenotazione() {
 		assertEquals(true, dao.doDelete(id));
 	}
 	@Test

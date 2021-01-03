@@ -68,8 +68,6 @@ if(session.getAttribute("utente") != null){
 							<!--if titolare-->
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-
-
 							<%
 								if (ruolo == null) {
 							%>

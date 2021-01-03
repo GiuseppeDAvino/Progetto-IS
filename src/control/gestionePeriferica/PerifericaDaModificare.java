@@ -35,7 +35,7 @@ public class PerifericaDaModificare extends HttpServlet {
 		
 		PerifericaBean periferica= dao.doRetrieveByKey(request.getParameter("nome"));
 		request.getSession().setAttribute("periferica",periferica);
-		request.getSession().setAttribute("nomeperiferica",request.getParameter("nome"));
+		request.getSession().setAttribute("nomePeriferica",request.getParameter("nome"));
 		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaPerifericaForm.jsp"));
 		
 

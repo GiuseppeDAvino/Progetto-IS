@@ -34,13 +34,17 @@ class testSegnalazione {
 	protected void setUp() {
 		dao = new SegnalazioneDAO();
 		daoTest = new UtenteDAO();
+		
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
+		daoTest.doDelete(beanTest.getEmail());
 		daoTest.doSave(beanTest);
+		
 		segnalazione = new SegnalazioneBean("Segnalazione", "Test","test@test.com");
+		id = dao.doSave(segnalazione);
+		
 		daoNotTest = new NotificaDAO();
 		beanNotTest = new NotificaBean("TESTING", "TESTING");
-		
-		id = dao.doSaveTest(segnalazione);
+
 	}
 
 	@Test
@@ -72,7 +76,7 @@ class testSegnalazione {
 	}
 	@Test
 	void testRisoluzioneSegnalazione() {
-		int id1 = daoNotTest.doSaveTest(beanNotTest);
+		int id1 = daoNotTest.doSave(beanNotTest);
 		assertEquals(true, dao.risolvi(segnalazione, beanNotTest));
 		daoNotTest.doDelete(id1);
 	}

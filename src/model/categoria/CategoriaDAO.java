@@ -121,9 +121,11 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 
 	/**
 	 *  permette di salvare la categoria all'interno del database
+	 *
+	 *@return 0 se ok, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(CategoriaBean bean) {
+	public int doSave(CategoriaBean bean) {
 
 		String sql = "INSERT INTO categoria values(?,?,?,?,?)";
 
@@ -138,10 +140,10 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			return 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 
@@ -172,7 +174,7 @@ public class CategoriaDAO implements ModelInterface<CategoriaBean, String> {
 	/**
 	 *  permette di eliminare una categoria dal database
 	 * 
-	 * @param chiave è la chiave per selezionare la riga da eliminare
+	 * @param nome è la chiave per selezionare la riga da eliminare
 	 */
 	@Override
 	public boolean doDelete(String nome) {

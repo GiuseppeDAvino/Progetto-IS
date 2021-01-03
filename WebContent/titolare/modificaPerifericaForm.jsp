@@ -5,7 +5,7 @@
 
 <%
 PerifericaBean periferica=(PerifericaBean)session.getAttribute("periferica");
-String nome=(String)session.getAttribute("nomeperiferica");
+String nome=(String)session.getAttribute("nomePeriferica");
 %>
 
 
@@ -38,7 +38,7 @@ String nome=(String)session.getAttribute("nomeperiferica");
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
 
-
+<script src="script/validazioni.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -59,12 +59,16 @@ String nome=(String)session.getAttribute("nomeperiferica");
                     <h3 class="bg-gray p-4">Modifica</h3>
                     <form action="ModificaPeriferica" method="post">
                         <fieldset class="p-4">
-                        	<input value="<%=periferica.getNome()%>" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
-                            <input value="<%=periferica.getTipo()%>" name="tipo" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
-                            <input value="<%=periferica.getQuantita()%>" name="quantita" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input value="<%=periferica.getPrezzo()%>" name="prezzo" type="text" placeholder="Username" class="border p-3 w-100 my-2">          
+                        	<input value="<%=periferica.getNome()%>" id="modifica_periferica_nome" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
+                        	<span id='checkNome'></span>
+                            <input value="<%=periferica.getTipo()%>" id="modifica_periferica_tipo" name="tipo" type="text" placeholder="Tipo" class="border p-3 w-100 my-2">
+                            <span id='checkTipo'></span>
+                            <input value="<%=periferica.getQuantita()%>" id="modifica_periferica_quantita" name="quantita" type="text" placeholder="Quantità" class="border p-3 w-100 my-2">
+                            <span id='checkQuantita'></span>
+                            <input value="<%=periferica.getPrezzo()%>" id="modifica_periferica_prezzo" name="prezzo" type="text" placeholder="Prezzo" class="border p-3 w-100 my-2">     
+                            <span id='checkPrezzo'></span>     
                             <input type="hidden" value=<%=nome%> name="nomePeriferica">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
+                            <button onclick="return validaModificaPeriferica();" type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
                         </fieldset>
                     </form>
                 </div>

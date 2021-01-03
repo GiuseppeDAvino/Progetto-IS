@@ -86,14 +86,14 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 	 * 
 	 * @param nome Il nome della periferica
 	 * */
-	public int prenotate(Date data,String fasciaOraria,String nome) {
+	public int prenotate(String data,String fasciaOraria,String nome) {
 		String sql="select Count(*) as numero from periferica p, prenotazione pr, prenotazione_periferica pp\r\n" + 
 				" 	where p.nome=? AND p.nome=pp.perifericaNome AND p.id=pp.prenotazioneId\r\n" + 
 				"	AND p.dataPrenotazione=? AND p.fasciaOraria=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, nome);
-			statement.setDate(2, data);
+			statement.setString(2, data);
 			statement.setString(3, fasciaOraria);
 			System.out.println("prenotate"+statement);
 			ResultSet rs=statement.executeQuery();
@@ -108,9 +108,10 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 
 	/**
 	 *  permette di salvare la periferica all'interno del database
+	 *@return 0 se ok, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(PerifericaBean bean) {
+	public int doSave(PerifericaBean bean) {
 
 		String sql = "INSERT INTO periferica values(?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -122,11 +123,11 @@ public class PerifericaDAO implements ModelInterface<PerifericaBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			return 0;
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 
 	}

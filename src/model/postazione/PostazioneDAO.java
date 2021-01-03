@@ -131,21 +131,24 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	 *  permette di salvare la postazione all'interno del database
 	 * 
 	 * @param bean bisogna passare un bean contenente la categoria
+	 *@return ritorna l'id della postazione, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(PostazioneBean bean) {
+	public int doSave(PostazioneBean bean) {
 		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql);) {
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
 			System.out.println("DoSave" + statement);
 			statement.setString(1, bean.getCategoria());
 			statement.executeUpdate();
 			con.commit();
-			return true;
-		}
-		catch (SQLException e) {
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
+		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 
 	}
@@ -234,7 +237,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				"	SELECT pr.postazioneId FROM prenotazione pr)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("�StataUtilizzata" + statement);
+			System.out.println("eStataUtilizzata" + statement);
 			statement.setInt(1, postazione.getId());
 			ResultSet rs=statement.executeQuery();
 			if(rs.next())
@@ -281,22 +284,5 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 	}
 
 	
-	public int doSaveTest(PostazioneBean bean) {
-		String sql = "INSERT INTO postazione(nomeCategoria) VALUES(?)";
-		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
-			System.out.println("DoSave" + statement);
-			statement.setString(1, bean.getCategoria());
-			statement.executeUpdate();
-			con.commit();
-			ResultSet rs = statement.getGeneratedKeys();
-			rs.next();
-			con.commit();
-			return rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
-
-	}
+	
 }

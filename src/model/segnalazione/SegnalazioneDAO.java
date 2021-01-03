@@ -113,23 +113,27 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 *  Salva una segnalazione nel database
 	 * 
 	 * @param bean Segnalazione da inserire
+	 * @return ritorna l'id della segnalazione appena inserita, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(SegnalazioneBean bean) {
+	public int doSave(SegnalazioneBean bean) {
 		String sql = "INSERT INTO segnalazione(tipo,descrizione,utenteEmail) VALUES(?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql)) {
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
 			statement.setString(1, bean.getTipo());
 			statement.setString(2, bean.getDescrizione());
 			statement.setString(3, bean.getUtenteEmail());
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 
 	}
@@ -204,26 +208,6 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 		
 	
 	}
-	public int doSaveTest(SegnalazioneBean bean) {
-		String sql = "INSERT INTO segnalazione(tipo,descrizione,utenteEmail) VALUES(?,?,?)";
-
-		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
-			statement.setString(1, bean.getTipo());
-			statement.setString(2, bean.getDescrizione());
-			statement.setString(3, bean.getUtenteEmail());
-			System.out.println("doSave=" + statement);
-			statement.executeUpdate();
-			con.commit();
-			ResultSet rs = statement.getGeneratedKeys();
-			rs.next();
-			con.commit();
-			return rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
-
-	}
+	
 
 }

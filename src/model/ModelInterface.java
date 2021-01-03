@@ -34,7 +34,7 @@ public interface ModelInterface <T,U>{
 	 * @param bean il bean da salvare nel database
 	 * @throws SQLException
 	 */
-	public boolean doSave(T bean) throws SQLException;
+	public int doSave(T bean) throws SQLException;
 	
 	/**
 	 * Metodo utilizzato per aggiornare i valori di un bean all'interno del database

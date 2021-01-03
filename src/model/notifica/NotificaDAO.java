@@ -83,21 +83,25 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	/**
 	 *  permette di salvare la notifica all'interno del database <br>
 	 *           Non utilizzare questo metodo per salvare le notifiche</br>
+	 * @return ritorna l'id della notifica inserita, -1 altrimenti
 	 */
-	@Override
-	public boolean doSave(NotificaBean bean) {
+	public int doSave(NotificaBean bean) {
 		String sql = "INSERT INTO notifica(descrizione,tipo) VALUES(?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql)) {
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
 			statement.setString(1, bean.getDescrizione());
 			statement.setString(2, bean.getTipo());
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
+			con.commit();
+			return rs.getInt(1);
 		} catch (SQLException e) {
-			return false;
+			e.printStackTrace();
+			return -1;
 		}
 	}
 
@@ -109,7 +113,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 	 * @param utenti   è la lista di utenti a cui verrà collegata la notifica
 	 */
 	public int doSaveNotificaUtente(NotificaBean notifica, ArrayList<UtenteBean> utenti) {
-		int id = doSaveTest(notifica);
+		int id = doSave(notifica);
 		String sql = "INSERT INTO notifica_utente VALUES(?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -230,25 +234,7 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 		return false;
 	}
 	
-	public int doSaveTest(NotificaBean bean) {
-		String sql = "INSERT INTO notifica(descrizione,tipo) VALUES(?,?)";
-
-		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
-			statement.setString(1, bean.getDescrizione());
-			statement.setString(2, bean.getTipo());
-			System.out.println("doSave=" + statement);
-			statement.executeUpdate();
-			con.commit();
-			ResultSet rs = statement.getGeneratedKeys();
-			rs.next();
-			con.commit();
-			return rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
-	}
+	
 
 	
 	
