@@ -40,7 +40,7 @@ class testSegnalazione {
 		daoNotTest = new NotificaDAO();
 		beanNotTest = new NotificaBean("TESTING", "TESTING");
 		
-		id = dao.doSaveTest(segnalazione);
+		id = dao.doSave(segnalazione);
 	}
 
 	@Test
@@ -72,7 +72,7 @@ class testSegnalazione {
 	}
 	@Test
 	void testRisoluzioneSegnalazione() {
-		int id1 = daoNotTest.doSaveTest(beanNotTest);
+		int id1 = daoNotTest.doSave(beanNotTest);
 		assertEquals(true, dao.risolvi(segnalazione, beanNotTest));
 		daoNotTest.doDelete(id1);
 	}

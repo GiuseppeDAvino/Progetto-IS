@@ -30,12 +30,12 @@ class TestPostazione {
 		daoTest.doSave(beanTest);
 		postazioneConCategoriaNonEsistente = new PostazioneBean("Nintendo");
 		postazioneConCategoriaEsistente = new PostazioneBean("PROVA1");
-		id = dao.doSaveTest(postazioneConCategoriaEsistente);
+		id = dao.doSave(postazioneConCategoriaEsistente);
 	}
 
 	@Test
 	void testInserimentoPostazioneConCategoriaNonEsistente() {
-		assertEquals(-1, dao.doSaveTest(postazioneConCategoriaNonEsistente));
+		assertEquals(-1, dao.doSave(postazioneConCategoriaNonEsistente));
 	}
 	@Test
 	void testInserimentoPostazioneConCategoriaEsistente() {

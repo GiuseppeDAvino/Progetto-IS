@@ -27,12 +27,12 @@ class TestCategoria extends TestCase {
 
 	@Test
 	void testDoSaveCategoriaEsistente() {
-		assertEquals(false, dao.doSave(categoriaEsistente));
+		assertEquals(-1, dao.doSave(categoriaEsistente));
 	}
 	@Test
 	void testDoSaveCategorianonEsistente() {
 		System.out.println("Categoria: "+categoriaEsistente.getNome());
-		assertEquals(true, dao.doSave(categoriaNonEsistente));
+		assertEquals(0, dao.doSave(categoriaNonEsistente));
 	}
 
 	@Test

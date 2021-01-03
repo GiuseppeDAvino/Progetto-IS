@@ -23,7 +23,7 @@ class TestRecensione {
 	private RecensioneDAO dao;
 	private RecensioneBean recensione;
 		
-	private boolean b;
+	private int b;
 	@BeforeEach
 	void setUp() throws Exception {
 		daoTest = new UtenteDAO();
@@ -48,7 +48,7 @@ class TestRecensione {
 
 	@Test
 	void testDoSave() {
-		assertNotEquals(false, b);
+		assertNotEquals(-1, b);
 	}
 
 	@Test

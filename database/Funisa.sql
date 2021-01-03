@@ -134,8 +134,6 @@ CREATE TABLE prenotazione_periferica(
 
 
 
-select *from prenotazione
-/* PERIFERICE CON LA QUANTITA DISPONIBILE
 SELECT p.nome, (p.quantita-(
 SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
 	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId 
@@ -156,9 +154,9 @@ SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='13/14')
 */
-select * from prenotazione_periferica
-select * from prenotazione
-delete from utente where email='nonesisto@esistenza.com'
+select * from notifica
+select * from utente
+delete from utente where email='gaetanodf00@gmail.com'
 
 
 

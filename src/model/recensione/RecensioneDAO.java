@@ -71,9 +71,10 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 *  Salva una recensione nel database
 	 * 
 	 * @param bean Recensione da salvare
+	 * @return ritorna 0 se ok, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(RecensioneBean bean) {
+	public int doSave(RecensioneBean bean) {
 		String sql = "INSERT INTO recensione VALUES (?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -86,11 +87,11 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			return 0;
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 
 	}

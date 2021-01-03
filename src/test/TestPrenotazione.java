@@ -35,7 +35,7 @@ class TestPrenotazione extends TestCase {
 		daoTest.doSave(beanTest);
 		
 		prenotazione = new PrenotazioneBean(1, "2021-02-02", "15-18", "das1das2d1a", "test@test.com", 1, 12);
-		id=dao.doSaveTest(prenotazione);
+		id=dao.doSave(prenotazione);
 	}
 
 	@Test

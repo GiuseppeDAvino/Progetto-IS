@@ -33,7 +33,7 @@ class TestNotifica extends TestCase {
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
 		daoTest.doSave(beanTest);
 		
-		id=dao.doSaveTest(notifica);
+		id=dao.doSave(notifica);
 	}
 	@Test
 	void testCreazioneNuovaNotifica() {

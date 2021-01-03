@@ -18,7 +18,7 @@ public class TestUtente extends TestCase {
   private UtenteDAO dao;
   private UtenteBean utenteEsistente;
   private UtenteBean utenteNonEsistente;
-  private Boolean buleano;
+  private int buleano;
   
   @BeforeEach
   protected void setUp() throws Exception {
@@ -31,11 +31,11 @@ public class TestUtente extends TestCase {
   
   @Test
   public void testInserimentoUtenteEsistente() {
-    assertNotSame(false, buleano);
+    assertNotSame(-1, buleano);
   }
   @Test 
   public void testInserimentoUtenteNonEsistente() {
-    assertEquals(true, dao.doSave(utenteNonEsistente));
+    assertEquals(0, dao.doSave(utenteNonEsistente));
   }
 
   @Test

@@ -107,12 +107,13 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 *  Inserisce una prenotazione nel database
 	 * 
 	 * @param bean Prenotazione da inserire
+	 * @return ritorna l'id della periferica inserita, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(PrenotazioneBean bean) {
+	public int doSave(PrenotazioneBean bean) {
 		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId,prezzo) VALUES(?,?,?,?,?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql);) {
+				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
 			System.out.println("doSave" + statement);
 			statement.setString(1, bean.getData());
 			statement.setString(2, bean.getFasciaOraria());
@@ -121,11 +122,13 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 			statement.setInt(5, bean.getPostazioneId());
 			statement.setFloat(6, bean.getPrezzo());
 			statement.executeUpdate();
+			ResultSet rs = statement.getGeneratedKeys();
+			rs.next();
 			con.commit();
-			return true;
+			return rs.getInt(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 
@@ -165,7 +168,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 * @param periferiche  le periferiche che vengono aggiunte alla prenotazione
 	 */
 	public int prenotaConPeriferiche(PrenotazioneBean prenotazione, ArrayList<PerifericaBean> periferiche){
-		int id = doSaveTest(prenotazione);
+		int id = doSave(prenotazione);
 		String sql = "INSERT INTO prenotazione_periferica VALUES(?,?)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
@@ -211,27 +214,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 
 	}
 
-	public int doSaveTest(PrenotazioneBean bean) {
-		String sql = "INSERT INTO prenotazione(dataPrenotazione,fasciaOraria,qR,utenteEmail,postazioneId,prezzo) VALUES(?,?,?,?,?,?)";
-		try (Connection con = DriverManagerConnectionPool.getConnection();
-				PreparedStatement statement = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);) {
-			System.out.println("doSave" + statement);
-			statement.setString(1, bean.getData());
-			statement.setString(2, bean.getFasciaOraria());
-			statement.setString(3, bean.getQr());
-			statement.setString(4, bean.getUtenteEmail());
-			statement.setInt(5, bean.getPostazioneId());
-			statement.setFloat(6, bean.getPrezzo());
-			statement.executeUpdate();
-			ResultSet rs = statement.getGeneratedKeys();
-			rs.next();
-			con.commit();
-			return rs.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return -1;
-		}
-	}
+
 	
 	
 }

@@ -198,10 +198,10 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 
 	/**
 	 *  permette di salvare l'utente all'interno del database <br>
-	 * 
+	 * @return ritorna 0 se ok, -1 altrimenti
 	 */
 	@Override
-	public boolean doSave(UtenteBean bean) {
+	public int doSave(UtenteBean bean) {
 		String sql = "INSERT INTO utente VALUES(?,?,?,?,?,?,?,?,?)";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -218,11 +218,11 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			System.out.println("doSave=" + statement);
 			statement.executeUpdate();
 			con.commit();
-			return true;
+			return 0;
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 	}
 

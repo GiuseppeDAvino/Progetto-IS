@@ -5,7 +5,7 @@
 
 <%
 PerifericaBean periferica=(PerifericaBean)session.getAttribute("periferica");
-String nome=(String)session.getAttribute("nomeperiferica");
+String nome=(String)session.getAttribute("nomePeriferica");
 %>
 
 

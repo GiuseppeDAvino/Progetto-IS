@@ -35,11 +35,11 @@ public class TestPeriferica extends TestCase {
 	}
 	@Test
 	public void testInserimentoPerifericaEsistente() {
-			assertEquals(false, dao.doSave(perifericaEsistente));
+			assertEquals(-1, dao.doSave(perifericaEsistente));
 	}
 	@Test
 	public void testInserimentoPerifericaNonEsistente() {
-		assertEquals(true, dao.doSave(perifericaNonEsistente));
+		assertEquals(0, dao.doSave(perifericaNonEsistente));
 	}
 	@Test
 	public void testModificaPerifericaEsistente() {
