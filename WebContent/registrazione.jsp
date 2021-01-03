@@ -28,7 +28,7 @@
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
 
-
+<script src="script/validazioni.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -47,13 +47,19 @@
                     <h3 class="bg-gray p-4">Registrazione</h3>
                     <form action="Registrazione" method="post">
                         <fieldset class="p-4">
-                        	<input name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2" required>
-                            <input name="cognome" type="text" placeholder="Cognome" class="border p-3 w-100 my-2" required>
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2" required>
-                            <input name="username" type="text" placeholder="Username" class="border p-3 w-100 my-2" required>
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" required>
-                            <input name="confermaPassword" type="password" placeholder="Conferma password" class="border p-3 w-100 my-2" required>
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Registrati</button>
+                        	<input id="nome" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2" >
+                        	<span id="checkNome"></span>
+                            <input id="cognome" name="cognome" type="text" placeholder="Cognome" class="border p-3 w-100 my-2" >
+                            <span id="checkCognome"></span>     
+                            <input id="email" name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2" >
+                            <span id="checkEmail"></span>
+                            <input id="username" name="username" type="text" placeholder="Username" class="border p-3 w-100 my-2" >
+                            <span id="checkUsername"></span>
+                            <input id="password" name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" >
+                            <span id="checkPassword"></span>
+                            <input id="confermaPassword" name="confermaPassword" type="password" placeholder="Conferma password" class="border p-3 w-100 my-2" >
+                            <span id="checkConfermaPassword"></span>
+                            <button onclick="return validaFormRegistrazione();"  type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Registrati</button>
                         </fieldset>
                     </form>
                 </div>

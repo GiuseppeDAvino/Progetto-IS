@@ -40,7 +40,7 @@ public final class Validatore {
 	 * @param email email da controllare
 	 */
 	public static Boolean validaEmail(String email) {
-		String regex = "^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$";
+		String regex = "^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 		return email.matches(regex);
 	}
 
@@ -89,12 +89,12 @@ public final class Validatore {
 	}
 	
 	public static boolean validaPrezzo(String prezzo) {
-		String regex = "[0-9]{1,2}\\.?[0-9]{0,2}";
+		String regex = "^\\d{1,2}+(.\\d{1,2})?$";
 		return prezzo.matches(regex);
 	}
 	
 	public static boolean validaQuantita(String quantita) {
-		String regex = "^([0-9]{0,1}([1-9][0-9]){0,2})$";
+		String regex = "^([0-9]{0,2})$";
 		return quantita.matches(regex);
 	}
 	

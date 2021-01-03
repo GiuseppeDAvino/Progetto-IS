@@ -29,7 +29,8 @@
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/notification.css" rel="stylesheet">
-	  <!--<script src="script/validazioni.js"></script>-->
+  
+<script src="script/validazioni.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,11 +59,13 @@
                 <div class="border">
                     <h3 class="bg-gray p-4">Login</h3>
                     <div id="login-form">
-                    <form action="Login" method="post" id="loginform">
+                    <form action="Login" method="post" id="loginform" name="loginForm" >
                         <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2" required>
-                            <input name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" required>
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
+                            <input id="email" name="email" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
+                            <span id="checkEmail"></span>
+                            <input id="password" name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" >
+                            <span id="checkPassword"></span>
+                            <button onclick="return validaFormLogin();" type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
                             <a class="mt-3 d-block  text-primary" href="richiestaRecuperoPassword.jsp">Password dimenticata?</a>
                             <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
                         </fieldset>

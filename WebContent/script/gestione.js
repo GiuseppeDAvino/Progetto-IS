@@ -19,17 +19,17 @@ function getUtenti() {
 			let data = JSON.parse(xhr.responseText);
 			console.log(data);
 
-
+			
 			$('#head_tabella_postazioni').html("");
 			$('#gestione_postazioni').html("");
-			$('#gestione_utenti').html("");
-			$('#head_tabella_utenti').html("");
 			$('#gestione_periferiche').html("");
 			$('#head_tabella_periferiche').html("");
 			$('#head_tabella_gestori').html("");
 			$('#gestione_gestori').html("");
 			$('#head_tabella_notifiche').html("");
 			$('#gestione_notifiche').html("");
+			$('#gestione_utenti').html("");
+			$('#head_tabella_utenti').html("");
 
 			$('#head_tabella_utenti').html(
 				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Utenti" +
@@ -102,19 +102,22 @@ function getPeriferiche() {
 						$("<h3 class=''>Aggiungi Periferica</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
-						$("<input/>", { type: 'text', id: 'aggiunig_periferica_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkNome'></span>"),
+						$("<input/>", { type: 'text', id: 'aggiungi_periferica_tipo', name: 'tipo', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkTipo'></span>"),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_periferica_quantita', name: 'descrizione', placeholder: 'Quantità', class: 'border p-3 w-100 my-2' }),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_quantita', name: 'quantita', placeholder: 'Quantità', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkQuantita'></span>"),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkPrezzo'></span>"),
 						$("</div>"),
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
-						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { type: 'submit', id: 'aggiungi_periferica_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<button  type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
+						$("<input/>", { onclick:'return validaAggiungiPeriferica();', type: 'submit', id: 'aggiungi_periferica_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -221,21 +224,25 @@ function getPostazioni() {
 						$("<h3 class=''>Aggiungi Postazione</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_postazione_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
-						$("<input/>", { type: 'text', id: 'aggiunig_postazione_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkNome'></span>"),
+						$("<input/>", { type: 'text', id: 'aggiungi_postazione_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkTipo'></span>"),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_postazione_descrizione', name: 'descrizione', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkDescrizione'></span>"),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_postazione_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
+						$("<span id='checkPrezzo'></span>"),
 						//$("<input type='file' name='file' style='position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;'/>"),
 						$("<input/>", {type: 'file', id: 'aggiungi_postazione_immagine', name:'immagine', accept:'image/*'}),
-
+						$("<span id='checkImage'></span>"),
 						$("</div>"),
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { type: 'submit', id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", { onclick:'return validaAggiungiPostazione();', type: 'submit', id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -348,14 +355,14 @@ function getPrenotazioni() {
 			$('#gestione_prenotazioni').html("");
 			$('#head_tabella_postazioni').html("");
 			$('#gestione_postazioni').html("");
-			$('#gestione_utenti').html("");
-			$('#head_tabella_utenti').html("");
 			$('#gestione_periferiche').html("");
 			$('#head_tabella_periferiche').html("");
 			$('#head_tabella_gestori').html("");
 			$('#gestione_gestori').html("");
 			$('#head_tabella_notifiche').html("");
 			$('#gestione_notifiche').html("");
+			$('#gestione_utenti').html("");
+			$('#head_tabella_utenti').html("");
 
 		
 
@@ -593,7 +600,8 @@ function setNotifiche() {
 			let data = JSON.parse(xhr.responseText);
 			console.log(data);
 
-
+			$('#head_tabella_notifiche').html("");
+			$('#gestione_notifiche').html("");
 			$('#head_tabella_postazioni').html("");
 			$('#gestione_postazioni').html("");
 			$('#gestione_utenti').html("");
@@ -604,8 +612,7 @@ function setNotifiche() {
 			$('#gestione_prenotazioni').html("");
 			$('#head_tabella_gestori').html("");
 			$('#gestione_gestori').html("");
-			$('#head_tabella_notifiche').html("");
-			$('#gestione_notifiche').html("");
+			
 
 			$(document).ready(function() {
 				$("div#form_aggiungi_notifica").append(
@@ -615,9 +622,10 @@ function setNotifiche() {
 						$("<h3 class=''>Aggiungi Notifica</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_notifica_descrizione', name: 'descrizione', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.						
+						$("<span id='checkDescrizione'></span>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { type: 'submit', id: 'aggiungi_notifica_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", { onclick:'return validaAggiungiNotifica();',type: 'submit', id: 'aggiungi_notifica_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});

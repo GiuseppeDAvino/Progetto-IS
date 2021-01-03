@@ -38,6 +38,7 @@ String nome=(String)session.getAttribute("nomecategoria");
   <!-- CUSTOM CSS -->
   <link href="css/style.css" rel="stylesheet">
 
+<script src="script/validazioni.js"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,13 +60,17 @@ String nome=(String)session.getAttribute("nomecategoria");
                     <h3 class="bg-gray p-4">Modifica</h3>
                     <form action="ModificaCategoria" method="post" enctype="multipart/form-data">
                         <fieldset class="p-4">
-                        	<input value="<%=categoria.getNome()%>" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
-                            <input value="<%=categoria.getTipoGenerico()%>" name="tipoGenerico" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
-                            <input value="<%=categoria.getDescrizione()%>" name="descrizione" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <input value="<%=categoria.getPrezzo()%>" name="prezzo" type="text" placeholder="Username" class="border p-3 w-100 my-2">  
+                        	<input value="<%=categoria.getNome()%>" id="modifica_postazione_nome" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
+                           	<span id='checkNome'></span>
+                            <input value="<%=categoria.getTipoGenerico()%>" id="modifica_postazione_tipo" name="tipoGenerico" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
+                            <span id='checkTipo'></span>
+                            <input value="<%=categoria.getDescrizione()%>" id="modifica_postazione_descrizione"name="descrizione" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
+                            <span id='checkDescrizione'></span>
+                            <input value="<%=categoria.getPrezzo()%>" id="modifica_postazione_prezzo"name="prezzo" type="text" placeholder="Username" class="border p-3 w-100 my-2">  
+                            <span id='checkPrezzo'></span>
                             <input name="immagine" type="file" placeholder="Username" class="border p-3 w-100 my-2">         
                             <input type="hidden" value=<%=nome%> name="nomeCategoria">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
+                            <button onclick="return validaModificaPostazione();" type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
                         </fieldset>
                     </form>
                 </div>

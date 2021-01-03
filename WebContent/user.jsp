@@ -32,6 +32,7 @@
 	rel="stylesheet">
 <!-- CUSTOM CSS -->
 <link href="css/style.css" rel="stylesheet">
+<script src="script/validazioni.js"></script>
 
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

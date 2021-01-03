@@ -39,7 +39,7 @@ if (utente != null)
 								href="<%=response.encodeURL("/Funisa/prenota.jsp")%>">Prenota</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
-								href="<%=response.encodeURL("/Funisa/recensione.jsp")%>">Recensisci</a>
+								href="<%=response.encodeURL("/Funisa/review.jsp")%>">Recensisci</a>
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="<%=response.encodeURL("/Funisa/segnala.jsp")%>">Segnala</a>
@@ -51,8 +51,6 @@ if (utente != null)
 							<!--if titolare-->
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
-
-
 							<%
 								if (ruolo == null) {
 							%>

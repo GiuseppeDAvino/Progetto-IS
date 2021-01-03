@@ -237,7 +237,7 @@ public class PostazioneDAO implements ModelInterface<PostazioneBean, Integer> {
 				"	SELECT pr.postazioneId FROM prenotazione pr)";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
-			System.out.println("�StataUtilizzata" + statement);
+			System.out.println("eStataUtilizzata" + statement);
 			statement.setInt(1, postazione.getId());
 			ResultSet rs=statement.executeQuery();
 			if(rs.next())
