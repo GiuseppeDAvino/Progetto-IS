@@ -34,13 +34,17 @@ class testSegnalazione {
 	protected void setUp() {
 		dao = new SegnalazioneDAO();
 		daoTest = new UtenteDAO();
+		
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
+		daoTest.doDelete(beanTest.getEmail());
 		daoTest.doSave(beanTest);
+		
 		segnalazione = new SegnalazioneBean("Segnalazione", "Test","test@test.com");
+		id = dao.doSave(segnalazione);
+		
 		daoNotTest = new NotificaDAO();
 		beanNotTest = new NotificaBean("TESTING", "TESTING");
-		
-		id = dao.doSave(segnalazione);
+
 	}
 
 	@Test

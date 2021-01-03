@@ -18,20 +18,23 @@ public class TestUtente extends TestCase {
   private UtenteDAO dao;
   private UtenteBean utenteEsistente;
   private UtenteBean utenteNonEsistente;
-  private int buleano;
+  private int id;
   
   @BeforeEach
   protected void setUp() throws Exception {
    
     dao= new UtenteDAO();
     utenteEsistente=new UtenteBean("titol@titolare.com","titolare","titolare","titolare",Ruolo.titolare,true,"","titolare");
-    buleano = dao.doSave(utenteEsistente);
+    dao.doDelete(utenteEsistente.getEmail());
+    id = dao.doSave(utenteEsistente);
+    
     utenteNonEsistente=new UtenteBean("nonesisto@esistenza.com","nonEsisto","nonEsisto","nonEsisto",Ruolo.cliente,false,"null","nonEsisto");
+    dao.doDelete(utenteNonEsistente.getEmail());
   }
   
   @Test
   public void testInserimentoUtenteEsistente() {
-    assertNotSame(-1, buleano);
+    assertNotSame(-1, id);
   }
   @Test 
   public void testInserimentoUtenteNonEsistente() {

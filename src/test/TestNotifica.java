@@ -31,9 +31,11 @@ class TestNotifica extends TestCase {
 		
 		daoTest = new UtenteDAO();
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
-		daoTest.doSave(beanTest);
 		
+		daoTest.doDelete(beanTest.getEmail());
+		daoTest.doSave(beanTest);
 		id=dao.doSave(notifica);
+
 	}
 	@Test
 	void testCreazioneNuovaNotifica() {
@@ -47,7 +49,7 @@ class TestNotifica extends TestCase {
 	}
 
 	@Test
-	void testDoRetrieveAll() {
+	void testListaCompletaNotifiche() {
 		ArrayList<NotificaBean> collection = new ArrayList<NotificaBean>();
 		assertNotEquals(collection, dao.doRetrieveAll());
 		
@@ -81,7 +83,7 @@ class TestNotifica extends TestCase {
 	}
 	
 	@Test
-	void testDoDeleteUltimaNotifica() {
+	void testEliminazioneUltimaNotifica() {
 		assertEquals(true, dao.doDeleteUltimaNotifica());
 	}
 

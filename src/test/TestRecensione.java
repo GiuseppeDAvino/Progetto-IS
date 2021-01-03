@@ -28,41 +28,45 @@ class TestRecensione {
 	void setUp() throws Exception {
 		daoTest = new UtenteDAO();
 		dao = new RecensioneDAO();
+		
 		beanTest = new UtenteBean("test@test.com", "Test", "test", "TestTest", Ruolo.cliente, true, "", "test");
+		daoTest.doDelete(beanTest.getEmail());
 		daoTest.doSave(beanTest);
+		
 		recensione = new RecensioneBean("PROVA", 5, false, beanTest.getEmail());
+		dao.doDelete(beanTest.getEmail());
 		b = dao.doSave(recensione);
 	}
 
 	@Test
-	void testDoRetrieveByKey() {
+	void testRicercaRecensioneTramiteMail() {
 		RecensioneBean bean = new RecensioneBean();
 		assertNotEquals(bean, dao.doRetrieveByKey(recensione.getUtenteEmail()));
 	}
 
 	@Test
-	void testDoRetrieveAll() {
+	void testListaCompletaRecensioni() {
 		ArrayList<RecensioneBean> collection = new ArrayList<RecensioneBean>();
 		assertNotEquals(collection, dao.doRetrieveAll());
 	}
 
 	@Test
-	void testDoSave() {
+	void testInserimentoRecensione() {
 		assertNotEquals(-1, b);
 	}
 
 	@Test
-	void testDoUpdate() {
+	void testAggiornamentoRecensione() {
 		assertEquals(true, dao.doUpdate(recensione, beanTest.getEmail()));
 	}
 
 	@Test
-	void testDoDelete() {
+	void testEliminazioneRecensione() {
 		assertEquals(true, dao.doDelete(beanTest.getEmail()));
 	}
 
 	@Test
-	void testApprova() {
+	void testApprovazioneRecensione() {
 		assertEquals(true, dao.approva(beanTest.getEmail()));
 	}
 
