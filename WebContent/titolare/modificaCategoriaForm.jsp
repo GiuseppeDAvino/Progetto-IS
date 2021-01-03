@@ -1,9 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@page import="model.categoria.CategoriaBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+
+<%
+CategoriaBean categoria=(CategoriaBean)session.getAttribute("categoria");
+String nome=(String)session.getAttribute("nomecategoria");
+%>
+
+
+<html>
 <head>
-<%@ include file="header.jsp" %>
+
+<%@ include file="../header.jsp" %>
+
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,6 +46,8 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
 
 <body class="body-wrapper">
@@ -44,12 +56,16 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
-                    <h3 class="bg-gray p-4">Conferma Registrazione</h3>
-                    <form action="VerificaUtente" method="post">
+                    <h3 class="bg-gray p-4">Modifica</h3>
+                    <form action="ModificaCategoria" method="post" enctype="multipart/form-data">
                         <fieldset class="p-4">
-                            <input name="codiceVerifica" type="text" placeholder="Codice verifica" class="border p-3 w-100 my-2">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Conferma registrazione</button>
-
+                        	<input value="<%=categoria.getNome()%>" name="nome" type="text" placeholder="Nome" class="border p-3 w-100 my-2">
+                            <input value="<%=categoria.getTipoGenerico()%>" name="tipoGenerico" type="text" placeholder="Cognome" class="border p-3 w-100 my-2">
+                            <input value="<%=categoria.getDescrizione()%>" name="descrizione" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
+                            <input value="<%=categoria.getPrezzo()%>" name="prezzo" type="text" placeholder="Username" class="border p-3 w-100 my-2">  
+                            <input name="immagine" type="file" placeholder="Username" class="border p-3 w-100 my-2">         
+                            <input type="hidden" value=<%=nome%> name="nomeCategoria">
+                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">modifica</button>
                         </fieldset>
                     </form>
                 </div>
@@ -61,7 +77,7 @@
 <!--============================
 
 =============================-->
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 
 <!-- Footer Bottom -->
 <!-- JAVASCRIPTS -->
@@ -79,8 +95,7 @@
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="plugins/google-map/gmap.js"></script>
-<script src="js/script.js"></script>
+<script src="script/script.js"></script>
 
 </body>
-
 </html>

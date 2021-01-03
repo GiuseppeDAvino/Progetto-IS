@@ -29,6 +29,7 @@ public class UtenteBean {
 		this.codiceVerifica = "";
 		this.password = new byte[32];
 		this.email = "";
+		this.img = "";
 	}
 
 	/**

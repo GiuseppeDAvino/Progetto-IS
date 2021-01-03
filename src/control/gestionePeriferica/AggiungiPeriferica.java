@@ -99,6 +99,8 @@ public class AggiungiPeriferica extends HttpServlet {
 										periferica.setPrezzo(Float.parseFloat(prezzo));
 										
 										perifericaDAO.doSave(periferica);
+										
+										response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 									}
 								}
 							}

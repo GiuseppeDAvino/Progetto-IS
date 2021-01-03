@@ -68,6 +68,14 @@ public final class Validatore {
 
 	}
 
+	public static boolean isUsernameValid(UtenteBean utente,String username) {
+		if(!utente.getUsername().equals(username))
+			if (utenteDAO.esisteUsername(username))
+				return false;
+		return true;
+
+	}
+	
 	public static boolean isUsernameValid(String username) {
 		if (utenteDAO.esisteUsername(username))
 			return false;

@@ -97,15 +97,14 @@ function getPeriferiche() {
 			$(document).ready(function() {
 				$("div#form_aggiungi_periferica").append(
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
-					$("<form/>", { action: 'AggiungiPeriferica', method: '#' }).append(
+					$("<form/>", { action: 'AggiungiPeriferica', method: 'POST' }).append(
 						$("<fieldset class='p-0'>"),
 						$("<h3 class=''>Aggiungi Periferica</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
-						$("<input/>", { type: 'text', id: 'aggiunig_periferica_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiunig_periferica_tipo', name: 'tipo', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_periferica_quantita', name: 'descrizione', placeholder: 'Quantità', class: 'border p-3 w-100 my-2' }),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_quantita', name: 'quantita', placeholder: 'Quantità', class: 'border p-3 w-100 my-2' }),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
@@ -192,7 +191,7 @@ function getPeriferiche() {
 }
 
 
-function getPostazioni() {
+function getCategorie() {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.status == 200 && xhr.readyState == 4) {
@@ -218,7 +217,7 @@ function getPostazioni() {
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
 					$("<form/>", { action: 'AggiungiCategoria', method: 'POST' ,enctype:'multipart/form-data'}).append(
 						$("<fieldset class='p-0'>"),
-						$("<h3 class=''>Aggiungi Postazione</h3>"),
+						$("<h3 class=''>Aggiungi Categoria</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_postazione_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
 						$("<input/>", { type: 'text', id: 'aggiunig_postazione_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
@@ -401,7 +400,7 @@ function getPrenotazioni() {
 					"<ul class='list-inline justify-content-center'>" +
 					"<li class='list-inline-item'>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href=''>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaPrenotazione?id="+data[i].id+"'>" +
 					"<i class='fa fa-trash'></i>" +
 					"</a>" +
 					"</li>" +

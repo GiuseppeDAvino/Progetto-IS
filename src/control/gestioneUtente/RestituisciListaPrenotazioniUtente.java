@@ -1,4 +1,4 @@
-package control;
+package control.gestioneUtente;
 
 import java.io.IOException;
 import java.util.ArrayList;

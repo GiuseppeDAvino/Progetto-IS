@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="header.jsp"%>
+<%@ include file="../header.jsp"%>
 <!-- SITE TITTLE -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,10 @@
   <![endif]-->
 
 </head>
-
+<%
+	session.setAttribute("isPressedPrenota", 0);
+	session.setAttribute("r", 0);
+%>
 <body class="body-wrapper">
 
 
@@ -132,7 +135,7 @@
 	<!--============================
 
 =============================-->
-	<%@ include file="footer.jsp"%>
+	<%@ include file="../footer.jsp"%>
 </body>
 	<!-- Footer Bottom -->
 	<!-- JAVASCRIPTS -->

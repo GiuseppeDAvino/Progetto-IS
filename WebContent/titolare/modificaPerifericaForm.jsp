@@ -12,7 +12,7 @@ String nome=(String)session.getAttribute("nomeperiferica");
 <html>
 <head>
 
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 
   <!-- SITE TITTLE -->
   <meta charset="utf-8">
@@ -76,7 +76,7 @@ String nome=(String)session.getAttribute("nomeperiferica");
 <!--============================
 
 =============================-->
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 
 <!-- Footer Bottom -->
 <!-- JAVASCRIPTS -->

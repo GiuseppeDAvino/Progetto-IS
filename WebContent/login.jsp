@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%@ include file="header.jsp" %>
+<%@ include file="../header.jsp" %>
 <!-- SITE TITTLE -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,6 +48,8 @@
         margin: 0 auto;
     }
   </style>
+  
+
 </head>
 
 <body class="body-wrapper">
@@ -77,7 +79,7 @@
 <!--============================
 
 =============================-->
-<%@ include file="footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 
 <!-- Footer Bottom -->
 <!-- JAVASCRIPTS -->

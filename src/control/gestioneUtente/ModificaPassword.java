@@ -13,7 +13,7 @@ import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 
 
-@WebServlet("/ModificaPassword")
+@WebServlet(urlPatterns = {"/ModificaPassword","/cliente/ModificaPassword"})
 public class ModificaPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtenteDAO utenteDAO = new UtenteDAO();   

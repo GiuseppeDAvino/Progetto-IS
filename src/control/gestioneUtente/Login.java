@@ -7,21 +7,30 @@ import java.sql.SQLException;
 import java.util.Arrays;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.recensione.RecensioneDAO;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 
 @WebServlet("/Login")
+
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB after which the file will be
+// temporarily stored on disk
+maxFileSize = 1024 * 1024 * 10, // 10MB maximum size allowed for uploaded files
+maxRequestSize = 1024 * 1024 * 50) // 50MB overall size of all uploaded files
+
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private UtenteDAO utenteDAO = new UtenteDAO();
-
+	private RecensioneDAO recensioneDAO = new RecensioneDAO();
+	
 	public Login() {
 		super();
 
@@ -32,9 +41,11 @@ public class Login extends HttpServlet {
 	 * controllando i campi e restituendo errori nel caso siano errati Nel caso di
 	 * dati corretti inserisce i dati nella sessione
 	 */
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-
+		UtenteBean utente = new UtenteBean();
+		System.out.println(session.getAttribute("isPressedPrenota"));
 		try {
 			String email = request.getParameter("email");
 			String pass = request.getParameter("password");
@@ -52,7 +63,7 @@ public class Login extends HttpServlet {
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/login.jsp"));	
 					}
 					else {
-						UtenteBean utente = utenteDAO.doRetrieveByKey(email);
+						utente = utenteDAO.doRetrieveByKey(email);
 						if(utente.getEmail().equals("")) {//Controllo se l'email non è presente nel db
 							request.setAttribute("errorTest", "Il login non va a buon fine poiché l'email non è presente nel db");
 							session.setAttribute("errorType", "email");
@@ -71,17 +82,18 @@ public class Login extends HttpServlet {
 							}
 							else {
 								request.setAttribute("errorTest", "Il login viene effettuato correttamente");
+								session.setAttribute("recensione", recensioneDAO.doRetrieveByKey(utente.getEmail()));
 								session.setAttribute("utente", utente);
 								session.setAttribute("errorType", null);
 								session.setAttribute("error", null);
 								if (utente.isStato() == false) {
 									response.sendRedirect(
 											response.encodeRedirectURL(request.getContextPath() + "/confermaRegistrazione.jsp"));
-								} else if (session.getAttribute("isPressedPrenota") == null) {
+								} else if ((Integer) session.getAttribute("isPressedPrenota") == null) {
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
 								} else if ((Integer) session.getAttribute("isPressedPrenota") == 1) {
-									response.sendRedirect(
-											response.encodeRedirectURL(request.getContextPath() + "/dettagliCategoria.jsp"));
+									session.removeAttribute("isPressedPrenota");
+									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dettagliCategoria.jsp"));
 								}
 							}//Chiusura else corretto
 						}//Chiusura else email presente nel db

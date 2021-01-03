@@ -12,7 +12,7 @@ import javax.servlet.http.*;
 
 import model.utente.UtenteBean;
 
-@WebFilter(filterName = "Filter", urlPatterns = { "/titolare/*", "/cliente/*", "/gestore/*" })
+@WebFilter(filterName = "Filtro", urlPatterns = { "/titolare/*", "/cliente/*", "/gestore/*" })
 
 public class Filtro implements Filter {
 
@@ -38,8 +38,6 @@ public class Filtro implements Filter {
 			checkAccess(session, request, response, chain, hResponse, hRequest, "gestore");
 
 		}
-		
-		
 	}
 
 	public void checkAccess(HttpSession session, ServletRequest sRequest, ServletResponse sResponse, FilterChain chain,

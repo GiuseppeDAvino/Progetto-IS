@@ -12,7 +12,7 @@ import model.servizio.Validatore;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
 
-@WebServlet("/ModificaDatiPersonali")
+@WebServlet(urlPatterns = {"/ModificaDatiPersonali","/cliente/ModificaDatiPersonali"})
 public class ModificaDatiPersonali extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtenteDAO utenteDAO = new UtenteDAO(); 
@@ -71,7 +71,7 @@ public class ModificaDatiPersonali extends HttpServlet {
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 							}
 							else {
-								if(!Validatore.isUsernameValid(username)) {
+								if(!Validatore.isUsernameValid(utente,username)) {
 									request.setAttribute("errorTest", "La modifica non va a buon fine poiché l'username è già presente nel database");
 									session.setAttribute("error-type", "username");
 									session.setAttribute("error", "Username già esistente nel sistema");

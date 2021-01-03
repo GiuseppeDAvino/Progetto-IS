@@ -42,6 +42,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				bean.setPassword(rs.getBytes("passw"));
 				bean.setStato(rs.getBoolean("stato"));
 				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
+				bean.setImg(rs.getString("immagine"));
 
 				switch (rs.getString("ruolo")) {
 

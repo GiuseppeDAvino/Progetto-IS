@@ -1,8 +1,6 @@
 package control.gestioneRecensione;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,14 +15,17 @@ import model.recensione.RecensioneDAO;
 import model.utente.UtenteBean;
 
 
-@WebServlet(urlPatterns = {"/AggiungiRecensione","/cliente/AggiungiRecensione"})
-public class AggiungiRecensione extends HttpServlet {
+@WebServlet(urlPatterns = {"/ModificaRecensione","/cliente/ModificaRecensione"})
+public class ModificaRecensione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private NotificaDAO notificaDAO = new NotificaDAO(); 
 	private RecensioneDAO recensioneDAO= new RecensioneDAO();
-    public AggiungiRecensione() {
+       
+ 
+    public ModificaRecensione() {
         super();
+ 
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,7 +58,6 @@ public class AggiungiRecensione extends HttpServlet {
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/recensisci.jsp"));
 				}
 				else {
-					session.removeAttribute("recensione");
 					request.setAttribute("errorTest","L'aggiunta della recensione va a buon fine");
 					session.setAttribute("error-type", null);
 					session.setAttribute("error", null);
@@ -65,9 +65,10 @@ public class AggiungiRecensione extends HttpServlet {
 					recensione.setUtenteEmail(email);
 					recensione.setDescrizione(descrizione);
 					recensione.setValutazione(Integer.parseInt(valutazione));
-					
-					recensioneDAO.doSave(recensione);
+					session.removeAttribute("recensione");
 					session.setAttribute("recensione", recensione);
+					recensioneDAO.doUpdate(recensione, utente.getEmail());
+					
 					NotificaBean notifica = new NotificaBean();
 					notifica.setDescrizione("Nuova Recensione");
 					notifica.setTipo("Recensione");
@@ -77,18 +78,10 @@ public class AggiungiRecensione extends HttpServlet {
 				}
 			}
 		}
-		
 	}
 
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
-
-		try {
-			doGet(request, response);
-		} catch (ServletException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }
