@@ -11,22 +11,22 @@
   <title>Classimax</title>
   
   <!-- FAVICON -->
-  <link href="img/favicon.png" rel="shortcut icon">
+  <link href="../img/favicon.png" rel="shortcut icon">
   <!-- PLUGINS CSS STYLE -->
   <!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
+  <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
-  <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <!-- Owl Carousel -->
-  <link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
-  <link href="plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+  <link href="../plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+  <link href="../plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
   <!-- Fancy Box -->
-  <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
-  <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+  <link href="../plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+  <link href="../plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -45,7 +45,7 @@
             <div class="col-lg-5 col-md-8 align-item-center">
                 <div class="border">
                     <h3 class="bg-gray p-4">Conferma Registrazione</h3>
-                    <form action="VerificaUtente" method="post">
+                    <form action="../VerificaUtente" method="post">
                         <fieldset class="p-4">
                             <input name="codiceVerifica" type="text" placeholder="Codice verifica" class="border p-3 w-100 my-2">
                             <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Conferma registrazione</button>
@@ -65,21 +65,21 @@
 
 <!-- Footer Bottom -->
 <!-- JAVASCRIPTS -->
-<script src="plugins/jQuery/jquery.min.js"></script>
-<script src="plugins/bootstrap/js/popper.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+<script src="../plugins/jQuery/jquery.min.js"></script>
+<script src="../plugins/bootstrap/js/popper.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap-slider.js"></script>
   <!-- tether js -->
-<script src="plugins/tether/js/tether.min.js"></script>
-<script src="plugins/raty/jquery.raty-fa.js"></script>
-<script src="plugins/slick-carousel/slick/slick.min.js"></script>
-<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
-<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+<script src="../plugins/tether/js/tether.min.js"></script>
+<script src="../plugins/raty/jquery.raty-fa.js"></script>
+<script src="../plugins/slick-carousel/slick/slick.min.js"></script>
+<script src="../plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="../plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="../plugins/smoothscroll/SmoothScroll.min.js"></script>
 <!-- google map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-<script src="plugins/google-map/gmap.js"></script>
-<script src="js/script.js"></script>
+<script src="../plugins/google-map/gmap.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 

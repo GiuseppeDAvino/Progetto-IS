@@ -376,7 +376,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 	 * 
 	 */
 
-	public void changeState(String email) throws SQLException {
+	public void changeState(String email)  {
 		String sql = "UPDATE utente SET stato=?, codiceVerifica=? WHERE email=?";
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
@@ -388,6 +388,8 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();
 			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 	}

@@ -5,7 +5,7 @@ function validaFormLogin() {
 
 	var email = document.getElementById('email');
 	var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	//var password = document.getElementById('password');
+	var password = document.getElementById('password');
 	//var passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 	if (email.value == null || email.value == "") {
@@ -19,13 +19,13 @@ function validaFormLogin() {
 		$("#checkEmail").css("color", "red");
 		console.log("Failure");
 		return false;
-	} //else {
-	//if (password.value == null || password.value == "") {
-	//$("#checkPassword").text("");
-	//$("#checkPassword").text("Campo password vuoto");
-	//$("#checkPassword").css("color", "red");
-	//return false;
-	//} else if (!passwordReg.test(password.value)) {
+	} else {
+	if (password.value == null || password.value == "") {
+	$("#checkPassword").text("");
+	$("#checkPassword").text("Campo password vuoto");
+	$("#checkPassword").css("color", "red");
+	return false;
+	}// else if (!passwordReg.test(password.value)) {
 	//	$("#checkPassword").text("");
 	//	$("#checkPassword").text("Formato password errato");
 	//	$("#checkPassword").css("color", "red");
@@ -34,6 +34,7 @@ function validaFormLogin() {
 
 	//}
 	//}
+}
 }
 
 function validaFormRegistrazione() {

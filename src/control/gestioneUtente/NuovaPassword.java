@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.recensione.RecensioneDAO;
 import model.servizio.Validatore;
 import model.utente.UtenteBean;
 import model.utente.UtenteDAO;
@@ -16,6 +17,7 @@ import model.utente.UtenteDAO;
 public class NuovaPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UtenteDAO utenteDAO = new UtenteDAO();
+	private RecensioneDAO recensioneDAO = new RecensioneDAO();
 
 	public NuovaPassword() {
 		super();
@@ -74,6 +76,7 @@ public class NuovaPassword extends HttpServlet {
 						UtenteBean utente=utenteDAO.doRetrieveByKey(email);
 						utente.setPassword(password);
 						utenteDAO.doUpdate(utente, utente.getEmail());
+						session.setAttribute("recensione", recensioneDAO.doRetrieveByKey(utente.getEmail()));
 						session.setAttribute("utente", utente);
 						response.sendRedirect(
 								response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));

@@ -236,7 +236,8 @@
 										<div class=" dashboard-container my-adslist">
 											<table class="table table-responsive product-dashboard-table">
 												<thead id="head_tabella_prenotazioni">
-													<thead id="head_tabella_postazioni">
+													<thead id="head_tabella_categorie">
+														<thead id="head_tabella_postazioni">
 														<thead id="head_tabella_periferiche">
 															<thead id="head_tabella_utenti">
 																<thead id="head_tabella_gestori">
@@ -249,7 +250,8 @@
 																		<tbody id="gestione_prenotazioni">
 																	<tbody id="gestione_periferiche">
 																<tbody id="gestione_utenti">
-															<tbody id="gestione_postazioni">
+															<tbody id="gestione_categorie">
+																<tbody id="gestione_postazioni">
 														<tbody id="gestione_gestori">
 													<tbody id="gestione_notifiche">
 												<tbody id="gestione_prenotazioni_utente">

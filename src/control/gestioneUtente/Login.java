@@ -45,7 +45,6 @@ public class Login extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		UtenteBean utente = new UtenteBean();
-		System.out.println(session.getAttribute("isPressedPrenota"));
 		try {
 			String email = request.getParameter("email");
 			String pass = request.getParameter("password");

@@ -217,32 +217,32 @@ function getCategorie() {
 			$('#gestione_notifiche').html("");
 
 			$(document).ready(function() {
-				$("div#form_aggiungi_postazione").append(
+				$("div#form_aggiungi_categoria").append(
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
 					$("<form/>", { action: 'AggiungiCategoria', method: 'POST' ,enctype:'multipart/form-data'}).append(
 						$("<fieldset class='p-0'>"),
 						$("<h3 class=''>Aggiungi Categoria</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
 						$("<span id='checkNome'></span>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_tipo', name: 'tipoGenerico', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
 						$("<span id='checkTipo'></span>"),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_descrizione', name: 'descrizione', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_descrizione', name: 'descrizione', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }),
 						$("<span id='checkDescrizione'></span>"),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
 						$("<span id='checkPrezzo'></span>"),
 						//$("<input type='file' name='file' style='position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;'/>"),
-						$("<input/>", {type: 'file', id: 'aggiungi_postazione_immagine', name:'immagine', accept:'image/*'}),
+						$("<input/>", {type: 'file', id: 'aggiungi_categoria_immagine', name:'immagine', accept:'image/*'}),
 						$("<span id='checkImage'></span>"),
 						$("</div>"),
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { onclick:'return validaAggiungiPostazione();', type: 'submit', id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", { onclick:'return validaAggiungicategoria();', type: 'submit', id: 'aggiungi_categoria_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -255,7 +255,7 @@ function getCategorie() {
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
 					$("<form/>", { action: 'ModificaPeriferica', method: '#' }).append(
 						$("<fieldset class='p-0'>"),
-						$("<h3 class=''>Modifica Postazione</h3>"),
+						$("<h3 class=''>Modifica categoria</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", {  value: 'data[i].nome', type: 'text', id: 'modifica_periferica_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }),						
 						$("<input/>", { type: 'text', id: 'modifica_periferica_tipo', name: 'tipo', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),	
@@ -275,7 +275,7 @@ function getCategorie() {
 			});
 
 			$('#head_tabella_postazioni').html(
-				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Postazioni" +
+				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Categorie" +
 				"<a class=' float-right nav-link text-white add-button' href='' data-toggle='modal' data-target='#aggiungiPostazioni'>" +
 				"<em class='fa fa-plus-circle'></em> Aggiungi</a>" +
 				"</h3>" +
@@ -291,12 +291,12 @@ function getCategorie() {
 				"</div>" +
 
 				"<div id='container' class='modal-body'>" +
-				"<div id='form_aggiungi_postazione'></div></div>" +
+				"<div id='form_aggiungi_categoria'></div></div>" +
 
 				"<table class='table table-responsive product-dashboard-table'>" +
 				"<tr>" +
 				"<th>Immagine</th>" +
-				"<th>Postazione</th>" +
+				"<th>Categoria</th>" +
 				"<th class='text-center'>Tipo</th>" +
 				"<th class='text-center'>Azioni</th>" +
 				"</tr>");
@@ -324,7 +324,7 @@ function getCategorie() {
 					"</a>" +
 					"</li>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaPostazione?nome="+ data[i].nome +"'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='Eliminacategoria?nome="+ data[i].nome +"'>" +
 					"<i class='fa fa-trash'></i>" +
 					"</a>" +
 					"</li>" +
@@ -342,6 +342,10 @@ function getCategorie() {
 	xhr.send();
 
 }
+
+
+
+
 
 
 function getPrenotazioni() {
@@ -396,7 +400,7 @@ function getPrenotazioni() {
 					"<td class='product-thumb p-2'>" +
 					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
-					"<h3 class='title'>" + data[i].postazioneId + "</h3>" +
+					"<h3 class='title'>" + data[i].categoriaId + "</h3>" +
 					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
 					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
 					"<span class='location'><strong>Data:</strong>" + data[i].data + "</span>" +
@@ -464,22 +468,22 @@ function getGestori() {
 						$("<fieldset class='p-0'>"),
 						$("<h3 class=''>Aggiungi Gestore</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
-						$("<input/>", { type: 'text', id: 'aggiunig_postazione_tipo', name: 'cognome', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
+						$("<input/>", { type: 'text', id: 'aggiunig_categoria_tipo', name: 'cognome', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'email', id: 'aggiungi_postazione_descrizione', name: 'email', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'email', id: 'aggiungi_categoria_descrizione', name: 'email', placeholder: 'Descrizione', class: 'border p-3 w-100 my-2' }),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
-						$("<input/>", { type: 'text', id: 'aggiungi_postazione_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
+						$("<input/>", { type: 'text', id: 'aggiungi_categoria_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
 						//$("<input type='file' name='file' style='position: absolute;font-size: 50px;opacity: 0;right: 0;top: 0;'/>"),
-						$("<input/>", {type: 'file', id: 'aggiungi_postazione_immagine', name:'immagine', accept:'image/*'}),
+						$("<input/>", {type: 'file', id: 'aggiungi_categoria_immagine', name:'immagine', accept:'image/*'}),
 
 						$("</div>"),
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { type: 'submit', id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", { type: 'submit', id: 'aggiungi_categoria_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});*/
@@ -748,7 +752,7 @@ function getPrenotazioniUtente() {
 					"<td class='product-thumb p-2'>" +
 					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
-					"<h3 class='title'>" + data[i].postazioneId + "</h3>" +
+					"<h3 class='title'>" + data[i].categoriaId + "</h3>" +
 					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
 					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
 					"<span class='location'><strong>Data:</strong>" + data[i].data + "</span>" +
