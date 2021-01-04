@@ -30,6 +30,8 @@ public class AggiungiSegnalazione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		SegnalazioneBean segnalazione = new SegnalazioneBean();
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
 		
 		String email = utente.getEmail();
@@ -38,35 +40,35 @@ public class AggiungiSegnalazione extends HttpServlet {
 		
 		if(tipo.length() == 0) {
 			request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo tipo è vuoto");
-			session.setAttribute("error-type", "tipo");
+			session.setAttribute("errorType", "tipo");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/segnalazione.jsp"));
 		}
 		else {
 			if(tipo.length() > 30) {
 				request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo tipo ha una lunghezza maggiore di 30");
-				session.setAttribute("error-type", "tipo");
+				session.setAttribute("errorType", "tipo");
 				session.setAttribute("error", "Lunghezza errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/segnalazione.jsp"));
 			}
 			else {
 				if(descrizione.length() == 0) {
 					request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo descrizione è vuoto");
-					session.setAttribute("error-type", "descrizione");
+					session.setAttribute("errorType", "descrizione");
 					session.setAttribute("error", "Lunghezza errata");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/segnalazione.jsp"));
 				}
 				else {
 					if(descrizione.length() > 200) {
 						request.setAttribute("errorTest","L'aggiunta della segnalazione non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200");
-						session.setAttribute("error-type", "descrizione");
+						session.setAttribute("errorType", "descrizione");
 						session.setAttribute("error", "Lunghezza errata");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/segnalazione.jsp"));
 					}
 					else {
 						request.setAttribute("errorTest","L'aggiunta della segnalazione va a buon fine");
-						session.setAttribute("error-type", null);
-						session.setAttribute("error", null);
+						session.setAttribute("errorType", "validoDati");
+						session.setAttribute("error", "Segnalazione effettuata");
 						segnalazione.setUtenteEmail(email);
 						segnalazione.setDescrizione(descrizione);
 						segnalazione.setTipo(tipo);

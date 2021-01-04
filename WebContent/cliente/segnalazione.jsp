@@ -37,7 +37,29 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 <%@ include file="../header.jsp" %>
-	
+   <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+    
+    span {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+    
+    #checkDati {
+    	color: green;
+        font-weight: bold;
+    }
+    
+
+  </style>
 </head>
 
 <body class="body-wrapper">
@@ -77,12 +99,20 @@
                         <fieldset class="p-4">
 							<h3>Segnalazione <i class="fa fa-hand-o-down"></i></h3>	
 							<input type="text" id="tipo" name="tipo" placeholder="tipo segnalazione">		
-                            <textarea name="descrizione" id="descrizione" placeholder="descrizione segnalazione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <span id="checkTipo"></span>
+                            <textarea name="descrizione" id="descrizione" maxlength="200" placeholder="descrizione segnalazione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-main mt-2 float-right">Invia segnalazione</button>
+                                <button onclick="return validaSegnalazione()" type="submit" class="btn btn-main mt-2 float-right">Invia segnalazione</button>
                             </div>
                         </fieldset>
                     </form>
+                    
+                    <div>
+						<span id="checkDati"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("validoDati")){%>
+                        	<%=error%><%} %>
+                        </span>
+                    </div>
                    
 				</div>
 			</div>
@@ -107,6 +137,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="../plugins/google-map/gmap.js"></script>
 <script src="../script/script.js"></script>
+  <script src="../script/validazioni.js"></script>
 
 </body>
 

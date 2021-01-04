@@ -587,7 +587,7 @@ function validaRecensione(){
 	var descrizioneReg = /.*/
 		
 	if (valutazione.value == "no" || valutazione.value == "" || valutazione.value == null) {
-		$("#checkValutazione").text("");
+		$("span").text("");
 		$("#checkValutazione").text("Campo valutazione vuoto");
 		$("#checkValutazione").css("color", "red");
 		console.log("valutazione vuoto");
@@ -596,13 +596,54 @@ function validaRecensione(){
 	console.log(valutazione.value);
 	console.log(descrizione.value);
 	if (descrizione.value == null || descrizione.value == "") {
-		$("#checkDescrizione").text("");
+		$("span").text("");
 		$("#checkDescrizione").text("Campo descrizione vuoto");
 		$("#checkDescrizione").css("color", "red");
 		console.log("descrizione vuoto");
 		return false;
-	} else if (!descrizioneReg.test(descrizione.value)) {
-		$("#checkDescrizione").text("");
+	} else if (!descrizioneReg.test(descrizione.value) || descrizione.value.length > 200) {
+		$("span").text("");
+		$("#checkDescrizione").text("Formato descrizione errato");
+		$("#checkDescrizione").css("color", "red");
+		console.log("Formato descrizione errato");
+		return false;
+	}
+}
+
+function validaSegnalazione(){
+	var tipo=document.getElementById('tipo');
+
+	var descrizione=document.getElementById('descrizione');
+	var descrizioneReg = /.*/
+	if (tipo.value == "" || tipo.value == null) {
+		$("span").text("");
+		$("#checkTipo").text("Campo tipo vuoto");
+		$("#checkTipo").css("color", "red");
+		console.log("valutazionetipo");
+		return false;
+	}
+	else 
+		$("span").text("");
+	if (tipo.value.length > 30) {
+		$("span").text("");
+		$("#checkTipo").text("Lunghezza maggiore di 30");
+		$("#checkTipo").css("color", "red");
+		console.log("Formato descrizione errato");
+		return false;
+	} 
+	else
+		$("span").text("");
+	if (descrizione.value == null || descrizione.value == "") {
+		$("span").text("");
+		$("#checkDescrizione").text("Campo descrizione vuoto");
+		$("#checkDescrizione").css("color", "red");
+		console.log("descrizione vuoto");
+		return false;
+	}
+	else 
+		$("span").text("");
+	if (!descrizioneReg.test(descrizione.value) || descrizione.value.length > 200) {
+		$("span").text("");
 		$("#checkDescrizione").text("Formato descrizione errato");
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
