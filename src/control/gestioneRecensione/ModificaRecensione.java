@@ -30,6 +30,8 @@ public class ModificaRecensione extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 		RecensioneBean recensione = new RecensioneBean();
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
 		
@@ -39,28 +41,28 @@ public class ModificaRecensione extends HttpServlet {
 		
 		if(descrizione.length() == 0) {
 			request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo descrizione è vuoto");
-			session.setAttribute("error-type", "descrizione");
+			session.setAttribute("errorType", "descrizione");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/recensisci.jsp"));
 		}
 		else {
 			if(descrizione.length() > 200) {
 				request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200");
-				session.setAttribute("error-type", "descrizione");
+				session.setAttribute("errorType", "descrizione");
 				session.setAttribute("error", "Lunghezza errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/recensisci.jsp"));
 			}
 			else {
 				if(valutazione == null) {
 					request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo valutazione è vuoto");
-					session.setAttribute("error-type", "valutazione");
+					session.setAttribute("errorType", "valutazione");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/recensisci.jsp"));
 				}
 				else {
 					request.setAttribute("errorTest","L'aggiunta della recensione va a buon fine");
-					session.setAttribute("error-type", null);
-					session.setAttribute("error", null);
+					session.setAttribute("errorType", "validoDati");
+					session.setAttribute("error", "Recensione modificata");
 					
 					recensione.setUtenteEmail(email);
 					recensione.setDescrizione(descrizione);

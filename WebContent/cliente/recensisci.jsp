@@ -46,6 +46,22 @@
 		}
 	%>
 	
+	
+	   <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+    
+    
+    
+    #checkDati {
+    	color: green;
+        font-weight: bold;
+    }
+    
+
+  </style>
 </head>
 
 <body class="body-wrapper">
@@ -95,13 +111,18 @@
                 				<option value="5">5</option>
                 			</select>	
                 			<span id="checkValutazione"></span>		
-                            <textarea name="descrizione" id="descrizione" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <textarea name="descrizione" id="descrizione" maxlength="200" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
                             <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
                                 <button onclick="return validaRecensione()" type="submit" class="btn btn-main mt-2 float-right">Invia</button>
                             </div>
                         </fieldset>
                     </form>
+                    <div>
+						<span id="checkDati"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("validoDati")){%>
+                        	<%=error%><%} %>
+                        </span>
+                    </div>
                    
 				</div>
 			</div>
@@ -125,9 +146,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div class="contact-us-content p-2">
-                    <h2 class="pt-3">Valutazione: <%=recensione.getValutazione() %></h2>
-                    <h2 class="pt-3 pb-5">Descrizione: <%=recensione.getDescrizione() %></h2>
+                <div id="RisultatoRecensione" class="contact-us-content p-2">
+                    <h2 id="RisultatoValutazione" class="pt-3">Valutazione: <%=recensione.getValutazione() %></h2>
+                    <h2 id="RisultatoDescrizione" class="pt-3 pb-5">Descrizione: <%=recensione.getDescrizione() %></h2>
                 </div>
             </div>
 			</div>
@@ -164,7 +185,11 @@
                             </div>
                         </fieldset>
                     </form>
-                   
+                    <div>
+						<span id="checkDati"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("validoDati")){%>
+                        	<%=error%><%} %>
+                        </span>
+                    </div>
 				</div>
 			</div>
         </div>
