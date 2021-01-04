@@ -5,8 +5,8 @@
 var session;
 
 $(document).ready(function() {
-
-
+	
+	
 	session = $('#session').val();
 
 });
@@ -950,7 +950,77 @@ function getSegnalazioni() {
 
 
 
+window.onload =function getPrenotazioniUtente() {
 
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.status == 200 && xhr.readyState == 4) {
+			let data = JSON.parse(xhr.responseText);
+			console.log(data);
+			
+			$('#head_tabella_recensione').html("");
+			$('#gestione_recensione').html("");
+			$('#head_tabella_prenotazioni_utente').html("");
+			$('#gestione_prenotazioni_utente').html("");
+			$('#head_tabella_prenotazioni').html("");
+			$('#head_tabella_periferiche').html("");
+			$('#head_tabella_gestori').html("");
+			$('#gestione_gestori').html("");
+			$('#head_tabella_notifiche').html("");
+			$('#gestione_notifiche').html("");
+			$('#head_tabella_notifiche_t').html("");
+
+		
+
+			$('#head_tabella_prenotazioni_utente').html(				
+				"<h3 class='widget-header' style='padding-bottom: 0px;'>Prenotazioni</h3>" +
+				"<div class='modal fade' id='aggiungiPostazioni' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>" +
+				"<div class='modal-dialog modal-dialog-centered' role='document'>" +
+				"<div class='modal-content'>" +
+				"</div>" +
+				"<table class='table table-responsive product-dashboard-table'>" +
+				"<tr>" +
+				"<th>qr</th>" +
+				"<th>Prenotazione</th>" +
+				"<th class='text-center'>Fascia Oraria</th>" +
+				"<th class='text-center'>Azioni</th>" +
+				"</tr>");
+				
+			for (var i = 0; i < data.length; i++) {
+				//Giuseppe qui devi aggiungere il front end
+
+				$('#gestione_prenotazioni_utente').append(
+
+					"<tr>" +
+					"<td class='product-thumb p-2'>" +
+					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
+					"<td class='product-details'>" +
+					"<h3 class='title'>" + data[i].categoriaId + "</h3>" +
+					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
+					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
+					"<span class='location'><strong>Data:</strong>" + data[i].data + "</span>" +
+					"<span class='location'><strong>Utente:</strong>" + data[i].utenteEmail + "</span>" +
+					"</td>" +
+					"<td class='product-category'><span class='categories'>" + data[i].fasciaOraria + "</span></td>" +
+					"<td class='action' data-title='Action'>" +
+					"<div class=''>" +
+					"<ul class='list-inline justify-content-center'>" +
+					"<li class='list-inline-item'>" +
+					"<li class='list-inline-item'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href=''>" +
+					"<i class='fa fa-trash'></i>" +
+					"</a>" +
+					"</li>" +
+					"</ul>" +
+					"</div>" +
+					"</td>" +
+					"</tr>");
+				}}}
+
+	xhr.open('GET', 'RestituisciListaPrenotazioniUtente;jsessionid=' + session, true);
+	xhr.send();
+
+}
 
 
 
