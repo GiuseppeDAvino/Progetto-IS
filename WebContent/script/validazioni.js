@@ -1,10 +1,10 @@
-
 function validaFormLogin() {
 
 	var email = document.getElementById('email');
 	var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var password = document.getElementById('password');
-	//var passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+	// var passwordReg =
+	// /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 	if (email.value == null || email.value == "") {
 		$("#checkEmail").text("");
@@ -18,21 +18,21 @@ function validaFormLogin() {
 		console.log("Failure");
 		return false;
 	} else {
-	if (password.value == null || password.value == "") {
-	$("#checkPassword").text("");
-	$("#checkPassword").text("Campo password vuoto");
-	$("#checkPassword").css("color", "red");
-	return false;
-	}// else if (!passwordReg.test(password.value)) {
-	//	$("#checkPassword").text("");
-	//	$("#checkPassword").text("Formato password errato");
-	//	$("#checkPassword").css("color", "red");
-	//	console.log("Failure");
-	//	return false;
+		if (password.value == null || password.value == "") {
+			$("#checkPassword").text("");
+			$("#checkPassword").text("Campo password vuoto");
+			$("#checkPassword").css("color", "red");
+			return false;
+		}// else if (!passwordReg.test(password.value)) {
+		// $("#checkPassword").text("");
+		// $("#checkPassword").text("Formato password errato");
+		// $("#checkPassword").css("color", "red");
+		// console.log("Failure");
+		// return false;
 
-	//}
-	//}
-}
+		// }
+		// }
+	}
 }
 
 function validaFormRegistrazione() {
@@ -49,8 +49,6 @@ function validaFormRegistrazione() {
 	var passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 	var confermaPassword = document.getElementById('confermaPassword');
 
-
-
 	if (nome.value == null || nome.value == "") {
 		$("#checkNome").text("");
 		$("#checkNome").text("Campo nome vuoto");
@@ -59,15 +57,15 @@ function validaFormRegistrazione() {
 		console.log("nome vuoto");
 	} else
 
-		if (!nomeReg.test(nome.value)) {
-			$("#checkNome").text("");
-			$("#checkNome").text("Formato nome errato");
-			$("#checkNome").css("color", "red");
-			console.log("Formato nome errato");
-			return false;
-		} else
+	if (!nomeReg.test(nome.value)) {
+		$("#checkNome").text("");
+		$("#checkNome").text("Formato nome errato");
+		$("#checkNome").css("color", "red");
+		console.log("Formato nome errato");
+		return false;
+	} else
 
-			$("#checkNome").text("");
+		$("#checkNome").text("");
 	if (cognome.value == null || cognome.value == "") {
 		$("#checkCognome").text("");
 		$("#checkCognome").text("Campo cognome vuoto");
@@ -96,20 +94,21 @@ function validaFormRegistrazione() {
 		return false;
 	} else
 
-		//$("#checkEmail").text("");
-		if (username.value == null || username.value == "") {
-			$("#checkUsername").text("");
-			$("#checkUsername").text("Campo username vuoto");
-			$("#checkUsername").css("color", "red");
-			console.log("Campo username vuoto");
-			return false;
-		} else if (!usernameReg.test(username.value)) {
-			$("#checkUsername").text("");
-			$("#checkUsername").text("Formato username errato");
-			$("#checkUsername").css("color", "red");
-			console.log("Formato username errato");
-			return false;
-		} else $("#checkUsername").text("");
+	// $("#checkEmail").text("");
+	if (username.value == null || username.value == "") {
+		$("#checkUsername").text("");
+		$("#checkUsername").text("Campo username vuoto");
+		$("#checkUsername").css("color", "red");
+		console.log("Campo username vuoto");
+		return false;
+	} else if (!usernameReg.test(username.value)) {
+		$("#checkUsername").text("");
+		$("#checkUsername").text("Formato username errato");
+		$("#checkUsername").css("color", "red");
+		console.log("Formato username errato");
+		return false;
+	} else
+		$("#checkUsername").text("");
 	if (password.value == null || password.value == "") {
 		$("#checkPassword").text("");
 		$("#checkPassword").text("Campo password vuoto");
@@ -122,7 +121,8 @@ function validaFormRegistrazione() {
 		console.log("Failure");
 		return false;
 
-	} else $("#checkPassword").text("");
+	} else
+		$("#checkPassword").text("");
 	if (confermaPassword.value == null || confermaPassword.value == "") {
 		$("#checkConfermaPassword").text("");
 		$("#checkConfermaPassword").text("Campo conferma password vuoto");
@@ -134,7 +134,6 @@ function validaFormRegistrazione() {
 		$("#checkConfermaPassword").css("color", "red");
 		console.log("Failure");
 		return false;
-
 
 	}
 }
@@ -158,13 +157,14 @@ function validaAggiungiPeriferica() {
 		console.log("nome vuoto");
 	} else
 
-		if (!nomeReg.test(nome.value)) {
-			$("#checkNome").text("");
-			$("#checkNome").text("Formato nome errato");
-			$("#checkNome").css("color", "red");
-			console.log("Formato nome errato");
-			return false;
-		} else $("#checkNome").text("");
+	if (!nomeReg.test(nome.value)) {
+		$("#checkNome").text("");
+		$("#checkNome").text("Formato nome errato");
+		$("#checkNome").css("color", "red");
+		console.log("Formato nome errato");
+		return false;
+	} else
+		$("#checkNome").text("");
 	if (tipo.value == null || tipo.value == "") {
 		$("#checkTipo").text("");
 		$("#checkTipo").text("Campo tipo vuoto");
@@ -191,9 +191,8 @@ function validaAggiungiPeriferica() {
 		$("#checkQuantita").css("color", "red");
 		console.log("Formato quantita errato");
 		return false;
-	} else $("#checkQuantita").text("");
-
-
+	} else
+		$("#checkQuantita").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("#checkPrezzo").text("");
@@ -210,8 +209,6 @@ function validaAggiungiPeriferica() {
 	}
 
 }
-
-
 
 function validaModificaPeriferica() {
 
@@ -232,13 +229,14 @@ function validaModificaPeriferica() {
 		console.log("nome vuoto");
 	} else
 
-		if (!nomeReg.test(nome.value)) {
-			$("#checkNome").text("");
-			$("#checkNome").text("Formato nome errato");
-			$("#checkNome").css("color", "red");
-			console.log("Formato nome errato");
-			return false;
-		} else $("#checkNome").text("");
+	if (!nomeReg.test(nome.value)) {
+		$("#checkNome").text("");
+		$("#checkNome").text("Formato nome errato");
+		$("#checkNome").css("color", "red");
+		console.log("Formato nome errato");
+		return false;
+	} else
+		$("#checkNome").text("");
 	if (tipo.value == null || tipo.value == "") {
 		$("#checkTipo").text("");
 		$("#checkTipo").text("Campo tipo vuoto");
@@ -265,7 +263,8 @@ function validaModificaPeriferica() {
 		$("#checkQuantita").css("color", "red");
 		console.log("Formato quantita errato");
 		return false;
-	} else $("#checkQuantita").text("");
+	} else
+		$("#checkQuantita").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("#checkPrezzo").text("");
@@ -283,15 +282,14 @@ function validaModificaPeriferica() {
 
 }
 
-
-
 function validaAggiungiPostazione() {
 
 	var nome = document.getElementById('aggiungi_postazione_nome');
 	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
 	var tipo = document.getElementById('aggiungi_postazione_tipo');
 	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
-	var descrizione = document.getElementById('aggiungi_postazione_descrizione');
+	var descrizione = document
+			.getElementById('aggiungi_postazione_descrizione');
 	var descrizioneReg = /.*/
 	var prezzo = document.getElementById('aggiungi_postazione_prezzo');
 	var prezzoReg = /^\d*\.?\d*$/
@@ -306,13 +304,14 @@ function validaAggiungiPostazione() {
 		return false;
 	} else
 
-		if (!nomeReg.test(nome.value)) {
-			$("#checkNome").text("");
-			$("#checkNome").text("Formato nome errato");
-			$("#checkNome").css("color", "red");
-			console.log("Formato nome errato");
-			return false;
-		} else $("#checkNome").text("");
+	if (!nomeReg.test(nome.value)) {
+		$("#checkNome").text("");
+		$("#checkNome").text("Formato nome errato");
+		$("#checkNome").css("color", "red");
+		console.log("Formato nome errato");
+		return false;
+	} else
+		$("#checkNome").text("");
 	if (tipo.value == null || tipo.value == "") {
 		$("#checkTipo").text("");
 		$("#checkTipo").text("Campo tipo vuoto");
@@ -339,7 +338,8 @@ function validaAggiungiPostazione() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("#checkPrezzo").text("");
@@ -353,17 +353,15 @@ function validaAggiungiPostazione() {
 		$("#checkPrezzo").css("color", "red");
 		console.log("Formato prezzo errato");
 		return false;
-	} else
-		if (imagePath == "") {
-			$("#checkImage").text("");
-			$("#checkImage").text("Aggiungi un immagine");
-			$("#checkImage").css("color", "red");
-			console.log("Aggiungi un immagine");
-			return false;
-		}
+	} else if (imagePath == "") {
+		$("#checkImage").text("");
+		$("#checkImage").text("Aggiungi un immagine");
+		$("#checkImage").css("color", "red");
+		console.log("Aggiungi un immagine");
+		return false;
+	}
 
 }
-
 
 function validaModificaPostazione() {
 
@@ -371,7 +369,8 @@ function validaModificaPostazione() {
 	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
 	var tipo = document.getElementById('modifica_postazione_tipo');
 	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
-	var descrizione = document.getElementById('modifica_postazione_descrizione');
+	var descrizione = document
+			.getElementById('modifica_postazione_descrizione');
 	var descrizioneReg = /.*/
 	var prezzo = document.getElementById('modifica_postazione_prezzo');
 	var prezzoReg = /^\d*\.?\d*$/
@@ -384,13 +383,14 @@ function validaModificaPostazione() {
 		return false;
 	} else
 
-		if (!nomeReg.test(nome.value)) {
-			$("#checkNome").text("");
-			$("#checkNome").text("Formato nome errato");
-			$("#checkNome").css("color", "red");
-			console.log("Formato nome errato");
-			return false;
-		} else $("#checkNome").text("");
+	if (!nomeReg.test(nome.value)) {
+		$("#checkNome").text("");
+		$("#checkNome").text("Formato nome errato");
+		$("#checkNome").css("color", "red");
+		console.log("Formato nome errato");
+		return false;
+	} else
+		$("#checkNome").text("");
 	if (tipo.value == null || tipo.value == "") {
 		$("#checkTipo").text("");
 		$("#checkTipo").text("Campo tipo vuoto");
@@ -417,7 +417,8 @@ function validaModificaPostazione() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("#checkPrezzo").text("");
@@ -431,14 +432,14 @@ function validaModificaPostazione() {
 		$("#checkPrezzo").css("color", "red");
 		console.log("Formato prezzo errato");
 		return false;
-	} 
+	}
 
 }
 
 function validaAggiungiNotifica() {
 	var descrizione = document.getElementById('aggiungi_notifica_descrizione');
 	var descrizioneReg = /.*/
-	
+
 	if (descrizione.value == null || descrizione.value == "") {
 		$("#checkDescrizione").text("");
 		$("#checkDescrizione").text("Campo descrizione vuoto");
@@ -451,13 +452,13 @@ function validaAggiungiNotifica() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 }
 
-
-function validaRecensione(){
-	var valutazione=getElementByName('valutazione');
-	var descrizione=$('#descrizione');
+function validaRecensione() {
+	var valutazione = getElementByName('valutazione');
+	var descrizione = $('#descrizione');
 	console.log(valutazione.value);
 	return false;
 	if (descrizione.value == null || descrizione.value == "") {
@@ -474,14 +475,3 @@ function validaRecensione(){
 		return false;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
