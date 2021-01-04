@@ -21,7 +21,7 @@ class TestCase_ModificaDatiPersonali extends Mockito{
 	private MockHttpServletResponse response;
 	private UtenteDAO dao;
 	private UtenteBean utente=new UtenteBean("test@funisa.com","Test","Test","Test",Ruolo.cliente,true,"ABCD123","MarioRossi01?");
-
+	private UtenteBean utente1=new UtenteBean("test1@funisa.com","Test","Test","Test1",Ruolo.cliente,true,"ABCD123","MarioRossi01?");
 	@BeforeEach
 	void setUp() throws Exception {
 		servlet = new ModificaDatiPersonali();
@@ -29,7 +29,9 @@ class TestCase_ModificaDatiPersonali extends Mockito{
 		response = new MockHttpServletResponse();
 		dao=new UtenteDAO();
 		dao.doDelete(utente.getEmail());
+		dao.doDelete(utente1.getEmail());
 		dao.doSave(utente);
+		dao.doSave(utente1);
 	}
 	
 	@Test
@@ -109,7 +111,7 @@ class TestCase_ModificaDatiPersonali extends Mockito{
 		request.getSession().setAttribute("utente", utente);
 		request.addParameter("nome", "Bruno");
 		request.addParameter("cognome","Verdi");
-		request.addParameter("username","Test");
+		request.addParameter("username","Test1");
 		String message = "La modifica non va a buon fine poiché l'username è già presente nel database";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");
@@ -131,6 +133,7 @@ class TestCase_ModificaDatiPersonali extends Mockito{
 	@AfterEach
 	void tearDown() throws Exception {
 		dao.doDelete(utente.getEmail());
+		dao.doDelete(utente1.getEmail());
 		servlet=null;
 		dao=null;
 		request=null;

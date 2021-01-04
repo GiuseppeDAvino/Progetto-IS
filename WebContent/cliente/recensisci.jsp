@@ -84,7 +84,7 @@
                         <fieldset class="p-4">
 							<h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>	
 							 <select name="valutazione" class="form-control" style="margin-bottom: 10px">
-                				<option selected disabled>Seleziona una valutazione</option>
+                				<option selected disabled value="">Seleziona una valutazione</option>
                 				<option value="0">0</option>
                 				<option value="1">1</option>
                 				<option value="2">2</option>

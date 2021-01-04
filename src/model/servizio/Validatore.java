@@ -20,7 +20,7 @@ public final class Validatore {
 	 * @param stringa stringa da controllare
 	 */
 	public static Boolean validaNomeCognome(String stringa) {
-		String regex = "[a-zA-Z ‘אטלעש]{3,30}";
+		String regex = "^[a-zA-Z ‘אטלעש]{3,30}$";
 		return stringa.matches(regex);
 	}
 
@@ -30,7 +30,7 @@ public final class Validatore {
 	 * @param username username da controllare
 	 */
 	public static Boolean validaUsername(String username) {
-		String regex = "[a-zA-Z  _0-9]{3,30}";
+		String regex = "^[a-zA-Z  _0-9]{3,30}$";
 		return username.matches(regex);
 	}
 

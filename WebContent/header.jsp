@@ -13,6 +13,10 @@ RecensioneBean recensione = new RecensioneBean();
 if(session.getAttribute("utente") != null){
 	recensione =  (RecensioneBean) session.getAttribute("recensione");
 }
+
+	String errorType = (String) session.getAttribute("errorType"); 
+	String error = (String) session.getAttribute("error");
+	
 %>
 <!DOCTYPE html>
 <html>

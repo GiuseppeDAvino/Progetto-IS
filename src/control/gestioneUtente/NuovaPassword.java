@@ -27,6 +27,8 @@ public class NuovaPassword extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 		String email=(String) session.getAttribute("emailCodice");
 		String password = request.getParameter("password");
 		String confermaPassword = request.getParameter("confermaPassword");
@@ -36,7 +38,7 @@ public class NuovaPassword extends HttpServlet {
 		if(password.length()==0) {
 			request.setAttribute("errorTest",
 					"La creazione della nuova password non va a buon fine poiché il campo password è vuoto");
-			session.setAttribute("error-type", "password");
+			session.setAttribute("errorType", "password");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
 					response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
@@ -45,7 +47,7 @@ public class NuovaPassword extends HttpServlet {
 			if(confermaPassword.length()==0) {
 				request.setAttribute("errorTest",
 						"La creazione della nuova password non va a buon fine poiché il campo conferma password è vuoto");
-				session.setAttribute("error-type", "confermaPassword");
+				session.setAttribute("errorType", "confermaPassword");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(
 						response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
@@ -54,7 +56,7 @@ public class NuovaPassword extends HttpServlet {
 				if(!Validatore.validaPassword(password)) {
 					request.setAttribute("errorTest",
 							"La creazione della nuova password non va a buon fine poiché il campo password non rispetta il formato");
-					session.setAttribute("error-type", "password");
+					session.setAttribute("errorType", "password");
 					session.setAttribute("error", "Formato non valido");
 					response.sendRedirect(
 							response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
@@ -63,7 +65,7 @@ public class NuovaPassword extends HttpServlet {
 					if(!password.equals(confermaPassword)) {
 						request.setAttribute("errorTest",
 								"La creazione della nuova password non va a buon fine  poiché il campo password e il campo conferma password non corrispondono");
-						session.setAttribute("error-type", "confermaPassword");
+						session.setAttribute("errorType", "confermaPassword");
 						session.setAttribute("error", "Le due password non corrispondono");
 						response.sendRedirect(
 								response.encodeRedirectURL(request.getContextPath() + "/cambioPassword.jsp"));
@@ -71,7 +73,7 @@ public class NuovaPassword extends HttpServlet {
 					else {
 						request.setAttribute("errorTest",
 								"La creazione della nuova password va a buon fine");
-						session.setAttribute("error-type", null);
+						session.setAttribute("errorType", null);
 						session.setAttribute("error", null);
 						UtenteBean utente=utenteDAO.doRetrieveByKey(email);
 						utente.setPassword(password);

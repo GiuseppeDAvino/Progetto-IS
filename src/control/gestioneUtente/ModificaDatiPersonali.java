@@ -23,6 +23,8 @@ public class ModificaDatiPersonali extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
 		
 		String nome = request.getParameter("nome");
@@ -31,56 +33,56 @@ public class ModificaDatiPersonali extends HttpServlet {
 		
 		if(nome.length() == 0) {
 			request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo nome è vuoto");
-			session.setAttribute("error-type", "nome");
+			session.setAttribute("errorType", "nome");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		}
 		else {
 			if(!Validatore.validaNomeCognome(nome)) {
 				request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo nome non rispetta il formato");
-				session.setAttribute("error-type", "nome");
+				session.setAttribute("errorType", "nome");
 				session.setAttribute("error", "Formato non valido");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			}
 			else {
 				if(cognome.length() == 0) {
 					request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo cognome è vuoto");
-					session.setAttribute("error-type", "cognome");
+					session.setAttribute("errorType", "cognome");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				}
 				else {
 					if(!Validatore.validaNomeCognome(cognome)) {
 						request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo cognome non rispetta il formato");
-						session.setAttribute("error-type", "cognome");
+						session.setAttribute("errorType", "cognome");
 						session.setAttribute("error", "Formato non valido");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 					}
 					else {
 						if(username.length() == 0) {
 							request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo username è vuoto");
-							session.setAttribute("error-type", "username");
+							session.setAttribute("errorType", "username");
 							session.setAttribute("error", "Campo vuoto");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 						}
 						else {
 							if(!Validatore.validaUsername(username)) {
 								request.setAttribute("errorTest","La modifica non va a buon fine poiché il campo username non rispetta il formato");
-								session.setAttribute("error-type", "username");
+								session.setAttribute("errorType", "username");
 								session.setAttribute("error", "Formato non valido");
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 							}
 							else {
 								if(!Validatore.isUsernameValid(utente,username)) {
 									request.setAttribute("errorTest", "La modifica non va a buon fine poiché l'username è già presente nel database");
-									session.setAttribute("error-type", "username");
+									session.setAttribute("errorType", "username");
 									session.setAttribute("error", "Username già esistente nel sistema");
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/user.jsp"));
 								}
 								else {
 									request.setAttribute("errorTest", "La modifica va a buon fine");
-									session.setAttribute("error-type", null);
-									session.setAttribute("error", null);
+									session.setAttribute("errorType", "validoDati");
+									session.setAttribute("error", "La modifica dei dati personali è stata effettuata");
 									
 									utente.setNome(nome);
 									utente.setCognome(cognome);

@@ -35,7 +35,29 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+   <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+    
+    span {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+    
+    #checkDati, #checkModificaPassword {
+    	color: green;
+        font-weight: bold;
+    }
+    
 
+  </style>
 </head>
 
 <body class="body-wrapper">
@@ -47,8 +69,10 @@
                     <h3 class="bg-gray p-4">Richiesta Recupero Password</h3>
                     <form action="RichiestaRecuperoPassword" method="post">
                         <fieldset class="p-4">
-                            <input name="email" type="email" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <button type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Invia richiesta</button>
+                            <input id="email" name="email" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
+                            <span id="checkEmail"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("email")){%>
+                            								<%=error%><%} %></span>
+                            <button onclick="return validaFormRichiesta();" type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Invia richiesta</button>
 
                         </fieldset>
                     </form>

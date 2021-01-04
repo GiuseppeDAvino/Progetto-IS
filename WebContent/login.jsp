@@ -43,12 +43,19 @@
         color: red;
         font-weight: bold;
     }
+    
+    span {
+        color: red;
+        font-weight: bold;
+    }
      
     .main {
         width: 600px;
         margin: 0 auto;
     }
   </style>
+  
+
   
 
 </head>
@@ -64,14 +71,20 @@
                     <form action="Login" method="post" id="loginform" name="loginForm" >
                         <fieldset class="p-4">
                             <input id="email" name="email" type="text" placeholder="E-Mail" class="border p-3 w-100 my-2">
-                            <span id="checkEmail"></span>
+                            <span id="checkEmail"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("email")){%>
+                            	<%=error%>
+                            <%} %></span>
                             <input id="password" name="password" type="password" placeholder="Password" class="border p-3 w-100 my-2" >
-                            <span id="checkPassword"></span>
+                            <span id="checkPassword"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("password")){%>
+                            	<%=error%>
+                            <%} %></span>
                             <button onclick="return validaFormLogin();" type="submit" value="submit" class="d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3">Log in</button>
                             <a class="mt-3 d-block  text-primary" href="richiestaRecuperoPassword.jsp">Password dimenticata?</a>
                             <a class="mt-3 d-inline-block text-primary" href="registrazione.jsp">Registrati ora</a>
                         </fieldset>
                     </form>
+                    
+
                     </div>
                 </div>
             </div>

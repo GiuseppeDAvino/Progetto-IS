@@ -25,6 +25,8 @@ public class ModificaPassword extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
 		String vecchiaPassword = request.getParameter("vecchiaPassword");
 		String nuovaPassword = request.getParameter("nuovaPassword");
@@ -32,49 +34,49 @@ public class ModificaPassword extends HttpServlet {
 		
 		if(vecchiaPassword.length() == 0) {
 			request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo vecchia password è vuoto");
-			session.setAttribute("error-type", "vecchiaPassword");
+			session.setAttribute("errorType", "vecchiaPassword");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		}
 		else {
 			if(!Validatore.isVecchiaPasswordValid(utente.getEmail(), vecchiaPassword)) {
 				request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo vecchia password è errata");
-				session.setAttribute("error-type", "vecchiaPassword");
-				session.setAttribute("error", "Password errata");
+				session.setAttribute("errorType", "vecchiaPassword");
+				session.setAttribute("error", "Vecchia password errata");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			}
 			else {
 				if(nuovaPassword.length() == 0) {
 					request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo nuova password è vuoto");
-					session.setAttribute("error-type", "nuovaPassword");
+					session.setAttribute("errorType", "nuovaPassword");
 					session.setAttribute("error", "Campo vuoto");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				}
 				else {
 					if(!Validatore.validaPassword(nuovaPassword)) {
 						request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo nuova password non rispetta il formato");
-						session.setAttribute("error-type", "nuovaPassword");
+						session.setAttribute("errorType", "nuovaPassword");
 						session.setAttribute("error", "Formato non valido");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 					}
 					else {
 						if(confermaPassword.length() == 0) {
 							request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo conferma password è vuoto");
-							session.setAttribute("error-type", "confermaPassword");
+							session.setAttribute("errorType", "confermaPassword");
 							session.setAttribute("error", "Campo vuoto");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 						}
 						else {
 							if(!Validatore.isPasswordValid(nuovaPassword, confermaPassword)) {
 								request.setAttribute("errorTest","La modifica della password non va a buon fine poiché il campo nuova password e il campo conferma password non corrispondono");
-								session.setAttribute("error-type", "confermaPassword");
+								session.setAttribute("errorType", "confermaPassword");
 								session.setAttribute("error", "Le due password non corrispondono");
 								response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 							}
 							else {
 								request.setAttribute("errorTest","La modifica della password va a buon fine");
-								session.setAttribute("error-type", null);
-								session.setAttribute("error", null);
+								session.setAttribute("errorType", "validoPassword");
+								session.setAttribute("error", "Modifica della password effettuata");
 								
 								utente.setPassword(nuovaPassword);
 								utenteDAO.doUpdate(utente, utente.getEmail());

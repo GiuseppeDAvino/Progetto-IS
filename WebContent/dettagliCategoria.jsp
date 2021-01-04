@@ -59,6 +59,7 @@
 			<div class="row">
 				<!-- Left sidebar -->
 				<div class="col-md-8">
+				<h1 id="dettagliPoostazione"class="product-title">Dettagli Postazione</h1>
 					<div class="product-details">
 						<h1 class="product-title"><%=categoria.getNome()%></h1>
 						<div class="product-meta">
@@ -81,7 +82,7 @@
 							<div class="tab-content" id="pills-tabContent">
 								<div class="tab-pane fade show active" id="pills-home"
 									role="tabpanel" aria-labelledby="pills-home-tab">
-									<h3 class="tab-title">Descrizione Postazione</h3>
+									<h3 id="descrizionePostazione" class="tab-title">Descrizione Postazione</h3>
 									<p><%=categoria.getDescrizione()%></p>
 
 								</div>

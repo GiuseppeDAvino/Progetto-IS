@@ -87,7 +87,7 @@ public class Login extends HttpServlet {
 								session.setAttribute("error", null);
 								if (utente.isStato() == false) {
 									response.sendRedirect(
-											response.encodeRedirectURL(request.getContextPath() + "/confermaRegistrazione.jsp"));
+											response.encodeRedirectURL(request.getContextPath() + "/cliente/confermaRegistrazione.jsp"));
 								} else if ((Integer) session.getAttribute("isPressedPrenota") == null) {
 									response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/index.jsp"));
 								} else if ((Integer) session.getAttribute("isPressedPrenota") == 1) {

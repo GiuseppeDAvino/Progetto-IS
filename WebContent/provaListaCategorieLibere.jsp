@@ -5,6 +5,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="img/favicon.png" rel="shortcut icon">
+<!-- PLUGINS CSS STYLE -->
+<!-- <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet"> -->
+<!-- Bootstrap -->
+<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap-slider.css">
+<!-- Font Awesome -->
+<link href="plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- Owl Carousel -->
+<link href="plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+<link href="plugins/slick-carousel/slick/slick-theme.css"
+	rel="stylesheet">
+<!-- Fancy Box -->
+<link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+<link href="plugins/jquery-nice-select/css/nice-select.css"
+	rel="stylesheet">
+<!-- CUSTOM CSS -->
+<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<link href="css/style.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="script/perifericheLibere.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="script/categorieLibere.js"></script>
@@ -12,9 +35,12 @@
 
 </head>
 <body>
-	<input type="hidden" value="<%=request.getSession().getId()%>"
-		id="session">
+
+		
+	<h1 id="RicercaPostazione"class="product-title">Ricerca Postazione</h1>
 	<form method="post">
+			<input type="hidden" value="<%=request.getSession().getId()%>"
+		id="session">
 		<input id="data" name="data" type="date" min="" max="2021-12-31">
 
 		<script>
@@ -53,4 +79,21 @@
 		<input type="button" onClick="getCategorieLibere()" value="Cerca">
 	</form>
 </body>
+
+<script src="plugins/jQuery/jquery.min.js"></script>
+<script src="plugins/bootstrap/js/popper.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+<!-- tether js -->
+<script src="plugins/tether/js/tether.min.js"></script>
+<script src="plugins/raty/jquery.raty-fa.js"></script>
+<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+
+<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+<!-- google map -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+<script src="plugins/google-map/gmap.js"></script>
+<script src="script/script.js"></script>
 </html>

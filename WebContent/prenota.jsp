@@ -56,6 +56,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-12 col-md-12 align-content-center">
+				<h1 id="ricercaPostazione"class="product-title">Ricerca Postazione</h1>
 					<form>
 
 						<input type="hidden" value="<%=request.getSession().getId()%>"

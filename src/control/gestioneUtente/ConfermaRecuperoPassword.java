@@ -29,7 +29,7 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 		if(codiceVerifica.length()==0) {
 			request.setAttribute("errorTest",
 					"Inserimento del codice di verifica non va a buon fine poiché il campo codice è vuoto");
-			session.setAttribute("error-type", "codiceVerifica");
+			session.setAttribute("errorType", "codiceVerifica");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
 					response.encodeRedirectURL(request.getContextPath() + "/confermaRecuperoPassword.jsp"));
@@ -37,15 +37,15 @@ public class ConfermaRecuperoPassword extends HttpServlet {
 			if(!utenteDAO.controllaEmailCodice(email, codiceVerifica)) {
 				request.setAttribute("errorTest",
 						"Inserimento del codice di verifica non va a buon fine poiché il codice non è associato alla sua email");
-				session.setAttribute("error-type", "codiceVerifica");
-				session.setAttribute("error", "Campo vuoto");
+				session.setAttribute("errorType", "codiceVerifica");
+				session.setAttribute("error", "Email e codice verifica non corrispondono");
 				response.sendRedirect(
 						response.encodeRedirectURL(request.getContextPath() + "/confermaRecuperoPassword.jsp"));
 			}
 			else {
 				request.setAttribute("errorTest",
 						"Inserimento del codice di verifica è avvenuto con successo e si può procedere con la creazione di una nuova password");
-				session.setAttribute("error-type", null);
+				session.setAttribute("errorType", null);
 				session.setAttribute("error", null);
 				utenteDAO.cambiaCodice("", email);
 				

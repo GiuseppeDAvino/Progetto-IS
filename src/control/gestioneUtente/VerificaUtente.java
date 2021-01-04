@@ -31,26 +31,31 @@ public class VerificaUtente extends HttpServlet {
 		String codiceVerifica = request.getParameter("codiceVerifica");
 		HttpSession session = request.getSession(false);
 		UtenteBean utente = (UtenteBean) session.getAttribute("utente");
-		if(utenteDAO.controllaEmailCodice(utente.getEmail(), codiceVerifica)) {
-				utenteDAO.changeState(utente.getEmail());
-				utente.setStato(true);
-				utente.setCodiceVerifica("");
-				request.getSession().setAttribute("utente", utente);
-				if((Integer) session.getAttribute("isPressedPrenota")==null) {
-					session.setAttribute("recensione", recensioneDAO.doRetrieveByKey(utente.getEmail()));
-					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
-				} 
-				else {
-					if((Integer) session.getAttribute("isPressedPrenota")==1)
-						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
-				}
-				}
-		else {
-			
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/confermaRegistrazione.jsp"));
+		
+		if(!utenteDAO.controllaEmailCodice(utente.getEmail(), codiceVerifica)) {
+			session.setAttribute("errorType", "codiceVerifica");
+			session.setAttribute("error", "Email e codice verifica non corrispondono");
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/confermaRegistrazione.jsp"));
 		}
+		else {
+			session.setAttribute("errorType", null);
+			session.setAttribute("error", null);
+			utenteDAO.changeState(utente.getEmail());
+			utente.setStato(true);
+			utente.setCodiceVerifica("");
+			session.setAttribute("utente", utente);
+
+			if((Integer) session.getAttribute("isPressedPrenota")==null) {
+				session.setAttribute("recensione", recensioneDAO.doRetrieveByKey(utente.getEmail()));
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/index.jsp"));
+			} 
+			else {
+				if((Integer) session.getAttribute("isPressedPrenota")==1)
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
+			}
 		
-		
+			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/confermaRegistrazione.jsp"));
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

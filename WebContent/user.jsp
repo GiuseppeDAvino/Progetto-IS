@@ -42,6 +42,29 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
+   <style>
+    #form label.error {
+        color: red;
+        font-weight: bold;
+    }
+    
+    span {
+        color: red;
+        font-weight: bold;
+    }
+     
+    .main {
+        width: 600px;
+        margin: 0 auto;
+    }
+    
+    #checkDati, #checkModificaPassword {
+    	color: green;
+        font-weight: bold;
+    }
+    
+
+  </style>
 		</head>
 
 		<body class="body-wrapper">
@@ -115,6 +138,8 @@
 															class="btn btn-main-sm btn-block"><i
 																class="fa fa-bookmark"></i> Le Mie Prenotazioni</button>
 													</li>
+													<%}if(utente.isStato() == false){ %>
+													<li><a href="<%=request.getContextPath() + "/cliente/confermaRegistrazione.jsp"%>"><button class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Verifica profilo</button></a></li>
 													<% } } %>
 														<li><a href="Logout" onclick="getLogout()"
 																class="btn btn-main-sm btn-block"><i
@@ -152,25 +177,28 @@
 																</div>
 																<div class="modal-body">
 																	<form action="ModificaDatiPersonali" method="POST">
-																		<input id="nome" name="nome" type="text"
+																		<input id="nome" value="<%=utente.getNome() %>" name="nome" type="text"
 																			placeholder="Nome"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkNome"></span>
-																		<input id="cognome" name="cognome" type="text"
+																		<span id="checkNome"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("nome")){%>
+                            		<%=error%><%} %></span>
+																		<input id="cognome" value="<%=utente.getCognome() %>" name="cognome" type="text"
 																			placeholder="Cognome"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkCognome"></span>
-																		<input id="username" name="username" type="text"
+																		<span id="checkCognome"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("cognome")){%>
+                            		<%=error%><%} %></span>
+																		<input id="username" value="<%=utente.getUsername() %>" name="username" type="text"
 																			placeholder="Username"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkUsername"></span>
+																		<span id="checkUsername"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("username")){%>
+                            		<%=error%><%} %></span>
 
 
 																		<div class="modal-footer">
 																			<button type="button"
 																				class="btn btn-secondary"
 																				data-dismiss="modal">Close</button>
-																			<button type="submit"
+																			<button onclick="return validaFormModificaDatiPersonali();" type="submit"
 																				class="btn btn-primary">Modifica</button>
 																		</div>
 																	</form>
@@ -178,6 +206,17 @@
 															</div>
 														</div>
 													</div>
+													
+													<div>
+													<span id="checkUsername"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("username")){%>
+                            								<%=error%><%} %>
+                            						</span>
+                            						</div>
+                            																			<div>
+													<span id="checkDati"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("validoDati")){%>
+                            								<%=error%><%} %>
+                            						</span>
+                            						</div>
 													<button type="button" class="btn btn-primary" data-toggle="modal"
 														data-target="#password">Modifica password</button>
 
@@ -200,16 +239,19 @@
 																			name="vecchiaPassword" type="password"
 																			placeholder="vecchia password"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkVecchiaPassword"></span>
+																		<span id="checkVecchiaPassword"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("vecchiaPassword")){%>
+                            								<%=error%><%} %></span>
 																		<input id="nuovaPassword" name="nuovaPassword"
 																			type="password" placeholder="nuova password"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkNuovaPassword"></span>
+																		<span id="checkNuovaPassword"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("nuovaPassword")){%>
+                            								<%=error%><%} %></span>
 																		<input id="confermaPassword"
 																			name="confermaPassword" type="password"
 																			placeholder="conferma password"
 																			class="border p-3 w-100 my-2">
-																		<span id="checkConfermaPassword"></span>
+																		<span id="checkConfermaPassword"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("confermaPassword")){%>
+                            								<%=error%><%} %></span>
 
 
 
@@ -217,7 +259,7 @@
 																			<button type="button"
 																				class="btn btn-secondary"
 																				data-dismiss="modal">Close</button>
-																			<button type="submit"
+																			<button onclick="return validaFormModificaDatiAccesso();" type="submit"
 																				class="btn btn-primary">Modifica
 																				password</button>
 																		</div>
@@ -226,6 +268,15 @@
 															</div>
 														</div>
 													</div>
+													<div>
+														<span id="checkVecchiaPassword"><%session.removeAttribute("errorType");session.removeAttribute("error"); if(errorType!=null && errorType.equals("vecchiaPassword")){%>
+                            								<%=error%><%} %></span>
+														<span id="checkModificaPassword"><% if(errorType!=null && errorType.equals("validoPassword")){%>
+                            								<%=error%><%} %>
+                            						</span>
+                            						</div>
+													</div>
+
 								</div>
 								<%}} %>
 

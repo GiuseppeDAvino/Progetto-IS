@@ -76,7 +76,7 @@
 			<div class="row justify-content-center">
 				<div class="col-lg-5 col-md-8 align-item-center">
 					<div class="border">
-						<h3 class="bg-gray p-4">Riepilogo Prenotazione</h3>
+						<h3 id="riepilogoPrenotazione" class="bg-gray p-4">Riepilogo Prenotazione</h3>
 						<form action="Prenota">
 							<fieldset class="p-4">
 								<h4 class="border p-3 w-100 my-2">

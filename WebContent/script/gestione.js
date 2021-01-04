@@ -37,7 +37,7 @@ function getUtenti() {
 				"<tr>" +
 				"<th>Immagine</th>" +
 				"<th>Utente</th>" +
-				"<th class='text-center'>Tipo</th>" +
+				"<th class='text-center'>Stato</th>" +
 				"</tr>");
 
 

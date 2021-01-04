@@ -50,7 +50,7 @@ public class AggiungiRecensione extends HttpServlet {
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/cliente/recensisci.jsp"));
 			}
 			else {
-				if(valutazione == null) {
+				if(valutazione.length() == 0) {
 					request.setAttribute("errorTest","L'aggiunta della recensione non va a buon fine poiché il campo valutazione è vuoto");
 					session.setAttribute("error-type", "valutazione");
 					session.setAttribute("error", "Campo vuoto");

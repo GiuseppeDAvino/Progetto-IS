@@ -32,11 +32,13 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String email = request.getParameter("email");
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
 
 		if (email.length() == 0) {
 			request.setAttribute("errorTest",
 					"La richiesta per il recupero password non va a buon fine poiché il campo email è vuoto");
-			session.setAttribute("error-type", "email");
+			session.setAttribute("errorType", "email");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(
 					response.encodeRedirectURL(request.getContextPath() + "/richiestaRecuperoPassword.jsp"));
@@ -44,7 +46,7 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 			if (!Validatore.validaEmail(email)) {
 				request.setAttribute("errorTest",
 						"La richiesta per il recupero password non va a buon fine poiché il campo email non rispetta il formato");
-				session.setAttribute("error-type", "email");
+				session.setAttribute("errorType", "email");
 				session.setAttribute("error", "Formato non valido");
 				response.sendRedirect(
 						response.encodeRedirectURL(request.getContextPath() + "/richiestaRecuperoPassword.jsp"));
@@ -52,7 +54,7 @@ public class RichiestaRecuperoPassword extends HttpServlet {
 				if (Validatore.isEmailValid(email)) {
 					request.setAttribute("errorTest",
 							"La richiesta per il recupero password non va a buon fine poiché il campo email non esiste nel database");
-					session.setAttribute("error-type", "email");
+					session.setAttribute("errorType", "email");
 					session.setAttribute("error", "Email non esistente");
 					response.sendRedirect(
 							response.encodeRedirectURL(request.getContextPath() + "/richiestaRecuperoPassword.jsp"));
