@@ -122,7 +122,7 @@
 									<!-- Dashboard Links -->
 									<div class="widget user-dashboard-menu">
 										<ul>
-											<% if (ruolo !=null) if (ruolo.equals("titolare")) { %>
+											<% if (ruolo !=null){ if (ruolo.equals("titolare")) { %>
 
 												<li><button onclick="getPrenotazioni()"
 														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
@@ -148,16 +148,16 @@
 															class="fa fa-sitemap"></i> Gestione Gestori</button></li>
 
 
-												<% } else if (ruolo !=null){ if (ruolo.equals("cliente")) { %>
+												<% } else if (ruolo.equals("cliente")) { %>
 
 													<li><button onclick="getPrenotazioniUtente()"
 															class="btn btn-main-sm btn-block"><i
 																class="fa fa-bookmark"></i> Le Mie Prenotazioni</button>
 													</li>
-													<%}if(utente.isStato() == false){ %>
+													<%if(utente.isStato() == false){ %>
 													<li><a href="<%=request.getContextPath() + "/cliente/confermaRegistrazione.jsp"%>"><button class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Verifica profilo</button></a></li>
-													<% } } %>
-													<% else if (ruolo.equals("gestore")){%>
+													
+													<%} }else if (ruolo.equals("gestore")){%>
 														
 												<li><button onclick="getRecensioni()"
 														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
@@ -304,7 +304,7 @@
 													</div>
 
 								</div>
-								<%}} %>
+								<%}}} %>
 
 
 
