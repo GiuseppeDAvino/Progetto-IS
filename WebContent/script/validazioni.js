@@ -456,11 +456,21 @@ function validaAggiungiNotifica() {
 		$("#checkDescrizione").text("");
 }
 
-function validaRecensione() {
-	var valutazione = getElementByName('valutazione');
-	var descrizione = $('#descrizione');
+
+function validaRecensione(){
+	var valutazione=document.getElementById('valutazione');
+	var descrizione=document.getElementById('descrizione');
+	var descrizioneReg = /.*/
+		
+	if (valutazione.value == "no" || valutazione.value == "" || valutazione.value == null) {
+		$("#checkValutazione").text("");
+		$("#checkValutazione").text("Campo valutazione vuoto");
+		$("#checkValutazione").css("color", "red");
+		console.log("valutazione vuoto");
+		return false;
+	} 
 	console.log(valutazione.value);
-	return false;
+	console.log(descrizione.value);
 	if (descrizione.value == null || descrizione.value == "") {
 		$("#checkDescrizione").text("");
 		$("#checkDescrizione").text("Campo descrizione vuoto");

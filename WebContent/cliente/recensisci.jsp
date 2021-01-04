@@ -85,8 +85,8 @@
                     <form action="AggiungiRecensione" method="POST">
                         <fieldset class="p-4">
 							<h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>	
-							 <select name="valutazione" class="form-control" style="margin-bottom: 10px">
-                				<option selected disabled>Seleziona una valutazione</option>
+							 <select id="valutazione" name="valutazione" class="form-control" style="margin-bottom: 10px">
+                				<option value="no" selected disabled>Seleziona una valutazione</option>
                 				<option value="0">0</option>
                 				<option value="1">1</option>
                 				<option value="2">2</option>
@@ -98,7 +98,7 @@
                             <textarea name="descrizione" id="descrizione" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
                             <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-main mt-2 float-right">Invia</button>
+                                <button onclick="return validaRecensione()" type="submit" class="btn btn-main mt-2 float-right">Invia</button>
                             </div>
                         </fieldset>
                     </form>
@@ -147,16 +147,18 @@
                     <form action="ModificaRecensione" method="POST">
                         <fieldset class="p-4">
 							<h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>	
-							 <select name="valutazione" class="form-control" style="margin-bottom: 10px">
-                				<option selected disabled>Seleziona una valutazione</option>
+							 <select id="valutazione" name="valutazione" class="form-control" style="margin-bottom: 10px">
+                				<option value="no" selected disabled>Seleziona una valutazione</option>
                 				<option value="0">0</option>
                 				<option value="1">1</option>
                 				<option value="2">2</option>
                 				<option value="3">3</option>
                 				<option value="4">4</option>
                 				<option value="5">5</option>
-                			</select>			
-                            <textarea name="descrizione" id=""  placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"><%=recensione.getDescrizione() %></textarea>
+                			</select>
+                			<span id="checkValutazione"></span>		
+                            <textarea name="descrizione" id="descrizione"  placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"><%=recensione.getDescrizione() %></textarea>
+                            <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
                                 <button type="submit" onclick="return validaRecensione()" class="btn btn-main mt-2 float-right">Modifica recensione</button>
                             </div>
