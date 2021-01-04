@@ -35,24 +35,25 @@ public class InviaNotifica extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String descrizione = request.getParameter("descrizione");
-		
+		session.setAttribute("errorType",null);
+		session.setAttribute("error", null);
 		if(descrizione.length() == 0) {
 			request.setAttribute("errorTest","L'invio della notifica non va a buon fine poiché il campo descrizione è vuoto");
-			session.setAttribute("error-type", "descrizione");
+			session.setAttribute("errorType", "descrizione");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		}
 		else {
 			if(descrizione.length() > 200) {
 				request.setAttribute("errorTest","L'invio della notifica non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 200");
-				session.setAttribute("error-type", "descrizione");
+				session.setAttribute("errorType", "descrizione");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			}
 			else {
 				request.setAttribute("errorTest","L'invio della notifica va a buon fine");
-				session.setAttribute("error-type", null);
-				session.setAttribute("error", null);
+				session.setAttribute("errorType", "validoDati");
+				session.setAttribute("error", "notifica correttamente inviata");
 				
 				NotificaBean notifica = new NotificaBean();
 				notifica.setDescrizione(descrizione);

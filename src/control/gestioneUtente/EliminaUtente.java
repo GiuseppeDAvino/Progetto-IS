@@ -36,6 +36,7 @@ public class EliminaUtente extends HttpServlet {
 		String email=request.getParameter("email");
 		UtenteBean utente=utenteDAO.doRetrieveByKey(email);
 		utenteDAO.doDelete(email);
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 	}
 
 

@@ -1,4 +1,4 @@
-package test;
+package test.dao;
 
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class TestUtente extends TestCase {
   protected void setUp() throws Exception {
    
     dao= new UtenteDAO();
-    utenteEsistente=new UtenteBean("titol@titolare.com","titolare","titolare","titolare",Ruolo.titolare,true,"","titolare");
+    utenteEsistente=new UtenteBean("titol@titolare.com","titolare","titolare","titol",Ruolo.titolare,true,"","titolare");
     dao.doDelete(utenteEsistente.getEmail());
     id = dao.doSave(utenteEsistente);
     
@@ -34,7 +34,7 @@ public class TestUtente extends TestCase {
   
   @Test
   public void testInserimentoUtenteEsistente() {
-    assertNotSame(-1, id);
+    assertNotEquals(-1, id);
   }
   @Test 
   public void testInserimentoUtenteNonEsistente() {
