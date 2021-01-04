@@ -131,7 +131,16 @@
 															class="btn btn-main-sm btn-block"><i
 																class="fa fa-bookmark"></i> Le Mie Prenotazioni</button>
 													</li>
-													<% } } %>
+													<% }else if (ruolo.equals("gestore")){%>
+														
+												<li><button onclick="getRecensioni()"
+														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
+														Gestione Recensioni</button></li>
+													<li><button onclick="getSegnalazioni()"
+														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
+														Gestione Segnalazioni</button></li>
+													<%}}%>
+																
 														<li><a href="Logout" onclick="getLogout()"
 																class="btn btn-main-sm btn-block"><i
 																	class="fa fa-bookmark"></i> Logout</a></li>
@@ -259,9 +268,9 @@
 																<thead id="head_tabella_gestori">
 																	<thead id="head_tabella_notifiche">
 																		<thead id="head_tabella_notifiche_t">
-																			<thead
-																				id="head_tabella_prenotazioni_utente">
-
+																			<thead id="head_tabella_prenotazioni_utente">
+																				<thead id="head_tabella_recensione">
+																				<thead id="head_tabella_segnalazione">
 																			</thead>
 																		<tbody id="gestione_prenotazioni">
 																	<tbody id="gestione_periferiche">
@@ -271,7 +280,8 @@
 														<tbody id="gestione_gestori">
 													<tbody id="gestione_notifiche">
 												<tbody id="gestione_prenotazioni_utente">
-
+												<tbody id="gestione_recensione">
+												<tbody id="gestione_segnalazione">
 												</tbody>
 											</table>
 										</div>

@@ -28,7 +28,7 @@ public class RestituisciListaRecensioni extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		ArrayList<RecensioneBean> prenotazioni=(ArrayList<RecensioneBean>) recensioneDAO.doRetrieveAll();
+		ArrayList<RecensioneBean> prenotazioni=(ArrayList<RecensioneBean>) recensioneDAO.doRetrieveAllNonVerificata();
 		
 		String string = gson.toJson(prenotazioni);
 		response.getWriter().print(string);

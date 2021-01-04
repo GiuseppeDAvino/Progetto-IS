@@ -1,27 +1,32 @@
-package control.gestionePeriferica;
+package control.gestioneSegnalazione;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.periferica.PerifericaBean;
-import model.periferica.PerifericaDAO;
+import com.google.gson.Gson;
+
+import model.segnalazione.SegnalazioneBean;
+import model.segnalazione.SegnalazioneDAO;
 
 /**
- * Servlet implementation class PerifericaDaModificare
+ * Servlet implementation class RestituisciListaSegnalazioni
  */
-@WebServlet("/PerifericaDaModificare")
-public class PerifericaDaModificare extends HttpServlet {
-	
+@WebServlet("/RestituisciListaSegnalazioni")
+public class RestituisciListaSegnalazioni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PerifericaDAO dao = new PerifericaDAO();
+	private SegnalazioneDAO segnalazioneDAO = new SegnalazioneDAO();
+    private Gson gson = new Gson();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerifericaDaModificare() {
+    public RestituisciListaSegnalazioni() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,18 +35,16 @@ public class PerifericaDaModificare extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		ArrayList<SegnalazioneBean> prenotazioni=(ArrayList<SegnalazioneBean>) segnalazioneDAO.doRetrieveAll();
 		
-		
-		
-		PerifericaBean periferica= dao.doRetrieveByKey(request.getParameter("nome"));
-		request.getSession().setAttribute("periferica",periferica);
-		request.getSession().setAttribute("nomePeriferica",request.getParameter("nome"));
-		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/titolare/modificaPerifericaForm.jsp"));
-		
-
-
-		
+		String string = gson.toJson(prenotazioni);
+		response.getWriter().print(string);
+		response.getWriter().flush();
+		response.setStatus(200);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

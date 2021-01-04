@@ -1,4 +1,4 @@
-package control.gestionePeriferica;
+package control.gestioneRecensione;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,21 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.periferica.PerifericaBean;
-import model.periferica.PerifericaDAO;
+import model.recensione.RecensioneDAO;
 
 /**
- * Servlet implementation class PerifericaDaModificare
+ * Servlet implementation class AccettaRecensione
  */
-@WebServlet("/PerifericaDaModificare")
-public class PerifericaDaModificare extends HttpServlet {
-	
+@WebServlet("/AccettaRecensione")
+public class AccettaRecensione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PerifericaDAO dao = new PerifericaDAO();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerifericaDaModificare() {
+    public AccettaRecensione() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,17 +28,10 @@ public class PerifericaDaModificare extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		PerifericaBean periferica= dao.doRetrieveByKey(request.getParameter("nome"));
-		request.getSession().setAttribute("periferica",periferica);
-		request.getSession().setAttribute("nomePeriferica",request.getParameter("nome"));
-		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/titolare/modificaPerifericaForm.jsp"));
-		
-
-
-		
+		// TODO Auto-generated method stub
+		RecensioneDAO recensione = new RecensioneDAO();
+		recensione.approva(request.getParameter("utenteEmail"));
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 	}
 
 	/**

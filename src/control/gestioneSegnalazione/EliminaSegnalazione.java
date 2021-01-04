@@ -1,4 +1,4 @@
-package control.gestioneRecensione;
+package control.gestioneSegnalazione;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,15 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.recensione.RecensioneDAO;
+import model.notifica.NotificaBean;
+import model.notifica.NotificaDAO;
+import model.segnalazione.SegnalazioneDAO;
 
 
-@WebServlet("/EliminaRecensione")
-public class EliminaRecensione extends HttpServlet {
+@WebServlet("/EliminaSegnalazione")
+public class EliminaSegnalazione extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RecensioneDAO recensioneDAO = new RecensioneDAO();
+	private SegnalazioneDAO segnalazioneDAO = new SegnalazioneDAO();
+	private NotificaDAO notificaDAO = new NotificaDAO();
        
-    public EliminaRecensione() {
+    public EliminaSegnalazione() {
         super();
 
     }
@@ -24,8 +27,9 @@ public class EliminaRecensione extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 	
+		notificaDAO.doSaveNotificaUtente(new NotificaBean("La tua segnalazione è stata risolta", ""), segnalazioneDAO.doRetrieveByKey(Integer.parseInt(request.getParameter("id"))).getUtenteEmail());
+		segnalazioneDAO.doDelete(Integer.parseInt(request.getParameter("id")));
 		
-		recensioneDAO.doDelete(request.getParameter("utenteEmail"));
 		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		
 		
