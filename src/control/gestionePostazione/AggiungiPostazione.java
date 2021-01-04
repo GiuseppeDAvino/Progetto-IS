@@ -35,12 +35,14 @@ public class AggiungiPostazione extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String nomeCategoria = request.getParameter("nomeCategoria");
-		
+		System.out.println("mammt");
 		if(nomeCategoria.length() == 0) {
 			request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poiché il campo nome categoria è vuoto");
 			session.setAttribute("error-type", "nomeCategoria");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+			System.out.println("mammt1");
+
 		}
 		else {
 			if(!Validatore.isNomeCategoriaValid(nomeCategoria)) {
@@ -48,6 +50,8 @@ public class AggiungiPostazione extends HttpServlet {
 				session.setAttribute("error-type", "nomeCategoria");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
+				System.out.println("mammt2");
+
 			}
 			else {
 				request.setAttribute("errorTest","L'aggiunta della postazione va a buon fine");

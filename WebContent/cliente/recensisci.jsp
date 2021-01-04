@@ -9,7 +9,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Classimax</title>
+  <title>Funisa</title>
   
   <!-- FAVICON -->
   <link href="../img/favicon.png" rel="shortcut icon">
@@ -28,6 +28,8 @@
   <link href="../plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="../css/style.css" rel="stylesheet">
+  <script src="../script/validazioni.js"></script>
+  
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -83,18 +85,20 @@
                     <form action="AggiungiRecensione" method="POST">
                         <fieldset class="p-4">
 							<h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>	
-							 <select name="valutazione" class="form-control" style="margin-bottom: 10px">
-                				<option selected disabled value="">Seleziona una valutazione</option>
+							 <select id="valutazione" name="valutazione" class="form-control" style="margin-bottom: 10px">
+                				<option value="no" selected disabled>Seleziona una valutazione</option>
                 				<option value="0">0</option>
                 				<option value="1">1</option>
                 				<option value="2">2</option>
                 				<option value="3">3</option>
                 				<option value="4">4</option>
                 				<option value="5">5</option>
-                			</select>			
-                            <textarea name="descrizione" id="" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                			</select>	
+                			<span id="checkValutazione"></span>		
+                            <textarea name="descrizione" id="descrizione" placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
+                            <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-main mt-2 float-right">Invia</button>
+                                <button onclick="return validaRecensione()" type="submit" class="btn btn-main mt-2 float-right">Invia</button>
                             </div>
                         </fieldset>
                     </form>
@@ -143,18 +147,20 @@
                     <form action="ModificaRecensione" method="POST">
                         <fieldset class="p-4">
 							<h3>Parla di noi <i class="fa fa-hand-o-down"></i></h3>	
-							 <select name="valutazione" class="form-control" style="margin-bottom: 10px">
-                				<option selected disabled>Seleziona una valutazione</option>
+							 <select id="valutazione" name="valutazione" class="form-control" style="margin-bottom: 10px">
+                				<option value="no" selected disabled>Seleziona una valutazione</option>
                 				<option value="0">0</option>
                 				<option value="1">1</option>
                 				<option value="2">2</option>
                 				<option value="3">3</option>
                 				<option value="4">4</option>
                 				<option value="5">5</option>
-                			</select>			
-                            <textarea name="descrizione" id=""  placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"><%=recensione.getDescrizione() %></textarea>
+                			</select>
+                			<span id="checkValutazione"></span>		
+                            <textarea name="descrizione" id="descrizione"  placeholder="Recensione" class="border w-100 p-3 mt-3 mt-lg-4"><%=recensione.getDescrizione() %></textarea>
+                            <span id="checkDescrizione"></span>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-main mt-2 float-right">Modifica recensione</button>
+                                <button type="submit" onclick="return validaRecensione()" class="btn btn-main mt-2 float-right">Modifica recensione</button>
                             </div>
                         </fieldset>
                     </form>

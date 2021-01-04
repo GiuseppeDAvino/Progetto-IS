@@ -131,7 +131,26 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			return -1;
 		}
 	}
+	
+	public int doSaveNotificaUtente(NotificaBean notifica, String email) {
+		int id = doSave(notifica);
+		String sql = "INSERT INTO notifica_utente VALUES(?,?,?)";
 
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql)) {
+				statement.setInt(1, id);
+				statement.setString(2, email);
+				statement.setBoolean(3, false);
+				statement.executeUpdate();
+				con.commit();
+			
+			return id;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
 	@Override
 	public boolean doUpdate(NotificaBean bean, Integer chiave) {
 		return true;

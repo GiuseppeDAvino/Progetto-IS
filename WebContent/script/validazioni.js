@@ -1,12 +1,10 @@
-
 function validaFormLogin() {
-
-
 
 	var email = document.getElementById('email');
 	var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	var password = document.getElementById('password');
-	//var passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+	// var passwordReg =
+	// /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 	if (email.value == null || email.value == "") {
 		$("span").text("");
@@ -73,8 +71,6 @@ function validaFormRegistrazione() {
 	var password = document.getElementById('password');
 	var passwordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 	var confermaPassword = document.getElementById('confermaPassword');
-
-
 
 	if (nome.value == null || nome.value == "") {
 		$("span").text("");
@@ -159,7 +155,6 @@ function validaFormRegistrazione() {
 		$("#checkConfermaPassword").css("color", "red");
 		console.log("Failure");
 		return false;
-
 
 	}
 }
@@ -467,7 +462,8 @@ function validaAggiungiCategoria() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("span").text("");
@@ -492,14 +488,14 @@ function validaAggiungiCategoria() {
 
 }
 
-
 function validaModificaPostazione() {
 
 	var nome = document.getElementById('modifica_postazione_nome');
 	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
 	var tipo = document.getElementById('modifica_postazione_tipo');
 	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
-	var descrizione = document.getElementById('modifica_postazione_descrizione');
+	var descrizione = document
+			.getElementById('modifica_postazione_descrizione');
 	var descrizioneReg = /.*/
 	var prezzo = document.getElementById('modifica_postazione_prezzo');
 	var prezzoReg = /^\d*\.?\d*$/
@@ -545,7 +541,8 @@ function validaModificaPostazione() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 
 	if (prezzo.value == null || prezzo.value == "") {
 		$("span").text("");
@@ -559,14 +556,14 @@ function validaModificaPostazione() {
 		$("#checkPrezzo").css("color", "red");
 		console.log("Formato prezzo errato");
 		return false;
-	} 
+	}
 
 }
 
 function validaAggiungiNotifica() {
 	var descrizione = document.getElementById('aggiungi_notifica_descrizione');
 	var descrizioneReg = /.*/
-	
+
 	if (descrizione.value == null || descrizione.value == "") {
 		$("span").text("");
 		$("#checkDescrizione").text("Campo descrizione vuoto");
@@ -579,17 +576,36 @@ function validaAggiungiNotifica() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("Formato descrizione errato");
 		return false;
-	} else $("#checkDescrizione").text("");
+	} else
+		$("#checkDescrizione").text("");
 }
 
 
-
-
-
-
-
-
-
-
-
-
+function validaRecensione(){
+	var valutazione=document.getElementById('valutazione');
+	var descrizione=document.getElementById('descrizione');
+	var descrizioneReg = /.*/
+		
+	if (valutazione.value == "no" || valutazione.value == "" || valutazione.value == null) {
+		$("#checkValutazione").text("");
+		$("#checkValutazione").text("Campo valutazione vuoto");
+		$("#checkValutazione").css("color", "red");
+		console.log("valutazione vuoto");
+		return false;
+	} 
+	console.log(valutazione.value);
+	console.log(descrizione.value);
+	if (descrizione.value == null || descrizione.value == "") {
+		$("#checkDescrizione").text("");
+		$("#checkDescrizione").text("Campo descrizione vuoto");
+		$("#checkDescrizione").css("color", "red");
+		console.log("descrizione vuoto");
+		return false;
+	} else if (!descrizioneReg.test(descrizione.value)) {
+		$("#checkDescrizione").text("");
+		$("#checkDescrizione").text("Formato descrizione errato");
+		$("#checkDescrizione").css("color", "red");
+		console.log("Formato descrizione errato");
+		return false;
+	}
+}

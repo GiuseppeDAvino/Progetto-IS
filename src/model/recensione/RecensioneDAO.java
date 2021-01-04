@@ -67,6 +67,31 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 		return collection;
 	}
 
+	
+	public Collection<RecensioneBean> doRetrieveAllNonVerificata(){
+		String sql = "SELECT * FROM recensione WHERE verificata = 0";
+
+		ArrayList<RecensioneBean> collection = new ArrayList<RecensioneBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("DoRetriveAll");
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				RecensioneBean bean = new RecensioneBean();
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setUtenteEmail(rs.getString("utenteEmail"));
+				bean.setValutazione(rs.getInt("valutazione"));
+				bean.setVerificata(rs.getBoolean("verificata"));
+				collection.add(bean);
+			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+		return collection;
+	}
+
 	/**
 	 *  Salva una recensione nel database
 	 * 
@@ -132,7 +157,7 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, email);
-			System.out.println("doUpdate=" + statement);
+			System.out.println("doDelete=" + statement);
 			statement.executeUpdate();
 			con.commit();
 			return true;

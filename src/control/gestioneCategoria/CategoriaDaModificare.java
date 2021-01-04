@@ -36,7 +36,7 @@ public class CategoriaDaModificare extends HttpServlet {
 		CategoriaBean categoria= dao.doRetrieveByKey(request.getParameter("nome"));
 		request.getSession().setAttribute("categoria",categoria);
 		request.getSession().setAttribute("nomecategoria",request.getParameter("nome"));
-		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/ModificaCategoriaForm.jsp"));
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/titolare/modificaCategoriaForm.jsp"));
 		
 
 

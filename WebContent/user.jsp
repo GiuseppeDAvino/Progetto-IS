@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Classimax</title>
+<title>Funisa</title>
 
 <!-- FAVICON -->
 <link href="img/favicon.png" rel="shortcut icon">
@@ -33,7 +33,24 @@
 <!-- CUSTOM CSS -->
 <link href="css/style.css" rel="stylesheet">
 <script src="script/validazioni.js"></script>
-
+	<!-- JAVASCRIPTS -->
+					<script src="plugins/jQuery/jquery.min.js"></script>
+					<script src="plugins/bootstrap/js/popper.min.js"></script>
+					<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+					<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
+					<!-- tether js -->
+					<script src="plugins/tether/js/tether.min.js"></script>
+					<script src="plugins/raty/jquery.raty-fa.js"></script>
+					<script src="plugins/slick-carousel/slick/slick.min.js"></script>
+					<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+					<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+					<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+					<!-- google map -->
+					<script
+						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+					<script src="plugins/google-map/gmap.js"></script>
+					<script src="script/script.js"></script>
+					<script type="text/javascript" src="script/gestione.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -100,7 +117,6 @@
 										</p>
 
 
-										<a href="user-profile.html" class="btn btn-main-sm">Modifica Profilo</a>
 									</div>
 
 									<!-- Dashboard Links -->
@@ -141,6 +157,16 @@
 													<%}if(utente.isStato() == false){ %>
 													<li><a href="<%=request.getContextPath() + "/cliente/confermaRegistrazione.jsp"%>"><button class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i> Verifica profilo</button></a></li>
 													<% } } %>
+													<% else if (ruolo.equals("gestore")){%>
+														
+												<li><button onclick="getRecensioni()"
+														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
+														Gestione Recensioni</button></li>
+													<li><button onclick="getSegnalazioni()"
+														class="btn btn-main-sm btn-block"><i class="fa fa-bookmark"></i>
+														Gestione Segnalazioni</button></li>
+													<%}%>
+																
 														<li><a href="Logout" onclick="getLogout()"
 																class="btn btn-main-sm btn-block"><i
 																	class="fa fa-bookmark"></i> Logout</a></li>
@@ -294,9 +320,9 @@
 																<thead id="head_tabella_gestori">
 																	<thead id="head_tabella_notifiche">
 																		<thead id="head_tabella_notifiche_t">
-																			<thead
-																				id="head_tabella_prenotazioni_utente">
-
+																			<thead id="head_tabella_prenotazioni_utente">
+																				<thead id="head_tabella_recensione">
+																				<thead id="head_tabella_segnalazione">
 																			</thead>
 																		<tbody id="gestione_prenotazioni">
 																	<tbody id="gestione_periferiche">
@@ -306,7 +332,8 @@
 														<tbody id="gestione_gestori">
 													<tbody id="gestione_notifiche">
 												<tbody id="gestione_prenotazioni_utente">
-
+												<tbody id="gestione_recensione">
+												<tbody id="gestione_segnalazione">
 												</tbody>
 											</table>
 										</div>
@@ -318,24 +345,7 @@
 				</section>
 				<%@ include file="../footer.jsp" %>
 
-					<!-- JAVASCRIPTS -->
-					<script src="plugins/jQuery/jquery.min.js"></script>
-					<script src="plugins/bootstrap/js/popper.min.js"></script>
-					<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-					<script src="plugins/bootstrap/js/bootstrap-slider.js"></script>
-					<!-- tether js -->
-					<script src="plugins/tether/js/tether.min.js"></script>
-					<script src="plugins/raty/jquery.raty-fa.js"></script>
-					<script src="plugins/slick-carousel/slick/slick.min.js"></script>
-					<script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-					<script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
-					<script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
-					<!-- google map -->
-					<script
-						src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-					<script src="plugins/google-map/gmap.js"></script>
-					<script src="script/script.js"></script>
-					<script type="text/javascript" src="script/gestione.js"></script>
+				
 		</body>
 
 		</html>
