@@ -123,7 +123,7 @@ span {
 							<ul>
 								<%
 									if (ruolo != null) {
-									if (ruolo.equals("titolare")) {
+										if (ruolo.equals("titolare")) {
 								%>
 
 								<li><button onclick="getPrenotazioni()"
@@ -171,7 +171,7 @@ span {
 
 								<%
 									}
-								} else if (ruolo.equals("gestore")) {
+										} else if (ruolo.equals("gestore")) {
 								%>
 
 								<li><button onclick="getRecensioni()"
@@ -191,12 +191,32 @@ span {
 										Logout</a></li>
 							</ul>
 						</div>
+
 					</div>
+
 				</div>
 
+				<div>
+					<span id="checkDati"> <%
+ 	session.removeAttribute("errorType");
+ 		session.removeAttribute("error");
+ 		if (errorType != null && errorType.equals("validoDati")) {
+ %> <%=error%> <%
+ 	}
+ %>
+					</span>
+							<span id="sad"> <%
+ 	session.removeAttribute("errorType");
+ 		session.removeAttribute("error");
+ 		if (errorType != null && errorType.equals("nomeCategoria")) {
+ %> <%=error%> <%
+ 	}
+ %>
+					</span>
+				</div>
 				<%
 					if (ruolo != null) {
-					if (ruolo.equals("cliente")) {
+							if (ruolo.equals("cliente")) {
 				%>
 
 				<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
@@ -222,8 +242,9 @@ span {
 						</tbody>
 					</table>
 
-					<button type="button" class="btn btn-main-sm btn-block" data-toggle="modal"
-						data-target="#exampleModalCenter">Modifica dati personali</button>
+					<button type="button" class="btn btn-main-sm btn-block"
+						data-toggle="modal" data-target="#exampleModalCenter">Modifica
+						dati personali</button>
 
 					<!-- Modal -->
 					<div class="modal fade" id="exampleModalCenter" tabindex="-1"
@@ -243,42 +264,33 @@ span {
 									<form action="ModificaDatiPersonali" method="POST">
 										<input id="nome" value="<%=utente.getNome()%>" name="nome"
 											type="text" placeholder="Nome" class="border p-3 w-100 my-2">
-										<span id="checkNome">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("nome")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+										<span id="checkNome"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("nome")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span> <input id="cognome" value="<%=utente.getCognome()%>"
 											name="cognome" type="text" placeholder="Cognome"
 											class="border p-3 w-100 my-2"> <span
-											id="checkCognome">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("cognome")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+											id="checkCognome"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("cognome")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span> <input id="username" value="<%=utente.getUsername()%>"
 											name="username" type="text" placeholder="Username"
 											class="border p-3 w-100 my-2"> <span
-											id="checkUsername">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("username")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+											id="checkUsername"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("username")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span>
 
 
@@ -295,32 +307,27 @@ span {
 					</div>
 
 					<div>
-						<span id="checkUsername">
-							<%
-								session.removeAttribute("errorType");
-							session.removeAttribute("error");
-							if (errorType != null && errorType.equals("username")) {
-							%>
-							<%=error%>
-							<%
-								}
-							%>
+						<span id="checkUsername"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("username")) {
+ %> <%=error%> <%
+ 	}
+ %>
 						</span>
 					</div>
 					<div>
-						<span id="checkDati">
-							<%
-								session.removeAttribute("errorType");
-							session.removeAttribute("error");
-							if (errorType != null && errorType.equals("validoDati")) {
-							%>
-							<%=error%>
-							<%
-								}
-							%>
+						<span id="checkDati"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("validoDati")) {
+ %> <%=error%> <%
+ 	}
+ %>
 						</span>
 					</div>
-					<button type="button" style="margin-top: 5px;margin-bottom: 10px;" class="btn btn-main-sm btn-block" data-toggle="modal"
+					<button type="button" style="margin-top: 5px; margin-bottom: 10px;"
+						class="btn btn-main-sm btn-block" data-toggle="modal"
 						data-target="#password">Modifica password</button>
 
 					<!-- Modal -->
@@ -341,42 +348,33 @@ span {
 										<input id="vecchiaPassword" name="vecchiaPassword"
 											type="password" placeholder="vecchia password"
 											class="border p-3 w-100 my-2"> <span
-											id="checkVecchiaPassword">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("vecchiaPassword")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+											id="checkVecchiaPassword"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("vecchiaPassword")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span> <input id="nuovaPassword" name="nuovaPassword"
 											type="password" placeholder="nuova password"
 											class="border p-3 w-100 my-2"> <span
-											id="checkNuovaPassword">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("nuovaPassword")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+											id="checkNuovaPassword"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("nuovaPassword")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span> <input id="confermaPassword" name="confermaPassword"
 											type="password" placeholder="conferma password"
 											class="border p-3 w-100 my-2"> <span
-											id="checkConfermaPassword">
-											<%
-												session.removeAttribute("errorType");
-											session.removeAttribute("error");
-											if (errorType != null && errorType.equals("confermaPassword")) {
-											%>
-											<%=error%>
-											<%
-												}
-											%>
+											id="checkConfermaPassword"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("confermaPassword")) {
+ %> <%=error%> <%
+ 	}
+ %>
 										</span>
 
 
@@ -394,74 +392,67 @@ span {
 						</div>
 					</div>
 					<div>
-						<span id="checkVecchiaPassword">
-							<%
-								session.removeAttribute("errorType");
-							session.removeAttribute("error");
-							if (errorType != null && errorType.equals("vecchiaPassword")) {
-							%>
-							<%=error%>
-							<%
-								}
-							%>
-						</span> <span id="checkModificaPassword">
-							<%
-								if (errorType != null && errorType.equals("validoPassword")) {
-							%> <%=error%>
-							<%
-								}
-							%>
+						<span id="checkVecchiaPassword"> <%
+ 	session.removeAttribute("errorType");
+ 				session.removeAttribute("error");
+ 				if (errorType != null && errorType.equals("vecchiaPassword")) {
+ %> <%=error%> <%
+ 	}
+ %>
+						</span> <span id="checkModificaPassword"> <%
+ 	if (errorType != null && errorType.equals("validoPassword")) {
+ %> <%=error%> <%
+ 	}
+ %>
 						</span>
 					</div>
 					<div class=" dashboard-container my-adslist">
-					<table class="table table-responsive product-dashboard-table">
-					<thead id="head_tabella_prenotazioni_utente"></thead>
-					<tbody id="gestione_prenotazioni_utente">
-					</tbody>
-					</table>
+						<table class="table table-responsive product-dashboard-table">
+							<thead id="head_tabella_prenotazioni_utente"></thead>
+							<tbody id="gestione_prenotazioni_utente">
+							</tbody>
+						</table>
+					</div>
+
 				</div>
-
-			</div>
-			<%
-				}
-			}
-			}
-			%>
+				<%
+					}
+						}
+					}
+				%>
 
 
 
-			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
-				<!-- Recently Favorited -->
-				<div class=" dashboard-container my-adslist">
-					<table class="table table-responsive product-dashboard-table">
-						<thead id="head_tabella_prenotazioni">
-						<thead id="head_tabella_categorie">
-						<thead id="head_tabella_postazioni">
-						<thead id="head_tabella_periferiche">
-						<thead id="head_tabella_utenti">
-						<thead id="head_tabella_gestori">
-						<thead id="head_tabella_notifiche">
-						<thead id="head_tabella_notifiche_t">
-						
-						<thead id="head_tabella_recensione">
-						<thead id="head_tabella_segnalazione">
-						</thead>
-						<tbody id="gestione_prenotazioni">
-						<tbody id="gestione_periferiche">
-						<tbody id="gestione_utenti">
-						<tbody id="gestione_categorie">
-						<tbody id="gestione_postazioni">
-						<tbody id="gestione_gestori">
-						<tbody id="gestione_notifiche">
-			
-						<tbody id="gestione_recensione">
-						<tbody id="gestione_segnalazione">
-						</tbody>
-					</table>
+				<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-0">
+					<!-- Recently Favorited -->
+					<div class=" dashboard-container my-adslist">
+						<table class="table table-responsive product-dashboard-table">
+							<thead id="head_tabella_prenotazioni">
+							<thead id="head_tabella_categorie">
+							<thead id="head_tabella_postazioni">
+							<thead id="head_tabella_periferiche">
+							<thead id="head_tabella_utenti">
+							<thead id="head_tabella_gestori">
+							<thead id="head_tabella_notifiche">
+							<thead id="head_tabella_notifiche_t">
+							<thead id="head_tabella_recensione">
+							<thead id="head_tabella_segnalazione">
+							</thead>
+							<tbody id="gestione_prenotazioni">
+							<tbody id="gestione_periferiche">
+							<tbody id="gestione_utenti">
+							<tbody id="gestione_categorie">
+							<tbody id="gestione_postazioni">
+							<tbody id="gestione_gestori">
+							<tbody id="gestione_notifiche">
+							<tbody id="gestione_recensione">
+							<tbody id="gestione_segnalazione">
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Row End -->
+			<!-- Row End -->
 		</div>
 		<!-- Container End -->
 	</section>

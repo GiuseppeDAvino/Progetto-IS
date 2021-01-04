@@ -69,7 +69,7 @@ class TestCase_AggiuntaRecensione extends Mockito {
 	void TC_AggiuntaRecensione_3() {
 		request.getSession().setAttribute("utente", utente);
 		request.addParameter("descrizione", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s");
-		request.addParameter("valutazione", "");
+		request.addParameter("valutazione", "no");
 		String message = "L'aggiunta della recensione non va a buon fine poiché il campo valutazione è vuoto";
 		servlet.doPost(request, response);
 		String result = (String) request.getAttribute("errorTest");

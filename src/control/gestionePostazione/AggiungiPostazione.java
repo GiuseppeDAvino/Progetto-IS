@@ -35,32 +35,36 @@ public class AggiungiPostazione extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String nomeCategoria = request.getParameter("nomeCategoria");
-		System.out.println("mammt");
+		session.setAttribute("errorType", null);
+		session.setAttribute("error",  null);
+		
+
 		if(nomeCategoria.length() == 0) {
 			request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poiché il campo nome categoria è vuoto");
-			session.setAttribute("error-type", "nomeCategoria");
+			session.setAttribute("errorType", "nomeCategoria");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
-			System.out.println("mammt1");
+
 
 		}
 		else {
 			if(!Validatore.isNomeCategoriaValid(nomeCategoria)) {
 				request.setAttribute("errorTest","L'aggiunta della postazione non va a buon fine poiché il campo nome categoria non è presente nel database");
-				session.setAttribute("error-type", "nomeCategoria");
-				session.setAttribute("error", "Campo vuoto");
+				session.setAttribute("errorType", "nomeCategoria");
+				session.setAttribute("error", "nome non presente nel sistema");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
-				System.out.println("mammt2");
+				
 
 			}
 			else {
 				request.setAttribute("errorTest","L'aggiunta della postazione va a buon fine");
-				session.setAttribute("error-type", null);
-				session.setAttribute("error",  null);
+				session.setAttribute("errorType", "validoDati");
+				session.setAttribute("error",  "Aggiunta postazione correttamente");
 				
 				PostazioneBean postazione = new PostazioneBean();
 				postazione.setCategoria(nomeCategoria);
 				postazioneDAO.doSave(postazione);
+				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			}
 		}
 		

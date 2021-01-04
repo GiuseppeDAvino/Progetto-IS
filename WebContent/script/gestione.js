@@ -29,6 +29,8 @@ function getUtenti() {
 			$('#head_tabella_notifiche_t').html("");
 			$('#gestione_utenti').html("");
 			$('#head_tabella_utenti').html("");
+			$('#gestione_categoria').html("");
+			$('#head_tabella_categoria').html("");
 
 			$('#head_tabella_utenti').html(
 				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Utenti" +
@@ -60,7 +62,7 @@ function getUtenti() {
 					"<ul class='list-inline justify-content-center'>" +
 					"<li class='list-inline-item'>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaUtente?email="+data[i].email+"'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' id='"+data[i].email+"' class='delete' href='EliminaUtente?email="+data[i].email+"'>" +
 					"<i class='fa fa-trash'></i>" +
 					"</a>" +
 					"</li>" +
@@ -247,7 +249,7 @@ function getCategorie() {
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", { onclick:'return validaAggiungicategoria();', type: 'submit', id: 'aggiungi_categoria_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", { onclick:'return validaAggiungiCategoria();', type: 'submit', id: 'aggiungi_categoria_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -469,7 +471,7 @@ function getPostazioni() {
 						$("<span id='checkNome'></span>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", {type: 'submit', id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", {type: 'submit', onclick:'return validaAggiungiPeriferica();',	id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -525,7 +527,7 @@ function getPostazioni() {
 				"<table class='table table-responsive product-dashboard-table'>" +
 				"<tr>" +
 				"<th>Postazione</th>" +
-				"<th class='text-center'>Fascia Oraria</th>" +
+				"<th class='text-center'>Disponibilita</th>" +
 				"<th class='text-center'>Azioni</th>" +
 				"</tr>");
 				
@@ -838,12 +840,12 @@ function getRecensioni() {
 					"<div class=''>" +
 					"<ul class='list-inline justify-content-center'>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Approve' class='edit' href='AccettaRecensione?utenteEmail="+ data[i].utenteEmail +"'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Approve' id='"+ data[i].utenteEmail +"' class='edit' href='AccettaRecensione?utenteEmail="+ data[i].utenteEmail +"'>" +
 					"<i class='fa fa-check'></i>" +
 					"</a>" +
 					"</li>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaRecensione?utenteEmail="+ data[i].utenteEmail +"'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' id='"+ data[i].utenteEmail +"' class='delete' href='EliminaRecensione?utenteEmail="+ data[i].utenteEmail +"'>" +
 					"<i class='fa fa-times'></i>" +
 					"</a>" +
 					"</li>" +

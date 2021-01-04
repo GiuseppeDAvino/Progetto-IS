@@ -260,9 +260,9 @@ function validaFormModificaDatiAccesso() {
 function validaAggiungiPeriferica() {
 
 	var nome = document.getElementById('aggiungi_periferica_nome');
-	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var nomeReg = /^[a-zA-Z ‘àèìòù]{3,30}$/
 	var tipo = document.getElementById('aggiungi_periferica_tipo');
-	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var tipoReg = /^[a-zA-Z ‘àèìòù]{3,30}$/
 	var quantita = document.getElementById('aggiungi_periferica_quantita');
 	var quantitaReg = /^([0-9]{0,2})$/
 	var prezzo = document.getElementById('aggiungi_periferica_prezzo');
@@ -408,12 +408,39 @@ function validaModificaPeriferica() {
 
 
 
+
+
+function validaAggiungiPeriferica() {
+
+	var nome = document.getElementById('aggiungi_postazione_nome');
+	var nomeReg = /[a-zA-Z0-9 ‘àèìòù]{3,30}/
+	
+
+	if (nome.value == null || nome.value == "") {
+		$("span").text("");
+		$("#checkNome").text("Campo nome vuoto");
+		$("#checkNome").css("color", "red");
+		console.log("nome vuoto");
+		return false;
+		
+	} else
+
+		if (!nomeReg.test(nome.value)) {
+			$("span").text("");
+			$("#checkNome").text("Formato nome errato");
+			$("#checkNome").css("color", "red");
+			console.log("Formato nome errato");
+			return false;
+		} else $("span").text("");
+
+}
+
 function validaAggiungiCategoria() {
 
 	var nome = document.getElementById('aggiungi_categoria_nome');
-	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var nomeReg = /^[a-zA-Z0-9 ‘àèìòù]{3,30}$/
 	var tipo = document.getElementById('aggiungi_categoria_tipo');
-	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var tipoReg = /^[a-zA-Z0-9 ‘àèìòù]{3,30}$/
 	var descrizione = document.getElementById('aggiungi_categoria_descrizione');
 	var descrizioneReg = /.*/
 	var prezzo = document.getElementById('aggiungi_categoria_prezzo');
@@ -456,7 +483,7 @@ function validaAggiungiCategoria() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("descrizione vuoto");
 		return false;
-	} else if (!descrizioneReg.test(descrizione.value)) {
+	} else if (!descrizioneReg.test(descrizione.value)||descrizione.value.length>100) {
 		$("span").text("");
 		$("#checkDescrizione").text("Formato descrizione errato");
 		$("#checkDescrizione").css("color", "red");
@@ -491,9 +518,9 @@ function validaAggiungiCategoria() {
 function validaModificaPostazione() {
 
 	var nome = document.getElementById('modifica_postazione_nome');
-	var nomeReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var nomeReg = /^[a-zA-Z ‘àèìòù]{3,30}$/
 	var tipo = document.getElementById('modifica_postazione_tipo');
-	var tipoReg = /[a-zA-Z ‘àèìòù]{3,30}/
+	var tipoReg = /^[a-zA-Z ‘àèìòù]{3,30}$/
 	var descrizione = document
 			.getElementById('modifica_postazione_descrizione');
 	var descrizioneReg = /.*/
@@ -570,7 +597,7 @@ function validaAggiungiNotifica() {
 		$("#checkDescrizione").css("color", "red");
 		console.log("descrizione vuoto");
 		return false;
-	} else if (!descrizioneReg.test(descrizione.value)) {
+	} else if (!descrizioneReg.test(descrizione.value)||descrizione.value.length>200) {
 		$("span").text("");
 		$("#checkDescrizione").text("Formato descrizione errato");
 		$("#checkDescrizione").css("color", "red");

@@ -27,7 +27,7 @@ public class AggiungiCategoria extends HttpServlet {
 	public AggiungiCategoria() {
 		super();
 	}
-	
+
 	public void setMock(CategoriaDAO categoriaDAO) {
 		this.categoriaDAO = categoriaDAO;
 	}
@@ -38,8 +38,12 @@ public class AggiungiCategoria extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		CategoriaBean categoria = new CategoriaBean();
 		HttpSession session = request.getSession();
+		session.setAttribute("errorType", null);
+		session.setAttribute("error", null);
+
 		String nome = request.getParameter("nome");
 		String tipoGenerico = request.getParameter("tipoGenerico");
 		String descrizione = request.getParameter("descrizione");
@@ -49,7 +53,7 @@ public class AggiungiCategoria extends HttpServlet {
 		if (request.getPart("immagine") == null) {
 			request.setAttribute("errorTest",
 					"L'aggiunta della categoria non va a buon fine poiché il campo immagine è vuoto");
-			session.setAttribute("error-type", "immagine");
+			session.setAttribute("errorType", "immagine");
 			session.setAttribute("error", "Campo vuoto");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 		} else {
@@ -58,21 +62,21 @@ public class AggiungiCategoria extends HttpServlet {
 			if (nome.length() == 0) {
 				request.setAttribute("errorTest",
 						"L'aggiunta della categoria non va a buon fine poiché il campo nome è vuoto");
-				session.setAttribute("error-type", "nome");
+				session.setAttribute("errorType", "nome");
 				session.setAttribute("error", "Campo vuoto");
 				response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 			} else {
 				if (nome.length() > 40) {
 					request.setAttribute("errorTest",
 							"L'aggiunta della categoria non va a buon fine poiché il campo nome ha una lunghezza maggiore a 40");
-					session.setAttribute("error-type", "nome");
+					session.setAttribute("errorType", "nome");
 					session.setAttribute("error", "Lunghezza errata");
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 				} else {
 					if (tipoGenerico.length() == 0) {
 						request.setAttribute("errorTest",
 								"L'aggiunta della categoria non va a buon fine poiché il campo tipoGenerico è vuoto");
-						session.setAttribute("error-type", "tipoGenerico");
+						session.setAttribute("errorType", "tipoGenerico");
 						session.setAttribute("error", "Campo vuoto");
 						response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 					}
@@ -81,14 +85,14 @@ public class AggiungiCategoria extends HttpServlet {
 						if (tipoGenerico.length() > 30) {
 							request.setAttribute("errorTest",
 									"L'aggiunta della categoria non va a buon fine poiché il campo tipoGenerico ha una lunghezza maggiore a 30");
-							session.setAttribute("error-type", "tipoGenerico");
+							session.setAttribute("errorType", "tipoGenerico");
 							session.setAttribute("error", "Lunghezza errata");
 							response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 						} else {
 							if (descrizione.length() == 0) {
 								request.setAttribute("errorTest",
 										"L'aggiunta della categoria non va a buon fine poiché il campo descrizione è vuoto");
-								session.setAttribute("error-type", "descrizione");
+								session.setAttribute("errorType", "descrizione");
 								session.setAttribute("error", "Campo vuoto");
 								response.sendRedirect(
 										response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
@@ -96,7 +100,7 @@ public class AggiungiCategoria extends HttpServlet {
 								if (descrizione.length() > 100) {
 									request.setAttribute("errorTest",
 											"L'aggiunta della categoria non va a buon fine poiché il campo descrizione ha una lunghezza maggiore di 100");
-									session.setAttribute("error-type", "descrizione");
+									session.setAttribute("errorType", "descrizione");
 									session.setAttribute("error", "Lunghezza errata");
 									response.sendRedirect(
 											response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
@@ -104,7 +108,7 @@ public class AggiungiCategoria extends HttpServlet {
 									if (prezzo.length() == 0) {
 										request.setAttribute("errorTest",
 												"L'aggiunta della categoria non va a buon fine poiché il campo prezzo è vuoto");
-										session.setAttribute("error-type", "prezzo");
+										session.setAttribute("errorType", "prezzo");
 										session.setAttribute("error", "Campo vuoto");
 										response.sendRedirect(
 												response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
@@ -114,15 +118,15 @@ public class AggiungiCategoria extends HttpServlet {
 										if (!Validatore.validaPrezzo(prezzo)) {
 											request.setAttribute("errorTest",
 													"L'aggiunta della categoria non va a buon fine poiché il campo prezzo non rispetta il formato");
-											session.setAttribute("error-type", "prezzo");
+											session.setAttribute("errorType", "prezzo");
 											session.setAttribute("error", "Formato errato");
 											response.sendRedirect(
 													response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 										} else {
 											request.setAttribute("errorTest",
 													"L'aggiunta della categoria va a buon fine");
-											session.setAttribute("error-type", null);
-											session.setAttribute("error", null);
+											session.setAttribute("errorType", "validoDati");
+											session.setAttribute("error", "Aggiunta categoria effettuata");
 
 											categoria.setNome(nome);
 											categoria.setTipoGenerico(tipoGenerico);
@@ -131,6 +135,8 @@ public class AggiungiCategoria extends HttpServlet {
 											categoria.setImmagine(immagine);
 
 											categoriaDAO.doSave(categoria);
+											response.sendRedirect(
+													response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 										}
 									}
 								}

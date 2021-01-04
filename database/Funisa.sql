@@ -21,14 +21,12 @@ INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','2');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
 
 
-
-
-
+select*from utente
 CREATE TABLE utente(
     email VARCHAR(50) PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
     cognome VARCHAR(30) NOT NULL,
-    username VARCHAR(30) NOT NULL,
+    username VARCHAR(30) UNIQUE NOT NULL,
     passw BINARY(32) NOT NULL,
     ruolo VARCHAR(10) NOT NULL,
     stato BIT NOT NULL DEFAULT 'FALSE',
@@ -37,8 +35,9 @@ CREATE TABLE utente(
     immagine VARCHAR(MAX)
 )
 
-/*Utenti inseriti tramite main java*/
 
+
+/*Utenti inseriti tramite main java*/
 
 
 CREATE TABLE segnalazione(
@@ -63,6 +62,9 @@ CREATE TABLE recensione(
 )
 
 INSERT INTO recensione VALUES('Descrizione',5,1,'cliente@cliente.com')
+INSERT INTO recensione VALUES('Titolare',5,0,'gestore@gestore.com')
+INSERT INTO recensione VALUES('Descrizione',5,1,'gaetanodf00@gmail.com')
+INSERT INTO recensione VALUES('Titolare',5,0,'mariorossi@funisa.com')
 
 
 CREATE TABLE periferica(
@@ -134,19 +136,32 @@ CREATE TABLE prenotazione_periferica(
 
 
 
+/*Query per restore db dopo Selenium
+
+delete from periferica where nome='mionix'
+delete from categoria where nome='PS4'
+
+*/
+
+
+
+
+
+
+/*
 SELECT p.nome, (p.quantita-(
 SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
 	 WHERE p.nome=pp.perifericaNome AND pr.id=pp.prenotazioneId 
 		AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')) as quantitaDisponibile,p.tipo
     FROM periferica p
- */
+ 
 
  SELECT*FROM postazione p WHERE p.isDisponibile=1 AND p.id NOT IN(SELECT p.id FROM postazione p,prenotazione pr WHERE
 				p.id=pr.postazioneId AND pr.dataPrenotazione='2021/02/02' AND pr.fasciaOraria='10/12')
 
 
 
-/*
+
 
 
  SELECT * FROM postazione p, categoria c 
@@ -154,9 +169,7 @@ SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='13/14')
 */
-select * from notifica
-select * from utente
-delete from utente where email='gaetanodf00@gmail.com'
+
 
 
 
@@ -165,9 +178,5 @@ delete from utente where email='gaetanodf00@gmail.com'
             WHERE p.isDisponibile=1 AND p.id NOT IN(
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')*/
-
-SELECT * FROM postazione p WHERE p.isDisponibile=1 AND p.nomeCategoria='PC' AND p.id NOT IN(
-SELECT p.id FROM postazione p,prenotazione pr WHERE  p.id=pr.postazioneId AND pr.dataPrenotazione='2021-02-12' AND pr.fasciaOraria='12/14')
-
 
 
