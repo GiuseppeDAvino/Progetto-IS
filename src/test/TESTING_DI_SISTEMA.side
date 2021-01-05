@@ -359,6 +359,19 @@
       ],
       "value": "${KEY_ENTER}"
     }, {
+      "id": "6ba28693-6926-4623-9b01-ec79cbd50b86",
+      "comment": "",
+      "command": "click",
+      "target": "css=.py-3",
+      "targets": [
+        ["css=.py-3", "css:finder"],
+        ["xpath=//button[@value='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/button", "xpath:idRelative"],
+        ["xpath=//fieldset/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
       "id": "d09c7702-e3ea-408b-8af1-315653698be7",
       "comment": "",
       "command": "assertText",
@@ -506,7 +519,7 @@
         ["xpath=//form[@id='loginform']/fieldset/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "mariorossi@funisa.com"
+      "value": "brunoverdi@funisa.com"
     }, {
       "id": "ffaf6678-3a62-4a5f-8a3c-cdee99773ebc",
       "comment": "",
@@ -520,7 +533,7 @@
         ["xpath=//form[@id='loginform']/fieldset/input[2]", "xpath:idRelative"],
         ["xpath=//input[2]", "xpath:position"]
       ],
-      "value": "Password00?"
+      "value": "Password01?"
     }, {
       "id": "95281ac2-cd65-4458-b7c6-e4405ddf0975",
       "comment": "",
@@ -3144,7 +3157,7 @@
         ["xpath=//input[@id='username']", "xpath:attributes"],
         ["xpath=//input[4]", "xpath:position"]
       ],
-      "value": "user"
+      "value": "titolare"
     }, {
       "id": "5e8db1c0-baf6-4e61-96f0-85f997f95b24",
       "comment": "",
@@ -3527,14 +3540,31 @@
     "id": "64ea9846-c73f-4d20-b1b5-218fbdd598f2",
     "name": "TestModificaDatiPersonali_nomeVuoto",
     "commands": [{
-      "id": "42854736-5c74-4d8f-b741-0155e33dd6e9",
+      "id": "4bd1d2e1-0292-4fff-9c5e-7da7797a63b4",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/index.jsp",
+      "target": "http://localhost:8080/Funisa/user.jsp",
       "targets": [],
       "value": ""
     }, {
-      "id": "b693c206-dbd8-4b45-bddc-c6da60708e98",
+      "id": "52dd1759-bf0b-4eb1-a11b-22c165e77aa1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b810102-3de7-442b-b843-37b5b091d16c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cf5ee11d-53e6-42c6-884f-17186ed23dc9",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -3545,18 +3575,18 @@
       ],
       "value": ""
     }, {
-      "id": "05480905-70f8-440c-b35e-f1a695c32bf0",
+      "id": "b67f1734-8a2d-4953-985f-eb50ddf157f8",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "cf855442-b795-4348-a54f-b56484adb50c",
+      "id": "412ef39f-5ee9-425f-a3c2-4e6f598a4f7c",
       "comment": "",
       "command": "click",
       "target": "id=nome",
@@ -3570,7 +3600,7 @@
       ],
       "value": ""
     }, {
-      "id": "47e0b092-985d-4dfb-aa8f-6b0a6a91b307",
+      "id": "d66f8dc7-3a80-4697-826c-7df32425705d",
       "comment": "",
       "command": "type",
       "target": "id=nome",
@@ -3584,7 +3614,7 @@
       ],
       "value": ""
     }, {
-      "id": "56629e3c-dfcc-40ac-958e-d6d892708a63",
+      "id": "e85019c2-5144-46b9-85bc-c83413364cc4",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -3596,7 +3626,7 @@
       ],
       "value": ""
     }, {
-      "id": "9cf7986e-b3bc-4623-963a-f84e731b80b3",
+      "id": "8dc3c97d-d650-44bc-a866-d3c198af804b",
       "comment": "",
       "command": "assertText",
       "target": "id=checkNome",
@@ -3607,14 +3637,31 @@
     "id": "06b8e974-67c5-424b-b7f9-de4679032de0",
     "name": "TestModificaDatiPersonali_cognomeVuoto",
     "commands": [{
-      "id": "53e7ca53-bba9-4d2c-b52c-52805018835b",
+      "id": "1bc6788c-cddc-46a7-a392-24758db46bbc",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "1981aeda-96fb-4c30-bfe4-dffb8f3585aa",
+      "id": "e666f6ed-ab65-49fb-af38-17da0d0222fc",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "78374008-e0b8-4339-9312-9b41c0d2b974",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "617cd951-577c-4bac-86dd-4fd6eeaca586",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -3625,32 +3672,30 @@
       ],
       "value": ""
     }, {
-      "id": "3cc69223-cc3e-4973-bd69-ade967e8ab98",
+      "id": "e4b1e826-4c12-416b-bdde-9d67fdb92526",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "93e2970a-cd29-47dd-b778-6fb177fc8923",
+      "id": "98a49f5f-0011-41c4-8cd4-f47f84fdf345",
       "comment": "",
       "command": "click",
-      "target": "id=cognome",
+      "target": "id=exampleModalCenter",
       "targets": [
-        ["id=cognome", "id"],
-        ["name=cognome", "name"],
-        ["css=#cognome", "css:finder"],
-        ["xpath=//input[@id='cognome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
+        ["id=exampleModalCenter", "id"],
+        ["css=#exampleModalCenter", "css:finder"],
+        ["xpath=//div[@id='exampleModalCenter']", "xpath:attributes"],
+        ["xpath=//div[3]/div", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "2543a27a-19ff-485c-8ed4-c5be8c2cf537",
+      "id": "496f8d27-62f6-4932-9995-94da3dd08b90",
       "comment": "",
       "command": "type",
       "target": "id=cognome",
@@ -3664,7 +3709,7 @@
       ],
       "value": ""
     }, {
-      "id": "ddfbdc77-ab0a-4ee6-93fb-3d7ff5577473",
+      "id": "0649bb25-6f17-4859-8a86-d243fd182328",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -3676,7 +3721,7 @@
       ],
       "value": ""
     }, {
-      "id": "04cfbe2e-d2c8-406d-baad-8bfc3f5e58d7",
+      "id": "a8c5507b-5889-4962-b078-08b010eb9cd2",
       "comment": "",
       "command": "assertText",
       "target": "id=checkCognome",
@@ -3687,14 +3732,31 @@
     "id": "56d9f8a1-3ec9-42f8-b638-686e2b370ec6",
     "name": "TestModificaDatiPersonali_usernameVuoto",
     "commands": [{
-      "id": "ea4d865d-5896-4d70-85c7-a84355960cb9",
+      "id": "8cc11898-52ba-4dc1-a9fd-45333d6a79ea",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "2e9717af-b4c4-4eb9-ad0c-b38c5a15bb1d",
+      "id": "8f7eb31e-4e34-4aca-8eb8-003f9c3fe32f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02aea81b-01d1-4d73-a6b9-8b972a32ed19",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "40e0ce26-31b6-4511-b005-826696f5d309",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -3705,98 +3767,40 @@
       ],
       "value": ""
     }, {
-      "id": "1ef00636-b6ca-4d57-9bf0-f79a747c14ef",
+      "id": "44a4e69c-475b-4078-9602-3c93bb89424e",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "8a704422-c9ca-4696-b792-ec0f0f28df2e",
+      "id": "5d450406-6061-4354-a1ad-c1da7642adf1",
       "comment": "",
-      "command": "click",
-      "target": "id=username",
+      "command": "mouseOver",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//input[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "dc11cbd2-b325-4c1e-b615-2f5c07325c81",
-      "comment": "",
-      "command": "type",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//input[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "3a517482-45eb-45c6-98d7-1c595f92ca49",
-      "comment": "",
-      "command": "click",
-      "target": "css=#exampleModalCenter .btn-primary",
-      "targets": [
-        ["css=#exampleModalCenter .btn-primary", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
-        ["xpath=//button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "452c6f25-835f-4718-898e-cc89cd0fc6ab",
-      "comment": "",
-      "command": "assertText",
-      "target": "id=checkUsername",
-      "targets": [],
-      "value": "Campo username vuoto"
-    }]
-  }, {
-    "id": "41871d43-b6fc-44cb-983a-1c3b218f1f4a",
-    "name": "TestModificaDatiPersonali_FormatoNomeErrato",
-    "commands": [{
-      "id": "36add956-0107-4357-a29b-e1452c5c3e94",
-      "comment": "",
-      "command": "open",
-      "target": "http://localhost:8080/Funisa/",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "3453d5f8-c7cb-452f-8124-e5fb192d9512",
-      "comment": "",
-      "command": "click",
-      "target": "css=.fa-user-circle",
-      "targets": [
-        ["css=.fa-user-circle", "css:finder"],
-        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
-        ["xpath=//i", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "63e53e72-4334-412b-96f2-b5cdaa6121b0",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
-      "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "859b7444-6a3b-4d3a-b87b-759f0ac459e0",
+      "id": "df0266be-5b43-4b80-bf0c-cbf16400d438",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn-main-sm:nth-child(2)",
+      "targets": [
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f05b6296-cf1c-4a14-9b98-853edff030d6",
       "comment": "",
       "command": "click",
       "target": "id=nome",
@@ -3810,7 +3814,138 @@
       ],
       "value": ""
     }, {
-      "id": "1d18038a-e253-48c7-afae-109bc6878d66",
+      "id": "e4a3064a-5909-461e-94fe-b43f61205de5",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6d9969ba-7105-4000-a4dc-d9d95b0aaf2b",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8ac87889-2a71-4854-9ac3-bbf8acc7633c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#exampleModalCenter .btn-primary",
+      "targets": [
+        ["css=#exampleModalCenter .btn-primary", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "256a6a15-828f-4a0e-b60c-b01d4334cf0d",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=checkUsername",
+      "targets": [],
+      "value": "Campo username vuoto"
+    }]
+  }, {
+    "id": "41871d43-b6fc-44cb-983a-1c3b218f1f4a",
+    "name": "TestModificaDatiPersonali_FormatoNomeErrato",
+    "commands": [{
+      "id": "c70a7c68-6a19-4102-aead-8e16860d8d61",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/user.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "15562f36-d4d8-4874-b48c-0c8053732ab5",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e49fd85-85f2-4cbf-b4ad-f8fa0e33ea64",
+      "comment": "",
+      "command": "click",
+      "target": "css=.body-wrapper",
+      "targets": [
+        ["css=.body-wrapper", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05873bb8-f17b-4489-b303-96b163465340",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=.body-wrapper",
+      "targets": [
+        ["css=.body-wrapper", "css:finder"],
+        ["xpath=//body", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "179dde70-23e6-4025-8b20-3e4d3483d76f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7da1bee9-94fa-4a12-9ad6-62647516fa0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15c93d4d-bc01-40d8-8b7e-67800bbe3aee",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-main-sm:nth-child(2)",
+      "targets": [
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
+        ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
+        ["xpath=//div[3]/button", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5b77e22e-98a9-4225-a45c-2b16940b4f47",
+      "comment": "",
+      "command": "click",
+      "target": "id=nome",
+      "targets": [
+        ["id=nome", "id"],
+        ["name=nome", "name"],
+        ["css=#nome", "css:finder"],
+        ["xpath=//input[@id='nome']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4af988fe-228f-490c-b4c8-1f9f5fb43e9b",
       "comment": "",
       "command": "type",
       "target": "id=nome",
@@ -3824,7 +3959,7 @@
       ],
       "value": "Bruno1"
     }, {
-      "id": "469ed406-9331-44c9-93bf-d4d8fee84515",
+      "id": "efbcde73-8adc-4c0d-88c0-eb3c7d87a944",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -3836,7 +3971,31 @@
       ],
       "value": ""
     }, {
-      "id": "632b9f7f-8d14-495e-bc2b-666308cd9b99",
+      "id": "fea9d06d-edbc-4eb2-9803-d416fa14a4ac",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=#exampleModalCenter .btn-primary",
+      "targets": [
+        ["css=#exampleModalCenter .btn-primary", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98c1538c-fdaf-477b-872b-ad05f4ab3789",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=#exampleModalCenter .btn-primary",
+      "targets": [
+        ["css=#exampleModalCenter .btn-primary", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac3ca905-6be8-4263-b88d-ec9d5178a238",
       "comment": "",
       "command": "assertText",
       "target": "id=checkNome",
@@ -3847,14 +4006,31 @@
     "id": "d7419d58-0059-41a5-b1a0-04f7075196b9",
     "name": "TestModificaDatiPersonali_FormatoCognomeErrato",
     "commands": [{
-      "id": "50da7d64-f017-4eb9-94fe-6251068a81fe",
+      "id": "a2b156f6-33a7-47f8-b393-06be3c79fce0",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "8b91cdf7-393a-45b0-bc60-601c37bd9a10",
+      "id": "27bdf81f-9402-429a-b295-812b686c174a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e6dbbe86-cccd-48f0-8cd5-1e00f012086d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8b50e736-5e67-4391-b47a-e65287ebf3a5",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -3865,46 +4041,46 @@
       ],
       "value": ""
     }, {
-      "id": "c5649bb2-e096-4dcf-911a-2e0df29f9e9c",
+      "id": "63561f29-ef10-4c83-89cb-f34d20c3c2bd",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "9a2b4439-9033-42cd-bb7e-a38b479da753",
+      "id": "acab348c-62c8-4bd9-9d2a-9a3c983978b5",
       "comment": "",
       "command": "click",
       "target": "id=cognome",
       "targets": [
-        ["id=nome", "id"],
-        ["name=nome", "name"],
-        ["css=#nome", "css:finder"],
-        ["xpath=//input[@id='nome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//form/input", "xpath:position"]
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "f42f038f-a538-449a-a178-ff33d8cd2c8b",
+      "id": "db647c21-29aa-4596-896e-d21d7b1cd29f",
       "comment": "",
       "command": "type",
       "target": "id=cognome",
       "targets": [
-        ["id=nome", "id"],
-        ["name=nome", "name"],
-        ["css=#nome", "css:finder"],
-        ["xpath=//input[@id='nome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//form/input", "xpath:position"]
+        ["id=cognome", "id"],
+        ["name=cognome", "name"],
+        ["css=#cognome", "css:finder"],
+        ["xpath=//input[@id='cognome']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
       ],
       "value": "Verdi1"
     }, {
-      "id": "4c46c406-2e81-4511-aded-c3e67f9550ea",
+      "id": "870f109d-b1b8-41e5-86b8-75fc4cdc44e2",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -3916,7 +4092,7 @@
       ],
       "value": ""
     }, {
-      "id": "f6d0d106-58d3-44e2-a44e-0c3d5b23d851",
+      "id": "3ab4af5f-2867-4c45-97f0-5b575ee99c3d",
       "comment": "",
       "command": "assertText",
       "target": "id=checkCognome",
@@ -3927,14 +4103,31 @@
     "id": "68916be0-2212-4f88-a371-914ff13b900c",
     "name": "TestModificaDatiPersonali_FormatoUsernameErrato",
     "commands": [{
-      "id": "6d18e7da-4fe4-4bc8-b227-d3532d358d2a",
+      "id": "d16e3a36-d7f1-46ed-b398-bea848aa2dfc",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "d20000e7-66ab-40d8-b50d-04136d408c4f",
+      "id": "cabb859f-1a57-4993-b75c-f9c457924a33",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "73e9de27-eff9-4e4d-8afc-4ea5d8f89fa5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32194e0c-2538-407a-83db-2b6df2e76cfc",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -3945,46 +4138,46 @@
       ],
       "value": ""
     }, {
-      "id": "55e4cbf8-46a8-4f6d-84b9-1ad7d5cfa751",
+      "id": "786e5351-6abc-4bab-8113-e7a4f776a26a",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "8b0c197a-2bd1-4234-bd2e-0374de6aeb2d",
+      "id": "b4141117-461b-4035-beaa-db47405dea8a",
       "comment": "",
       "command": "click",
       "target": "id=username",
       "targets": [
-        ["id=nome", "id"],
-        ["name=nome", "name"],
-        ["css=#nome", "css:finder"],
-        ["xpath=//input[@id='nome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//form/input", "xpath:position"]
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "4e7a1db9-c492-423a-9d71-5c95e8b7403f",
+      "id": "c7062f01-0aa0-4718-8de2-eceb53195ecb",
       "comment": "",
       "command": "type",
       "target": "id=username",
       "targets": [
-        ["id=nome", "id"],
-        ["name=nome", "name"],
-        ["css=#nome", "css:finder"],
-        ["xpath=//input[@id='nome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//form/input", "xpath:position"]
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
       ],
-      "value": "BrunoVerdi?"
+      "value": "BrunoVerdi01?"
     }, {
-      "id": "23181731-1abe-4c74-ab1a-0703667c6525",
+      "id": "02da7490-fee2-48c4-a909-67ba8903725d",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -3996,7 +4189,7 @@
       ],
       "value": ""
     }, {
-      "id": "9bd9f997-56eb-4617-b46d-5e595a79b66f",
+      "id": "c4cd9f84-7e90-41bf-b420-e6f612c96ed5",
       "comment": "",
       "command": "assertText",
       "target": "id=checkUsername",
@@ -4007,14 +4200,31 @@
     "id": "daea169e-3960-4b83-b8c5-9fab3d87405e",
     "name": "TestModificaDatiPersonali_UsernameEsistente",
     "commands": [{
-      "id": "d9d46abe-b2c8-471f-9533-16a984ed4a56",
+      "id": "8f87512c-ecd1-4bce-907b-942440f931c5",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/index.jsp",
+      "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "59f140f0-159c-42e0-96eb-1ea30efc1049",
+      "id": "c955bf2d-c73b-402c-af37-84529d6fe675",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4cc61f1d-a804-42ed-a0c8-e243a70f7e3f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "afe2dbe7-7868-4616-988f-baf5b46d28f8",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -4025,18 +4235,18 @@
       ],
       "value": ""
     }, {
-      "id": "7280e690-2049-47cc-a564-c79925123106",
+      "id": "fe4387f6-1ed7-4896-b912-636b6fb6ed01",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.btn-main-sm:nth-child(2)",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "dba03a64-3db7-4633-a2f1-166c46a57e3c",
+      "id": "8d4c1384-ceb1-4587-ad37-836584431879",
       "comment": "",
       "command": "click",
       "target": "id=username",
@@ -4050,7 +4260,7 @@
       ],
       "value": ""
     }, {
-      "id": "fa4a6f89-7512-4750-8f81-a2a43b151086",
+      "id": "aceebf20-ed6a-40e8-ad56-3ebb424f6b3c",
       "comment": "",
       "command": "type",
       "target": "id=username",
@@ -4062,9 +4272,9 @@
         ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
         ["xpath=//input[3]", "xpath:position"]
       ],
-      "value": "user"
+      "value": "titolare"
     }, {
-      "id": "dfbe1834-1d31-4a95-89bf-ba0ec4cfffd6",
+      "id": "4c424949-e835-42fd-a46e-8f6c0353adbc",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -4076,47 +4286,69 @@
       ],
       "value": ""
     }, {
-      "id": "5837f9f9-e49d-4323-a171-ac4773b620f6",
+      "id": "19422b80-dfe8-4d5e-96f2-f54bd889d3b9",
       "comment": "",
-      "command": "assertText",
+      "command": "click",
       "target": "css=div > #checkUsername",
-      "targets": [],
-      "value": "Username già esistente nel sistema"
+      "targets": [
+        ["css=div > #checkUsername", "css:finder"],
+        ["xpath=(//span[@id='checkUsername'])[2]", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/span", "xpath:position"]
+      ],
+      "value": ""
     }]
   }, {
     "id": "0d95496b-d5d3-4e4a-8137-09b63b7b50a5",
     "name": "TestModificaDatiPersonali_inputValidi",
     "commands": [{
-      "id": "d9a50a24-d660-4243-abac-f52dfc008b77",
+      "id": "65418f3b-cada-42d1-9d7c-169e950d28b8",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/index.jsp",
+      "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "3db90f9a-7b9b-447a-8c1a-a1f7928ac7a2",
+      "id": "d99e8e50-5668-4393-a26b-89b7e210201e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "36be0b0c-bec5-4e88-932a-536295f8cdb0",
       "comment": "",
       "command": "click",
-      "target": "css=.fa-user-circle",
+      "target": "css=.navbar-brand > img",
       "targets": [
-        ["css=.fa-user-circle", "css:finder"],
-        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
-        ["xpath=//i", "xpath:position"]
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "f14c8a28-f629-4887-a30a-e01164ab4e4c",
+      "id": "1b0f8121-04fe-4ae8-8906-366f5d5735b6",
       "comment": "",
       "command": "click",
-      "target": "css=.btn-primary:nth-child(1)",
+      "target": "css=.mt-10 > .nav-item:nth-child(1) > .nav-link",
       "targets": [
-        ["css=.btn-primary:nth-child(1)", "css:finder"],
+        ["css=.mt-10 > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Funisa/user.jsp')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef768e29-3c46-4416-b45d-25f31c3e2678",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-main-sm:nth-child(2)",
+      "targets": [
+        ["css=.btn-main-sm:nth-child(2)", "css:finder"],
         ["xpath=(//button[@type='button'])[2]", "xpath:attributes"],
-        ["xpath=//div[2]/button", "xpath:position"]
+        ["xpath=//div[3]/button", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "164053f0-702c-448b-853f-b738eb721ad6",
+      "id": "83bce0e0-1acd-4040-8bfc-57feb74bd62f",
       "comment": "",
       "command": "click",
       "target": "id=nome",
@@ -4130,7 +4362,7 @@
       ],
       "value": ""
     }, {
-      "id": "02f1a1d6-0f81-439c-a552-e75d365e9f4b",
+      "id": "b2914794-4304-441c-b2b5-56a2332c07c8",
       "comment": "",
       "command": "type",
       "target": "id=nome",
@@ -4144,77 +4376,7 @@
       ],
       "value": "Brunetto"
     }, {
-      "id": "8c3045c5-f40f-4705-89e2-8f7ecd0e135e",
-      "comment": "",
-      "command": "type",
-      "target": "id=cognome",
-      "targets": [
-        ["id=cognome", "id"],
-        ["name=cognome", "name"],
-        ["css=#cognome", "css:finder"],
-        ["xpath=//input[@id='cognome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
-      ],
-      "value": "Verde"
-    }, {
-      "id": "8d7f836d-d76c-45f5-be64-6ed4243f7efd",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=cognome",
-      "targets": [
-        ["id=cognome", "id"],
-        ["name=cognome", "name"],
-        ["css=#cognome", "css:finder"],
-        ["xpath=//input[@id='cognome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
-      ],
-      "value": "${KEY_DOWN}"
-    }, {
-      "id": "8a508f4d-9d61-4c3c-957f-b73831062ea0",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=cognome",
-      "targets": [
-        ["id=cognome", "id"],
-        ["name=cognome", "name"],
-        ["css=#cognome", "css:finder"],
-        ["xpath=//input[@id='cognome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
-      ],
-      "value": "${KEY_DOWN}"
-    }, {
-      "id": "afb4986a-3336-4025-a314-d1845ea43cdf",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=cognome",
-      "targets": [
-        ["id=cognome", "id"],
-        ["name=cognome", "name"],
-        ["css=#cognome", "css:finder"],
-        ["xpath=//input[@id='cognome']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//input[2]", "xpath:position"]
-      ],
-      "value": "${KEY_TAB}"
-    }, {
-      "id": "76b7dd71-dc23-43d4-ba74-ec3df5784fb2",
-      "comment": "",
-      "command": "type",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div[@id='exampleModalCenter']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//input[3]", "xpath:position"]
-      ],
-      "value": "BrunoVerde1"
-    }, {
-      "id": "a955116e-2999-4e2d-9080-eeea023c6d94",
+      "id": "852a0777-8b19-4717-aa48-2a0a457b5abe",
       "comment": "",
       "command": "click",
       "target": "css=#exampleModalCenter .btn-primary",
@@ -4226,120 +4388,48 @@
       ],
       "value": ""
     }, {
-      "id": "95cee8c4-9ed9-4fac-9c46-17179216d221",
+      "id": "ae122f29-b36c-40ae-abad-62da0206a61e",
       "comment": "",
-      "command": "assertText",
+      "command": "click",
       "target": "id=checkDati",
-      "targets": [],
-      "value": "La modifica dei dati personali è stata effettuata"
+      "targets": [
+        ["id=checkDati", "id"],
+        ["css=div:nth-child(2) > #checkDati", "css:finder"],
+        ["xpath=//span[@id='checkDati']", "xpath:attributes"],
+        ["xpath=//div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'La modifica dei dati personali è stata effettuata')]", "xpath:innerText"]
+      ],
+      "value": ""
     }]
   }, {
     "id": "0cecb28a-6f69-44c4-9e4f-e19ff2d59e3d",
-    "name": "TestModificaDatiAccesso_vecchiaPasswordVuota",
-    "commands": [{
-      "id": "f8225f9f-73d6-4f30-8487-e43b29521455",
-      "comment": "",
-      "command": "open",
-      "target": "http://localhost:8080/Funisa/",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "ad0d1ceb-de76-4d73-85df-9e1965173a8a",
-      "comment": "",
-      "command": "click",
-      "target": "css=.fa-user-circle",
-      "targets": [
-        ["css=.fa-user-circle", "css:finder"],
-        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
-        ["xpath=//i", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "dfe90921-1a24-4033-bf32-5d08dd3e83df",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn:nth-child(5)",
-      "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
-        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
-        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "c3b87c5f-2722-4dcb-8f4c-bd0a5c66e403",
-      "comment": "",
-      "command": "click",
-      "target": "id=nuovaPassword",
-      "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "11ced220-7a53-4606-805b-7da0f8ce4705",
-      "comment": "",
-      "command": "type",
-      "target": "id=nuovaPassword",
-      "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "cc7d2c39-4993-4c00-ab5b-f18eaee9b93c",
-      "comment": "",
-      "command": "type",
-      "target": "id=confermaPassword",
-      "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "c85a430c-7153-40d5-9767-d2fe18727b7d",
-      "comment": "",
-      "command": "click",
-      "target": "css=#password .btn-primary",
-      "targets": [
-        ["css=#password .btn-primary", "css:finder"],
-        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/div/button[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "21995fe8-05e7-43a5-b63a-4841dc86216c",
-      "comment": "",
-      "command": "assertText",
-      "target": "id=checkVecchiaPassword",
-      "targets": [],
-      "value": "Campo vecchia password vuoto"
-    }]
-  }, {
-    "id": "aa85d79a-259e-4ac8-a55f-cf6cb11d06ba",
     "name": "TestModificaDatiAccesso_nuovaPasswordVuota",
     "commands": [{
-      "id": "fccc5a75-9718-40bd-b4ba-1ea6614bff4d",
+      "id": "a2d85d36-5300-4008-b49f-2bb534259374",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "ede7e6d1-2b21-4155-9c69-f59d8b81cb5e",
+      "id": "b6a029ca-006c-4597-b045-ddd1c590f32b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "32aefa68-8326-4634-bdb0-357dac74611e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48395521-3ad1-4388-8ee0-f14c144f91a3",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -4350,61 +4440,47 @@
       ],
       "value": ""
     }, {
-      "id": "1b115616-bd9b-465a-9d4a-4f982abda790",
+      "id": "31f930c4-9e9b-4c29-969c-86dcc720e402",
       "comment": "",
       "command": "click",
-      "target": "css=.btn:nth-child(5)",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
+        ["css=.btn:nth-child(6)", "css:finder"],
         ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "3eb7758c-5ea5-4c6a-b1a7-804100217224",
+      "id": "912e8e25-78c6-44ed-8124-3a3bedf2b13b",
       "comment": "",
       "command": "click",
       "target": "id=vecchiaPassword",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "3879a057-b1e5-49ef-a27c-47309dd7fa0b",
+      "id": "53c204a9-72f9-4bd6-a7bb-617cdf4a08a9",
       "comment": "",
       "command": "type",
       "target": "id=vecchiaPassword",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
       ],
       "value": "Password01?"
     }, {
-      "id": "d20b0d92-ac2b-4e96-9774-3f9cbbdb2315",
-      "comment": "",
-      "command": "type",
-      "target": "id=confermaPassword",
-      "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "0010f994-fbf9-4d66-801e-2f36ecb8e1d5",
+      "id": "c5f6d1f7-deed-4256-b2ce-db414ac1beb6",
       "comment": "",
       "command": "click",
       "target": "css=#password .btn-primary",
@@ -4416,7 +4492,7 @@
       ],
       "value": ""
     }, {
-      "id": "e50e030d-c67e-4dbc-867a-e987701a3ca8",
+      "id": "6afe6e2c-2d87-40a0-b388-bf5d5becf965",
       "comment": "",
       "command": "assertText",
       "target": "id=checkNuovaPassword",
@@ -4424,89 +4500,82 @@
       "value": "Campo nuova password vuoto"
     }]
   }, {
-    "id": "05ca2806-ad49-423a-b8b3-a7612d03d222",
-    "name": "TestModificaDatiAccesso_confermaPasswordVuota",
+    "id": "aa85d79a-259e-4ac8-a55f-cf6cb11d06ba",
+    "name": "TestModificaDatiAccesso_vecchiaPasswordVuota",
     "commands": [{
-      "id": "939c2017-bb13-4419-99e1-724ffeee34ed",
+      "id": "7a0a4aaa-aa25-4606-9622-0c6b22fb4b12",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "c3ad47e4-ec06-4c6c-919c-1ebd2feb9c77",
+      "id": "1c191120-4b30-4860-ab7e-5724ec138a63",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0ef7c027-b44d-4ac7-9b34-b8c86b9cc300",
       "comment": "",
       "command": "click",
-      "target": "css=.fa-user-circle",
+      "target": "css=.navbar-brand > img",
       "targets": [
-        ["css=.fa-user-circle", "css:finder"],
-        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
-        ["xpath=//i", "xpath:position"]
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "02b714ad-336b-4b04-b5d8-e68dbbaf2ba3",
+      "id": "5b229ccd-d12d-455a-88f6-a5cbbed4af36",
       "comment": "",
       "command": "click",
-      "target": "css=.btn:nth-child(5)",
+      "target": "css=.mt-10 > .nav-item:nth-child(1) > .nav-link",
       "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
+        ["css=.mt-10 > .nav-item:nth-child(1) > .nav-link", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/Funisa/user.jsp')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "118d2023-0e7c-4485-a737-6ecc714b2dc0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(6)",
+      "targets": [
+        ["css=.btn:nth-child(6)", "css:finder"],
         ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "2a808c1d-a9b8-4fc3-a597-cb47720509e7",
+      "id": "d20beded-a981-4a48-b545-d062fb6968ab",
       "comment": "",
-      "command": "click",
-      "target": "id=vecchiaPassword",
+      "command": "mouseOver",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "bb526466-a52a-45c8-a148-3c5b1a7db7e2",
+      "id": "dba13b4b-8171-4713-bb91-586e6adcccdb",
       "comment": "",
-      "command": "type",
-      "target": "id=vecchiaPassword",
+      "command": "mouseOut",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
-      "value": "Password01?"
-    }, {
-      "id": "9db0798f-3989-4acd-9098-cd93c57e26dc",
-      "comment": "",
-      "command": "click",
-      "target": "id=nuovaPassword",
-      "targets": [],
       "value": ""
     }, {
-      "id": "00ac88c0-c3c7-447c-8584-63bd66bc9c70",
-      "comment": "",
-      "command": "type",
-      "target": "id=nuovaPassword",
-      "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "8771c56f-13e0-4090-bdac-14905931c663",
+      "id": "22a29cf8-ebe8-443d-a09c-2630b7b7696b",
       "comment": "",
       "command": "click",
       "target": "css=#password .btn-primary",
@@ -4518,7 +4587,119 @@
       ],
       "value": ""
     }, {
-      "id": "ed880108-6521-43e0-8bef-98ffa2dc91c9",
+      "id": "17d7ffb3-26c5-4927-9b33-49d3c1a5dce3",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=checkVecchiaPassword",
+      "targets": [],
+      "value": "Campo vecchia password vuoto"
+    }]
+  }, {
+    "id": "05ca2806-ad49-423a-b8b3-a7612d03d222",
+    "name": "TestModificaDatiAccesso_confermaPasswordVuota",
+    "commands": [{
+      "id": "9b2b4176-2139-4fe7-98d5-2fc94f0d8eb7",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/user.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6ee720e-4632-47c0-b1b2-e1686f2ddc4d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0486b68-8bd8-42d0-915c-79b6d348d9ad",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8e239e19-7ceb-4af3-99f3-03bef15a85e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2a457bb6-40e2-4f6b-8fed-e632f5a1417b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(6)",
+      "targets": [
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c629182d-3212-4355-b09b-508ca45b781d",
+      "comment": "",
+      "command": "click",
+      "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "02b4df15-23fe-4e25-8153-1e101fad3a70",
+      "comment": "",
+      "command": "type",
+      "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "Password01?"
+    }, {
+      "id": "3d150cfc-519a-49ee-ae99-09fc26dc4ab9",
+      "comment": "",
+      "command": "type",
+      "target": "id=nuovaPassword",
+      "targets": [
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": "Password00?"
+    }, {
+      "id": "9340a50d-855c-45c6-805d-4ad2349a67f3",
+      "comment": "",
+      "command": "click",
+      "target": "css=#password .btn-primary",
+      "targets": [
+        ["css=#password .btn-primary", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/div/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7752024-14c9-4633-8314-8b6903191dde",
       "comment": "",
       "command": "assertText",
       "target": "id=checkConfermaPassword",
@@ -4529,14 +4710,31 @@
     "id": "2a88eaec-ccbb-4ded-bdba-7f20186bf927",
     "name": "TestModificaDatiAccesso_FormatoNuovaPasswordErrato",
     "commands": [{
-      "id": "b7f9b64f-a44d-4f2c-9c9f-a351e256751d",
+      "id": "b798d1cb-12ed-46df-b2bf-9a9d2cc8fed2",
       "comment": "",
       "command": "open",
       "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "7020cf7e-eee7-45c6-a193-f6a8b9376c50",
+      "id": "d3e14d4a-7c17-419f-bc5a-add442e142ad",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8662abee-9c9b-4672-a75a-4ed860fad5ff",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9bd992a0-1508-4cd7-9591-0f154ca9aef8",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -4547,82 +4745,75 @@
       ],
       "value": ""
     }, {
-      "id": "68d84419-e58d-4974-9a0b-8cab7210e0d8",
+      "id": "558d2bca-6c25-478a-bec3-47260120d573",
       "comment": "",
       "command": "click",
-      "target": "css=.btn:nth-child(5)",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
+        ["css=.btn:nth-child(6)", "css:finder"],
         ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "eb0d9227-eb30-434a-bbdb-ecdf64cdcd94",
+      "id": "d9f489e8-5e1d-44d1-942a-8caeaf5e7036",
       "comment": "",
       "command": "click",
       "target": "id=vecchiaPassword",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
       ],
       "value": ""
     }, {
-      "id": "1368339c-b1e5-46f7-85ef-9ceaf587f00b",
+      "id": "6897efd7-9786-490b-b3df-45cc87f3129e",
       "comment": "",
       "command": "type",
       "target": "id=vecchiaPassword",
       "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
       ],
       "value": "Password01?"
     }, {
-      "id": "283bb366-4319-4256-af3f-3405c7693cc4",
+      "id": "51cadaa4-178f-458e-b9e2-851e4617f91d",
       "comment": "",
       "command": "click",
       "target": "id=nuovaPassword",
-      "targets": [],
+      "targets": [
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+      ],
       "value": ""
     }, {
-      "id": "b9513ad5-4e37-4558-8e51-2f7caa48fc14",
+      "id": "d41b94b4-46d5-4d2d-98c4-2cbaa2d83609",
       "comment": "",
       "command": "type",
       "target": "id=nuovaPassword",
       "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
       ],
-      "value": "Password"
+      "value": "prova"
     }, {
-      "id": "d9b8e97e-3909-4c80-92da-ad7b7b555cf9",
-      "comment": "",
-      "command": "click",
-      "target": "id=confermaPassword",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "eedda051-4a02-4ffd-9526-c16ef6ea5d3e",
-      "comment": "",
-      "command": "type",
-      "target": "id=confermaPassword",
-      "targets": [],
-      "value": "Password00?"
-    }, {
-      "id": "9119829c-df59-4e97-b5e8-c92b37555ecb",
+      "id": "b660800c-99ca-49b8-a0b6-42f1cc250ecf",
       "comment": "",
       "command": "click",
       "target": "css=#password .btn-primary",
@@ -4634,7 +4825,7 @@
       ],
       "value": ""
     }, {
-      "id": "f4964f07-7491-46c0-8674-24dc269de41b",
+      "id": "c468c3f7-3f1d-4f2c-86c9-c9f97e40e8a3",
       "comment": "",
       "command": "assertText",
       "target": "id=checkNuovaPassword",
@@ -4645,14 +4836,31 @@
     "id": "ee37485d-0ae5-4680-9ef7-c6b7097b9930",
     "name": "TestModificaDatiAccesso_PasswordNonCorrispondenti",
     "commands": [{
-      "id": "85529a2d-0b6f-44b1-8fa7-593c23d5bb30",
+      "id": "2521c838-d8db-4989-81d5-77980f150af6",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/",
+      "target": "http://localhost:8080/Funisa/user.jsp",
       "targets": [],
       "value": ""
     }, {
-      "id": "9d079efe-3440-4bfb-a86f-e4768f0bf474",
+      "id": "51e8c4cd-e007-458b-8bb1-528a71c792e8",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e1e65d5-4dcb-4fcf-b3e1-a0c59dce6e96",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c0585c9-ff49-4566-928c-1064e3f87bed",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -4663,22 +4871,50 @@
       ],
       "value": ""
     }, {
-      "id": "d9df48fd-54a2-40ba-9ae8-f5a09e15c64a",
+      "id": "c4e05d6e-b0e8-4cc2-ac8b-93c8b92d0978",
       "comment": "",
       "command": "click",
-      "target": "css=.btn:nth-child(5)",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
+        ["css=.btn:nth-child(6)", "css:finder"],
         ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "a81c2e5d-1c06-4d25-ba7e-e59212613b9a",
+      "id": "1a298b9b-65a4-4109-ab43-59eb4d681db9",
       "comment": "",
       "command": "click",
       "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "278fa211-bc2b-4c80-81f1-d61ff30d59bf",
+      "comment": "",
+      "command": "type",
+      "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "Password01?"
+    }, {
+      "id": "5a40e262-c4e4-4f1b-8512-dd184dc3e5cc",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuovaPassword",
       "targets": [
         ["id=nuovaPassword", "id"],
         ["name=nuovaPassword", "name"],
@@ -4689,10 +4925,10 @@
       ],
       "value": ""
     }, {
-      "id": "fd190bb1-79cc-49c5-98d2-5cec8453f2ba",
+      "id": "872fecb2-5aa4-4dce-b1af-eb2c831b6688",
       "comment": "",
       "command": "type",
-      "target": "id=vecchiaPassword",
+      "target": "id=nuovaPassword",
       "targets": [
         ["id=nuovaPassword", "id"],
         ["name=nuovaPassword", "name"],
@@ -4703,17 +4939,10 @@
       ],
       "value": "Password01?"
     }, {
-      "id": "af09edab-6c58-43f7-b9dc-4335708d1008",
+      "id": "62453bef-c713-4244-be1e-cf515c525aa6",
       "comment": "",
       "command": "click",
-      "target": "id=nuovaPassword",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "98481872-6c3a-4941-a3ee-4d20d078161f",
-      "comment": "",
-      "command": "type",
-      "target": "id=nuovaPassword",
+      "target": "id=confermaPassword",
       "targets": [
         ["id=confermaPassword", "id"],
         ["name=confermaPassword", "name"],
@@ -4722,23 +4951,23 @@
         ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
         ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
       ],
-      "value": "Password00?"
-    }, {
-      "id": "8fd85eea-b08a-41d8-8979-37e4cb1cb5d1",
-      "comment": "",
-      "command": "click",
-      "target": "id=confermaPassword",
-      "targets": [],
       "value": ""
     }, {
-      "id": "220a3b9d-8f8a-45fd-b542-f33157593ec4",
+      "id": "5f2b4dc5-bbd1-4704-9192-89b41857ccd3",
       "comment": "",
       "command": "type",
       "target": "id=confermaPassword",
-      "targets": [],
-      "value": "Password00"
+      "targets": [
+        ["id=confermaPassword", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confermaPassword", "css:finder"],
+        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
+      ],
+      "value": "password"
     }, {
-      "id": "838609e4-fb16-4390-b6fd-404b84f56735",
+      "id": "283db2d9-d35a-4ccc-977e-05f75f0b2842",
       "comment": "",
       "command": "click",
       "target": "css=#password .btn-primary",
@@ -4750,7 +4979,7 @@
       ],
       "value": ""
     }, {
-      "id": "4bef931d-d7cb-4067-ab37-16d553d1f607",
+      "id": "74d8db30-4ceb-4e03-b425-d085c93a19a3",
       "comment": "",
       "command": "assertText",
       "target": "id=checkConfermaPassword",
@@ -4759,23 +4988,33 @@
     }]
   }, {
     "id": "5d41b6c5-4b77-4875-b679-140c3cff1e54",
-    "name": "TestModificaDatiAccesso_inputCorretto",
+    "name": "TestModificaDatiAccesso_vecchiaPasswordErrata",
     "commands": [{
-      "id": "dc9ec4c0-682c-404d-b77a-4db0336ce72a",
+      "id": "98a99c1f-ee8a-4449-aa18-8cfa12571279",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/index.jsp",
+      "target": "http://localhost:8080/Funisa/",
       "targets": [],
       "value": ""
     }, {
-      "id": "aebfe423-2529-4d9b-8d25-3e0e1bc732fb",
+      "id": "fd3fb923-b3dc-4449-b003-b9206343c2e6",
       "comment": "",
       "command": "setWindowSize",
-      "target": "1920x1040",
+      "target": "1936x1056",
       "targets": [],
       "value": ""
     }, {
-      "id": "390f8d1d-321d-4eb2-9c72-cdebce2400c0",
+      "id": "88645087-993f-477b-9cec-2c761995cdee",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3c17244-a414-44b7-a446-bf65ede82796",
       "comment": "",
       "command": "click",
       "target": "css=.fa-user-circle",
@@ -4786,19 +5025,19 @@
       ],
       "value": ""
     }, {
-      "id": "8c5ce820-813c-4885-9bd7-f360e9d7c60a",
+      "id": "97b773c8-bfb2-48a7-84b7-e358f752b74c",
       "comment": "",
       "command": "click",
-      "target": "css=.btn:nth-child(5)",
+      "target": "css=.btn:nth-child(6)",
       "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
+        ["css=.btn:nth-child(6)", "css:finder"],
         ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
       ],
       "value": ""
     }, {
-      "id": "3f1f3d71-502d-4342-b399-d66da4a3507d",
+      "id": "b84def0b-17e5-4d97-bcea-a09038b32c6c",
       "comment": "",
       "command": "click",
       "target": "id=vecchiaPassword",
@@ -4812,7 +5051,161 @@
       ],
       "value": ""
     }, {
-      "id": "fb315496-8ab7-4d51-957f-e01e1db5592f",
+      "id": "63010ca7-a023-4018-acc9-5dfede1f5102",
+      "comment": "",
+      "command": "type",
+      "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "3cb37be3-7dfc-431b-bc9a-e94c950ddf52",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuovaPassword",
+      "targets": [
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "739da1f8-f0f9-4eda-b335-45b04995d208",
+      "comment": "",
+      "command": "type",
+      "target": "id=nuovaPassword",
+      "targets": [
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": "Password00?"
+    }, {
+      "id": "05a07340-16a0-4f63-acc7-299c026853b3",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermaPassword",
+      "targets": [
+        ["id=confermaPassword", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confermaPassword", "css:finder"],
+        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e5aae904-94f7-482e-ae26-f279c154ab27",
+      "comment": "",
+      "command": "type",
+      "target": "id=confermaPassword",
+      "targets": [
+        ["id=confermaPassword", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confermaPassword", "css:finder"],
+        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
+      ],
+      "value": "Password00?"
+    }, {
+      "id": "4a967b40-4a92-47b4-9d40-124003067855",
+      "comment": "",
+      "command": "click",
+      "target": "css=#password .btn-primary",
+      "targets": [
+        ["css=#password .btn-primary", "css:finder"],
+        ["xpath=(//button[@type='submit'])[2]", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/div/button[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/div/button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4411bb02-2ec0-4f0d-aaf8-4878db241b33",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=div > #checkVecchiaPassword",
+      "targets": [],
+      "value": "Vecchia password errata"
+    }]
+  }, {
+    "id": "f5a09a47-48e2-41d4-82a2-f3314b935d24",
+    "name": "TestModificaDatiAccesso_inputCorretti",
+    "commands": [{
+      "id": "f986126c-1355-40c3-8880-4424e51c8db1",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b864349b-edbe-406f-90f2-a8617cc0b971",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "eba59e15-daab-487b-93a2-0cec0d31d899",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d453645a-c358-4e21-b680-4af8761f7113",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6da6f956-0934-485a-a646-96b2bd3fddaf",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(6)",
+      "targets": [
+        ["css=.btn:nth-child(6)", "css:finder"],
+        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
+        ["xpath=//div[3]/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "64413132-e558-48e8-8a68-2498705e3ad3",
+      "comment": "",
+      "command": "click",
+      "target": "id=vecchiaPassword",
+      "targets": [
+        ["id=vecchiaPassword", "id"],
+        ["name=vecchiaPassword", "name"],
+        ["css=#vecchiaPassword", "css:finder"],
+        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3e1d69ea-bcad-428e-ba91-ce588e9884f5",
       "comment": "",
       "command": "type",
       "target": "id=vecchiaPassword",
@@ -4826,7 +5219,21 @@
       ],
       "value": "Password01?"
     }, {
-      "id": "555caab9-05bb-4600-9c3a-5eec26dac98b",
+      "id": "1f023578-3e9f-451f-9530-11bf195a1fd1",
+      "comment": "",
+      "command": "click",
+      "target": "id=nuovaPassword",
+      "targets": [
+        ["id=nuovaPassword", "id"],
+        ["name=nuovaPassword", "name"],
+        ["css=#nuovaPassword", "css:finder"],
+        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d6badb55-6be6-4e30-9a97-bc36f8bf6a1e",
       "comment": "",
       "command": "type",
       "target": "id=nuovaPassword",
@@ -4840,7 +5247,21 @@
       ],
       "value": "Password00?"
     }, {
-      "id": "47259eac-e208-4a0d-b25b-dadbb5cb4643",
+      "id": "1e8223f9-642c-4398-bab0-32713760ea3d",
+      "comment": "",
+      "command": "click",
+      "target": "id=confermaPassword",
+      "targets": [
+        ["id=confermaPassword", "id"],
+        ["name=confermaPassword", "name"],
+        ["css=#confermaPassword", "css:finder"],
+        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
+        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
+        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f10ad49a-742e-4292-8a8b-f18aba10a5a4",
       "comment": "",
       "command": "type",
       "target": "id=confermaPassword",
@@ -4854,118 +5275,7 @@
       ],
       "value": "Password00?"
     }, {
-      "id": "daef4f9b-4d25-49fd-be4e-2ba31a188217",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=confermaPassword",
-      "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
-      ],
-      "value": "${KEY_ENTER}"
-    }, {
-      "id": "9419ef1b-184d-481a-9432-6ea76b7ccab9",
-      "comment": "",
-      "command": "assertText",
-      "target": "id=checkModificaPassword",
-      "targets": [],
-      "value": "Modifica della password effettuata"
-    }]
-  }, {
-    "id": "f5a09a47-48e2-41d4-82a2-f3314b935d24",
-    "name": "TestModificaDatiAccesso_VecchiaPasswordErrata",
-    "commands": [{
-      "id": "d7e48e66-962b-414b-8234-9f29d7d11164",
-      "comment": "",
-      "command": "open",
-      "target": "http://localhost:8080/Funisa/",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "cbed71f8-4f4c-43f5-a37c-014afaef2044",
-      "comment": "",
-      "command": "click",
-      "target": "css=.fa-user-circle",
-      "targets": [
-        ["css=.fa-user-circle", "css:finder"],
-        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
-        ["xpath=//i", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "22a4a3ce-3973-4c14-b9fb-3c1efbd974bd",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn:nth-child(5)",
-      "targets": [
-        ["css=.btn:nth-child(5)", "css:finder"],
-        ["xpath=(//button[@type='button'])[5]", "xpath:attributes"],
-        ["xpath=//div[2]/button[2]", "xpath:position"],
-        ["xpath=//button[contains(.,'Modifica password')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "8083f156-c525-49ed-b8be-63be27c87626",
-      "comment": "",
-      "command": "click",
-      "target": "id=vecchiaPassword",
-      "targets": [
-        ["id=vecchiaPassword", "id"],
-        ["name=vecchiaPassword", "name"],
-        ["css=#vecchiaPassword", "css:finder"],
-        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "f025895b-b787-4818-a8e1-e881f4f25497",
-      "comment": "",
-      "command": "type",
-      "target": "id=vecchiaPassword",
-      "targets": [
-        ["id=vecchiaPassword", "id"],
-        ["name=vecchiaPassword", "name"],
-        ["css=#vecchiaPassword", "css:finder"],
-        ["xpath=//input[@id='vecchiaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input", "xpath:position"]
-      ],
-      "value": "Password?"
-    }, {
-      "id": "e87ab26b-7521-402b-b6fa-303d63666ff2",
-      "comment": "",
-      "command": "type",
-      "target": "id=nuovaPassword",
-      "targets": [
-        ["id=nuovaPassword", "id"],
-        ["name=nuovaPassword", "name"],
-        ["css=#nuovaPassword", "css:finder"],
-        ["xpath=//input[@id='nuovaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[2]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[2]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "0c03e9ea-f15d-4bb9-92ae-3a1881caec46",
-      "comment": "",
-      "command": "type",
-      "target": "id=confermaPassword",
-      "targets": [
-        ["id=confermaPassword", "id"],
-        ["name=confermaPassword", "name"],
-        ["css=#confermaPassword", "css:finder"],
-        ["xpath=//input[@id='confermaPassword']", "xpath:attributes"],
-        ["xpath=//div[@id='password']/div/div/div[2]/form/input[3]", "xpath:idRelative"],
-        ["xpath=//div[4]/div/div/div[2]/form/input[3]", "xpath:position"]
-      ],
-      "value": "Password00?"
-    }, {
-      "id": "1eaaabbf-124a-486b-b781-0f2648d81e12",
+      "id": "f63fd096-0ec1-4bf1-ab63-6c358978b642",
       "comment": "",
       "command": "click",
       "target": "css=#password .btn-primary",
@@ -4977,12 +5287,12 @@
       ],
       "value": ""
     }, {
-      "id": "7fbf9955-b648-424e-a5f1-8fafa001f0fd",
+      "id": "c82c8f79-2b8a-42fe-9a0a-7e9480ece153",
       "comment": "",
       "command": "assertText",
-      "target": "css=div > #checkVecchiaPassword",
+      "target": "id=checkModificaPassword",
       "targets": [],
-      "value": "Vecchia password errata"
+      "value": "Modifica della password effettuata"
     }]
   }, {
     "id": "bfc99aa8-2142-4f3c-8878-6abcc6219b86",
@@ -5132,22 +5442,39 @@
     }]
   }, {
     "id": "eda1105f-711c-4198-9122-e9ce5ca574bc",
-    "name": "TestRichiestaRecuperoPassword_EmailErrata",
+    "name": "TestRichiestaRecuperoPassword_EmailNonPresente",
     "commands": [{
-      "id": "92fbdfc5-8d89-4461-8695-1cb3d6252dfc",
+      "id": "b40fe843-dae9-443d-8d1d-02843b34c7a8",
       "comment": "",
       "command": "open",
-      "target": "http://localhost:8080/Funisa/",
+      "target": "http://localhost:8080/Funisa/richiestaRecuperoPassword.jsp",
       "targets": [],
       "value": ""
     }, {
-      "id": "e87ec976-4824-47a2-a4b1-9ec392ed5fa7",
+      "id": "4e3e71b4-fcc8-4e5c-948f-c209035503b1",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4742641d-bbc4-4a26-ba50-81303b1d0a70",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db2d3d5e-18ab-418d-8b70-8666b05b98bc",
       "comment": "",
       "command": "click",
       "target": "linkText=Login",
       "targets": [
         ["linkText=Login", "linkText"],
-        ["css=.btn-main-sm:nth-child(1)", "css:finder"],
+        ["css=.btn-main-sm", "css:finder"],
         ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
         ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
         ["xpath=(//a[contains(@href, '/Funisa/login.jsp')])[3]", "xpath:href"],
@@ -5156,7 +5483,7 @@
       ],
       "value": ""
     }, {
-      "id": "5ce59e9b-2aea-4aae-9017-c378a071cae3",
+      "id": "0a35e90f-52c6-401a-9a57-267db3ca5e00",
       "comment": "",
       "command": "click",
       "target": "linkText=Password dimenticata?",
@@ -5171,7 +5498,7 @@
       ],
       "value": ""
     }, {
-      "id": "79090535-cf69-4035-b4d6-cd7388f6abcc",
+      "id": "01eddd54-feb7-4716-b4f3-5d19d9769aa1",
       "comment": "",
       "command": "click",
       "target": "id=email",
@@ -5184,7 +5511,7 @@
       ],
       "value": ""
     }, {
-      "id": "21b8a250-f151-497c-9737-1ae6ed1d38e1",
+      "id": "d3964878-52f7-4318-a798-886b589ff2a8",
       "comment": "",
       "command": "type",
       "target": "id=email",
@@ -5195,9 +5522,19 @@
         ["xpath=//input[@id='email']", "xpath:attributes"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "@funisa.com"
+      "value": "ciao@gmail.com"
     }, {
-      "id": "0b6eb336-88dd-4db7-ae4b-580e8453b035",
+      "id": "99340a91-972a-481a-9908-bf8196ce5803",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-lg-5",
+      "targets": [
+        ["css=.col-lg-5", "css:finder"],
+        ["xpath=//section[2]/div/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f7ef833-5fde-4f24-830e-623d07a7d952",
       "comment": "",
       "command": "click",
       "target": "css=.d-block",
@@ -5209,12 +5546,12 @@
       ],
       "value": ""
     }, {
-      "id": "a8e06262-47d0-4712-9ddd-dcad97eda014",
+      "id": "6b8e86c6-7ffa-43f9-b223-0ecb200fcc4f",
       "comment": "",
       "command": "assertText",
       "target": "id=checkEmail",
       "targets": [],
-      "value": "Formato non valido"
+      "value": "Email non esistente"
     }]
   }, {
     "id": "0a88a038-942c-453f-ae53-895b265ce268",
@@ -6559,14 +6896,306 @@
     "id": "0dadfa25-5877-4bab-9e7b-9cdcaebf095a",
     "name": "TestAggiungiPeriferica_prezzoVuoto",
     "commands": []
+  }, {
+    "id": "4d7717f1-2150-467f-af81-4978e24c99ef",
+    "name": "TestLogout_ForRestore",
+    "commands": [{
+      "id": "8bba35ef-0a4a-4cc4-9339-c35a7d6c5fef",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ca4cb56-e4a5-43d8-aa79-aca2ef0f6d72",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "00a5706a-5454-41e4-b903-b584a69f8678",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "263a8c11-8860-42ab-a0b1-9e95fe4228f3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8861a396-e678-4f04-88a8-df79a333a49f",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=li > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[@onclick='getLogout()']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, 'Logout')]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8a4d8685-9952-4d38-b849-7aff63cfa8d3",
+    "name": "TestLogin_Titolare",
+    "commands": [{
+      "id": "0ad888a8-1a65-478a-bfe3-a56a8f8a525a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2d15b27e-8783-40bf-92da-6523c5197eef",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "10782e97-7750-40af-a138-1db923bdb334",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf202c00-84f6-4740-a5a8-1499fd0bf858",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.btn-main-sm", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a", "xpath:idRelative"],
+        ["xpath=(//a[contains(@href, '/Funisa/login.jsp')])[3]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8ab8a20-a3eb-4429-b233-2517c1ea43d8",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "142d4261-6b40-4190-9a7f-6e820b276afe",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "titolare@titolare.com"
+    }, {
+      "id": "e32ffa6d-eefb-412c-8cb4-511a6560f2c5",
+      "comment": "",
+      "command": "click",
+      "target": "css=.justify-content-center",
+      "targets": [
+        ["css=.justify-content-center", "css:finder"],
+        ["xpath=//section[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74d633eb-c18a-48bc-8225-fb2e2590c2ef",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d736c753-f4e3-4753-bff6-368871a23942",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "titolare"
+    }, {
+      "id": "e5a6a847-be76-4b31-b3c8-5313fec49f49",
+      "comment": "",
+      "command": "click",
+      "target": "css=.py-3",
+      "targets": [
+        ["css=.py-3", "css:finder"],
+        ["xpath=//button[@value='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='loginform']/fieldset/button", "xpath:idRelative"],
+        ["xpath=//fieldset/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0699a26e-57ee-4dc8-8487-c30b7f084f71",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "2f84bebe-2441-46d7-94cb-35bef7aa88d4",
+    "name": "TestEliminaUtente",
+    "commands": [{
+      "id": "44ae776c-3ba9-4c96-b1c5-2ba47d4e294a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "29212754-d42f-43dc-b652-714d1204b827",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1936x1056",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ae81242-a971-4d4b-86dc-dface588fa0b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.navbar-brand > img",
+      "targets": [
+        ["css=.navbar-brand > img", "css:finder"],
+        ["xpath=//img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11c14af8-3d02-445f-8492-82f959debb3e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5961458e-d86f-4eb6-aa34-8b7e640c5c4c",
+      "comment": "",
+      "command": "click",
+      "target": "css=li:nth-child(5) > .btn",
+      "targets": [
+        ["css=li:nth-child(5) > .btn", "css:finder"],
+        ["xpath=//button[@onclick='getUtenti()']", "xpath:attributes"],
+        ["xpath=//li[5]/button", "xpath:position"],
+        ["xpath=//button[contains(.,' Gestione Utenti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d23d94cd-71cf-4278-900f-74559ebf9408",
+      "comment": "",
+      "command": "click",
+      "target": "css=#brunoverdi\\@funisa\\.com > .fa",
+      "targets": [
+        ["css=#brunoverdi\\@funisa\\.com > .fa", "css:finder"],
+        ["xpath=//a[@id='brunoverdi@funisa.com']/i", "xpath:idRelative"],
+        ["xpath=//li[2]/a/i", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "abf8e8fb-85df-4270-94c3-6e5f072e9ea2",
+    "name": "TestLogout (1)",
+    "commands": [{
+      "id": "4a784bf4-e1c9-4280-bf8f-edd220d57d1f",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/Funisa/index.jsp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d71556f9-d4c5-4e22-8141-9153a29cc5dd",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-user-circle",
+      "targets": [
+        ["css=.fa-user-circle", "css:finder"],
+        ["xpath=//div[@id='navbarSupportedContent']/ul[2]/li/a/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3b11036b-c1d9-487e-bfac-07eb244955af",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Logout",
+      "targets": [
+        ["linkText=Logout", "linkText"],
+        ["css=li:nth-child(2) > .btn", "css:finder"],
+        ["xpath=//a[contains(text(),'Logout')]", "xpath:link"],
+        ["xpath=//a[@onclick='getLogout()']", "xpath:attributes"],
+        ["xpath=//a[contains(@href, 'Logout')]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,' Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "739c500d-a45d-4a9f-916b-d2201137320b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.bg-gray",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "0804497c-1367-46f2-b22a-4675e9554aaa",
-    "name": "TEST SUITE",
+    "name": "TEST SUITE UTENTE",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": ["53c66f81-6d01-4a74-a1e5-21780a2a7da1", "a3896bd3-7dfc-4f10-9727-288abfba005a", "b3539311-7f04-4d3a-9fdb-4fee6bfd7e16", "dd9dbb32-f345-476d-bae1-2864d63b7666", "dbfd5819-2bab-49e5-8861-3fff417dd004", "2d163bc9-1ce0-450c-996e-e0700895a61d", "280ac4f8-2937-4059-9d2f-0192a6d75ae9", "56677d46-6d8d-476e-9a7b-2d23a7f39c63", "45bbaa73-b632-4eb0-a53a-40ef0005c7df", "932a4d32-38b1-4077-9057-594a4d6da015", "9993b29c-b717-4b02-a72b-8a3d5bb0fe17", "6cc5a1ba-7e2b-47dd-a4cc-38265cd85ef8", "c459b478-9fcc-440c-a3f8-04cdb1dd4b8b", "45b42f2c-77f1-4f45-b7f7-51850c3f9f1c", "5ff973d7-6bf9-4516-ad97-a7f957bbbfd2", "3687f836-1c50-4b39-b316-7c285e366db8", "6b2612ec-7fc8-4885-877b-ac86179a7e84", "c5a944c4-9ca1-4169-8e10-3e6531a05e28", "2bae1848-60f0-4afb-bd98-93497801281f", "c1006d87-0f50-4407-82d8-6ba0d89e5897", "179dbbfa-2aca-483a-bc53-f8e9afcfdce3", "5abf3e5b-dbfd-4c07-8a79-39f78126a071", "7d744b96-a31f-41ec-ab5a-a165caeacb43", "5633493a-dab6-425c-bc61-394b8745595e", "64ea9846-c73f-4d20-b1b5-218fbdd598f2", "06b8e974-67c5-424b-b7f9-de4679032de0", "56d9f8a1-3ec9-42f8-b638-686e2b370ec6", "41871d43-b6fc-44cb-983a-1c3b218f1f4a", "d7419d58-0059-41a5-b1a0-04f7075196b9", "68916be0-2212-4f88-a371-914ff13b900c", "daea169e-3960-4b83-b8c5-9fab3d87405e", "0d95496b-d5d3-4e4a-8137-09b63b7b50a5"]
+    "tests": ["56677d46-6d8d-476e-9a7b-2d23a7f39c63", "45bbaa73-b632-4eb0-a53a-40ef0005c7df", "932a4d32-38b1-4077-9057-594a4d6da015", "9993b29c-b717-4b02-a72b-8a3d5bb0fe17", "6cc5a1ba-7e2b-47dd-a4cc-38265cd85ef8", "c459b478-9fcc-440c-a3f8-04cdb1dd4b8b", "45b42f2c-77f1-4f45-b7f7-51850c3f9f1c", "5ff973d7-6bf9-4516-ad97-a7f957bbbfd2", "3687f836-1c50-4b39-b316-7c285e366db8", "6b2612ec-7fc8-4885-877b-ac86179a7e84", "c5a944c4-9ca1-4169-8e10-3e6531a05e28", "2bae1848-60f0-4afb-bd98-93497801281f", "c1006d87-0f50-4407-82d8-6ba0d89e5897", "179dbbfa-2aca-483a-bc53-f8e9afcfdce3", "5abf3e5b-dbfd-4c07-8a79-39f78126a071", "7d744b96-a31f-41ec-ab5a-a165caeacb43", "5633493a-dab6-425c-bc61-394b8745595e", "280ac4f8-2937-4059-9d2f-0192a6d75ae9", "53c66f81-6d01-4a74-a1e5-21780a2a7da1", "a3896bd3-7dfc-4f10-9727-288abfba005a", "b3539311-7f04-4d3a-9fdb-4fee6bfd7e16", "dd9dbb32-f345-476d-bae1-2864d63b7666", "dbfd5819-2bab-49e5-8861-3fff417dd004", "2d163bc9-1ce0-450c-996e-e0700895a61d", "64ea9846-c73f-4d20-b1b5-218fbdd598f2", "06b8e974-67c5-424b-b7f9-de4679032de0", "56d9f8a1-3ec9-42f8-b638-686e2b370ec6", "41871d43-b6fc-44cb-983a-1c3b218f1f4a", "d7419d58-0059-41a5-b1a0-04f7075196b9", "68916be0-2212-4f88-a371-914ff13b900c", "daea169e-3960-4b83-b8c5-9fab3d87405e", "0d95496b-d5d3-4e4a-8137-09b63b7b50a5", "aa85d79a-259e-4ac8-a55f-cf6cb11d06ba", "0cecb28a-6f69-44c4-9e4f-e19ff2d59e3d", "05ca2806-ad49-423a-b8b3-a7612d03d222", "2a88eaec-ccbb-4ded-bdba-7f20186bf927", "ee37485d-0ae5-4680-9ef7-c6b7097b9930", "f5a09a47-48e2-41d4-82a2-f3314b935d24", "5d41b6c5-4b77-4875-b679-140c3cff1e54", "4d7717f1-2150-467f-af81-4978e24c99ef", "eda1105f-711c-4198-9122-e9ce5ca574bc", "50e8eadc-73ca-489d-b2be-634270055a7b", "bfc99aa8-2142-4f3c-8878-6abcc6219b86", "8a4d8685-9952-4d38-b849-7aff63cfa8d3", "2f84bebe-2441-46d7-94cb-35bef7aa88d4"]
   }],
   "urls": ["http://localhost:8080/", "http://localhost:8080/Funisa"],
   "plugins": []
