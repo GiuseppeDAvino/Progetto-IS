@@ -410,10 +410,10 @@ function validaModificaPeriferica() {
 
 
 
-function validaAggiungiPeriferica() {
+function validaAggiungiPostazione() {
 
 	var nome = document.getElementById('aggiungi_postazione_nome');
-	var nomeReg = /[a-zA-Z0-9 ‘àèìòù]{3,30}/
+	var nomeReg = /^[a-zA-Z0-9 ‘àèìòù]{3,30}$/
 	
 
 	if (nome.value == null || nome.value == "") {

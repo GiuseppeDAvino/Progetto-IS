@@ -471,7 +471,7 @@ function getPostazioni() {
 						$("<span id='checkNome'></span>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", {type: 'submit', onclick:'return validaAggiungiPeriferica();',	id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", {type: 'submit', onclick:'return validaAggiungiPostazione();',	id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
