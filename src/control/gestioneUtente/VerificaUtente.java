@@ -52,9 +52,10 @@ public class VerificaUtente extends HttpServlet {
 			else {
 				if((Integer) session.getAttribute("isPressedPrenota")==1)
 					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/dettagliCategoria.jsp"));
+				else
+					response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/confermaRegistrazione.jsp"));
 			}
-		
-			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() +"/cliente/confermaRegistrazione.jsp"));
+			
 		}
 	}
 

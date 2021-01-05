@@ -79,6 +79,10 @@ span {
 	color: green;
 	font-weight: bold;
 }
+#spanEmail {
+	color: black;
+	font-weight: bold;
+}
 </style>
 </head>
 
@@ -406,7 +410,7 @@ span {
  %>
 						</span>
 					</div>
-					<div class=" dashboard-container my-adslist">
+					<div class="dashboard-container my-adslist">
 						<table class="table table-responsive product-dashboard-table">
 							<thead id="head_tabella_prenotazioni_utente"></thead>
 							<tbody id="gestione_prenotazioni_utente">

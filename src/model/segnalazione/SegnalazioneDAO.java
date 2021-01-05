@@ -85,7 +85,7 @@ public class SegnalazioneDAO implements ModelInterface<SegnalazioneBean, Integer
 	 */
 	@Override
 	public Collection<SegnalazioneBean> doRetrieveAll() {
-		String sql = "SELECT * FROM segnalazione";
+		String sql = "SELECT * FROM segnalazione order by id desc";
 		ArrayList<SegnalazioneBean> collection = new ArrayList<SegnalazioneBean>();
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();

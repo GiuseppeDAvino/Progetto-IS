@@ -75,10 +75,10 @@
 				<div class="col-md-12">
 					<!-- Header Contetnt -->
 					<div class="content-block">
-						<h1>Buy & Sell Near You</h1>
+						<h1>Gioca da noi</h1>
 						<p>
-							Join the millions who buy and sell from each other <br>
-							everyday in local communities around the world
+							Unisciti alle centinaia di persone che ci hanno scelto <br>
+							avrai la massima professionalita e qualità
 						</p>
 					</div>
 					<!-- Advance Search -->
@@ -98,9 +98,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2>Trending Adds</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-							Quas, magnam.</p>
+						<h2>Segli noi!</h2>
+						<p>Abbiamo le migliori postazioni sul mercato, massimo confort e cordialità.</p>
 					</div>
 				</div>
 			</div>

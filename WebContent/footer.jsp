@@ -61,30 +61,25 @@
       <!-- Link list -->
       <div class="col-lg-2 offset-lg-1 col-md-3">
         <div class="block">
-          <h4>Site Pages</h4>
+          <h4>Contatti</h4>
           <ul>
-            <li><a href="#">Boston</a></li>
-            <li><a href="#">How It works</a></li>
-            <li><a href="#">Deals & Coupons</a></li>
-            <li><a href="#">Articls & Tips</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+            <li><a href="#">Funisa</a></li>
+            <li><a href="#">Via Giovanni Paolo II, 132</a></li>
+            <li><a href="#">84084 Fisciano</a></li>
+            <li><a href="#">089 961111</a></li>
           </ul>
         </div>
       </div>
       <!-- Link list -->
       <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
         <div class="block">
-          <h4>Admin Pages</h4>
+          <h4>Social</h4>
           <ul>
-            <li><a href="category.html">Category</a></li>
-            <li><a href="single.html">Single Page</a></li>
-            <li><a href="store.html">Store Single</a></li>
-            <li><a href="single-blog.html">Single Post</a>
+            <li><a href="category.html"><i class="fa fa-facebook"></i> Facebook</a></li>
+            <li><a href="single.html"><i class="fa fa-twitter"></i> Twitter</a></li>
+            <li><a href="store.html"><i class="fa fa-instagram"></i> Instagram</a></li>
+            <li><a href="single-blog.html"><i class="fa fa-pinterest"></i> Pinterest</a>
             </li>
-            <li><a href="blog.html">Blog</a></li>
-
-
-
           </ul>
         </div>
       </div>
@@ -104,18 +99,10 @@
           <p>Copyright © <script>
               var CurrentYear = new Date().getFullYear()
               document.write(CurrentYear)
-            </script>. All Rights Reserved, theme by <a class="text-primary" href="https://themefisher.com" target="_blank">themefisher.com</a></p>
+            </script>. All Rights Reserved</p>
         </div>
       </div>
-      <div class="col-sm-6 col-12">
-        <!-- Social Icons -->
-        <ul class="social-media-icons text-right">
-          <li><a class="fa fa-facebook" href="https://www.facebook.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-twitter" href="https://www.twitter.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com/themefisher" target="_blank"></a></li>
-          <li><a class="fa fa-vimeo" href=""></a></li>
-        </ul>
-      </div>
+     
     </div>
   </div>
   <!-- Container End -->
