@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import model.notifica.NotificaBean;
 import model.notifica.NotificaDAO;
+import model.utente.UtenteBean;
 
 /**
  * Servlet implementation class RestituisciListaPrenotazioni
@@ -37,8 +38,9 @@ public class RestituisciListaNotifiche extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		ArrayList<NotificaBean> notifiche=(ArrayList<NotificaBean>) notificaDAO.doRetrieveAll();
 		
+		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");		
+		ArrayList<NotificaBean> notifiche=(ArrayList<NotificaBean>) notificaDAO.doRetrieveByEmail(utente.getEmail());		
 		String string = gson.toJson(notifiche);
 		response.getWriter().print(string);
 		response.getWriter().flush();

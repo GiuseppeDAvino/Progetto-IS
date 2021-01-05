@@ -79,6 +79,33 @@ public class NotificaDAO implements ModelInterface<NotificaBean, Integer> {
 			return null;
 		}
 	}
+	
+	public Collection<NotificaBean> doRetrieveByEmail(String email) {
+		String sql = "SELECT * FROM notifica, notifica_utente where notifica.id=notifica_utente.notificaId and notifica_utente.utenteEmail=?";
+		
+		ArrayList<NotificaBean> collection = new ArrayList<NotificaBean>();
+
+		try (Connection con = DriverManagerConnectionPool.getConnection();
+				PreparedStatement statement = con.prepareStatement(sql);) {
+			System.out.println("doRetrieveByEmail");
+			statement.setString(1, email);
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				NotificaBean bean = new NotificaBean();
+
+				bean.setId(rs.getInt("id"));
+				bean.setDescrizione(rs.getString("descrizione"));
+				bean.setTipo(rs.getString("tipo"));
+				collection.add(bean);
+			}
+			return collection;
+		} catch (SQLException e) {
+	
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	/**
 	 *  permette di salvare la notifica all'interno del database <br>
