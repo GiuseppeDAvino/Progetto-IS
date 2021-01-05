@@ -129,11 +129,12 @@ public class RecensioneDAO implements ModelInterface<RecensioneBean, String> {
 	 */
 	@Override
 	public boolean doUpdate(RecensioneBean bean, String email) {
-		String sql = "UPDATE recensione SET descrizione=? WHERE utenteEmail=?";
+		String sql = "UPDATE recensione SET descrizione=?, verificata=? WHERE utenteEmail=?";
 		try (Connection con = DriverManagerConnectionPool.getConnection();
 				PreparedStatement statement = con.prepareStatement(sql);) {
 			statement.setString(1, bean.getDescrizione());
-			statement.setString(2, email);
+			statement.setBoolean(2, false);
+			statement.setString(3, email);
 
 			System.out.println("doUpdate=" + statement);
 			statement.executeUpdate();

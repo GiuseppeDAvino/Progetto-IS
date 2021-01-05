@@ -79,7 +79,6 @@
 		<input type="button" onClick="getCategorieLibere()" value="Cerca">
 	</form>
 </body>
-
 <script src="plugins/jQuery/jquery.min.js"></script>
 <script src="plugins/bootstrap/js/popper.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
