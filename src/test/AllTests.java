@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 
 @RunWith(JUnitPlatform.class)
-@SelectPackages("test.dao")
+@SelectPackages("test")
 //RUN AS JUNIT TEST
 public class AllTests {
 

@@ -401,7 +401,7 @@ function getPrenotazioni() {
 
 					"<tr>" +
 					"<td class='product-thumb p-2'>" +
-					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
+					"<img style='width: 100;height: 100px;' src='" + data[i].qr + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
 					"<h3 class='title'><strong>Id:</strong>" + data[i].id + "</h3>" +
 					"<span class='location'><strong>Postazione id:</strong>" + data[i].postazioneId+ "</span>" +
@@ -471,7 +471,7 @@ function getPostazioni() {
 						$("<span id='checkNome'></span>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
 						$("<button type='button' class='btn btn-danger' data-dismiss='modal'>Reset</button>"),
-						$("<input/>", {type: 'submit', onclick:'return validaAggiungiPeriferica();',	id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
+						$("<input/>", {type: 'submit', onclick:'return validaAggiungiPostazione();',	id: 'aggiungi_postazione_submit', value: 'Aggiungi', class: 'btn btn-primary' }),
 						$("</div>"),
 						$("</fieldset>")))
 			});
@@ -788,6 +788,8 @@ function getRecensioni() {
 			
 			$('#head_tabella_recensione').html("");
 			$('#gestione_recensione').html("");
+			$('#head_tabella_segnalazione').html("");
+			$('#gestione_segnalazione').html("");
 			$('#head_tabella_prenotazioni_utente').html("");
 			$('#gestione_prenotazioni_utente').html("");
 			$('#head_tabella_prenotazioni').html("");
@@ -832,8 +834,8 @@ function getRecensioni() {
 					"<td class='product-thumb p-2'>" +
 					"<h3 class='title'>" + data[i].verificata + "</h3>" +
 					"<td class='product-details'>" +
-					"<h3 class='title'>" + data[i].descrizione + "</h3>" +
-					"<span class='location'><strong>Utente:</strong>" + data[i].utenteEmail + "</span>" +
+					"<h3 class='title'> <strong>Descrizione: </strong>"+ data[i].descrizione + "</h3>" +
+					"<span class='title'><strong>Utente: </strong>" + data[i].utenteEmail + "</span>" +
 					"</td>" +
 					"<td class='product-category'><span class='categories'>" + data[i].valutazione + "</span></td>" +
 					"<td class='action' data-title='Action'>" +
@@ -892,7 +894,7 @@ function getSegnalazioni() {
 
 			$('#head_tabella_segnalazione').html(
 				
-				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Recensioni</h3>" +
+				"<h3 class='widget-header' style='padding-bottom: 30px;'>Gestione Segnalazioni</h3>" +
 				"<div class='modal fade' id='aggiungiPostazioni' tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true'>" +
 				"<div class='modal-dialog modal-dialog-centered' role='document'>" +
 				"<div class='modal-content'>" +
@@ -903,9 +905,9 @@ function getSegnalazioni() {
 				"</div>" +
 				"<table class='table table-responsive product-dashboard-table'>" +
 				"<tr>" +
-				"<th>Verificata</th>" +
-				"<th>Recensione</th>" +
-				"<th class='text-center'>tipo</th>" +
+				"<th>ID</th>" +
+				"<th>SEGNALAZIONE</th>" +
+				"<th class='text-center'>Email</th>" +
 				"<th class='text-center'>Azioni</th>" +
 				"</tr>");
 				
@@ -918,10 +920,10 @@ function getSegnalazioni() {
 					"<td class='product-thumb p-2'>" +
 					"<h3 class='title'>" + data[i].id + "</h3>" +
 					"<td class='product-details'>" +
-					"<h3 class='title'>" + data[i].descrizione + "</h3>" +
-					"<span class='location'><strong>Utente:</strong>"+ data[i].utenteEmail + "</span>" +
+					"<h3 class='title'>" + data[i].tipo + "</h3>" +
+					"<span class='location'><strong>Descrizione:</strong>"+ data[i].descrizione + "</span>" +
 					"</td>" +
-					"<td class='product-category'><span class='categories'>" + data[i].tipo + "</span></td>" +
+					"<td class='product-category'><span id='spanEmail' class='categories'>" + data[i].utenteEmail + "</span></td>" +
 					"<td class='action' data-title='Action'>" +
 					"<div class=''>" +
 					"<ul class='list-inline justify-content-center'>" +
@@ -995,7 +997,7 @@ window.onload = function getPrenotazioniUtente() {
 
 					"<tr>" +
 					"<td class='product-thumb p-2'>" +
-					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
+					"<img style='width: 100;height: 100px;' src='" + data[i].qr + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
 					"<h3 class='title'>" + data[i].postazioneId + "</h3>" +
 					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
