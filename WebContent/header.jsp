@@ -93,6 +93,23 @@ if(session.getAttribute("utente") != null){
 							<li class="nav-item"><a class="nav-link"
 								href="<%=response.encodeURL(request.getContextPath() +"/notifiche.jsp")%>"><i
 									class="fa fa-bell" style="font-size: 20px;"></i></a></li>
+				
+									<!-- 
+									<li class="nav-item">
+							<li class="nav-item dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle " data-toggle="dropdown" href=""><span><i class="fa fa-bell"></i></span>
+								</a>
+
+				
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="dashboard.html">Dashboard</a>
+									<a class="dropdown-item" href="dashboard-my-ads.html">Dashboard My Ads</a>
+									<a class="dropdown-item" href="dashboard-favourite-ads.html">Dashboard Favourite Ads</a>
+									<a class="dropdown-item" href="dashboard-archived-ads.html">Dashboard Archived Ads</a>
+									<a class="dropdown-item" href="dashboard-pending-ads.html">Dashboard Pending Ads</a>
+								</div>
+							</li> -->
+									
 							<%
 								}
 							%>

@@ -109,17 +109,17 @@ function getPeriferiche() {
 						$("<h3 class=''>Aggiungi Periferica</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_nome', name: 'nome', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
-						$("<span id='checkNome'></span>"),
+						$("<h3 id='checkNome'></h3>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_tipo', name: 'tipo', placeholder: 'Tipo', class: 'border p-3 w-100 my-2' }),
-						$("<span id='checkTipo'></span>"),
+						$("<h3 id='checkTipo'></h3>"),
 						$("<div class='form-row'>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_quantita', name: 'quantita', placeholder: 'Quantità', class: 'border p-3 w-100 my-2' }),
-						$("<span id='checkQuantita'></span>"),
+						$("<h3 id='checkQuantita'></h3>"),
 						$("</div>"),
 						$("<div class='form-group col-md-6' style='margin-bottom: 0px;>"),
 						$("<input/>", { type: 'text', id: 'aggiungi_periferica_prezzo', name: 'prezzo', placeholder: 'Prezzo', class: 'border p-3 w-100 my-2' }),
-						$("<span id='checkPrezzo'></span>"),
+						$("<h3 id='checkPrezzo'></h3>"),
 						$("</div>"),
 						$("</div>"),
 						$("<div class='modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center'>"),
@@ -163,10 +163,10 @@ function getPeriferiche() {
 					"<tr>" +
 					"<td class='product-details'>" +
 					"<h3 class='title'>" + data[i].nome + "</h3>" +
-					"<span class='location'><strong>Quantità:</strong>" + data[i].quantita + "</span>" +
-					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
+					"<h3  class='location'><strong>Quantità:</strong>" + data[i].quantita + "</h3>" +
+					"<h3 class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</h3>" +
 					"</td>" +
-					"<td class='product-category'><span class='categories'>" + data[i].tipo + "</span></td>" +
+					"<td class='product-category'><h3  class='categories'>" + data[i].tipo + "</h3></td>" +
 					"<td class='action' data-title='Action'>" +
 					"<div class=''>" +
 					"<ul class='list-inline justify-content-center'>" +
@@ -952,7 +952,7 @@ function getSegnalazioni() {
 
 
 
-window.onload =function getPrenotazioniUtente() {
+window.onload = function getPrenotazioniUtente() {
 
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -997,7 +997,7 @@ window.onload =function getPrenotazioniUtente() {
 					"<td class='product-thumb p-2'>" +
 					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].qr + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
-					"<h3 class='title'>" + data[i].categoriaId + "</h3>" +
+					"<h3 class='title'>" + data[i].postazioneId + "</h3>" +
 					"<span class='location'><strong>ID:</strong>" + data[i].id + "</span>" +
 					"<span class='location'><strong>Prezzo:</strong>€" + data[i].prezzo + "</span>" +
 					"<span class='location'><strong>Data:</strong>" + data[i].data + "</span>" +

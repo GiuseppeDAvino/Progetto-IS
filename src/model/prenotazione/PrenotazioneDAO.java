@@ -50,7 +50,7 @@ public class PrenotazioneDAO implements ModelInterface<PrenotazioneBean, Integer
 	 */
 	@Override
 	public Collection<PrenotazioneBean> doRetrieveAll(){
-		String sql = "Select * FROM prenotazione";
+		String sql = "Select * FROM prenotazione ORDER BY DESC id";
 		ArrayList<PrenotazioneBean> collection = new ArrayList<PrenotazioneBean>();
 
 		try (Connection con = DriverManagerConnectionPool.getConnection();
