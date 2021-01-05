@@ -37,7 +37,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_1() {
+	void TC_ModificaCategoria_1() {
 		request.addParameter("nome","");
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -52,7 +52,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_2() {
+	void TC_ModificaCategoria_2() {
 		request.addParameter("nome","PC GAMING PC GAMING PC GAMING PC GAMING PC GAMING");
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -67,7 +67,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_3() {
+	void TC_ModificaCategoria_3() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico","");
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -82,7 +82,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_4() {
+	void TC_ModificaCategoria_4() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico","PC PC PC PC PC PC PC PC PC PC PC PC");
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -97,7 +97,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_5() {
+	void TC_ModificaCategoria_5() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione","");
@@ -112,7 +112,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_6() {
+	void TC_ModificaCategoria_6() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione","PC composto da i7-10th e rtx 3090 PC compost da i7-10th e rtx 3090 PC compost da i7-10th e rtx 3090 PC compost da i7-10th e rtx 3090");
@@ -127,7 +127,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_7() {
+	void TC_ModificaCategoria_7() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -142,7 +142,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_8() {
+	void TC_ModificaCategoria_8() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -157,7 +157,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_9() {
+	void TC_ModificaCategoria_9() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());
@@ -169,7 +169,7 @@ class TestCase_ModificaCategoria extends Mockito {
 	}
 	
 	@Test
-	void TC_AggiuntaCategoria_10() {
+	void TC_ModificaCategoria_10() {
 		request.addParameter("nome",categoria.getNome());
 		request.addParameter("tipoGenerico",categoria.getTipoGenerico());
 		request.addParameter("descrizione",categoria.getDescrizione());

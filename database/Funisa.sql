@@ -19,9 +19,9 @@ CREATE TABLE notifica(
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','1');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','2');
 INSERT INTO notifica(descrizione,tipo) VALUES('PROVA','3');
+SELECT* from notifica
 
-
-select*from utente
+delete from utente where nome='Bruno'
 CREATE TABLE utente(
     email VARCHAR(50) PRIMARY KEY NOT NULL,
     nome VARCHAR(30) NOT NULL,
@@ -34,7 +34,6 @@ CREATE TABLE utente(
     codiceVerifica char(7),
     immagine VARCHAR(MAX)
 )
-
 
 
 /*Utenti inseriti tramite main java*/
@@ -140,6 +139,7 @@ CREATE TABLE prenotazione_periferica(
 
 delete from periferica where nome='mionix'
 delete from categoria where nome='PS4'
+delete from notifica where descrizione='Prova inserimento notifica'
 
 */
 
@@ -178,5 +178,10 @@ SELECT COUNT(*) FROM  prenotazione pr, prenotazione_periferica pp
             WHERE p.isDisponibile=1 AND p.id NOT IN(
                     SELECT p.id FROM postazione p,prenotazione pr WHERE 
 				    p.id=pr.postazioneId AND pr.dataPrenotazione='2020-02-12' AND pr.fasciaOraria='12/14')*/
+
+
+
+
+select * from recensione
 
 
