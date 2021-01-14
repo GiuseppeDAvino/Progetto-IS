@@ -50,7 +50,7 @@ function getUtenti() {
 				$('#gestione_utenti').append(
 					"<tr>" +
 					"<td class='product-thumb p-2'>" +
-					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].immagine + "' alt='image description'></td>" +
+					"<img style='border-radius: 50%;width: 50;height: 50px;' src='" + data[i].img + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
 					"<h3 class='title'>" + data[i].nome + " " + data[i].cognome + "</h3>" +
 					"<span class='location'><strong>Username:</strong>" + data[i].username + "</span>" +
@@ -331,7 +331,7 @@ function getCategorie() {
 					"</a>" +
 					"</li>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='Eliminacategoria?nome="+ data[i].nome +"'>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaCategoria?nome="+ data[i].nome +"'>" +
 					"<i class='fa fa-trash'></i>" +
 					"</a>" +
 					"</li>" +
@@ -465,7 +465,7 @@ function getPostazioni() {
 					// Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
 					$("<form/>", { action: 'AggiungiPostazione', method: 'POST' }).append(
 						$("<fieldset class='p-0'>"),
-						$("<h3 class=''>Aggiungi Postazionee</h3>"),
+						$("<h3 class=''>Aggiungi Postazione</h3>"),
 						// Create <form> Tag and Appending in HTML Div form1.
 						$("<input/>", { type: 'text', id: 'aggiungi_postazione_nome', name: 'nomeCategoria', placeholder: 'Nome', class: 'border p-3 w-100 my-2' }), // Creating Input Element With Attribute.
 						$("<span id='checkNome'></span>"),
@@ -1011,7 +1011,7 @@ window.onload = function getPrenotazioniUtente() {
 					"<ul class='list-inline justify-content-center'>" +
 					"<li class='list-inline-item'>" +
 					"<li class='list-inline-item'>" +
-					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href=''>" +
+					"<a data-toggle='tooltip' data-placement='top' title='Delete' class='delete' href='EliminaPrenotazione?id="+ data[i].id +"'>" +
 					"<i class='fa fa-trash'></i>" +
 					"</a>" +
 					"</li>" +

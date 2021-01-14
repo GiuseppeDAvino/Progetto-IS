@@ -128,7 +128,7 @@ public class ModificaCategoria extends HttpServlet {
 											categoria.setPrezzo(Float.parseFloat(prezzo));
 											categoria.setImmagine(immagine);
 											System.out.println(categoria);
-											categoriaDAO.doUpdate(categoria, request.getParameter("nomeCategoria"));
+											categoriaDAO.doUpdate(categoria, (String) session.getAttribute("nomeCategoria"));
 											response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 										}
 									}

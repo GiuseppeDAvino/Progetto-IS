@@ -98,7 +98,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title">
-						<h2>Segli noi!</h2>
+						<h2>Scegli noi!</h2>
 						<p>Abbiamo le migliori postazioni sul mercato, massimo confort e cordialità.</p>
 					</div>
 				</div>

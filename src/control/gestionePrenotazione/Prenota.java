@@ -46,6 +46,7 @@ public class Prenota extends HttpServlet {
 			System.out.println("if 2");
 			response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/dettagliCategoria.jsp"));
 		}else {
+			System.out.println("stampa periferiche " + periferiche);
 			prenotazioneDAO.prenotaConPeriferiche(prenotazione, periferiche);
 			session.setAttribute("datiCategoria",null);
 			session.setAttribute("datiPeriferiche",null);

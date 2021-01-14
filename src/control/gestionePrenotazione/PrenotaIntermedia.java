@@ -99,8 +99,9 @@ public class PrenotaIntermedia extends HttpServlet {
 			tipi = (ArrayList<String>) perifericaDAO.doRetrieveAllTipi();
 
 			for (String s : tipi) {
-				periferiche.add(perifericaDAO.doRetrieveByKey(request.getParameter(s)));
-				System.out.println("request " + request.getParameter(s));
+				PerifericaBean bean = perifericaDAO.doRetrieveByKey(request.getParameter(s)); 
+				if(!bean.getNome().equals(""))
+					periferiche.add(bean);
 			}
 			
 			for(PerifericaBean p: periferiche)

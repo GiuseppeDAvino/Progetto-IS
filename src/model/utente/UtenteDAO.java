@@ -92,6 +92,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				bean.setPassword(rs.getString("passw"));
 				bean.setStato(rs.getBoolean("stato"));
 				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
+				bean.setImg(rs.getString("immagine"));
 				switch (rs.getString("ruolo")) {
 
 				case "cliente":
@@ -139,6 +140,7 @@ public class UtenteDAO implements ModelInterface<UtenteBean, String> {
 				bean.setPassword(rs.getString("passw"));
 				bean.setStato(rs.getBoolean("stato"));
 				bean.setCodiceVerifica(rs.getString("codiceVerifica"));
+				bean.setImg(rs.getString("immagine"));
 				switch (rs.getString("ruolo")) {
 
 				case "cliente":

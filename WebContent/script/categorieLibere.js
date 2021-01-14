@@ -30,7 +30,7 @@ function getCategorieLibere(){
 					
 					"<tr>" +
 					"<td class='product-thumb p-2'>" +
-					"<img style='border-radius: 50%;width: auto;height: auto;' src='" + data[i].immagine + "' alt='image description'></td>" +
+					"<img style='width: 100px;height: 100px;' src='" + data[i].immagine + "' alt='image description'></td>" +
 					"<td class='product-details'>" +
 					"<h3 class='title'><a href='DettagliCategoria;jsessionid="+session+"?nome="+data[i].nome+"'>"+ data[i].nome +"</a></h3>" +
 					"<span class='location'><strong>Prezzo:</strong>€ "+ data[i].prezzo +"</span>" +

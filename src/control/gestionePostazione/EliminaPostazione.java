@@ -37,6 +37,8 @@ public class EliminaPostazione extends HttpServlet {
 			postazioneDAO.cambiaDisponibilita(postazione);
 		else
 			postazioneDAO.doDelete(postazione.getId());
+		
+		response.sendRedirect(response.encodeRedirectURL(request.getContextPath() + "/user.jsp"));
 	}
 
 

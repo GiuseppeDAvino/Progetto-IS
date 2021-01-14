@@ -438,9 +438,9 @@ function validaAggiungiPostazione() {
 function validaAggiungiCategoria() {
 
 	var nome = document.getElementById('aggiungi_categoria_nome');
-	var nomeReg = /^[a-zA-Z0-9 ‘àèìòù]{3,30}$/
+	var nomeReg = /^[a-zA-Z0-9 ‘àèìòù]{1,30}$/
 	var tipo = document.getElementById('aggiungi_categoria_tipo');
-	var tipoReg = /^[a-zA-Z0-9 ‘àèìòù]{3,30}$/
+	var tipoReg = /^[a-zA-Z0-9 ‘àèìòù]{1,30}$/
 	var descrizione = document.getElementById('aggiungi_categoria_descrizione');
 	var descrizioneReg = /.*/
 	var prezzo = document.getElementById('aggiungi_categoria_prezzo');
